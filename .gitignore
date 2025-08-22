@@ -30,6 +30,7 @@ build/
 !**/src/test/**/build/
 
 ### VS Code ###
+.vscode/
 #.vscode/
 
 # application.properties - 민감 정보
