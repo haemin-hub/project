@@ -12,9 +12,4 @@ public class HelloController {
         model.addAttribute("message", "JSP 테스트 성공!");
         return "hello"; // /WEB-INF/views/hello.jsp로 연결됨
     }
-
-    @GetMapping("/main")
-    public static void main(String[] args) {
-
-    }
 }
