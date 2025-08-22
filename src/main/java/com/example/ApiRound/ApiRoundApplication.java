@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ApiRoundApplication {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(ApiRoundApplication.class, args);
 	}
 
