@@ -61,6 +61,7 @@ public class KakaoOAuthController {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode tokenJson = objectMapper.readTree(tokenResponse.getBody());
         String accessToken = tokenJson.get("access_token").asText();
+        session.setAttribute("accessToken", accessToken);
 
         // 4. 사용자 정보 요청
         HttpHeaders userInfoHeaders = new HttpHeaders();
@@ -80,6 +81,8 @@ public class KakaoOAuthController {
 
         //  세션에 사용자 정보 저장하거나 DB에 저장하는 로직 추가 가능
         session.setAttribute("userId", userInfoJson.get("id").asText());
+        String nickname = userInfoJson.path("properties").path("nickname").asText();
+        session.setAttribute("nickname", nickname);
 
         // 5. 로그인 완료 후 메인 페이지로 리다이렉트
         return new RedirectView("/main");
@@ -87,7 +90,21 @@ public class KakaoOAuthController {
 
     @GetMapping("/logout")
     public RedirectView logout(HttpSession session) {
+        String accessToken = (String) session.getAttribute("accessToken"); // 저장했다면
+
+        if (accessToken != null) {
+            HttpHeaders headers = new HttpHeaders();
+            headers.setBearerAuth(accessToken);
+            HttpEntity<Void> request = new HttpEntity<>(headers);
+
+            try {
+                restTemplate.postForEntity("https://kapi.kakao.com/v1/user/logout", request, String.class);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         session.invalidate();
-        return new RedirectView("/");
+        return new RedirectView("/main");
     }
 }

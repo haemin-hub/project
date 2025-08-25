@@ -24,17 +24,34 @@
                            String kakaoLoginUrl = "https://kauth.kakao.com/oauth/authorize"
                                + "?client_id=" + kakaoClientId
                                + "&redirect_uri=" + kakaoRedirectUri
-                               + "&response_type=code";
+                               + "&response_type=code"
+                                + "&prompt=login"; // 즉시 로그인 방지용 파라미터
 
                            String userId = (String) session.getAttribute("userId");
+
                        %>
 
                        <% if (userId == null) { %>
                            <a href="<%= kakaoLoginUrl %>" class="login-btn">로그인/회원가입</a>
                        <% } else { %>
-                           <span class="welcome-text">Welcome</span>
-                           <a href="/logout" class="login-btn">로그아웃</a>
+                            <span class="welcome-text"> Welcome </span>
+                          <a href="/oauth/kakao/logout" class="login-btn">로그아웃</a>
                        <% } %>
+
+
+                      <%
+                          String clientId = "188733059918-dr0fa08okh76n7omc55h8get2rbsehb2.apps.googleusercontent.com";
+                          String redirectUri = "http://localhost:8080/oauth/google/callback";
+                          String googleLoginUrl = "https://accounts.google.com/o/oauth2/v2/auth?"
+                              + "client_id=" + clientId
+                              + "&redirect_uri=" + redirectUri
+                              + "&response_type=code"
+                              + "&scope=openid%20email%20profile";
+                      %>
+
+                      <a href="<%= googleLoginUrl %>" class="login-btn">Google login</a>
+
+
                    </div>
                </div>
 </header>
