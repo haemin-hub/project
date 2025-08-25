@@ -4,9 +4,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
 <header id="main-header">
     <div class="header-container">
-        <div class="logo" onclick="location.href='/'">
-                    <img src="/resources/images/HealnGo_logo.png" alt="HealnGo 로고" class="logo-image">
-        </div>
+        <a href="/main" class="logo">
+                            <img src="/resources/images/HealnGo_logo.png" alt="HealnGo 로고" class="logo-image">
+        </a>
         <div class="user-actions">
             <div class="dropdown">
                 <button class="lang_btn">Language</button>

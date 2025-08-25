@@ -406,7 +406,7 @@ address p {
     padding: 150px 0;
     text-align: center;
     margin-bottom: 50px;
-    border-radius: 0 0 20px 20px;
+    /* border-radius 속성 제거 */
     box-shadow: 0 4px 15px rgba(67, 120, 67, 0.1);
 }
 

@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HelloController {
 
+    @GetMapping("/")
+    public String index() {
+        return "redirect:/main";
+    }
+
     @GetMapping("/hello")
     public String hello(Model model) {
         model.addAttribute("message", "JSP 테스트 성공!");
@@ -14,8 +19,8 @@ public class HelloController {
     }
 
     @GetMapping("/main")
-    public static void main(String[] args) {
-
+    public String main(Model model) {
+        return "main"; // /WEB-INF/views/main.jsp로 연결됨
     }
 
     @GetMapping("/tourism")
