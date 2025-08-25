@@ -38,4 +38,9 @@ public class HelloController {
 
     }
 
+    @GetMapping("/location")
+    public String location() {
+        return "location";
+    }
+
 }
