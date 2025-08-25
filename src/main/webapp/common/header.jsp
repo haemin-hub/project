@@ -17,11 +17,23 @@
                     <a href="javascript:void(0);" class="lang-item" data-lang="zh"><span class="fi fi-cn"></span> Chinese</a>
                 </div>
             </div>
-            <a href="/login" class="login-btn">로그인/회원가입</a>
-        </div>
-    </div>
-</header>
 
+           <%
+               String userId = (String) session.getAttribute("userId");
+           %>
+
+           <% if (userId == null) { %>
+               <!-- 로그인 상태가 아니면 로그인 선택 페이지로 링크 -->
+               <a href="/login" class="login-btn">로그인 / 회원가입</a>
+           <% } else { %>
+               <span class="welcome-text">Welcome, <%= session.getAttribute("nickname") %></span>
+               <a href="/oauth/kakao/logout" class="login-btn">로그아웃</a>
+           <% } %>
+
+
+          </div>
+     </div>
+</header>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const logo = document.querySelector('.logo');
