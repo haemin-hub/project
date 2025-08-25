@@ -144,10 +144,10 @@
                             </div>
                             <div class="city-name">여수시</div>
                         </a>
-                        <a href="/city/sokcho" class="tripbtoz-city-item">
+                        <a href="/city/sokcho" class="tripbtoz-city-item" >
                             <div class="city-rank">5</div>
-                            <div class="city-trend no-change">
-                                <i class="fas fa-minus"></i>
+                            <div class="city-trend up">
+                                <i class="fas fa-arrow-up"></i>
                             </div>
                             <div class="city-name">속초시</div>
                         </a>
