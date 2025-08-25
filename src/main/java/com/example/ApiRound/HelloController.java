@@ -23,6 +23,17 @@ public class HelloController {
         return "detail"; // /WEB-INF/views/detail.jsp로 연결됨
     }
 
+    @GetMapping("/detail")
+    public static void detail(String[] args) {
+
+    }
+
+
+    @GetMapping("/main")
+    public static void main(String[] args) {
+
+    }
+
     @GetMapping("/tourism")
     public String tourism(Model model) {
         return "tourism"; // /WEB-INF/views/tourism.jsp로 연결됨
