@@ -18,6 +18,17 @@ public class HelloController {
 
     }
 
+    @GetMapping("/detail")
+    public static void detail(String[] args) {
+
+    }
+
+
+    @GetMapping("/main")
+    public static void main(String[] args) {
+
+    }
+
     @GetMapping("/tourism")
     public void tourism() {
 
