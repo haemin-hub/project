@@ -1,72 +1,202 @@
-.background-img {
-    position: fixed;        /* 스크롤 해도 고정 */
-    top: 0;
-    left: 0;
+/* 전체 컨테이너 */
+.hospital-list-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 게시글 아이템 */
+.hospital-item {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hospital-item:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    border-color: #005a66;
+}
+
+.hospital-item.active {
+    border-color: #005a66;
+}
+
+/* 게시글 헤더 */
+.hospital-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.hospital-image {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.hospital-image img {
     width: 100%;
-    height: 100%;           /* 화면 전체 덮기 */
-    object-fit: cover;      /* 화면 비율 유지하면서 꽉 채우기 */
-    opacity: 0.3;           /* 투명도 (0.0 ~ 1.0) */
-    z-index: -1;            /* 뒤로 보내기 */
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
-/* 테이블 외곽선 제거 */
-table {
-  width: 80%;
-  border-collapse: collapse;
-  margin: 0 auto;
-  border: none;  /* 추가: 테이블 외곽선 제거 */
+.hospital-info {
+    flex: 1;
 }
 
-/* th, td 공통 테두리 제거 */
-th, td {
-  height: 50px;
-  padding: 10px;
-  text-align: center;
-  border: none;
-  border-bottom: 1px solid rgba(184, 184, 184, 0.3); /* 30% 투명도 */
+.hospital-title {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
 }
 
-
-.adress,
- .location{
-  border: none;  /* 기존 border 제거 */
+.hospital-address {
+    margin: 0 0 12px 0;
+    color: #000;
+    font-size: 14px;
 }
 
-/* td 너비 */
-table td, table th {
-  width: 16.6%;
+.hospital-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
-.detail-hospital img {
-    width: 100%;       /* 가로폭을 부모 div에 맞춤 */
-    max-width: 600px;  /* 최대 가로폭 제한 */
-    height: auto;      /* 세로 비율 자동 유지 */
-    display: block;    /* inline-space 제거 */
-    margin-left: auto; /* 오른쪽 정렬 */
-    margin-top: 30px;
+.tag {
+    background: rgba(0, 90, 102, 0.1);
+    color: #005a66;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    border: 1px solid rgba(0, 90, 102, 0.2);
+}
+
+.hospital-arrow {
+    color: #999;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.hospital-item.active .hospital-arrow {
+    transform: rotate(180deg);
+    color: #005a66;
+}
+
+/* 상세내용 */
+.hospital-detail {
+    border-top: 1px solid #e0e0e0;
+    background: #fafafa;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.detail-content {
+    padding: 20px;
+}
+
+.detail-section {
     margin-bottom: 30px;
 }
 
-.hospital-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;     /* background-img 위에 올라옴 */
-    z-index: 1;
-
+.detail-section h4 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
 }
 
-.hospital_title {
-    margin: 0 auto;
-    border: 20px;
+/* 정보 테이블 */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
+.info-table th,
+.info-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.info-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+    width: 25%;
+}
+
+.info-table td {
+    color: #666;
+}
+
+.info-table tr:last-child th,
+.info-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* 지도 */
 .map {
-    margin: 0 auto;
-    width:80%;
-    height:400px;
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.hospital_website {
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .hospital-header {
+        flex-direction: column;
+        text-align: center;
+    }
 
+    .hospital-image {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .hospital-arrow {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    .info-table th,
+    .info-table td {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .info-table th {
+        background: #f8f9fa;
+        border-bottom: none;
+    }
+}
+
+/* 애니메이션 */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hospital-detail.show {
+    animation: slideDown 0.3s ease;
 }

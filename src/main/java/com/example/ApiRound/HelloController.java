@@ -23,12 +23,6 @@ public class HelloController {
 
     }
 
-
-    @GetMapping("/main")
-    public static void main(String[] args) {
-
-    }
-
     @GetMapping("/tourism")
     public void tourism() {
 
