@@ -18,25 +18,21 @@
                 </div>
             </div>
 
-            <%
-                           String kakaoClientId = "c7ceeb58d858498a39068ce0c31eade5";
-                           String kakaoRedirectUri = "http://localhost:8080/oauth/kakao/callback";
-                           String kakaoLoginUrl = "https://kauth.kakao.com/oauth/authorize"
-                               + "?client_id=" + kakaoClientId
-                               + "&redirect_uri=" + kakaoRedirectUri
-                               + "&response_type=code";
+           <%
+               String userId = (String) session.getAttribute("userId");
+           %>
 
-                           String userId = (String) session.getAttribute("userId");
-                       %>
+           <% if (userId == null) { %>
+               <!-- 로그인 상태가 아니면 로그인 선택 페이지로 링크 -->
+               <a href="/login" class="login-btn">로그인 / 회원가입</a>
+           <% } else { %>
+               <span class="welcome-text">Welcome, <%= session.getAttribute("nickname") %></span>
+               <a href="/oauth/kakao/logout" class="login-btn">로그아웃</a>
+           <% } %>
 
-                       <% if (userId == null) { %>
-                           <a href="<%= kakaoLoginUrl %>" class="login-btn">로그인/회원가입</a>
-                       <% } else { %>
-                           <span class="welcome-text">Welcome</span>
-                           <a href="/logout" class="login-btn">로그아웃</a>
-                       <% } %>
-                   </div>
-               </div>
+
+          </div>
+     </div>
 </header>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
