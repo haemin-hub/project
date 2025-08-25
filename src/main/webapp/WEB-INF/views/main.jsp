@@ -254,22 +254,9 @@
             </div>
                     </div>
                 </section>
-                    
-                                    <!-- 매거진 배너 섹션 -->
-                                    <section class="magazine-banner-section">
-                    <div class="container">
-                        <div class="magazine-banner">
-                            <div class="magazine-content">
-                                <p class="magazine-desc">최신 의료 트렌드와 한국 의료 관광 정보를 만나보세요</p>
-                                <a href="/magazine" class="magazine-btn">매거진 보러가기</a>
-                            </div>
-                            <div class="magazine-image">
-                                <img src="/resources/images/magazine-cover.jpg" alt="K-메디컬 매거진">
-                            </div>
-                        </div>
-                    </div>
-                                    </section>
-</main>
+                                                
+
+
 
 <%@include file = "/common/footer.jsp"%>
 
