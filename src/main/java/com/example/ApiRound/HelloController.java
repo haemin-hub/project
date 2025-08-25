@@ -38,4 +38,10 @@ public class HelloController {
 
     }
 
+
+    @GetMapping("/detail")
+    public static void detail(String[] args) {
+
+    }
+
 }
