@@ -1,0 +1,44 @@
+/* 테이블 외곽선 제거 */
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  border: none;  /* 추가: 테이블 외곽선 제거 */
+}
+
+/* th, td 공통 테두리 제거 */
+th, td {
+  height: 50px;
+  padding: 10px;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid rgba(184, 184, 184, 0.3); /* 30% 투명도 */
+}
+
+
+.adress,
+ .location{
+  border: none;  /* 기존 border 제거 */
+}
+
+/* td 너비 */
+table td, table th {
+  width: 16.6%;
+}
+
+.detail-hospital img {
+    width: 100%;       /* 가로폭을 부모 div에 맞춤 */
+    max-width: 600px;  /* 최대 가로폭 제한 */
+    height: auto;      /* 세로 비율 자동 유지 */
+    display: block;    /* inline-space 제거 */
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.hospital-container {
+    display: flex;
+    justify-content
+
+}
+
