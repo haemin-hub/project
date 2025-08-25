@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LoginController {
 
-    @Value("${kakao.client-id}")
+    @Value("${kakao.client-id}") // application.properties) 에 있는 값을 주입받음
     private String kakaoClientId;
 
     @Value("${kakao.redirect-uri}")
