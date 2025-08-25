@@ -33,4 +33,18 @@ public class HelloController {
 
     }
 
+    @GetMapping("/dental")
+    public void dental() {
+
+    }
+
+    @GetMapping("/pharmacy")
+    public void pharmacy() {
+
+    }
+
+    @GetMapping("/korean-medicine")
+    public void medicine() {
+
+    }
 }

@@ -254,9 +254,25 @@
             </div>
                     </div>
                 </section>
-                                                
-
-
+                </main>                                                
+                
+                <style>
+                    /* 메인 페이지에서만 푸터 스타일 덮어쓰기 */
+                    #main-footer {
+                        margin-top: 0;
+                        padding-top: 30px;
+                        padding-bottom: 0;
+                    }
+                    body {
+                        min-height: 100vh;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    main.main-content {
+                        flex: 1;
+                        padding-bottom: 0;
+                    }
+                </style>
 
 <%@include file = "/common/footer.jsp"%>
 
