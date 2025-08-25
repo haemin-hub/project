@@ -26,7 +26,7 @@
                <!-- 로그인 상태가 아니면 로그인 선택 페이지로 링크 -->
                <a href="/login" class="login-btn">로그인 / 회원가입</a>
            <% } else { %>
-               <span class="welcome-text">Welcome, <%= session.getAttribute("nickname") %></span>
+               <span class="welcome-text">Welcome </span>
                <a href="/oauth/kakao/logout" class="login-btn">로그아웃</a>
            <% } %>
 

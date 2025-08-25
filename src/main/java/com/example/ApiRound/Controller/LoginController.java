@@ -32,7 +32,8 @@ public class LoginController {
                 + "?client_id=" + googleClientId
                 + "&redirect_uri=" + googleRedirectUri
                 + "&response_type=code"
-                + "&scope=openid%20email%20profile";
+                + "&scope=openid%20email%20profile"
+                + "&prompt=select_account";
 
         model.addAttribute("kakaoLoginUrl", kakaoLoginUrl);
         model.addAttribute("googleLoginUrl", googleLoginUrl);
