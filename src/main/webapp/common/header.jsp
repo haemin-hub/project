@@ -17,20 +17,27 @@
                     <a href="javascript:void(0);" class="lang-item" data-lang="zh"><span class="fi fi-cn"></span> Chinese</a>
                 </div>
             </div>
+
             <%
-                String kakaoClientId = "c7ceeb58d858498a39068ce0c31eade5";
-                String kakaoRedirectUri = "http://localhost:8080/oauth/kakao/callback";
-                String kakaoLoginUrl = "https://kauth.kakao.com/oauth/authorize"
-                    + "?client_id=" + kakaoClientId
-                    + "&redirect_uri=" + kakaoRedirectUri
-                    + "&response_type=code";
-            %>
+                           String kakaoClientId = "c7ceeb58d858498a39068ce0c31eade5";
+                           String kakaoRedirectUri = "http://localhost:8080/oauth/kakao/callback";
+                           String kakaoLoginUrl = "https://kauth.kakao.com/oauth/authorize"
+                               + "?client_id=" + kakaoClientId
+                               + "&redirect_uri=" + kakaoRedirectUri
+                               + "&response_type=code";
 
-            <a href="<%= kakaoLoginUrl %>" class="login-btn">로그인/회원가입</a>
-        </div>
-    </div>
+                           String userId = (String) session.getAttribute("userId");
+                       %>
+
+                       <% if (userId == null) { %>
+                           <a href="<%= kakaoLoginUrl %>" class="login-btn">로그인/회원가입</a>
+                       <% } else { %>
+                           <span class="welcome-text">Welcome</span>
+                           <a href="/logout" class="login-btn">로그아웃</a>
+                       <% } %>
+                   </div>
+               </div>
 </header>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const logo = document.querySelector('.logo');
