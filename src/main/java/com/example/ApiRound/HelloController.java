@@ -17,4 +17,20 @@ public class HelloController {
     public static void main(String[] args) {
 
     }
+
+    @GetMapping("/tourism")
+    public void tourism() {
+
+    }
+
+    @GetMapping("/plastic-surgery")
+    public void surgery() {
+
+    }
+
+    @GetMapping("/skincare")
+    public void skincare() {
+
+    }
+
 }
