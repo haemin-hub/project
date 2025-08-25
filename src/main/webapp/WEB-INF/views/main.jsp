@@ -15,6 +15,13 @@
     <link rel="stylesheet" href="/resources/css/popular-cities.css">
     <!-- Font Awesome 5 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- 트립비토즈 스타일 추가 -->
+    <style>
+        /* 추가 스타일 적용 */
+        .tripbtoz-popular-cities {
+            box-shadow: 0 8px 30px rgba(67, 120, 67, 0.15);
+        }
+    </style>
 </head>
 <body>
 <%@include file = "/common/header.jsp"%>
@@ -55,15 +62,7 @@
                 <!-- 카테고리 버튼 3: 피부 -->
                 <a href="/skincare" class="category-button hot">
                     <div class="category-button-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="#34A853" class="sheet-mask-icon">
-                            <!-- 여성용 마스크팩 아이콘 -->
-                            <path d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.48,17.52,2,12,2z M12,3.5c1.66,0,3,1.34,3,3
-                            c0,0.66-0.27,1.26-0.7,1.69C13.9,8.07,13,8,12,8s-1.9,0.07-2.3,0.19C9.27,7.76,9,7.16,9,6.5C9,4.84,10.34,3.5,12,3.5z
-                            M17.25,12c0,0.97-0.19,1.92-0.55,2.81C16.11,16.1,14.36,17,12,17c-2.36,0-4.11-0.9-4.7-2.19c-0.36-0.89-0.55-1.84-0.55-2.81
-                            c0-0.35,0.03-0.69,0.08-1.03C7.35,10.43,8.83,10,12,10c3.17,0,4.65,0.43,5.17,0.97C17.22,11.31,17.25,11.65,17.25,12z"/>
-                            <path d="M8.5,11.5c-0.83,0-1.5,0.67-1.5,1.5s0.67,1.5,1.5,1.5s1.5-0.67,1.5-1.5S9.33,11.5,8.5,11.5z"/>
-                            <path d="M15.5,11.5c-0.83,0-1.5,0.67-1.5,1.5s0.67,1.5,1.5,1.5s1.5-0.67,1.5-1.5S16.33,11.5,15.5,11.5z"/>
-                        </svg>
+                        <img src="/resources/images/mask.png" alt="피부 관리">
                     </div>
                     <h3>피부</h3>
                     <p>K-스킨케어</p>
@@ -109,79 +108,89 @@
             
             <div class="popular-content-wrapper">
                 <!-- 왼쪽: 국내 급상승 인기 도시 -->
-                <div class="popular-cities-box">
-                    <div class="box-header">
-                        <h3>국내 급상승 인기 도시</h3>
-                        <a href="/cities" class="more-link">더보기 <i class="fas fa-chevron-right"></i></a>
+                <div class="tripbtoz-popular-cities">
+                    <div class="tripbtoz-cities-header">
+                        <div class="tripbtoz-cities-title">
+                            <span>국내 급상승 인기 도시</span>
+                        </div>
                     </div>
-                    <ul class="popular-cities-list">
-                        <li class="city-item">
-                            <a href="/city/seoul">
-                                <div class="rank-number">1</div>
-                                <div class="city-thumb">
-                                    <img src="/resources/images/cities/seoul.jpg" alt="서울">
-                                </div>
-                                <div class="city-details">
-                                    <span class="city-name">서울</span>
-                                    <span class="city-speciality">성형·피부·종합검진</span>
-                                    <span class="trend up"><i class="fas fa-long-arrow-alt-up"></i> 35%</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="city-item">
-                            <a href="/city/busan">
-                                <div class="rank-number">2</div>
-                                <div class="city-thumb">
-                                    <img src="/resources/images/cities/busan.jpg" alt="부산">
-                                </div>
-                                <div class="city-details">
-                                    <span class="city-name">부산</span>
-                                    <span class="city-speciality">치과·해양치유·웰니스</span>
-                                    <span class="trend up"><i class="fas fa-long-arrow-alt-up"></i> 28%</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="city-item">
-                            <a href="/city/daegu">
-                                <div class="rank-number">3</div>
-                                <div class="city-thumb">
-                                    <img src="/resources/images/cities/daegu.jpg" alt="대구">
-                                </div>
-                                <div class="city-details">
-                                    <span class="city-name">대구</span>
-                                    <span class="city-speciality">안과·피부·뷰티</span>
-                                    <span class="trend new"><i class="fas fa-star"></i> NEW</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="city-item">
-                            <a href="/city/incheon">
-                                <div class="rank-number">4</div>
-                                <div class="city-thumb">
-                                    <img src="/resources/images/cities/incheon.jpg" alt="인천">
-                                </div>
-                                <div class="city-details">
-                                    <span class="city-name">인천</span>
-                                    <span class="city-speciality">공항인접·검진·관광</span>
-                                    <span class="trend up"><i class="fas fa-long-arrow-alt-up"></i> 15%</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="city-item">
-                            <a href="/city/jeju">
-                                <div class="rank-number">5</div>
-                                <div class="city-thumb">
-                                    <img src="/resources/images/cities/jeju.jpg" alt="제주">
-                                </div>
-                                <div class="city-details">
-                                    <span class="city-name">제주</span>
-                                    <span class="city-speciality">휴양·힐링·회복치료</span>
-                                    <span class="trend down"><i class="fas fa-long-arrow-alt-down"></i> 5%</span>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="tripbtoz-cities-divider"></div>
+                    <div class="tripbtoz-cities-list">
+                        <a href="/city/gyeongju" class="tripbtoz-city-item">
+                            <div class="city-rank">1</div>
+                            <div class="city-trend no-change">
+                                <i class="fas fa-minus"></i>
+                            </div>
+                            <div class="city-name">경주시</div>
+                        </a>
+                        <a href="/city/jeju" class="tripbtoz-city-item">
+                            <div class="city-rank">2</div>
+                            <div class="city-trend up">
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                            <div class="city-name">제주시</div>
+                        </a>
+                        <a href="/city/seogwipo" class="tripbtoz-city-item">
+                            <div class="city-rank">3</div>
+                            <div class="city-trend down">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                            <div class="city-name">서귀포시</div>
+                        </a>
+                        <a href="/city/yeosu" class="tripbtoz-city-item">
+                            <div class="city-rank">4</div>
+                            <div class="city-trend no-change">
+                                <i class="fas fa-minus"></i>
+                            </div>
+                            <div class="city-name">여수시</div>
+                        </a>
+                        <a href="/city/sokcho" class="tripbtoz-city-item">
+                            <div class="city-rank">5</div>
+                            <div class="city-trend no-change">
+                                <i class="fas fa-minus"></i>
+                            </div>
+                            <div class="city-name">속초시</div>
+                        </a>
+                        <a href="/city/jeonju" class="tripbtoz-city-item">
+                            <div class="city-rank">6</div>
+                            <div class="city-trend no-change">
+                                <i class="fas fa-minus"></i>
+                            </div>
+                            <div class="city-name">전주시</div>
+                        </a>
+                        <a href="/city/haeundae" class="tripbtoz-city-item">
+                            <div class="city-rank">7</div>
+                            <div class="city-trend up">
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                            <div class="city-name">해운대구</div>
+                        </a>
+                        <a href="/city/gangneung" class="tripbtoz-city-item">
+                            <div class="city-rank">8</div>
+                            <div class="city-trend up">
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                            <div class="city-name">강릉시</div>
+                        </a>
+                        <a href="/city/yangyang" class="tripbtoz-city-item">
+                            <div class="city-rank">9</div>
+                            <div class="city-trend down">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                            <div class="city-name">양양군</div>
+                        </a>
+                        <a href="/city/gunsan" class="tripbtoz-city-item">
+                            <div class="city-rank">10</div>
+                            <div class="city-trend up">
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                            <div class="city-name">군산시</div>
+                        </a>
+                    </div>
                 </div>
+                
+                <!-- 가운데 구분선 -->
+                <div class="content-divider"></div>
                 
                 <!-- 오른쪽: TOP3 의료기관 -->
                 <div class="top-companies-cards">
@@ -251,7 +260,6 @@
                     <div class="container">
                         <div class="magazine-banner">
                             <div class="magazine-content">
-                                <h2 class="magazine-title">K-메디컬 매거진</h2>
                                 <p class="magazine-desc">최신 의료 트렌드와 한국 의료 관광 정보를 만나보세요</p>
                                 <a href="/magazine" class="magazine-btn">매거진 보러가기</a>
                             </div>
