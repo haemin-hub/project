@@ -91,3 +91,4 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('헤더와 메인 콘텐츠가 JavaScript로 생성되었습니다!');
 });
+
