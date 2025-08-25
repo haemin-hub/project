@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <link rel="stylesheet" href="/resources/css/styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
@@ -9,7 +10,7 @@
         </a>
         <div class="user-actions">
             <div class="dropdown">
-                <button class="lang_btn">Language</button>
+                <button class="lang_btn"><spring:message code="button.translate"/></button>
                 <div class="dropdown-content">
                     <a href="javascript:void(0);" class="lang-item" data-lang="ko"><span class="fi fi-kr"></span> 한국어/Korea</a>
                     <a href="javascript:void(0);" class="lang-item" data-lang="en"><span class="fi fi-us"></span> English</a>
@@ -24,10 +25,10 @@
 
            <% if (userId == null) { %>
                <!-- 로그인 상태가 아니면 로그인 선택 페이지로 링크 -->
-               <a href="/login" class="login-btn">로그인 / 회원가입</a>
+               <a href="/login" class="login-btn"><spring:message code="header.login"/></a>
            <% } else { %>
-               <span class="welcome-text">Welcome, <%= session.getAttribute("nickname") %></span>
-               <a href="/oauth/kakao/logout" class="login-btn">로그아웃</a>
+               <span class="welcome-text"><spring:message code="header.welcome"/>, <%= session.getAttribute("nickname") %></span>
+               <a href="/oauth/kakao/logout" class="login-btn"><spring:message code="header.logout"/></a>
            <% } %>
 
 

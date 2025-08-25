@@ -19,8 +19,8 @@ public class HelloController {
     }
 
     @GetMapping("/main")
-    public String main(Model model) {
-        return "main"; // /WEB-INF/views/main.jsp로 연결됨
+    public static void main(String[] args) {
+
     }
 
     @GetMapping("/tourism")
@@ -38,18 +38,4 @@ public class HelloController {
 
     }
 
-    @GetMapping("/dental")
-    public void dental() {
-
-    }
-
-    @GetMapping("/pharmacy")
-    public void pharmacy() {
-
-    }
-
-    @GetMapping("/korean-medicine")
-    public void medicine() {
-
-    }
 }
