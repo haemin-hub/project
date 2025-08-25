@@ -85,11 +85,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ApiRoundApplication.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "mingzz",
+    "git-widget-placeholder": "haemin",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/enjoy/Desktop/정민서/ApiRound/ApiRound",
@@ -106,7 +107,7 @@
       <recent name="C:\Users\enjoy\Desktop\정민서\ApiRound\ApiRound\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.SpringI18nAApplication">
+  <component name="RunManager" selected="Application.ApiRoundApplication">
     <configuration name="ApiRoundApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.ApiRound.ApiRoundApplication" />
       <module name="ApiRound" />
@@ -133,14 +134,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tomcat: ApiRound" type="com.poratu.idea.plugins.tomcat" temporary="true">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="contextPath" value="/ApiRound" />
+      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/10.1.19" />
+          <option name="path" value="$USER_HOME$/apache-tomcat-10.1.19" />
+          <option name="version" value="10.1.19.0" />
+        </TomcatInfo>
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="애플리케이션.ApiRoundApplication" />
-      <item itemvalue="애플리케이션.SpringI18nAApplication" />
+      <item itemvalue="Application.ApiRoundApplication" />
+      <item itemvalue="Application.SpringI18nAApplication" />
+      <item itemvalue="Smart Tomcat.Tomcat: ApiRound" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.SpringI18nAApplication" />
-        <item itemvalue="애플리케이션.ApiRoundApplication" />
+        <item itemvalue="Application.ApiRoundApplication" />
+        <item itemvalue="Smart Tomcat.Tomcat: ApiRound" />
       </list>
     </recent_temporary>
   </component>
