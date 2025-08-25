@@ -17,7 +17,16 @@
                     <a href="javascript:void(0);" class="lang-item" data-lang="zh"><span class="fi fi-cn"></span> Chinese</a>
                 </div>
             </div>
-            <a href="/login" class="login-btn">로그인/회원가입</a>
+            <%
+                String kakaoClientId = "c7ceeb58d858498a39068ce0c31eade5";
+                String kakaoRedirectUri = "http://localhost:8080/oauth/kakao/callback";
+                String kakaoLoginUrl = "https://kauth.kakao.com/oauth/authorize"
+                    + "?client_id=" + kakaoClientId
+                    + "&redirect_uri=" + kakaoRedirectUri
+                    + "&response_type=code";
+            %>
+
+            <a href="<%= kakaoLoginUrl %>" class="login-btn">로그인/회원가입</a>
         </div>
     </div>
 </header>

@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# application.properties - 민감 정보
+/src/main/resources/application.properties
+
