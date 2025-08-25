@@ -28,12 +28,6 @@ public class HelloController {
 
     }
 
-
-    @GetMapping("/main")
-    public static void main(String[] args) {
-
-    }
-
     @GetMapping("/tourism")
     public String tourism(Model model) {
         return "tourism"; // /WEB-INF/views/tourism.jsp로 연결됨
