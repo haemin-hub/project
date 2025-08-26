@@ -29,15 +29,13 @@
             font-family: 'Nanum Gothic', 'Arial', sans-serif;
             background-color: #f9f9f9;
             margin: 0; padding: 0;
-            display: flex;
-            flex-direction: column;
             min-height: 100vh;
         }
         .login-page-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
-            flex: 1;
+            min-height: calc(100vh - 160px); /* 헤더와 푸터 공간 고려 */
             padding: 40px 0;
         }
         .login-container {
@@ -99,6 +97,43 @@
             width: 22px;
             height: 22px;
             margin-right: 12px;
+        }
+        /* 헤더 스타일 오버라이드 */
+        #main-header .user-actions {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+        }
+        #main-header .dropdown {
+            display: inline-block !important;
+        }
+        #main-header .lang_btn {
+            display: inline-block !important;
+            white-space: nowrap !important;
+            width: auto !important;
+            flex-direction: row !important;
+            font-size: 14px !important; /* 글자 크기 조정 */
+            padding: 8px 16px !important; /* 패딩 조정 */
+        }
+        #main-header .header-container {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+        }
+        /* 헤더 전체 폰트 크기 통일 */
+        #main-header * {
+            font-size: 14px !important;
+        }
+        #main-header .login-btn {
+            font-size: 14px !important;
+            padding: 8px 16px !important;
+            width: auto !important;
+            margin-bottom: 0 !important;
+        }
+        #main-header .dropdown-content a {
+            font-size: 14px !important;
+            padding: 10px 15px !important;
         }
     </style>
 </head>
