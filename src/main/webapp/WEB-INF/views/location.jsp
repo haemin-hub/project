@@ -194,6 +194,8 @@
     </div>
 </div>
 
+//<input type="text" name="type" value="1"></input>
+
 <%@include file = "/common/footer.jsp"%>
 
 <!-- 부트스트랩 JS 및 의존성 -->
@@ -203,6 +205,10 @@
 (function() {
     // 지역 데이터
     const REGIONS = {
+        'nation': {
+            name: '<spring:message code="region.nation"/>',
+            districts: ['<spring:message code="region.nation.nation"/>']
+        },
         'seoul': {
             name: '<spring:message code="region.seoul"/>',
             districts: ['<spring:message code="region.seoul.gangnam"/>', '<spring:message code="region.seoul.gangbuk"/>', '<spring:message code="region.seoul.mapo"/>', '<spring:message code="region.seoul.yongsan"/>', '<spring:message code="region.seoul.seongdong"/>', '<spring:message code="region.seoul.dongdaemun"/>', '<spring:message code="region.seoul.jungnang"/>', '<spring:message code="region.seoul.seongbuk"/>', '<spring:message code="region.seoul.dobong"/>', '<spring:message code="region.seoul.nowon"/>', '<spring:message code="region.seoul.eunpyeong"/>', '<spring:message code="region.seoul.seodaemun"/>', '<spring:message code="region.seoul.seocho"/>', '<spring:message code="region.seoul.songpa"/>', '<spring:message code="region.seoul.gangdong"/>', '<spring:message code="region.seoul.gwangjin"/>', '<spring:message code="region.seoul.jung"/>', '<spring:message code="region.seoul.jongno"/>']
@@ -275,7 +281,7 @@
     const scrollTop = document.getElementById('scrollTop');
 
     // 상태 변수들
-    let current = 'seoul'; // 현재 선택된 시도
+    let current = 'nation'; // 현재 선택된 시도
 
     // 렌더링 함수들
     function renderSido() {
@@ -317,7 +323,14 @@
             right.textContent = '>';
             row.onclick = function() {
                 console.log('Selected:', REGIONS[current].name, name);
-                alert('선택된 지역: ' + REGIONS[current].name + ' ' + name);
+                // URL 파라미터에서 카테고리 가져오기
+                const urlParams = new URLSearchParams(window.location.search);
+                const category = urlParams.get('category') || 'plastic';
+                const region = REGIONS[current].name + ' ' + name;
+                
+                // 리스트 페이지로 이동
+                console.log('url',REGIONS[current].url);
+                //window.location.href = '/list?category=' + ${param.category}encodeURIComponent(category) + '&region=' + encodeURIComponent(region);
             };
             row.appendChild(left);
             row.appendChild(right);
