@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <link rel="stylesheet" href="/resources/css/styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -7,37 +8,37 @@
         <div class="footer-top">
             <div class="footer-logo">
                 <img src="/resources/images/HealnGo_logo.png" alt="HealnGo 로고">
-                <p>한국 의료 관광의 새로운 기준, HealnGo가 여러분의 건강한 여행을 책임집니다.</p>
+                <p><spring:message code="footer.description"/></p>
             </div>
             <div class="footer-links">
                 <div class="link-column">
-                    <h4>회사 소개</h4>
+                    <h4><spring:message code="footer.company.title"/></h4>
                     <ul>
-                        <li><a href="/about">회사 정보</a></li>
-                        <li><a href="/about/team">팀 소개</a></li>
-                        <li><a href="/contact">문의하기</a></li>
+                        <li><a href="/about"><spring:message code="footer.company.info"/></a></li>
+                        <li><a href="/about/team"><spring:message code="footer.company.team"/></a></li>
+                        <li><a href="/contact"><spring:message code="footer.company.contact"/></a></li>
                     </ul>
                 </div>
                 <div class="link-column">
-                    <h4>서비스</h4>
+                    <h4><spring:message code="footer.service.title"/></h4>
                     <ul>
-                        <li><a href="/tourism">의료 관광</a></li>
-                        <li><a href="/medical">의료 서비스</a></li>
-                        <li><a href="/packages">추천 패키지</a></li>
+                        <li><a href="/tourism"><spring:message code="footer.service.tourism"/></a></li>
+                        <li><a href="/medical"><spring:message code="footer.service.medical"/></a></li>
+                        <li><a href="/packages"><spring:message code="footer.service.packages"/></a></li>
                     </ul>
                 </div>
                 <div class="link-column">
-                    <h4>고객 지원</h4>
+                    <h4><spring:message code="footer.support.title"/></h4>
                     <ul>
-                        <li><a href="/faq">자주 묻는 질문</a></li>
-                        <li><a href="/terms">이용약관</a></li>
-                        <li><a href="/privacy">개인정보처리방침</a></li>
+                        <li><a href="/faq"><spring:message code="footer.support.faq"/></a></li>
+                        <li><a href="/terms"><spring:message code="footer.support.terms"/></a></li>
+                        <li><a href="/privacy"><spring:message code="footer.support.privacy"/></a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 HealnGo. All rights reserved.</p>
+            <p><spring:message code="footer.copyright"/></p>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
