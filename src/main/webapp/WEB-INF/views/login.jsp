@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <%
     String kakaoClientId = "c7ceeb58d858498a39068ce0c31eade5";
@@ -29,13 +31,15 @@
             font-family: 'Nanum Gothic', 'Arial', sans-serif;
             background-color: #f9f9f9;
             margin: 0; padding: 0;
+            display: flex;
+            flex-direction: column;
             min-height: 100vh;
         }
         .login-page-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: calc(100vh - 160px); /* 헤더와 푸터 공간 고려 */
+            flex: 1;
             padding: 40px 0;
         }
         .login-container {
@@ -56,7 +60,7 @@
             margin-bottom: 40px;
             font-size: 16px;
         }
-        .login {
+        .login-btn {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -137,26 +141,26 @@
 </head>
 <body>
     <%@ include file="/common/header.jsp" %>
-    
+
     <div class="login-page-wrapper">
         <div class="login-container">
             <h1>HealnGo</h1>
             <p>로그인 또는 회원 가입<br>무료로 가입하고 혜택을 누려보세요!</p>
 
             <!-- 카카오 로그인 -->
-            <a href="<%= kakaoLoginUrl %>" class="login kakao-btn">
+            <a href="<%= kakaoLoginUrl %>" class="login-btn kakao-btn">
                 <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" alt="Kakao" class="kakao-icon" />
                 카카오 계정으로 로그인하기
             </a>
 
             <!-- 구글 로그인 -->
-            <a href="<%= googleLoginUrl %>" class="login google-btn">
+            <a href="${googleLoginUrl}" class="login-btn google-btn">
                 <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google" class="google-icon" />
                 구글 계정으로 로그인하기
             </a>
         </div>
     </div>
-    
+
     <%@ include file="/common/footer.jsp" %>
 </body>
 </html>

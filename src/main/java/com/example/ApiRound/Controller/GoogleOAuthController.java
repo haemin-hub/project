@@ -1,20 +1,16 @@
 package com.example.ApiRound.Controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.example.ApiRound.Service.SocialUserService;
+import com.example.ApiRound.dto.SocialUserDTO;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.view.RedirectView;
-
-import java.io.IOException;
 
 @Controller
 @RequestMapping("/oauth/google")
@@ -23,70 +19,34 @@ public class GoogleOAuthController {
     @Value("${google.client-id}")
     private String clientId;
 
-    @Value("${google.client-secret}")
-    private String clientSecret;
-
     @Value("${google.redirect-uri}")
     private String redirectUri;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    @Qualifier("googleSocialUserServiceImpl")
+    private SocialUserService socialUserService;
+
+    // 구글 로그인 URL 생성 메서드 (클라이언트에 URL 전달하거나, 직접 링크로 사용 가능)
+    @GetMapping("/login-url")
+    public String getGoogleLoginUrl() {
+        String googleLoginUrl = "https://accounts.google.com/o/oauth2/v2/auth"
+                + "?client_id=" + clientId
+                + "&redirect_uri=" + redirectUri
+                + "&response_type=code"
+                + "&scope=openid%20email%20profile";
+        return googleLoginUrl;
+    }
 
     @GetMapping("/callback")
-    public RedirectView googleCallback(@RequestParam String code, HttpSession session) throws IOException {
-        // 1. 토큰 요청 헤더/파라미터 설정
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-
-        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.add("code", code);
-        params.add("client_id", clientId);
-        params.add("client_secret", clientSecret);
-        params.add("redirect_uri", redirectUri);
-        params.add("grant_type", "authorization_code");
-
-        HttpEntity<MultiValueMap<String, String>> tokenRequest = new HttpEntity<>(params, headers);
-
-        // 2. Access Token 요청
-        ResponseEntity<String> tokenResponse = restTemplate.postForEntity(
-                "https://oauth2.googleapis.com/token",
-                tokenRequest,
-                String.class
-        );
-
-        // 3. 토큰 파싱
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode tokenJson = objectMapper.readTree(tokenResponse.getBody());
-        String accessToken = tokenJson.get("access_token").asText();
-        session.setAttribute("accessToken", accessToken);
-
-        // 4. 사용자 정보 요청
-        HttpHeaders userInfoHeaders = new HttpHeaders();
-        userInfoHeaders.setBearerAuth(accessToken);
-
-        HttpEntity<Void> userInfoRequest = new HttpEntity<>(userInfoHeaders);
-
-        ResponseEntity<String> userInfoResponse = restTemplate.exchange(
-                "https://www.googleapis.com/oauth2/v2/userinfo",
-                HttpMethod.GET,
-                userInfoRequest,
-                String.class
-        );
-
-        JsonNode userInfoJson = objectMapper.readTree(userInfoResponse.getBody());
-        System.out.println("Google User Info: " + userInfoJson.toPrettyString());
-
-        // 세션에 사용자 정보 저장
-        session.setAttribute("userId", userInfoJson.get("id").asText());
-        session.setAttribute("email", userInfoJson.get("email").asText());
-        session.setAttribute("name", userInfoJson.get("name").asText());
-
-        // 로그인 완료 후 메인 페이지로 리다이렉트
+    public RedirectView googleCallback(@RequestParam String code, HttpSession session) {
+        SocialUserDTO loginUser = socialUserService.processGoogleLogin(code);
+        session.setAttribute("loginUser", loginUser);
+        session.setAttribute("accessToken", loginUser.getAccessToken());  // 추가!
         return new RedirectView("/main");
     }
 
     @GetMapping("/logout")
     public RedirectView logout(HttpSession session) {
-        // 구글 OAuth는 별도 로그아웃 API가 필요할 수 있으니, 우선 세션만 무효화
         session.invalidate();
         return new RedirectView("/main");
     }
