@@ -139,7 +139,7 @@
 </head>
 <body>
     <%@ include file="/common/header.jsp" %>
-    
+
     <div class="login-page-wrapper">
         <div class="login-container">
             <h1>HealnGo</h1>
@@ -158,7 +158,7 @@
             </a>
         </div>
     </div>
-    
+
     <%@ include file="/common/footer.jsp" %>
 </body>
 </html>

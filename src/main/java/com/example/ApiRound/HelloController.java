@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HelloController {
 
+    @GetMapping("/")
+    public String index() {
+        return "redirect:/main";
+    }
+
     @GetMapping("/hello")
     public String hello(Model model) {
         model.addAttribute("message", "JSP 테스트 성공!");
@@ -49,4 +54,8 @@ public class HelloController {
         return "location";
     }
 
+    @GetMapping("/list")
+    public String list(Model model) {
+        return "list"; // /WEB-INF/views/list.jsp로 연결됨
+    }
 }
