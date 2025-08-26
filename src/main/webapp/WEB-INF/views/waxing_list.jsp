@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HealnGo - 병원 목록</title>
+    <title>HealnGo - 성형외과 목록</title>
     <link rel="stylesheet" href="/resources/css/list.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -18,27 +18,23 @@
                     <div class="filter-checkboxes">
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="eye">
-                            <span class="checkmark">눈</span>
+                            <span class="checkmark">브라질리언</span>
                         </label>
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="nose">
-                            <span class="checkmark">코</span>
+                            <span class="checkmark">겨드랑이</span>
                         </label>
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="chin">
-                            <span class="checkmark">턱</span>
+                            <span class="checkmark">눈썹</span>
                         </label>
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="mouth">
-                            <span class="checkmark">입</span>
+                            <span class="checkmark">팔,다리</span>
                         </label>
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="chest">
-                            <span class="checkmark">가슴</span>
-                        </label>
-                        <label class="filter-checkbox">
-                            <input type="checkbox" name="category" value="liposuction">
-                            <span class="checkmark">지방흡입</span>
+                            <span class="checkmark">인중</span>
                         </label>
                     </div>
                 </div>
@@ -46,7 +42,7 @@
 
             <!-- 결과 정보 -->
             <div class="result-info">
-                <div class="total-count">총 125건</div>
+                <div class="total-count">총 4건</div>
             </div>
 
             <!-- 병원 목록 -->
@@ -72,67 +68,11 @@
                     <div class="hospital-name">더바디성형외과의원</div>
                 </div>
 
-                <div class="hospital-item" data-hospital="더나은성형외과의원">
-                    <div class="hospital-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="hospital-name">더나은성형외과의원</div>
-                </div>
-
-                <div class="hospital-item" data-hospital="뷰티성형외과의원">
-                    <div class="hospital-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="hospital-name">뷰티성형외과의원</div>
-                </div>
-
-                <div class="hospital-item" data-hospital="블랙성형외과의원">
-                    <div class="hospital-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="hospital-name">블랙성형외과의원</div>
-                </div>
-
-                <div class="hospital-item" data-hospital="멘토성형외과의원">
-                    <div class="hospital-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="hospital-name">멘토성형외과의원</div>
-                </div>
-
-                <div class="hospital-item" data-hospital="강남재준성형외과의원">
-                    <div class="hospital-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="hospital-name">강남재준성형외과의원</div>
-                </div>
-
-                <div class="hospital-item" data-hospital="가인성형외과의원">
-                    <div class="hospital-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="hospital-name">가인성형외과의원</div>
-                </div>
-
                 <div class="hospital-item" data-hospital="픽셀랩성형외과의원">
                     <div class="hospital-heart">
                         <i class="far fa-heart"></i>
                     </div>
                     <div class="hospital-name">픽셀랩성형외과의원</div>
-                </div>
-
-                <div class="hospital-item" data-hospital="JY피부과의원">
-                    <div class="hospital-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="hospital-name">JY피부과의원</div>
-                </div>
-
-                <div class="hospital-item" data-hospital="부산치과의원">
-                    <div class="hospital-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="hospital-name">부산치과의원</div>
                 </div>
             </div>
 

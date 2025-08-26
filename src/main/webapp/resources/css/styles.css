@@ -129,6 +129,10 @@ main, .main-content {
     align-items: center;
 }
 
+.fa-solid{
+    color: red;
+}
+
 .login-btn, .register-btn, .lang_btn {
     text-decoration: none;
     padding: 8px 15px;
@@ -226,14 +230,14 @@ main, .main-content {
 .dropdown-content.show {
     display: block;
 }
-    
+
     .youtube-container {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 비율 */
     height: 0;
     overflow: hidden;
     }
-    
+
     .youtube-container iframe {
     position: absolute;
     top: 0;
@@ -709,7 +713,7 @@ address p {
     .social-icons a:first-child {
         margin-left: 0;
     }
-    
+
     /* 로그인 페이지 반응형 */
     .login-container {
         margin: 30px 15px;

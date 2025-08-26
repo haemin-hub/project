@@ -12,38 +12,6 @@
     <div class="main-container">
         <!-- 왼쪽 영역: 필터 및 병원 목록 -->
         <div class="left-panel">
-            <!-- 필터 섹션 -->
-            <div class="filter-section">
-                <div class="filter-row">
-                    <div class="filter-checkboxes">
-                        <label class="filter-checkbox">
-                            <input type="checkbox" name="category" value="eye">
-                            <span class="checkmark">눈</span>
-                        </label>
-                        <label class="filter-checkbox">
-                            <input type="checkbox" name="category" value="nose">
-                            <span class="checkmark">코</span>
-                        </label>
-                        <label class="filter-checkbox">
-                            <input type="checkbox" name="category" value="chin">
-                            <span class="checkmark">턱</span>
-                        </label>
-                        <label class="filter-checkbox">
-                            <input type="checkbox" name="category" value="mouth">
-                            <span class="checkmark">입</span>
-                        </label>
-                        <label class="filter-checkbox">
-                            <input type="checkbox" name="category" value="chest">
-                            <span class="checkmark">가슴</span>
-                        </label>
-                        <label class="filter-checkbox">
-                            <input type="checkbox" name="category" value="liposuction">
-                            <span class="checkmark">지방흡입</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
             <!-- 결과 정보 -->
             <div class="result-info">
                 <div class="total-count">총 125건</div>
