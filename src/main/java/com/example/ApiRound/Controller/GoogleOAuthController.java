@@ -87,7 +87,7 @@ public class GoogleOAuthController {
     @GetMapping("/logout")
     public RedirectView logout(HttpSession session) {
         // 구글 OAuth는 별도 로그아웃 API가 필요할 수 있으니, 우선 세션만 무효화
-        session.invalidate();
+        session.invalidate(); // 서버 세션만 끊기
         return new RedirectView("/main");
     }
 }
