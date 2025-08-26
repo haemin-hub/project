@@ -35,6 +35,8 @@ public class LoginController {
                 + "&scope=openid%20email%20profile"
                 + "&prompt=select_account";
 
+        System.out.println("[LOG] Google Login URL: " + googleLoginUrl);
+
         model.addAttribute("kakaoLoginUrl", kakaoLoginUrl);
         model.addAttribute("googleLoginUrl", googleLoginUrl);
 
