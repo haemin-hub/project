@@ -112,8 +112,6 @@
             white-space: nowrap !important;
             width: auto !important;
             flex-direction: row !important;
-            font-size: 14px !important; /* 글자 크기 조정 */
-            padding: 8px 16px !important; /* 패딩 조정 */
         }
         #main-header .header-container {
             display: flex !important;
@@ -139,7 +137,7 @@
 </head>
 <body>
     <%@ include file="/common/header.jsp" %>
-
+    
     <div class="login-page-wrapper">
         <div class="login-container">
             <h1>HealnGo</h1>
@@ -158,7 +156,7 @@
             </a>
         </div>
     </div>
-
+    
     <%@ include file="/common/footer.jsp" %>
 </body>
 </html>

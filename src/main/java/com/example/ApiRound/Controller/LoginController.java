@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LoginController {
 
-    @Value("${kakao.client-id}") // application.properties) 에 있는 값을 주입받음
+    @Value("${kakao.client-id}")
     private String kakaoClientId;
 
     @Value("${kakao.redirect-uri}")
@@ -32,8 +32,7 @@ public class LoginController {
                 + "?client_id=" + googleClientId
                 + "&redirect_uri=" + googleRedirectUri
                 + "&response_type=code"
-                + "&scope=openid%20email%20profile"
-                + "&prompt=select_account";
+                + "&scope=openid%20email%20profile";
 
         model.addAttribute("kakaoLoginUrl", kakaoLoginUrl);
         model.addAttribute("googleLoginUrl", googleLoginUrl);
