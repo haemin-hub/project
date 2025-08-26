@@ -45,9 +45,4 @@ public class GoogleOAuthController {
         return new RedirectView("/main");
     }
 
-    @GetMapping("/logout")
-    public RedirectView logout(HttpSession session) {
-        session.invalidate();
-        return new RedirectView("/main");
-    }
 }

@@ -33,13 +33,13 @@
             com.example.ApiRound.dto.SocialUserDTO loginUser = (com.example.ApiRound.dto.SocialUserDTO) session.getAttribute("loginUser");
         %>
 
-        <% if (loginUser == null) { %>
-            <!-- 로그인 상태 아님 -->
-            <a href="/login" class="login-btn"><spring:message code="header.login"/></a>
-        <% } else { %>
-            <!-- 로그인 상태 -->
-            <a href="/oauth/kakao/logout" class="login-btn"><spring:message code="header.logout"/></a>
-        <% } %>
+       <% if (loginUser == null) { %>
+           <!-- 로그인 상태 아님 -->
+           <a href="/login" class="login-btn"><spring:message code="header.login"/></a>
+       <% } else { %>
+           <!-- 로그인 상태 -->
+           <a href="/logout" class="login-btn"><spring:message code="header.logout"/></a>
+       <% } %>
 
 
 
