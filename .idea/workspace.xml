@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="번역추가" />
+    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="번역추가">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Dto/SocialUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/dto/SocialUserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Mapper/SocialUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/mapper/SocialUserMapper.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,13 +18,6 @@
       <list>
         <option value="Class" />
       </list>
-    </option>
-  </component>
-  <component name="Git.Pull.Settings">
-    <option name="OPTIONS">
-      <set>
-        <option value="NO_COMMIT" />
-      </set>
     </option>
   </component>
   <component name="Git.Settings">
@@ -188,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756117069769</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="번역추가">
+      <option name="closed" value="true" />
+      <created>1756195480920</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1756195480920</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -215,9 +219,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="번역추가" />
     <MESSAGE value="로고 클릭 시 main으로" />
-    <option name="LAST_COMMIT_MESSAGE" value="로고 클릭 시 main으로" />
+    <MESSAGE value="번역추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="번역추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
