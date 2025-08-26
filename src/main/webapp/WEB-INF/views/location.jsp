@@ -167,7 +167,7 @@
 
 <div class="location-content">
     <div class="container">
-    <a href="/" class="back-btn">
+    <a href="/main" class="back-btn">
         <i class="fas fa-arrow-left"></i> <spring:message code="location.back.home"/>
     </a>
     
