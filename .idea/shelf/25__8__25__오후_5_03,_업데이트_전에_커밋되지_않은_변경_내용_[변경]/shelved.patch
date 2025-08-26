@@ -1,0 +1,25 @@
+Index: src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring.application.name=ApiRound\r\nspring.mvc.view.prefix=/WEB-INF/views/\r\nspring.mvc.view.suffix=.jsp\r\nspring.mvc.view.expose-context-beans-as-attributes=true\r\nspring.messages.basename=messages\r\nspring.messages.encoding=UTF-8\r\nspring.web.locale-resolver=cookie
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/src/main/resources/application.properties b/src/main/resources/application.properties
+--- a/src/main/resources/application.properties	(revision f209ebf116b5c6c3a81da73b51c47f1b65aa4472)
++++ b/src/main/resources/application.properties	(date 1756108491157)
+@@ -4,4 +4,12 @@
+ spring.mvc.view.expose-context-beans-as-attributes=true
+ spring.messages.basename=messages
+ spring.messages.encoding=UTF-8
+-spring.web.locale-resolver=cookie
+\ No newline at end of file
++
++# ??? REST API ?
++kakao.client-id=c7ceeb58d858498a39068ce0c31eade5
++
++# Redirect URI (???? ??? ?? ??? ??? ?)
++kakao.redirect-uri=http://localhost:8080/oauth/kakao/callback
++
++# (??) ????? ??? - ?? ? ??? ?? ??
++# kakao.client-secret=??_???_?????_???

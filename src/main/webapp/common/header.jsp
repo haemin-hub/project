@@ -4,12 +4,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
 <header id="main-header">
     <div class="header-container">
-        <div class="logo" onclick="location.href='/'">
-                    <img src="/resources/images/HealnGo_logo.png" alt="HealnGo 로고" class="logo-image">
-        </div>
+        <a href="/main" class="logo">
+                            <img src="/resources/images/HealnGo_logo.png" alt="HealnGo 로고" class="logo-image">
+        </a>
         <div class="user-actions">
             <div class="dropdown">
-                <button class="lang_btn">Language</button>
+                <button class="lang_btn"><spring:message code="button.translate"/></button>
                 <div class="dropdown-content">
                     <a href="javascript:void(0);" class="lang-item" data-lang="ko"><span class="fi fi-kr"></span> 한국어/Korea</a>
                     <a href="javascript:void(0);" class="lang-item" data-lang="en"><span class="fi fi-us"></span> English</a>
@@ -24,10 +24,10 @@
 
            <% if (userId == null) { %>
                <!-- 로그인 상태가 아니면 로그인 선택 페이지로 링크 -->
-               <a href="/login" class="login-btn">로그인 / 회원가입</a>
+               <a href="/login" class="login-btn"><spring:message code="header.login"/></a>
            <% } else { %>
-               <span class="welcome-text">Welcome </span>
-               <a href="/oauth/kakao/logout" class="login-btn">로그아웃</a>
+               <span class="welcome-text"><spring:message code="header.welcome"/>, <%= session.getAttribute("nickname") %></span>
+               <a href="/oauth/kakao/logout" class="login-btn"><spring:message code="header.logout"/></a>
            <% } %>
 
 
