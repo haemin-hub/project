@@ -1,0 +1,260 @@
+/* 전체 컨테이너 */
+.favorite-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+}
+
+/* 상단 헤더 */
+.favorite-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.favorite-icon {
+    font-size: 48px;
+    color: #005a66;
+    margin-bottom: 20px;
+}
+
+.favorite-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #005a66;
+    margin: 0 0 10px 0;
+}
+
+
+/* 즐겨찾기 목록 */
+.favorite-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* 즐겨찾기 항목 */
+.favorite-item {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.favorite-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 배너 */
+.item-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #005a66;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 0 0 16px 0;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 2;
+}
+
+/* 콘텐츠 영역 */
+.item-content {
+    display: flex;
+    padding: 30px;
+    gap: 30px;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.hospital-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 20px 0;
+}
+
+.hospital-details {
+    margin-bottom: 20px;
+}
+
+.hospital-details p {
+    margin: 8px 0;
+    color: #666;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hospital-details i {
+    color: #005a66;
+    width: 16px;
+}
+
+.hospital-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: rgba(0, 90, 102, 0.1);
+    color: #005a66;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid rgba(0, 90, 102, 0.2);
+}
+
+/* 이미지 */
+.item-image {
+    width: 200px;
+    height: 150px;
+    flex-shrink: 0;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* 액션 버튼 */
+.item-actions {
+    display: flex;
+    gap: 10px;
+    padding: 20px 30px;
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+
+.btn-detail {
+    background: #005a66;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    flex: 1;
+}
+
+.btn-detail:hover {
+    background: #004850;
+}
+
+.btn-remove {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-remove:hover {
+    background: #c82333;
+}
+
+
+
+/* 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 16px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #666;
+}
+
+.close:hover {
+    color: #000;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .favorite-container {
+        padding: 20px 15px;
+    }
+    
+    .favorite-title {
+        font-size: 28px;
+    }
+    
+    .item-content {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .item-image {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .item-actions {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+        padding: 20px;
+    }
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.favorite-item {
+    animation: fadeIn 0.6s ease;
+}
+
+.favorite-item:nth-child(1) { animation-delay: 0.1s; }
+.favorite-item:nth-child(2) { animation-delay: 0.2s; }
+.favorite-item:nth-child(3) { animation-delay: 0.3s; }
