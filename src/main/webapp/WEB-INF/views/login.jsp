@@ -56,7 +56,7 @@
             margin-bottom: 40px;
             font-size: 16px;
         }
-        .login-btn {
+        .login {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -146,13 +146,13 @@
             <p>로그인 또는 회원 가입<br>무료로 가입하고 혜택을 누려보세요!</p>
 
             <!-- 카카오 로그인 -->
-            <a href="<%= kakaoLoginUrl %>" class="login-btn kakao-btn">
+            <a href="<%= kakaoLoginUrl %>" class="login kakao-btn">
                 <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" alt="Kakao" class="kakao-icon" />
                 카카오 계정으로 로그인하기
             </a>
 
             <!-- 구글 로그인 -->
-            <a href="<%= googleLoginUrl %>" class="login-btn google-btn">
+            <a href="<%= googleLoginUrl %>" class="login google-btn">
                 <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google" class="google-icon" />
                 구글 계정으로 로그인하기
             </a>

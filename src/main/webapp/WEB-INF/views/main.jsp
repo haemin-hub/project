@@ -96,23 +96,7 @@
                     <p><spring:message code="main.category.korean.medicine.desc"/></p>
                 </a>
 
-                <!-- 카테고리 버튼 7: 마사지 -->
-                <a href="/location" class="category-button new">
-                    <div class="category-button-icon">
-                         <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3><spring:message code="main.category.massage"/></h3>
-                    <p><spring:message code="main.category.massage.desc"/></p>
-                </a>
 
-                <!-- 카테고리 버튼 8: 마사지 -->
-                <a href="/location" class="category-button new">
-                    <div class="category-button-icon">
-                         <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3><spring:message code="main.category.waxing"/></h3>
-                    <p><spring:message code="main.category.waxing.desc"/></p>
-                </a>
             </div>
         </div>
     </section>
@@ -221,7 +205,7 @@
                         <!-- 인기 업체 1 -->
                         <a href="/company/gangnam-hospital" class="company-card">
                             <div class="card-image">
-                                <img src="/resources/images/companies/gangnam-hospital.jpg" alt="<spring:message code='company.gangnam.name'/>">
+                                <img src="/resources/images/dump.jpg" alt="<spring:message code='company.gangnam.name'/>">
                                 <div class="card-badge">1위</div>
                             </div>
                             <div class="card-content">
@@ -238,7 +222,7 @@
                         <!-- 인기 업체 2 -->
                         <a href="/company/seoul-medical" class="company-card">
                             <div class="card-image">
-                                <img src="/resources/images/companies/seoul-medical.jpg" alt="<spring:message code='company.seoul.name'/>">
+                                <img src="/resources/images/2024-11-20.jpg" alt="<spring:message code='company.seoul.name'/>">
                                 <div class="card-badge">2위</div>
                             </div>
                             <div class="card-content">
@@ -255,7 +239,7 @@
                         <!-- 인기 업체 3 -->
                         <a href="/company/busan-dental" class="company-card">
                             <div class="card-image">
-                                <img src="/resources/images/companies/busan-dental.jpg" alt="<spring:message code='company.busan.name'/>">
+                                <img src="/resources/images/013_9985 copy.jpg" alt="<spring:message code='company.busan.name'/>">
                                 <div class="card-badge">3위</div>
                             </div>
                             <div class="card-content">

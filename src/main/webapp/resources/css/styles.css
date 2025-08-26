@@ -129,6 +129,10 @@ main, .main-content {
     align-items: center;
 }
 
+.fa-solid{
+    color: red;
+}
+
 .login-btn, .register-btn, .lang_btn {
     text-decoration: none;
     padding: 8px 15px;
