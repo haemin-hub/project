@@ -13,6 +13,9 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 @Transactional
 @Service
 public class KakaoSocialUserServiceImpl implements SocialUserService {
@@ -40,8 +43,18 @@ public class KakaoSocialUserServiceImpl implements SocialUserService {
         if (existingUser == null) {
             socialUserMapper.insertUser(user);
             return user;
+        }else {
+            // 필요한 필드만 업데이트 (예: lastLogin, accessToken 등)
+            existingUser.setLastLogin(Timestamp.valueOf(LocalDateTime.now()));
+            existingUser.setAccessToken(user.getAccessToken());
+            // 필요하다면 이름, 프로필 이미지, 이메일도 갱신 가능
+            existingUser.setName(user.getName());
+            existingUser.setEmail(user.getEmail());
+            existingUser.setProfileImage(user.getProfileImage());
+
+            socialUserMapper.updateUser(existingUser);
+            return existingUser;
         }
-        return existingUser;
     }
 
     @Override

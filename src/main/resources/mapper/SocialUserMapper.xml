@@ -56,4 +56,16 @@
         AND PROVIDER = #{provider}
     </select>
 
+    <update id="updateUser" parameterType="com.example.ApiRound.dto.SocialUserDTO">
+        UPDATE SOCIAL_USER
+        SET
+        NAME = #{name,jdbcType=VARCHAR},
+        EMAIL = #{email,jdbcType=VARCHAR},
+        PROFILE_IMAGE = #{profileImage,jdbcType=VARCHAR},
+        LAST_LOGIN = SYSDATE
+        WHERE SOCIAL_ID = #{socialId, jdbcType=VARCHAR}
+        AND PROVIDER = #{provider, jdbcType=VARCHAR}
+    </update>
+
+
 </mapper>

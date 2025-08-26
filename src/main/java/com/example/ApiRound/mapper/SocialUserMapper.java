@@ -11,6 +11,7 @@ public interface SocialUserMapper {
     // 사용자 저장
     void insertUser(SocialUserDTO user);
 
+    void updateUser(SocialUserDTO user);
     // 소셜 ID + PROVIDER로 사용자 조회
     SocialUserDTO findBySocialIdAndProvider(
             @Param("socialId") String socialId,
