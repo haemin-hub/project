@@ -95,6 +95,24 @@
                     <h3><spring:message code="main.category.korean.medicine"/></h3>
                     <p><spring:message code="main.category.korean.medicine.desc"/></p>
                 </a>
+
+                <!-- 카테고리 버튼 7: 마사지 -->
+                <a href="/location" class="category-button new">
+                    <div class="category-button-icon">
+                         <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3><spring:message code="main.category.massage"/></h3>
+                    <p><spring:message code="main.category.massage.desc"/></p>
+                </a>
+
+                <!-- 카테고리 버튼 8: 마사지 -->
+                <a href="/location" class="category-button new">
+                    <div class="category-button-icon">
+                         <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3><spring:message code="main.category.waxing"/></h3>
+                    <p><spring:message code="main.category.waxing.desc"/></p>
+                </a>
             </div>
         </div>
     </section>
