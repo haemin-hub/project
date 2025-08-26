@@ -1,8 +1,1 @@
-com\example\ApiRound\Controller\GoogleOAuthController.class
-com\example\ApiRound\Controller\LanguageController.class
-com\example\ApiRound\config\I18nConfig.class
-com\example\ApiRound\Controller\LoginController.class
-com\example\ApiRound\Controller\KakaoOAuthController.class
 com\example\ApiRound\ApiRoundApplication.class
-com\example\ApiRound\HelloController.class
-com\example\ApiRound\Controller\MainController.class
