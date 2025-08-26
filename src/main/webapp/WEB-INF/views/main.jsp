@@ -95,6 +95,8 @@
                     <h3><spring:message code="main.category.korean.medicine"/></h3>
                     <p><spring:message code="main.category.korean.medicine.desc"/></p>
                 </a>
+
+
             </div>
         </div>
     </section>
@@ -203,7 +205,7 @@
                         <!-- 인기 업체 1 -->
                         <a href="/company/gangnam-hospital" class="company-card">
                             <div class="card-image">
-                                <img src="/resources/images/companies/gangnam-hospital.jpg" alt="<spring:message code='company.gangnam.name'/>">
+                                <img src="/resources/images/dump.jpg" alt="<spring:message code='company.gangnam.name'/>">
                                 <div class="card-badge">1위</div>
                             </div>
                             <div class="card-content">
@@ -220,7 +222,7 @@
                         <!-- 인기 업체 2 -->
                         <a href="/company/seoul-medical" class="company-card">
                             <div class="card-image">
-                                <img src="/resources/images/companies/seoul-medical.jpg" alt="<spring:message code='company.seoul.name'/>">
+                                <img src="/resources/images/2024-11-20.jpg" alt="<spring:message code='company.seoul.name'/>">
                                 <div class="card-badge">2위</div>
                             </div>
                             <div class="card-content">
@@ -237,7 +239,7 @@
                         <!-- 인기 업체 3 -->
                         <a href="/company/busan-dental" class="company-card">
                             <div class="card-image">
-                                <img src="/resources/images/companies/busan-dental.jpg" alt="<spring:message code='company.busan.name'/>">
+                                <img src="/resources/images/013_9985 copy.jpg" alt="<spring:message code='company.busan.name'/>">
                                 <div class="card-badge">3위</div>
                             </div>
                             <div class="card-content">
