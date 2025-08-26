@@ -18,16 +18,6 @@ public class HelloController {
         return "main"; // /WEB-INF/views/main.jsp로 연결됨
     }
 
-    @GetMapping("/detail")
-    public String detail(Model model) {
-        return "detail"; // /WEB-INF/views/detail.jsp로 연결됨
-    }
-
-    @GetMapping("/detail")
-    public static void detail(String[] args) {
-
-    }
-
     @GetMapping("/tourism")
     public String tourism(Model model) {
         return "tourism"; // /WEB-INF/views/tourism.jsp로 연결됨
@@ -54,4 +44,8 @@ public class HelloController {
         return "location";
     }
 
+    @GetMapping("/list")
+    public String list(Model model) {
+        return "list"; // /WEB-INF/views/list.jsp로 연결됨
+    }
 }
