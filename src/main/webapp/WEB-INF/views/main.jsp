@@ -43,7 +43,7 @@
 
             <div class="category-buttons-grid">
                 <!-- 카테고리 버튼 1: 관광 -->
-                <a href="/location" class="category-button hot">
+                <a href="/location?category=tourism" class="category-button hot">
                     <div class="category-button-icon">
                         <i class="fas fa-plane"></i>
                     </div>
@@ -52,7 +52,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 2: 성형 -->
-                <a href="/location" class="category-button new">
+                <a href="/location?category=plastic" class="category-button new">
                     <div class="category-button-icon">
                         <i class="fas fa-hospital"></i>
                     </div>
@@ -61,7 +61,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 3: 피부 -->
-                <a href="/location" class="category-button hot">
+                <a href="/location?category=skincare" class="category-button hot">
                     <div class="category-button-icon">
                         <img src="/resources/images/mask.png" alt="<spring:message code='main.category.skincare'/>">
                     </div>
@@ -70,7 +70,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 4: 치과 -->
-                <a href="/location" class="category-button">
+                <a href="/location?category=dental" class="category-button">
                     <div class="category-button-icon">
                         <i class="fas fa-tooth"></i>
                     </div>
@@ -79,7 +79,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 5: 약국 -->
-                <a href="/location" class="category-button">
+                <a href="/location?category=pharmacy" class="category-button">
                     <div class="category-button-icon">
                         <i class="fas fa-pills"></i>
                     </div>
@@ -88,7 +88,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 6: 한의학 -->
-                <a href="/location" class="category-button new">
+                <a href="/location?category=korean" class="category-button new">
                     <div class="category-button-icon">
                         <i class="fas fa-leaf"></i>
                     </div>
