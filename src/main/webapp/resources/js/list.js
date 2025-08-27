@@ -1,74 +1,44 @@
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('병원 목록 페이지 로드 완료');
+   console.log('병원 목록 페이지 로드 완료');
 
-    initializeEventListeners();
-    updateTotalCount();
+   bindHospitalItemEvents();   // ✅ 여기서 호출
+   bindPagination();           // ✅ AJAX 페이징 바인딩
+   updateTotalCount();
+   restoreHeartStates();
 
-    // 하트 상태 복원
-    restoreHeartStates();
+   const detailContent = document.querySelector('.detail-content');
+   const detailPlaceholder = document.querySelector('.detail-placeholder');
+   if (detailContent) detailContent.style.display = 'none';
+   if (detailPlaceholder) detailPlaceholder.style.display = 'block';
+ });
 
-    // detail-content 초기 상태를 숨김으로 설정
-    const detailContent = document.querySelector('.detail-content');
-    const detailPlaceholder = document.querySelector('.detail-placeholder');
+function bindHospitalItemEvents() {
+  const list = document.querySelector('.hospital-list');
+  if (!list || list.dataset.bound === '1') return; // 중복 바인딩 방지
+  list.dataset.bound = '1';
 
-    if (detailContent) {
-        detailContent.style.display = 'none';
+  list.addEventListener('click', function(e) {
+    // 클릭된 곳 기준으로 병원 아이템/하트 찾기
+    const item  = e.target.closest('.hospital-item');
+    if (!item) return;
+
+    const heart = e.target.closest('.hospital-heart');
+    if (heart) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleHeart(item);
+      return;
     }
-    if (detailPlaceholder) {
-        detailPlaceholder.style.display = 'block';
+
+    // 아이템 클릭 → 선택/상세 열기
+    selectHospital(item);
+    if (item.classList.contains('active')) {
+      showHospitalDetail(item);
     }
-});
-
-// 이벤트 리스너 초기화
-function initializeEventListeners() {
-    // 필터 체크박스 이벤트
-    const filterCheckboxes = document.querySelectorAll('.filter-checkbox input[type="checkbox"]');
-    filterCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            filterHospitals();
-        });
-    });
-
-    // 병원 아이템 클릭 이벤트
-    const hospitalItems = document.querySelectorAll('.hospital-item');
-    hospitalItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            // 하트 클릭 시 이벤트 전파 방지
-            if (e.target.closest('.hospital-heart')) {
-                e.stopPropagation();
-                toggleHeart(this);
-            } else {
-                selectHospital(this);
-                // 선택된 경우에만 상세 정보 표시
-                if (this.classList.contains('active')) {
-                    showHospitalDetail(this);
-                    // 클릭 로그 전송
-                    const companyId = this.dataset.companyId;
-                    if (companyId) {
-                        fetch(`/api/clicks/${companyId}`, { method: "POST" })
-                            .then(response => {
-                                if (!response.ok) throw new Error("클릭 로그 저장 실패");
-                                console.log(`회사 ID ${companyId} 클릭 로그 저장 완료`);
-                            })
-                            .catch(error => {
-                                console.error("에러 발생:", error);
-                            });
-                    }
-                }
-            }
-        });
-    });
-
-    // 페이지네이션 이벤트
-    const pageLinks = document.querySelectorAll('.page-link');
-    pageLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            handlePagination(this);
-        });
-    });
+  });
 }
+
 
 // 병원 상세 정보 표시
 function showHospitalDetail(hospitalItem) {
@@ -86,13 +56,13 @@ function showHospitalDetail(hospitalItem) {
     // 지도 초기화 (카카오맵이 로드된 경우)
     setTimeout(() => {
         const mapElement = detailContent.querySelector('#map');
-        if (mapElement && typeof kakao !== 'undefined' && kakao.maps) {
+        if (mapElement) {
             const hospitalData = getHospitalData(hospitalName);
             console.log('지도 초기화 시작 - 병원:', hospitalName, '주소:', hospitalData.address);
             // map.js의 initializeMap 함수 사용
             initializeMap(mapElement, hospitalName, hospitalData.address);
         } else {
-            console.error('카카오맵 API가 로드되지 않았습니다.');
+            console.error('지도 요소를 찾을 수 없습니다.');
         }
     }, 500);
 
@@ -101,44 +71,50 @@ function showHospitalDetail(hospitalItem) {
 
 // 병원 상세 정보 HTML 생성
 function generateHospitalDetailHTML(hospitalName) {
-    const hospitalData = getHospitalData(hospitalName);
+  const data = getHospitalData(hospitalName); // 한 번만 가져오고 구조 분해
+  const website = data.website || '-';
+  const phone   = data.phone   || '-';
+  const address = data.address || '-';
+  const subway  = data.subway  || '-';
 
-    return `
-        <div class="hospital-detail-info">
-            <div class="hospital-header">
-                <h2 class="hospital-title">${hospitalName}</h2>
-                <div class="hospital-image">
-                    <img src="/resources/images/detail/hospital.jpg" alt="${hospitalName}">
-                </div>
-            </div>
-
-            <div class="hospital-info-table">
-                <table>
-                    <tr>
-                        <th>홈페이지</th>
-                        <td class="hospital_website">${hospitalData.website}</td>
-                    </tr>
-                    <tr>
-                        <th>연락처</th>
-                        <td class="hospital_phonenumber">${hospitalData.phone}</td>
-                    </tr>
-                    <tr>
-                        <th>위치 및 교통정보</th>
-                        <td class="hospital_address">${hospitalData.address}</td>
-                    </tr>
-                    <tr>
-                        <th>지하철</th>
-                        <td class="location">${hospitalData.subway}</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="hospital-map">
-                <h3>지도</h3>
-                <div id="map" class="map"></div>
-            </div>
+  return `
+    <div class="hospital-detail-info">
+      <div class="hospital-header">
+        <h2 class="hospital-title">${hospitalName}</h2>
+        <div class="hospital-image">
+          <img src="/resources/images/detail/hospital.jpg" alt="${hospitalName}">
         </div>
-    `;
+      </div>
+
+      <div class="hospital-info-table">
+        <table>
+          <tr>
+            <th>홈페이지</th>
+            <td class="hospital_website">${
+              website !== '-' ? `<a href="${website}" target="_blank" rel="noopener">${website}</a>` : '-'
+            }</td>
+          </tr>
+          <tr>
+            <th>연락처</th>
+            <td class="hospital_phonenumber">${phone}</td>
+          </tr>
+          <tr>
+            <th>위치 및 교통정보</th>
+            <td class="hospital_address">${address}</td>
+          </tr>
+          <tr>
+            <th>지하철</th>
+            <td class="location">${subway}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="hospital-map">
+        <h3>지도</h3>
+        <div id="map" class="map"></div>
+      </div>
+    </div>
+  `;
 }
 
 // 병원 데이터 가져오기
@@ -212,25 +188,6 @@ function filterHospitals() {
     updateTotalCount();
 }
 
-// 선택된 카테고리 가져오기
-function getSelectedCategories() {
-    const checkboxes = document.querySelectorAll('.filter-checkbox input[type="checkbox"]:checked');
-    return Array.from(checkboxes).map(checkbox => checkbox.value);
-}
-
-// 카테고리별 키워드 매핑
-function getCategoryKeyword(category) {
-    const keywords = {
-        'eye': '눈',
-        'nose': '코',
-        'chin': '턱',
-        'mouth': '입',
-        'chest': '가슴',
-        'liposuction': '지방흡입'
-    };
-    return keywords[category] || '';
-}
-
 // 하트 토글
 function toggleHeart(hospitalItem) {
     const heartIcon = hospitalItem.querySelector('.hospital-heart i');
@@ -281,25 +238,6 @@ function selectHospital(hospitalItem) {
         hospitalItem.classList.add('active');
         console.log('병원 선택:', hospitalItem.dataset.hospital);
     }
-}
-
-// BEST 병원 표시
-function showBestHospitals() {
-    const hospitalItems = document.querySelectorAll('.hospital-item');
-    const bestHospitals = ['더바디성형외과의원', '픽셀랩성형외과의원', 'JY피부과의원'];
-
-    hospitalItems.forEach(item => {
-        const hospitalName = item.dataset.hospital;
-        if (bestHospitals.includes(hospitalName)) {
-            item.style.display = 'flex';
-            item.style.order = bestHospitals.indexOf(hospitalName);
-        } else {
-            item.style.display = 'none';
-        }
-    });
-
-    updateTotalCount();
-    console.log('BEST 병원 필터 적용');
 }
 
 // 페이지네이션 처리
@@ -429,4 +367,79 @@ function restoreHeartStates() {
     } catch (error) {
         console.error('하트 상태 복원 중 오류:', error);
     }
+}
+
+// ---- AJAX Pagination ----
+
+// 초기 바인딩 (DOMContentLoaded 끝에 호출)
+function bindPagination() {
+  const pager = document.querySelector('.pagination');
+  if (!pager || pager.dataset.bound === '1') return;
+  pager.dataset.bound = '1';
+
+  pager.addEventListener('click', function (e) {
+    const a = e.target.closest('a.page-link');
+    if (!a) return;
+    e.preventDefault();
+    ajaxNavigate(a.href);
+  });
+}
+
+// 히스토리 뒤로/앞으로도 AJAX로 복원
+window.addEventListener('popstate', () => {
+  ajaxNavigate(location.href, { push: false });
+});
+
+// 공통: 서버에서 받은 HTML에서 필요한 부분만 교체
+function replaceSection(doc, selector) {
+  const newEl = doc.querySelector(selector);
+  const curEl = document.querySelector(selector);
+  if (newEl && curEl) {
+    curEl.innerHTML = newEl.innerHTML;
+  }
+}
+
+// 핵심: 링크를 AJAX로 로드해서 부분 교체 + URL 갱신
+async function ajaxNavigate(url, { push = true } = {}) {
+  try {
+    // 로딩 상태(선택): 리스트 살짝 투명하게
+    const listWrap = document.querySelector('.hospital-list');
+    if (listWrap) listWrap.style.opacity = '0.5';
+
+    const res = await fetch(url, {
+      headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+
+    const html = await res.text();
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+
+    // 필요한 영역만 갈아끼우기
+    replaceSection(doc, '.hospital-list');
+    replaceSection(doc, '.pagination');
+    replaceSection(doc, '.total-count');
+
+    // 교체 후 필요한 이벤트 다시 바인딩
+    bindHospitalItemEvents();  // 병원 아이템/하트 클릭 등
+    // pagination 컨테이너는 같은 노드이면 이벤트 위임 유지됨
+    // 만약 .pagination 자체를 통으로 교체한다면 아래 한 줄을 다시 호출:
+    bindPagination();
+
+    // URL만 바꾸고 페이지는 그대로 유지
+    if (push) history.pushState({ url }, '', url);
+
+    // 부드럽게 리스트 상단으로 스크롤
+    const leftPanel = document.querySelector('.left-panel');
+    if (leftPanel) {
+      leftPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+  } catch (err) {
+    console.error('AJAX 페이지 네비게이션 실패, 폴백으로 이동합니다.', err);
+    // 문제가 생기면 그냥 원래 방식으로 이동
+    window.location.href = url;
+  } finally {
+    const listWrap = document.querySelector('.hospital-list');
+    if (listWrap) listWrap.style.opacity = '';
+  }
 }

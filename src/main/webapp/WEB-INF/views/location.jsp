@@ -325,10 +325,11 @@
                 // URL 파라미터에서 카테고리 가져오기
                 const urlParams = new URLSearchParams(window.location.search);
                 const category = urlParams.get('category') || 'plastic';
-                const region = REGIONS[current].name + ' ' + name;
+                const region = REGIONS[current].name;
+                const subRegion = name;
                 
                 // 리스트 페이지로 이동
-                window.location.href = '/list?category=' + encodeURIComponent(category) + '&region=' + encodeURIComponent(region);
+                window.location.href = '/list?category=' + encodeURIComponent(category) + '&region=' + encodeURIComponent(region) + '&subRegion=' + encodeURIComponent(subRegion);
             };
             row.appendChild(left);
             row.appendChild(right);

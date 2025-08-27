@@ -32,6 +32,10 @@ public class HelloController {
         return "main"; // /WEB-INF/views/main.jsp
     }
 
+    @GetMapping("/tourism")
+    public String tourism(Model model) {
+        return "tourism"; // /WEB-INF/views/tourism.jsp로 연결됨
+    }
 
     @GetMapping("/plastic-surgery")
     public String surgery(Model model) {
@@ -102,33 +106,32 @@ public class HelloController {
         }
     }
 
-    // 나머지 list 메서드들 그대로 유지
     @GetMapping("/dental_list")
     public String dental_list(Model model, String region) {
         try {
-            String decodedRegion = URLDecoder.decode(region, "UTF-8");
+            String decodedRegion = java.net.URLDecoder.decode(region, "UTF-8");
             model.addAttribute("region", decodedRegion);
         } catch (Exception e) {
             model.addAttribute("region", region);
         }
-        return "dental_list";
+        return "dental_list"; // /WEB-INF/views/dental_list.jsp로 연결됨
     }
 
     @GetMapping("/korea_list")
     public String korea_list(Model model, String region) {
         try {
-            String decodedRegion = URLDecoder.decode(region, "UTF-8");
+            String decodedRegion = java.net.URLDecoder.decode(region, "UTF-8");
             model.addAttribute("region", decodedRegion);
         } catch (Exception e) {
             model.addAttribute("region", region);
         }
-        return "korea_list";
+        return "korea_list"; // /WEB-INF/views/korea_list.jsp로 연결됨
     }
 
     @GetMapping("/massage_list")
     public String massage_list(Model model, String region) {
         try {
-            String decodedRegion = URLDecoder.decode(region, "UTF-8");
+            String decodedRegion = java.net.URLDecoder.decode(region, "UTF-8");
             model.addAttribute("region", decodedRegion);
         } catch (Exception e) {
             model.addAttribute("region", region);
@@ -139,7 +142,7 @@ public class HelloController {
     @GetMapping("/pharmacy_list")
     public String pharmacy_list(Model model, String region) {
         try {
-            String decodedRegion = URLDecoder.decode(region, "UTF-8");
+            String decodedRegion = java.net.URLDecoder.decode(region, "UTF-8");
             model.addAttribute("region", decodedRegion);
         } catch (Exception e) {
             model.addAttribute("region", region);
@@ -150,7 +153,7 @@ public class HelloController {
     @GetMapping("/skin_list")
     public String skin_list(Model model, String region) {
         try {
-            String decodedRegion = URLDecoder.decode(region, "UTF-8");
+            String decodedRegion = java.net.URLDecoder.decode(region, "UTF-8");
             model.addAttribute("region", decodedRegion);
         } catch (Exception e) {
             model.addAttribute("region", region);
@@ -161,7 +164,7 @@ public class HelloController {
     @GetMapping("/waxing_list")
     public String waxing_list(Model model, String region) {
         try {
-            String decodedRegion = URLDecoder.decode(region, "UTF-8");
+            String decodedRegion = java.net.URLDecoder.decode(region, "UTF-8");
             model.addAttribute("region", decodedRegion);
         } catch (Exception e) {
             model.addAttribute("region", region);
@@ -172,7 +175,7 @@ public class HelloController {
     @GetMapping("/plastic_list")
     public String plastic_list(Model model, String region) {
         try {
-            String decodedRegion = URLDecoder.decode(region, "UTF-8");
+            String decodedRegion = java.net.URLDecoder.decode(region, "UTF-8");
             model.addAttribute("region", decodedRegion);
         } catch (Exception e) {
             model.addAttribute("region", region);

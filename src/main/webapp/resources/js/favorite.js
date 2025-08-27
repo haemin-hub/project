@@ -1,9 +1,83 @@
 // 즐겨찾기 관리
-let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+let favorites = [];
+
+// localStorage에서 favoriteHospitals 데이터 가져오기
+function loadFavoriteHospitals() {
+    try {
+        const favoriteHospitalNames = JSON.parse(localStorage.getItem('favoriteHospitals') || '[]');
+        console.log('localStorage에서 읽은 favoriteHospitals:', favoriteHospitalNames);
+        
+        const hospitalData = getHospitalData();
+        
+        favorites = favoriteHospitalNames.map(name => {
+            const data = hospitalData[name];
+            if (data) {
+                return {
+                    id: name,
+                    name: name,
+                    address: data.address,
+                    phone: data.phone,
+                    hours: '운영시간 정보 없음',
+                    image: '/resources/images/detail/hospital.jpg',
+                    tags: ['병원']
+                };
+            }
+            return null;
+        }).filter(item => item !== null);
+        
+        console.log('즐겨찾기 병원 로드 완료:', favorites);
+    } catch (error) {
+        console.error('즐겨찾기 병원 로드 중 오류:', error);
+        favorites = [];
+    }
+}
+
+// 병원 데이터 가져오기 (list.js와 동일한 데이터)
+function getHospitalData() {
+    return {
+        '더고운성형외과의원': {
+            website: 'http://www.daegoon.com',
+            phone: '02-123-4567',
+            address: '서울특별시 강남구 테헤란로 123',
+            subway: '2호선 강남역 3번 출구 150m'
+        },
+        '더뷰티성형외과의원': {
+            website: 'http://www.daebeauty.com',
+            phone: '02-234-5678',
+            address: '서울특별시 강남구 테헤란로 456',
+            subway: '2호선 강남역 5번 출구 200m'
+        },
+        '더바디성형외과의원': {
+            website: 'http://www.daebody.com',
+            phone: '02-345-6789',
+            address: '서울특별시 강남구 테헤란로 789',
+            subway: '2호선 강남역 7번 출구 300m'
+        },
+        '픽셀랩성형외과의원': {
+            website: 'http://www.healngo.kr',
+            phone: '031-123-4567',
+            address: '서울특별시 서초구 서초대로73길 42',
+            subway: '신분당 신논현역 7번 출구 239m · 도보 6분'
+        },
+        'JY피부과의원': {
+            website: 'http://www.jy-dermatology.com',
+            phone: '02-456-7890',
+            address: '서울특별시 강남구 테헤란로 123',
+            subway: '2호선 강남역 3번 출구 150m · 도보 3분'
+        },
+        '부산치과의원': {
+            website: 'http://www.busan-dental.com',
+            phone: '051-123-4567',
+            address: '부산광역시 해운대구 해운대로 264',
+            subway: '2호선 해운대역 1번 출구 300m · 도보 5분'
+        }
+    };
+}
 
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', function() {
     console.log('즐겨찾기 페이지 로드 완료');
+    loadFavoriteHospitals(); // 먼저 favoriteHospitals 데이터 로드
     loadFavorites();
     setupModal();
 });
@@ -11,12 +85,18 @@ document.addEventListener('DOMContentLoaded', function() {
 // 즐겨찾기 목록 로드
 function loadFavorites() {
     const favoriteList = document.querySelector('.favorite-list');
-    if (!favoriteList) return;
+    if (!favoriteList) {
+        console.log('favorite-list 요소를 찾을 수 없습니다.');
+        return;
+    }
+
+    console.log('loadFavorites 실행 - favorites 배열:', favorites);
 
     // 기존 항목들 제거
     favoriteList.innerHTML = '';
 
     if (favorites.length === 0) {
+        console.log('즐겨찾기 목록이 비어있습니다. 빈 상태 메시지를 표시합니다.');
         favoriteList.innerHTML = `
             <div class="empty-favorites">
                 <i class="fas fa-heart-broken"></i>
@@ -28,8 +108,11 @@ function loadFavorites() {
         return;
     }
 
+    console.log('즐겨찾기 항목들을 생성합니다. 개수:', favorites.length);
+
     // 즐겨찾기 항목들 생성
     favorites.forEach((favorite, index) => {
+        console.log(`항목 ${index + 1} 생성:`, favorite);
         const favoriteItem = createFavoriteItem(favorite, index + 1);
         favoriteList.appendChild(favoriteItem);
     });
@@ -62,8 +145,8 @@ function createFavoriteItem(favorite, number) {
             </div>
         </div>
         <div class="item-actions">
-            <button class="btn-detail" onclick="showDetail(${favorite.id})">상세보기</button>
-            <button class="btn-remove" onclick="removeFavorite(${favorite.id})">
+            <button class="btn-detail" onclick="showDetail('${favorite.id}')">상세보기</button>
+            <button class="btn-remove" onclick="removeFavorite('${favorite.id}')">
                 <i class="fas fa-trash"></i>
             </button>
         </div>
@@ -91,52 +174,82 @@ function setupModal() {
     }
 }
 
-// 상세보기 표시
+// 상세보기 표시 - 해당 병원이 있는 list 페이지로 이동
 function showDetail(id) {
     const favorite = favorites.find(f => f.id === id);
     if (!favorite) return;
 
-    const modal = document.getElementById('detailModal');
-    const modalBody = document.getElementById('modalBody');
-
-    modalBody.innerHTML = `
-        <div class="detail-content">
-            <h2>${favorite.name}</h2>
-            <div class="detail-info">
-                <p><strong>주소:</strong> ${favorite.address}</p>
-                <p><strong>전화번호:</strong> ${favorite.phone}</p>
-                <p><strong>운영시간:</strong> ${favorite.hours}</p>
-                <p><strong>전문분야:</strong> ${favorite.tags.join(', ')}</p>
-            </div>
-            <div class="detail-actions">
-                <button onclick="callHospital('${favorite.phone}')" class="btn-call">
-                    <i class="fas fa-phone"></i> 전화하기
-                </button>
-                <button onclick="openMap('${favorite.address}')" class="btn-map">
-                    <i class="fas fa-map-marker-alt"></i> 지도보기
-                </button>
-            </div>
-        </div>
-    `;
-
-    modal.style.display = 'block';
+    console.log('상세보기 클릭 - 병원:', favorite.name);
+    
+    // 병원 이름에 따라 적절한 list 페이지로 이동
+    const hospitalName = favorite.name;
+    
+    // 병원 카테고리별 페이지 매핑
+    const categoryMapping = {
+        '더고운성형외과의원': '/listController/plastic_list',
+        '더뷰티성형외과의원': '/listController/plastic_list', 
+        '더바디성형외과의원': '/listController/plastic_list',
+        '픽셀랩성형외과의원': '/listController/plastic_list',
+        'JY피부과의원': '/listController/skin_list',
+        '부산치과의원': '/listController/dental_list',
+        '건강약국': '/listController/pharmacy_list',
+        '행복약국': '/listController/pharmacy_list',
+        '미래약국': '/listController/pharmacy_list',
+        '힐링마사지': '/listController/massage_list',
+        '스파마사지': '/listController/massage_list',
+        '한의원': '/listController/korea_list',
+        '왁싱샵': '/listController/waxing_list'
+    };
+    
+    const targetPage = categoryMapping[hospitalName];
+    
+    if (targetPage) {
+        console.log(`${hospitalName}을(를) 찾기 위해 ${targetPage}로 이동합니다.`);
+        window.location.href = targetPage;
+    } else {
+        console.log(`${hospitalName}에 대한 매핑이 없습니다. 메인 페이지로 이동합니다.`);
+        window.location.href = '/main';
+    }
 }
 
 // 즐겨찾기 제거
 function removeFavorite(id) {
     if (confirm('정말로 즐겨찾기에서 제거하시겠습니까?')) {
+        // favorites 배열에서 제거
         favorites = favorites.filter(f => f.id !== id);
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        loadFavorites();
         
-        // 제거 애니메이션
+        // favoriteHospitals localStorage에서도 제거
+        try {
+            const favoriteHospitalNames = JSON.parse(localStorage.getItem('favoriteHospitals') || '[]');
+            const updatedFavorites = favoriteHospitalNames.filter(name => name !== id);
+            localStorage.setItem('favoriteHospitals', JSON.stringify(updatedFavorites));
+            console.log('favoriteHospitals에서 제거:', id);
+        } catch (error) {
+            console.error('favoriteHospitals 제거 중 오류:', error);
+        }
+        
+        // 즉시 화면에서 제거
         const item = document.querySelector(`[data-id="${id}"]`);
         if (item) {
-            item.style.animation = 'fadeOut 0.3s ease';
-            setTimeout(() => {
-                item.remove();
-            }, 300);
+            item.remove();
         }
+        
+        // 목록이 비어있으면 빈 상태 메시지 표시
+        if (favorites.length === 0) {
+            const favoriteList = document.querySelector('.favorite-list');
+            if (favoriteList) {
+                favoriteList.innerHTML = `
+                    <div class="empty-favorites">
+                        <i class="fas fa-heart-broken"></i>
+                        <h3>즐겨찾기한 병원이 없습니다</h3>
+                        <p>병원을 검색하고 즐겨찾기에 추가해보세요!</p>
+                        <button onclick="goToMain()" class="btn-go-main">메인으로 가기</button>
+                    </div>
+                `;
+            }
+        }
+        
+        console.log('즐겨찾기에서 제거 완료:', id);
     }
 }
 
@@ -205,10 +318,46 @@ style.textContent = `
         }
     }
     
+    .favorite-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .favorite-list:has(.favorite-item:only-child) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 400px;
+    }
+    
+    .favorite-list:has(.favorite-item:only-child) .favorite-item {
+        max-width: 500px;
+        width: 100%;
+    }
+    
+    .favorite-item {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: fit-content;
+    }
+    
+    .favorite-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+    
     .empty-favorites {
         text-align: center;
         padding: 60px 20px;
         color: #666;
+        grid-column: 1 / -1;
     }
     
     .empty-favorites i {
@@ -274,6 +423,18 @@ style.textContent = `
     
     .btn-call:hover, .btn-map:hover {
         background: #004850;
+    }
+    
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+        .favorite-list {
+            grid-template-columns: 1fr;
+            padding: 15px;
+        }
+        
+        .favorite-list:has(.favorite-item:only-child) .favorite-item {
+            max-width: 100%;
+        }
     }
 `;
 document.head.appendChild(style);
