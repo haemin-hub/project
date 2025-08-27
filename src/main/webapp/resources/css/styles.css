@@ -27,6 +27,7 @@ main, .main-content {
     display: flex;
     flex-direction: column;
     padding-bottom: 0;
+    padding-top: 0;
 }
 
 /* 헤더 스타일 */
@@ -407,25 +408,17 @@ address p {
 
 .hero-section {
     background: linear-gradient(135deg, rgba(164, 214, 164, 0.8) 0%, rgba(137, 198, 155, 0.8) 100%);
-    padding: 150px 0;
     text-align: center;
     margin-bottom: 50px;
     /* border-radius 속성 제거 */
     box-shadow: 0 4px 15px rgba(67, 120, 67, 0.1);
 }
-
-.hero-section h1 {
-    font-size: 2.5rem;
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(67, 120, 67, 0.2);
     margin-bottom: 20px;
-    font-weight: 700;
-    color: #2c513d;
-}
-
-.hero-section p {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto 30px;
-    color: #3a5a48;
 }
 
 .btn-primary {

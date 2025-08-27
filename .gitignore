@@ -36,3 +36,5 @@
 # application.properties - 민감 정보
 #/src/main/resources/application.properties
 
+# IntelliJ IDEA workspace 설정 파일 무시
+.idea/workspace.xml

@@ -1,17 +1,17 @@
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', function() {
     console.log('병원 목록 페이지 로드 완료');
-    
+
     initializeEventListeners();
     updateTotalCount();
-    
+
     // 하트 상태 복원
     restoreHeartStates();
-    
+
     // detail-content 초기 상태를 숨김으로 설정
     const detailContent = document.querySelector('.detail-content');
     const detailPlaceholder = document.querySelector('.detail-placeholder');
-    
+
     if (detailContent) {
         detailContent.style.display = 'none';
     }
@@ -29,7 +29,7 @@ function initializeEventListeners() {
             filterHospitals();
         });
     });
-    
+
     // 병원 아이템 클릭 이벤트
     const hospitalItems = document.querySelectorAll('.hospital-item');
     hospitalItems.forEach(item => {
@@ -47,7 +47,7 @@ function initializeEventListeners() {
             }
         });
     });
-    
+
     // 페이지네이션 이벤트
     const pageLinks = document.querySelectorAll('.page-link');
     pageLinks.forEach(link => {
@@ -63,14 +63,14 @@ function showHospitalDetail(hospitalItem) {
     const hospitalName = hospitalItem.dataset.hospital;
     const detailContent = document.querySelector('.detail-content');
     const detailPlaceholder = document.querySelector('.detail-placeholder');
-    
+
     // 플레이스홀더 숨기기
     detailPlaceholder.style.display = 'none';
-    
+
     // 상세 정보 로드 및 표시
     detailContent.style.display = 'block';
     detailContent.innerHTML = generateHospitalDetailHTML(hospitalName);
-    
+
     // 지도 초기화 (카카오맵이 로드된 경우)
     setTimeout(() => {
         const mapElement = detailContent.querySelector('#map');
@@ -83,14 +83,14 @@ function showHospitalDetail(hospitalItem) {
             console.error('카카오맵 API가 로드되지 않았습니다.');
         }
     }, 500);
-    
+
     console.log('상세 정보 표시:', hospitalName);
 }
 
 // 병원 상세 정보 HTML 생성
 function generateHospitalDetailHTML(hospitalName) {
     const hospitalData = getHospitalData(hospitalName);
-    
+
     return `
         <div class="hospital-detail-info">
             <div class="hospital-header">
@@ -99,7 +99,7 @@ function generateHospitalDetailHTML(hospitalName) {
                     <img src="/resources/images/detail/hospital.jpg" alt="${hospitalName}">
                 </div>
             </div>
-            
+
             <div class="hospital-info-table">
                 <table>
                     <tr>
@@ -120,7 +120,7 @@ function generateHospitalDetailHTML(hospitalName) {
                     </tr>
                 </table>
             </div>
-            
+
             <div class="hospital-map">
                 <h3>지도</h3>
                 <div id="map" class="map"></div>
@@ -169,7 +169,7 @@ function getHospitalData(hospitalName) {
             subway: '2호선 해운대역 1번 출구 300m · 도보 5분'
         }
     };
-    
+
     return hospitalData[hospitalName] || {
         website: 'http://www.example.com',
         phone: '02-000-0000',
@@ -182,21 +182,21 @@ function getHospitalData(hospitalName) {
 function filterHospitals() {
     const selectedCategories = getSelectedCategories();
     const hospitalItems = document.querySelectorAll('.hospital-item');
-    
+
     hospitalItems.forEach(item => {
         const hospitalName = item.querySelector('.hospital-name').textContent;
-        const shouldShow = selectedCategories.length === 0 || 
-                          selectedCategories.some(category => 
+        const shouldShow = selectedCategories.length === 0 ||
+                          selectedCategories.some(category =>
                               hospitalName.includes(getCategoryKeyword(category))
                           );
-        
+
         if (shouldShow) {
             item.style.display = 'flex';
         } else {
             item.style.display = 'none';
         }
     });
-    
+
     updateTotalCount();
 }
 
@@ -222,7 +222,7 @@ function getCategoryKeyword(category) {
 // 하트 토글
 function toggleHeart(hospitalItem) {
     const heartIcon = hospitalItem.querySelector('.hospital-heart i');
-    
+
     if (heartIcon.classList.contains('far')) {
         // 빈 하트 → 채워진 하트
         heartIcon.classList.remove('far');
@@ -236,7 +236,7 @@ function toggleHeart(hospitalItem) {
         heartIcon.style.color = '#ccc';
         console.log('즐겨찾기 제거:', hospitalItem.dataset.hospital);
     }
-    
+
     // 하트 상태를 localStorage에 저장
     saveHeartState(hospitalItem.dataset.hospital, heartIcon.classList.contains('fas'));
 }
@@ -247,11 +247,11 @@ function selectHospital(hospitalItem) {
     if (hospitalItem.classList.contains('active')) {
         hospitalItem.classList.remove('active');
         console.log('병원 선택 취소:', hospitalItem.dataset.hospital);
-        
+
         // detail-content 숨기고 placeholder 표시
         const detailContent = document.querySelector('.detail-content');
         const detailPlaceholder = document.querySelector('.detail-placeholder');
-        
+
         if (detailContent) {
             detailContent.style.display = 'none';
         }
@@ -264,7 +264,7 @@ function selectHospital(hospitalItem) {
         activeItems.forEach(item => {
             item.classList.remove('active');
         });
-        
+
         // 새로운 선택
         hospitalItem.classList.add('active');
         console.log('병원 선택:', hospitalItem.dataset.hospital);
@@ -275,7 +275,7 @@ function selectHospital(hospitalItem) {
 function showBestHospitals() {
     const hospitalItems = document.querySelectorAll('.hospital-item');
     const bestHospitals = ['더바디성형외과의원', '픽셀랩성형외과의원', 'JY피부과의원'];
-    
+
     hospitalItems.forEach(item => {
         const hospitalName = item.dataset.hospital;
         if (bestHospitals.includes(hospitalName)) {
@@ -285,7 +285,7 @@ function showBestHospitals() {
             item.style.display = 'none';
         }
     });
-    
+
     updateTotalCount();
     console.log('BEST 병원 필터 적용');
 }
@@ -296,12 +296,12 @@ function handlePagination(clickedLink) {
     pageLinks.forEach(link => {
         link.classList.remove('active');
     });
-    
+
     clickedLink.classList.add('active');
-    
+
     const pageNumber = clickedLink.textContent;
     console.log('페이지 이동:', pageNumber);
-    
+
     // 실제 페이지네이션 로직 구현 (서버 요청 등)
     // loadPage(pageNumber);
 }
@@ -310,7 +310,7 @@ function handlePagination(clickedLink) {
 function updateTotalCount() {
     const visibleItems = document.querySelectorAll('.hospital-item[style*="flex"], .hospital-item:not([style*="none"])');
     const totalCount = visibleItems.length;
-    
+
     const totalCountElement = document.querySelector('.total-count');
     if (totalCountElement) {
         totalCountElement.textContent = `총 ${totalCount}건`;
@@ -320,18 +320,18 @@ function updateTotalCount() {
 // 검색 기능 (추가 기능)
 function searchHospitals(keyword) {
     const hospitalItems = document.querySelectorAll('.hospital-item');
-    
+
     hospitalItems.forEach(item => {
         const hospitalName = item.querySelector('.hospital-name').textContent.toLowerCase();
         const shouldShow = hospitalName.includes(keyword.toLowerCase());
-        
+
         if (shouldShow) {
             item.style.display = 'flex';
         } else {
             item.style.display = 'none';
         }
     });
-    
+
     updateTotalCount();
 }
 
@@ -341,13 +341,13 @@ function resetFilters() {
     checkboxes.forEach(checkbox => {
         checkbox.checked = false;
     });
-    
+
     const hospitalItems = document.querySelectorAll('.hospital-item');
     hospitalItems.forEach(item => {
         item.style.display = 'flex';
         item.style.order = '';
     });
-    
+
     updateTotalCount();
     console.log('필터 초기화');
 }
@@ -355,7 +355,7 @@ function resetFilters() {
 // 즐겨찾기 목록 가져오기
 function getFavoriteHospitals() {
     const favoriteItems = document.querySelectorAll('.hospital-item .fas.fa-heart');
-    return Array.from(favoriteItems).map(heart => 
+    return Array.from(favoriteItems).map(heart =>
         heart.closest('.hospital-item').dataset.hospital
     );
 }
@@ -363,7 +363,7 @@ function getFavoriteHospitals() {
 // 즐겨찾기만 표시
 function showFavoritesOnly() {
     const hospitalItems = document.querySelectorAll('.hospital-item');
-    
+
     hospitalItems.forEach(item => {
         const heartIcon = item.querySelector('.hospital-heart i');
         if (heartIcon.classList.contains('fas')) {
@@ -372,7 +372,7 @@ function showFavoritesOnly() {
             item.style.display = 'none';
         }
     });
-    
+
     updateTotalCount();
     console.log('즐겨찾기만 표시');
 }
@@ -394,11 +394,11 @@ function restoreHeartStates() {
     try {
         const heartStates = JSON.parse(localStorage.getItem('hospitalHeartStates') || '{}');
         const hospitalItems = document.querySelectorAll('.hospital-item');
-        
+
         hospitalItems.forEach(item => {
             const hospitalName = item.dataset.hospital;
             const heartIcon = item.querySelector('.hospital-heart i');
-            
+
             if (heartStates[hospitalName] && heartIcon) {
                 // 저장된 상태가 true이면 채워진 하트로 설정
                 heartIcon.classList.remove('far');
@@ -412,7 +412,7 @@ function restoreHeartStates() {
                 heartIcon.style.color = '#ccc';
             }
         });
-        
+
         console.log('하트 상태 복원 완료');
     } catch (error) {
         console.error('하트 상태 복원 중 오류:', error);

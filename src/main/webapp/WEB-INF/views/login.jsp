@@ -102,6 +102,41 @@
             height: 22px;
             margin-right: 12px;
         }
+        /* 헤더 스타일 오버라이드 */
+        #main-header .user-actions {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+        }
+        #main-header .dropdown {
+            display: inline-block !important;
+        }
+        #main-header .lang_btn {
+            display: inline-block !important;
+            white-space: nowrap !important;
+            width: auto !important;
+            flex-direction: row !important;
+        }
+        #main-header .header-container {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+        }
+        /* 헤더 전체 폰트 크기 통일 */
+        #main-header * {
+            font-size: 14px !important;
+        }
+        #main-header .login-btn {
+            font-size: 14px !important;
+            padding: 8px 16px !important;
+            width: auto !important;
+            margin-bottom: 0 !important;
+        }
+        #main-header .dropdown-content a {
+            font-size: 14px !important;
+            padding: 10px 15px !important;
+        }
     </style>
 </head>
 <body>

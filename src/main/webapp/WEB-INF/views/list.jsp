@@ -155,7 +155,7 @@
                     <i class="fas fa-hospital"></i>
                     <p>병원을 선택하면 상세 정보가 표시됩니다</p>
                 </div>
-                
+
                 <!-- 상세 정보가 동적으로 로드될 영역 -->
                 <div class="detail-content" style="display: none;">
                     <!-- 상세 정보가 여기에 표시됩니다 -->
@@ -171,3 +171,4 @@
     <%@include file = "/common/footer.jsp"%>
 </body>
 </html>
+

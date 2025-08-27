@@ -28,9 +28,9 @@
 <%@include file = "/common/header.jsp"%>
 
 <main class="main-content">
-    <section class="hero-section">
+    <section>
         <div class="container">
-            <h1><spring:message code="main.banner.space"/></h1>
+            <image src="/resources/images/bannerimg.jpg" alt="HealnGo Main Visual" class="hero-image">
         </div>
     </section>
 
@@ -274,6 +274,7 @@
                     main.main-content {
                         flex: 1;
                         padding-bottom: 0;
+                        padding-top: 0;
                     }
                 </style>
 

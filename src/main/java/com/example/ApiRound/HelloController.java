@@ -73,4 +73,9 @@ public class HelloController {
     public String waxing_list(Model model) {
         return "waxing_list"; // /WEB-INF/views/waxing_list.jsp로 연결됨
     }
+
+    @GetMapping("/plastic_list")
+    public String plastic_list(Model model) {
+        return "plastic_list"; // /WEB-INF/views/plastic_list.jsp로 연결됨
+    }
 }
