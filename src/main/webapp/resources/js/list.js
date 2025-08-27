@@ -229,16 +229,31 @@ function toggleHeart(hospitalItem) {
         heartIcon.classList.add('fas');
         heartIcon.style.color = '#ff4757';
         console.log('즐겨찾기 추가:', hospitalItem.dataset.hospital);
+        
+        // 하트 상태를 localStorage에 저장
+        saveHeartState(hospitalItem.dataset.hospital, true);
+        
+        // favorite 목록에 추가
+        addToFavorites(hospitalItem.dataset.hospital);
+        
+        // 메시지 표시
+        alert('즐겨찾기에 추가되었습니다!');
     } else {
         // 채워진 하트 → 빈 하트
         heartIcon.classList.remove('fas');
         heartIcon.classList.add('far');
         heartIcon.style.color = '#ccc';
         console.log('즐겨찾기 제거:', hospitalItem.dataset.hospital);
+        
+        // 하트 상태를 localStorage에 저장
+        saveHeartState(hospitalItem.dataset.hospital, false);
+        
+        // favorite 목록에서 제거
+        removeFromFavorites(hospitalItem.dataset.hospital);
+        
+        // 메시지 표시
+        alert('즐겨찾기에서 제거되었습니다.');
     }
-    
-    // 하트 상태를 localStorage에 저장
-    saveHeartState(hospitalItem.dataset.hospital, heartIcon.classList.contains('fas'));
 }
 
 // 병원 선택
@@ -269,25 +284,6 @@ function selectHospital(hospitalItem) {
         hospitalItem.classList.add('active');
         console.log('병원 선택:', hospitalItem.dataset.hospital);
     }
-}
-
-// BEST 병원 표시
-function showBestHospitals() {
-    const hospitalItems = document.querySelectorAll('.hospital-item');
-    const bestHospitals = ['더바디성형외과의원', '픽셀랩성형외과의원', 'JY피부과의원'];
-    
-    hospitalItems.forEach(item => {
-        const hospitalName = item.dataset.hospital;
-        if (bestHospitals.includes(hospitalName)) {
-            item.style.display = 'flex';
-            item.style.order = bestHospitals.indexOf(hospitalName);
-        } else {
-            item.style.display = 'none';
-        }
-    });
-    
-    updateTotalCount();
-    console.log('BEST 병원 필터 적용');
 }
 
 // 페이지네이션 처리
@@ -416,5 +412,46 @@ function restoreHeartStates() {
         console.log('하트 상태 복원 완료');
     } catch (error) {
         console.error('하트 상태 복원 중 오류:', error);
+    }
+}
+
+// favorite 목록에 병원 추가
+function addToFavorites(hospitalName) {
+    try {
+        const favorites = JSON.parse(localStorage.getItem('favoriteHospitals') || '[]');
+        console.log('현재 favoriteHospitals:', favorites);
+        
+        if (!favorites.includes(hospitalName)) {
+            favorites.push(hospitalName);
+            localStorage.setItem('favoriteHospitals', JSON.stringify(favorites));
+            console.log('favorite 목록에 추가 완료:', hospitalName);
+            console.log('업데이트된 favoriteHospitals:', favorites);
+        } else {
+            console.log('이미 favorite에 존재하는 병원:', hospitalName);
+        }
+    } catch (error) {
+        console.error('favorite 목록 추가 중 오류:', error);
+    }
+}
+
+// favorite 목록에서 병원 제거
+function removeFromFavorites(hospitalName) {
+    try {
+        const favorites = JSON.parse(localStorage.getItem('favoriteHospitals') || '[]');
+        const updatedFavorites = favorites.filter(name => name !== hospitalName);
+        localStorage.setItem('favoriteHospitals', JSON.stringify(updatedFavorites));
+        console.log('favorite 목록에서 제거:', hospitalName);
+    } catch (error) {
+        console.error('favorite 목록 제거 중 오류:', error);
+    }
+}
+
+// favorite 목록 가져오기
+function getFavorites() {
+    try {
+        return JSON.parse(localStorage.getItem('favoriteHospitals') || '[]');
+    } catch (error) {
+        console.error('favorite 목록 가져오기 중 오류:', error);
+        return [];
     }
 }

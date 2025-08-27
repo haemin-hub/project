@@ -44,8 +44,38 @@ public class HelloController {
         return "location";
     }
 
-    @GetMapping("/list")
-    public String list(Model model) {
-        return "list"; // /WEB-INF/views/list.jsp로 연결됨
+    @GetMapping("/dental_list")
+    public String dental_list(Model model) {
+        return "dental_list"; // /WEB-INF/views/dental_list.jsp로 연결됨
+    }
+
+    @GetMapping("/korea_list")
+    public String korea_list(Model model) {
+        return "korea_list"; // /WEB-INF/views/korea_list.jsp로 연결됨
+    }
+
+    @GetMapping("/massage_list")
+    public String massage_list(Model model) {
+        return "massage_list"; // /WEB-INF/views/massage_list.jsp로 연결됨
+    }
+
+    @GetMapping("/pharmacy_list")
+    public String pharmacy_list(Model model) {
+        return "pharmacy_list"; // /WEB-INF/views/pharmacy_list.jsp로 연결됨
+    }
+
+    @GetMapping("/skin_list")
+    public String skin_list(Model model) {
+        return "skin_list"; // /WEB-INF/views/skin_list.jsp로 연결됨
+    }
+
+    @GetMapping("/waxing_list")
+    public String waxing_list(Model model) {
+        return "waxing_list"; // /WEB-INF/views/waxing_list.jsp로 연결됨
+    }
+
+    @GetMapping("/plastic_list")
+    public String plastic_list(Model model) {
+        return "plastic_list"; // /WEB-INF/views/plastic_list.jsp로 연결됨
     }
 }
