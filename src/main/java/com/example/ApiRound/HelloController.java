@@ -18,10 +18,7 @@ public class HelloController {
         return "main"; // /WEB-INF/views/main.jsp로 연결됨
     }
 
-    @GetMapping("/tourism")
-    public String tourism(Model model) {
-        return "tourism"; // /WEB-INF/views/tourism.jsp로 연결됨
-    }
+
 
     @GetMapping("/plastic-surgery")
     public String surgery(Model model) {
