@@ -4,10 +4,19 @@
 function initializeMap(mapElement, hospitalName, address) {
     try {
         console.log('주소 기반 지도 초기화 시작 - 병원:', hospitalName, '주소:', address);
-        
+
+        // 카카오맵 API 로드 상태 확인
+        if (typeof kakao === 'undefined' || !kakao.maps) {
+            console.error('카카오맵 API가 로드되지 않았습니다. 잠시 후 다시 시도합니다.');
+            setTimeout(() => {
+                initializeMap(mapElement, hospitalName, address);
+            }, 1000);
+            return;
+        }
+
         // 지도를 표시할 div
         var mapContainer = mapElement;
-        
+
         // 지도 옵션 설정 (기본 중심좌표)
         var mapOption = {
             center: new kakao.maps.LatLng(37.5665, 126.9780), // 서울시청 기본 중심좌표
@@ -39,14 +48,14 @@ function initializeMap(mapElement, hospitalName, address) {
                 map.setCenter(coords);
 
                 console.log('주소 기반 지도 초기화 완료');
-                
+
             } else {
                 console.error('주소를 찾을 수 없습니다:', address, '상태:', status);
                 // 주소 검색 실패 시 간단한 주소로 재시도
                 retryWithSimplifiedAddress(map, hospitalName, address);
             }
         });
-        
+
     } catch (error) {
         console.error('지도 초기화 중 오류:', error);
     }
@@ -56,10 +65,10 @@ function initializeMap(mapElement, hospitalName, address) {
 function retryWithSimplifiedAddress(map, hospitalName, originalAddress) {
     try {
         console.log('간단한 주소로 재시도 - 병원:', hospitalName);
-        
+
         // 주소를 간단하게 변환
         var simplifiedAddress = '';
-        
+
         if (originalAddress.includes('부산')) {
             simplifiedAddress = '부산 해운대구';
         } else if (originalAddress.includes('서울')) {
@@ -73,20 +82,20 @@ function retryWithSimplifiedAddress(map, hospitalName, originalAddress) {
         } else {
             simplifiedAddress = '서울 강남구';
         }
-        
+
         console.log('간단한 주소로 재시도:', simplifiedAddress);
-        
+
         // 주소-좌표 변환 객체를 생성합니다
         var geocoder = new kakao.maps.services.Geocoder();
-        
+
         // 간단한 주소로 좌표를 검색합니다
         geocoder.addressSearch(simplifiedAddress, function(result, status) {
             console.log('간단한 주소 검색 결과:', status, result);
-            
+
             if (status === kakao.maps.services.Status.OK && result && result.length > 0) {
                 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
                 console.log('간단한 주소로 찾은 좌표:', coords.getLat(), coords.getLng());
-                
+
                 // 결과값으로 받은 위치를 마커로 표시합니다
                 var marker = new kakao.maps.Marker({
                     map: map,
@@ -97,12 +106,12 @@ function retryWithSimplifiedAddress(map, hospitalName, originalAddress) {
                 map.setCenter(coords);
 
                 console.log('간단한 주소로 지도 초기화 완료');
-                
+
             } else {
                 console.error('간단한 주소도 찾을 수 없습니다:', simplifiedAddress);
             }
         });
-        
+
     } catch (error) {
         console.error('간단한 주소 재시도 중 오류:', error);
     }
