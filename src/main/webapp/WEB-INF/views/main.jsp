@@ -61,7 +61,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 3: 피부 -->
-                <a href="/location?category=skincare" class="category-button hot">
+                <a href="/location?category=skin" class="category-button hot">
                     <div class="category-button-icon">
                         <img src="/resources/images/mask.png" alt="<spring:message code='main.category.skincare'/>">
                     </div>
@@ -88,7 +88,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 6: 한의학 -->
-                <a href="/location?category=korean" class="category-button new">
+                <a href="/location?category=korean.medicine" class="category-button new">
                     <div class="category-button-icon">
                         <i class="fas fa-leaf"></i>
                     </div>
@@ -96,11 +96,27 @@
                     <p><spring:message code="main.category.korean.medicine.desc"/></p>
                 </a>
 
+                <!-- 카테고리 버튼 7: 마사지 -->
+                <a href="/location?category=massage" class="category-button hot">
+                    <div class="category-button-icon">
+                        <img src="/resources/images/massage.png" alt="<spring:message code='main.category.massage'/>">
+                    </div>
+                    <h3><spring:message code="main.category.massage"/></h3>
+                    <p><spring:message code="main.category.massage.desc"/></p>
+                </a>
 
+                <!-- 카테고리 버튼 8: 왁싱 -->
+                <a href="/location?category=waxing" class="category-button">
+                    <div class="category-button-icon">
+                        <img src="/resources/images/waxing.png" alt="<spring:message code='main.category.waxing'/>">
+                    </div>
+                    <h3><spring:message code="main.category.waxing"/></h3>
+                    <p><spring:message code="main.category.waxing.desc"/></p>
+                </a>
             </div>
         </div>
     </section>
-            
+
                 <!-- 인기 도시 및 TOP3 의료기관 섹션 -->
                 <section class="popular-section">
                     <div class="container">
@@ -108,7 +124,7 @@
                 <div class="main-title"><spring:message code="main.popular.title"/></div>
                 <p class="sub-title"><spring:message code="main.popular.subtitle"/></p>
             </div>
-            
+
             <div class="popular-content-wrapper">
                 <!-- 왼쪽: 국내 급상승 인기 도시 -->
                 <div class="tripbtoz-popular-cities">
@@ -191,10 +207,10 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <!-- 가운데 구분선 -->
                 <div class="content-divider"></div>
-                
+
                 <!-- 오른쪽: TOP3 의료기관 -->
                 <div class="top-companies-cards">
                     <div class="cards-header">
@@ -218,7 +234,7 @@
                                 <span class="specialty-tag"><spring:message code="company.gangnam.specialty"/></span>
                             </div>
                         </a>
-                        
+
                         <!-- 인기 업체 2 -->
                         <a href="/company/seoul-medical" class="company-card">
                             <div class="card-image">
@@ -235,7 +251,7 @@
                                 <span class="specialty-tag"><spring:message code="company.seoul.specialty"/></span>
                             </div>
                         </a>
-                        
+
                         <!-- 인기 업체 3 -->
                         <a href="/company/busan-dental" class="company-card">
                             <div class="card-image">

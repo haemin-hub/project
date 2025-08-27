@@ -10,7 +10,7 @@
         </a>
         <div class="user-actions">
                   <div class="button-icon" id="zzim">
-                  <a href="/main"><i class="fa-solid fa-heart"></i></a>
+                  <a href="/favorite"><i class="fa-solid fa-heart"></i></a>
                   </div>
             <div class="dropdown">
                 <button class="lang_btn"><spring:message code="button.translate"/></button>

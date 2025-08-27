@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>HealnGo - 치과 목록</title>
+    <link rel="stylesheet" href="/resources/css/styles.css">
     <link rel="stylesheet" href="/resources/css/list.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -10,31 +11,37 @@
     <%@include file = "/common/header.jsp"%>
 
     <div class="main-container">
-        <!-- 왼쪽 영역: 필터 및 병원 목록 -->
-        <div class="left-panel">
+        <!-- 지역 정보 표시 -->
+        <div class="region-info">
+            <h2><spring:message code="list.selected.region"/>: ${region}</h2>
+        </div>
+        
+        <div class="content-area">
+            <!-- 왼쪽 영역: 필터 및 병원 목록 -->
+            <div class="left-panel">
             <!-- 필터 섹션 -->
             <div class="filter-section">
                 <div class="filter-row">
                     <div class="filter-checkboxes">
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="eye">
-                            <span class="checkmark">임플란트</span>
+                            <span class="checkmark"><spring:message code="filter.dental.implant"/></span>
                         </label>
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="nose">
-                            <span class="checkmark">스케일링</span>
+                            <span class="checkmark"><spring:message code="filter.dental.scaling"/></span>
                         </label>
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="chin">
-                            <span class="checkmark">제로네이트</span>
+                            <span class="checkmark"><spring:message code="filter.dental.ceramic"/></span>
                         </label>
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="chin">
-                            <span class="checkmark">라미네이트</span>
+                            <span class="checkmark"><spring:message code="filter.dental.laminate"/></span>
                         </label>
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="mouth">
-                            <span class="checkmark">교정</span>
+                            <span class="checkmark"><spring:message code="filter.dental.orthodontics"/></span>
                         </label>
                     </div>
                 </div>
@@ -42,7 +49,7 @@
 
             <!-- 결과 정보 -->
             <div class="result-info">
-                <div class="total-count">총 4건</div>
+                <div class="total-count"><spring:message code="list.total.count" arguments="4"/></div>
             </div>
 
             <!-- 병원 목록 -->
@@ -86,19 +93,19 @@
                 <a href="#" class="page-link">5</a>
                 <a href="#" class="page-link">&gt;&gt;</a>
             </div>
-        </div>
 
-        <!-- 오른쪽 영역: 상세 정보 -->
-        <div class="right-panel">
-            <div class="detail-container">
-                <div class="detail-placeholder">
+            <!-- 오른쪽 영역: 상세 정보 -->
+            <div class="right-panel">
+                <div class="detail-container">
+                                    <div class="detail-placeholder">
                     <i class="fas fa-hospital"></i>
-                    <p>병원을 선택하면 상세 정보가 표시됩니다</p>
+                    <p><spring:message code="list.select.hospital"/></p>
                 </div>
-                
-                <!-- 상세 정보가 동적으로 로드될 영역 -->
-                <div class="detail-content" style="display: none;">
-                    <!-- 상세 정보가 여기에 표시됩니다 -->
+                    
+                    <!-- 상세 정보가 동적으로 로드될 영역 -->
+                    <div class="detail-content" style="display: none;">
+                        <!-- 상세 정보가 여기에 표시됩니다 -->
+                    </div>
                 </div>
             </div>
         </div>
