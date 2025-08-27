@@ -1,10 +1,43 @@
+
+// 값 공백/placeholder 검사
+function isBlank(v) {
+  return !v || /^\s*$/.test(v);
+}
+
+// 홈페이지를 안전하게 HTML로 렌더 (없으면 링크 없이 텍스트만)
+function websiteToHtml(raw) {
+  const text = (raw || '').trim();
+
+  // 비어있거나 placeholder면 링크 만들지 않음
+  if (isBlank(text) || text === '-' || text === '홈페이지 정보 없음') {
+    return '홈페이지 정보 없음';
+  }
+
+  // 스킴 없으면 https 붙이기
+  let url = text;
+  if (!/^https?:\/\//i.test(url)) {
+    url = 'https://' + url;
+  }
+
+  // URL 유효성 최종 체크 실패 시에도 링크 금지
+  try {
+    new URL(url);
+  } catch {
+    return '홈페이지 정보 없음';
+  }
+
+  // 정상일 때만 앵커로 렌더
+  return `<a href="${url}" target="_blank" rel="noopener">${text}</a>`;
+}
+
+
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', function() {
    console.log('병원 목록 페이지 로드 완료');
 
    bindHospitalItemEvents();   // ✅ 여기서 호출
    bindPagination();           // ✅ AJAX 페이징 바인딩
-   updateTotalCount();
+   // updateTotalCount();
    restoreHeartStates();
 
    const detailContent = document.querySelector('.detail-content');
@@ -53,29 +86,38 @@ function showHospitalDetail(hospitalItem) {
     detailContent.style.display = 'block';
     detailContent.innerHTML = generateHospitalDetailHTML(hospitalName);
 
-    // 지도 초기화 (카카오맵이 로드된 경우)
-    setTimeout(() => {
+    // 지도 초기화 (Google Maps API가 로드된 경우)
+    const initializeMapWhenReady = () => {
         const mapElement = detailContent.querySelector('#map');
         if (mapElement) {
             const hospitalData = getHospitalData(hospitalName);
             console.log('지도 초기화 시작 - 병원:', hospitalName, '주소:', hospitalData.address);
-            // map.js의 initializeMap 함수 사용
-            initializeMap(mapElement, hospitalName, hospitalData.address);
+            
+            // Google Maps API가 로드되었는지 확인
+            if (typeof google !== 'undefined' && google.maps) {
+                // map.js의 initializeMap 함수 사용
+                initializeMap(mapElement, hospitalName, hospitalData.address);
+            } else {
+                // API가 아직 로드되지 않았으면 다시 시도
+                setTimeout(initializeMapWhenReady, 100);
+            }
         } else {
             console.error('지도 요소를 찾을 수 없습니다.');
         }
-    }, 500);
+    };
+    
+    // DOM 업데이트 후 지도 초기화 시작 (약간의 지연 추가)
+    setTimeout(initializeMapWhenReady, 100);
 
     console.log('상세 정보 표시:', hospitalName);
 }
-
-// 병원 상세 정보 HTML 생성
 function generateHospitalDetailHTML(hospitalName) {
-  const data = getHospitalData(hospitalName); // 한 번만 가져오고 구조 분해
-  const website = data.website || '-';
-  const phone   = data.phone   || '-';
-  const address = data.address || '-';
-  const subway  = data.subway  || '-';
+  const data = getHospitalData(hospitalName);
+
+  const websiteHtml = websiteToHtml(data.website);
+  const phone   = (!isBlank(data.phone) && data.phone !== '전화번호 정보 없음')
+                  ? data.phone : '연락처 정보 없음';
+  const address = !isBlank(data.address) ? data.address : '주소 정보 없음';
 
   return `
     <div class="hospital-detail-info">
@@ -90,9 +132,7 @@ function generateHospitalDetailHTML(hospitalName) {
         <table>
           <tr>
             <th>홈페이지</th>
-            <td class="hospital_website">${
-              website !== '-' ? `<a href="${website}" target="_blank" rel="noopener">${website}</a>` : '-'
-            }</td>
+            <td class="hospital_website">${websiteHtml}</td>
           </tr>
           <tr>
             <th>연락처</th>
@@ -101,10 +141,6 @@ function generateHospitalDetailHTML(hospitalName) {
           <tr>
             <th>위치 및 교통정보</th>
             <td class="hospital_address">${address}</td>
-          </tr>
-          <tr>
-            <th>지하철</th>
-            <td class="location">${subway}</td>
           </tr>
         </table>
       </div>
@@ -117,52 +153,44 @@ function generateHospitalDetailHTML(hospitalName) {
   `;
 }
 
-// 병원 데이터 가져오기
-function getHospitalData(hospitalName) {
-    const hospitalData = {
-        '더고운성형외과의원': {
-            website: 'http://www.daegoon.com',
-            phone: '02-123-4567',
-            address: '서울특별시 강남구 테헤란로 123',
-            subway: '2호선 강남역 3번 출구 150m'
-        },
-        '더뷰티성형외과의원': {
-            website: 'http://www.daebeauty.com',
-            phone: '02-234-5678',
-            address: '서울특별시 강남구 테헤란로 456',
-            subway: '2호선 강남역 5번 출구 200m'
-        },
-        '더바디성형외과의원': {
-            website: 'http://www.daebody.com',
-            phone: '02-345-6789',
-            address: '서울특별시 강남구 테헤란로 789',
-            subway: '2호선 강남역 7번 출구 300m'
-        },
-        '픽셀랩성형외과의원': {
-            website: 'http://www.healngo.kr',
-            phone: '031-123-4567',
-            address: '서울특별시 서초구 서초대로73길 42',
-            subway: '신분당 신논현역 7번 출구 239m · 도보 6분'
-        },
-        'JY피부과의원': {
-            website: 'http://www.jy-dermatology.com',
-            phone: '02-456-7890',
-            address: '서울특별시 강남구 테헤란로 123',
-            subway: '2호선 강남역 3번 출구 150m · 도보 3분'
-        },
-        '부산치과의원': {
-            website: 'http://www.busan-dental.com',
-            phone: '051-123-4567',
-            address: '부산광역시 해운대구 해운대로 264',
-            subway: '2호선 해운대역 1번 출구 300m · 도보 5분'
-        }
-    };
 
-    return hospitalData[hospitalName] || {
-        website: 'http://www.example.com',
-        phone: '02-000-0000',
-        address: '서울특별시 강남구',
-        subway: '지하철 정보 없음'
+
+// 병원 데이터 가져오기 (DB에서 실제 데이터 사용)
+function getHospitalData(hospitalName) {
+    // 현재 페이지의 병원 목록에서 해당 병원 찾기
+    const hospitalItems = document.querySelectorAll('.hospital-item');
+    
+    for (let item of hospitalItems) {
+        if (item.dataset.hospital === hospitalName) {
+            // DB에서 가져온 실제 데이터 사용
+            const address = item.dataset.address || '주소 정보 없음';
+            const phone = item.dataset.phone || '전화번호 정보 없음';
+            const homepage = item.dataset.homepage || '홈페이지 정보 없음';
+            const region = item.dataset.region || '';
+            const subregion = item.dataset.subregion || '';
+            
+            // 지하철 정보는 기본값 사용 (DB에 지하철 정보가 없으므로)
+            const subway = '지하철 정보 없음';
+            
+            return {
+                website: homepage,
+                phone: phone,
+                address: address,
+                subway: subway,
+                region: region,
+                subregion: subregion
+            };
+        }
+    }
+    
+    // 병원을 찾지 못한 경우 기본값 반환
+    return {
+        website: '-',
+        phone: '-',
+        address: '주소 정보 없음',
+        subway: '지하철 정보 없음',
+        region: '',
+        subregion: ''
     };
 }
 
@@ -256,34 +284,8 @@ function handlePagination(clickedLink) {
     // loadPage(pageNumber);
 }
 
-// 총 개수 업데이트
-function updateTotalCount() {
-    const visibleItems = document.querySelectorAll('.hospital-item[style*="flex"], .hospital-item:not([style*="none"])');
-    const totalCount = visibleItems.length;
-
-    const totalCountElement = document.querySelector('.total-count');
-    if (totalCountElement) {
-        totalCountElement.textContent = `총 ${totalCount}건`;
-    }
-}
-
-// 검색 기능 (추가 기능)
-function searchHospitals(keyword) {
-    const hospitalItems = document.querySelectorAll('.hospital-item');
-
-    hospitalItems.forEach(item => {
-        const hospitalName = item.querySelector('.hospital-name').textContent.toLowerCase();
-        const shouldShow = hospitalName.includes(keyword.toLowerCase());
-
-        if (shouldShow) {
-            item.style.display = 'flex';
-        } else {
-            item.style.display = 'none';
-        }
-    });
-
-    updateTotalCount();
-}
+// ✅ 더 이상 클라이언트에서 총 건수 계산/덮어쓰기 하지 않음
+function updateTotalCount(){}
 
 // 필터 초기화
 function resetFilters() {

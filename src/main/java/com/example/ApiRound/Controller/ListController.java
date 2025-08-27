@@ -47,7 +47,7 @@ public class ListController {
                              @RequestParam(required = false, name = "subRegion") String subRegion,
                              @RequestParam(required = false) String category,
                              @RequestParam(defaultValue = "1") int pageNo,
-                             @RequestParam(defaultValue = "18") int amount) {
+                             @RequestParam(defaultValue = "15") int amount) {
 
         System.out.println("=== 요청 파라미터 ===");
         System.out.println("region: " + region);
