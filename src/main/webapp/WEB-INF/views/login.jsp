@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%
     String kakaoClientId = "c7ceeb58d858498a39068ce0c31eade5";
@@ -24,7 +24,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>로그인 선택</title>
+    <title><spring:message code="login.title"/></title>
     <link rel="stylesheet" href="/resources/css/styles.css">
     <style>
         body {
@@ -144,19 +144,19 @@
 
     <div class="login-page-wrapper">
         <div class="login-container">
-            <h1>HealnGo</h1>
-            <p>로그인 또는 회원 가입<br>무료로 가입하고 혜택을 누려보세요!</p>
+            <h1><spring:message code="login.brand"/></h1>
+            <p><spring:message code="login.subtitle"/></p>
 
             <!-- 카카오 로그인 -->
             <a href="<%= kakaoLoginUrl %>" class="login-btn kakao-btn">
                 <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" alt="Kakao" class="kakao-icon" />
-                카카오 계정으로 로그인하기
+                <spring:message code="login.kakao.button"/>
             </a>
 
             <!-- 구글 로그인 -->
-            <a href="${googleLoginUrl}" class="login-btn google-btn">
+            <a href="<%= googleLoginUrl %>" class="login-btn google-btn">
                 <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google" class="google-icon" />
-                구글 계정으로 로그인하기
+                <spring:message code="login.google.button"/>
             </a>
         </div>
     </div>

@@ -22,7 +22,7 @@ public class HelloController {
     @GetMapping("/hello")
     public String hello(Model model) {
         model.addAttribute("message", "JSP 테스트 성공!");
-        return "hello"; // /WEB-INF/views/hello.jsp
+        return "hello"; // /WEB-INF/views/hello.jsp로 연결됨
     }
 
     @GetMapping("/main")
@@ -32,25 +32,22 @@ public class HelloController {
         return "main"; // /WEB-INF/views/main.jsp
     }
 
-    @GetMapping("/tourism")
-    public String tourism(Model model) {
-        return "tourism";
-    }
 
     @GetMapping("/plastic-surgery")
     public String surgery(Model model) {
-        return "plastic-surgery";
+        return "plastic-surgery"; // /WEB-INF/views/plastic-surgery.jsp로 연결됨
     }
 
     @GetMapping("/skincare")
     public String skincare(Model model) {
-        return "skincare";
+        return "skincare"; // /WEB-INF/views/skincare.jsp로 연결됨
     }
 
     @GetMapping("/favorite")
     public String favorite(Model model) {
-        return "favorite";
+        return "favorite"; // /WEB-INF/views/favorite.jsp로 연결됨
     }
+
 
     @GetMapping("/location")
     public String location() {
@@ -60,26 +57,30 @@ public class HelloController {
     @GetMapping("/list")
     public String list(Model model, String category, String region) {
         try {
-            String decodedRegion = URLDecoder.decode(region, "UTF-8");
+            // URL 디코딩
+            String decodedRegion = java.net.URLDecoder.decode(region, "UTF-8");
+            
+            // 카테고리에 따라 적절한 리스트 페이지로 리다이렉트
             switch (category) {
                 case "dental":
-                    return "redirect:/dental_list?region=" + URLEncoder.encode(decodedRegion, "UTF-8");
+                    return "redirect:/dental_list?region=" + java.net.URLEncoder.encode(decodedRegion, "UTF-8");
                 case "korean.medicine":
-                    return "redirect:/korea_list?region=" + URLEncoder.encode(decodedRegion, "UTF-8");
+                    return "redirect:/korea_list?region=" + java.net.URLEncoder.encode(decodedRegion, "UTF-8");
                 case "massage":
-                    return "redirect:/massage_list?region=" + URLEncoder.encode(decodedRegion, "UTF-8");
+                    return "redirect:/massage_list?region=" + java.net.URLEncoder.encode(decodedRegion, "UTF-8");
                 case "pharmacy":
-                    return "redirect:/pharmacy_list?region=" + URLEncoder.encode(decodedRegion, "UTF-8");
+                    return "redirect:/pharmacy_list?region=" + java.net.URLEncoder.encode(decodedRegion, "UTF-8");
                 case "skin":
-                    return "redirect:/skin_list?region=" + URLEncoder.encode(decodedRegion, "UTF-8");
+                    return "redirect:/skin_list?region=" + java.net.URLEncoder.encode(decodedRegion, "UTF-8");
                 case "waxing":
-                    return "redirect:/waxing_list?region=" + URLEncoder.encode(decodedRegion, "UTF-8");
+                    return "redirect:/waxing_list?region=" + java.net.URLEncoder.encode(decodedRegion, "UTF-8");
                 case "plastic":
                 case "tourism":
                 default:
-                    return "redirect:/plastic_list?region=" + URLEncoder.encode(decodedRegion, "UTF-8");
+                    return "redirect:/plastic_list?region=" + java.net.URLEncoder.encode(decodedRegion, "UTF-8");
             }
         } catch (Exception e) {
+            // 인코딩 에러 시 원본 region 사용
             switch (category) {
                 case "dental":
                     return "redirect:/dental_list?region=" + region;
@@ -132,7 +133,7 @@ public class HelloController {
         } catch (Exception e) {
             model.addAttribute("region", region);
         }
-        return "massage_list";
+        return "massage_list"; // /WEB-INF/views/massage_list.jsp로 연결됨
     }
 
     @GetMapping("/pharmacy_list")
@@ -143,7 +144,7 @@ public class HelloController {
         } catch (Exception e) {
             model.addAttribute("region", region);
         }
-        return "pharmacy_list";
+        return "pharmacy_list"; // /WEB-INF/views/pharmacy_list.jsp로 연결됨
     }
 
     @GetMapping("/skin_list")
@@ -154,7 +155,7 @@ public class HelloController {
         } catch (Exception e) {
             model.addAttribute("region", region);
         }
-        return "skin_list";
+        return "skin_list"; // /WEB-INF/views/skin_list.jsp로 연결됨
     }
 
     @GetMapping("/waxing_list")
@@ -165,7 +166,7 @@ public class HelloController {
         } catch (Exception e) {
             model.addAttribute("region", region);
         }
-        return "waxing_list";
+        return "waxing_list"; // /WEB-INF/views/waxing_list.jsp로 연결됨
     }
 
     @GetMapping("/plastic_list")
@@ -176,6 +177,6 @@ public class HelloController {
         } catch (Exception e) {
             model.addAttribute("region", region);
         }
-        return "plastic_list";
+        return "plastic_list"; // /WEB-INF/views/plastic_list.jsp로 연결됨
     }
 }
