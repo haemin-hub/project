@@ -179,4 +179,10 @@ public class HelloController {
         }
         return "plastic_list"; // /WEB-INF/views/plastic_list.jsp로 연결됨
     }
+
+    @GetMapping("/package")
+    public String packagePage(Model model) {
+        model.addAttribute("message", "JSP 테스트 성공!");
+        return "package"; // /WEB-INF/views/package.jsp로 연결됨
+    }
 }
