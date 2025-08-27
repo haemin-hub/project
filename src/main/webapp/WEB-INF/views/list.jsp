@@ -34,7 +34,7 @@
             <!-- 병원 목록 (DB 데이터) -->
             <div class="hospital-list">
                 <c:forEach var="h" items="${lists}">
-                    <div class="hospital-item" data-id="${h.id}" data-hospital="${h.name}">
+                    <div class="hospital-item" data-id="${h.id}" data-hospital="${h.name}" data-company-id="${h.id}">
                         <div class="hospital-heart"><i class="far fa-heart"></i></div>
                         <div class="hospital-name">${h.name}</div>
                     </div>
