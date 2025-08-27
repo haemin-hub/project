@@ -186,12 +186,19 @@ function showDetail(id) {
     
     // 병원 카테고리별 페이지 매핑
     const categoryMapping = {
-        '더고운성형외과의원': '/plastic_list',
-        '더뷰티성형외과의원': '/plastic_list', 
-        '더바디성형외과의원': '/plastic_list',
-        '픽셀랩성형외과의원': '/plastic_list',
-        'JY피부과의원': '/skin_list',
-        '부산치과의원': '/dental_list'
+        '더고운성형외과의원': '/listController/plastic_list',
+        '더뷰티성형외과의원': '/listController/plastic_list', 
+        '더바디성형외과의원': '/listController/plastic_list',
+        '픽셀랩성형외과의원': '/listController/plastic_list',
+        'JY피부과의원': '/listController/skin_list',
+        '부산치과의원': '/listController/dental_list',
+        '건강약국': '/listController/pharmacy_list',
+        '행복약국': '/listController/pharmacy_list',
+        '미래약국': '/listController/pharmacy_list',
+        '힐링마사지': '/listController/massage_list',
+        '스파마사지': '/listController/massage_list',
+        '한의원': '/listController/korea_list',
+        '왁싱샵': '/listController/waxing_list'
     };
     
     const targetPage = categoryMapping[hospitalName];

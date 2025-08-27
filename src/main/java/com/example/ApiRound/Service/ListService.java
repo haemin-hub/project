@@ -22,6 +22,17 @@ public interface ListService {
     List<ListDto> getListByCategory(String category);
 
     // 🔹 지역 + 카테고리 같이 검색 (예: 서울 치과)
-    List<ListDto> getListByRegionAndCategory(String region, String category);
+    List<ListDto> getListByRegionAndSubregion(String region, String subRegion, String category);
 
+    int countByRegionAndCategory(String region, String subregion, String category);
+
+    List<ListDto> getListByRegionAndSubregionPaged(String region, String subregion, String category,
+                                                   int limit, int offset);
+
+    // 총 게시글(전국)
+    int countByCategory(String category);
+    List<ListDto> getListByCategoryPaged(String category, int amount, int offset);
+
+    // 디버깅용: 모든 카테고리 값 조회
+    List<String> getAllCategories();
 }

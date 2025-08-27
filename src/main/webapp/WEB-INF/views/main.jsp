@@ -52,7 +52,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 2: 성형 -->
-                <a href="/location?category=plastic" class="category-button new">
+                <a href="/location?category=성형" class="category-button new">
                     <div class="category-button-icon">
                         <i class="fas fa-hospital"></i>
                     </div>
@@ -61,7 +61,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 3: 피부 -->
-                <a href="/location?category=skin" class="category-button hot">
+                <a href="/location?category=피부" class="category-button hot">
                     <div class="category-button-icon">
                         <img src="/resources/images/mask.png" alt="<spring:message code='main.category.skincare'/>">
                     </div>
@@ -70,7 +70,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 4: 치과 -->
-                <a href="/location?category=dental" class="category-button">
+                <a href="/location?category=치과" class="category-button">
                     <div class="category-button-icon">
                         <i class="fas fa-tooth"></i>
                     </div>
@@ -79,7 +79,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 5: 약국 -->
-                <a href="/location?category=pharmacy" class="category-button">
+                <a href="/location?category=약국" class="category-button">
                     <div class="category-button-icon">
                         <i class="fas fa-pills"></i>
                     </div>
@@ -88,7 +88,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 6: 한의학 -->
-                <a href="/location?category=korean.medicine" class="category-button new">
+                <a href="/location?category=한의원" class="category-button new">
                     <div class="category-button-icon">
                         <i class="fas fa-leaf"></i>
                     </div>
@@ -97,7 +97,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 7: 마사지 -->
-                <a href="/location?category=massage" class="category-button hot">
+                <a href="/location?category=마사지" class="category-button hot">
                     <div class="category-button-icon">
                         <img src="/resources/images/massage.png" alt="<spring:message code='main.category.massage'/>">
                     </div>
@@ -106,7 +106,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 8: 왁싱 -->
-                <a href="/location?category=waxing" class="category-button">
+                <a href="/location?category=왁싱" class="category-button">
                     <div class="category-button-icon">
                         <img src="/resources/images/waxing.png" alt="<spring:message code='main.category.waxing'/>">
                     </div>

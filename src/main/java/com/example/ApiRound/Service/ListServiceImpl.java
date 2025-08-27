@@ -28,8 +28,8 @@ public class ListServiceImpl implements ListService {
     }
 
     @Override
-    public void addList(ListDto hospital) {
-        listMapper.insertList(hospital);
+    public void addList(ListDto listDto) {
+        listMapper.insert(listDto);  // mapper에서 insert 메서드를 만들어야 함
     }
 
     @Override
@@ -38,7 +38,33 @@ public class ListServiceImpl implements ListService {
     }
 
     @Override
-    public List<ListDto> getListByRegionAndCategory(String region, String category) {
-        return listMapper.findByRegionAndCategory(region, category);
+    public List<ListDto> getListByRegionAndSubregion(String region, String subregion, String category) {
+        return listMapper.findByRegionAndCategory(region, subregion, category);
+    }
+
+    @Override
+    public int countByRegionAndCategory(String region, String subregion, String category) {
+        return listMapper.countByRegionAndCategory(region, subregion, category);
+    }
+
+    @Override
+    public List<ListDto> getListByRegionAndSubregionPaged(String region, String subregion, String category,
+                                                          int limit, int offset) {
+        return listMapper.findByRegionAndCategoryPaged(region, subregion, category, limit, offset);
+    }
+
+    @Override
+    public int countByCategory(String category) {
+        return listMapper.countByCategory(category);
+    }
+
+    @Override
+    public List<ListDto> getListByCategoryPaged(String category, int amount, int offset) {
+        return listMapper.findByCategoryPaged(category, amount, offset);
+    }
+
+    @Override
+    public List<String> getAllCategories() {
+        return listMapper.getAllCategories();
     }
 }
