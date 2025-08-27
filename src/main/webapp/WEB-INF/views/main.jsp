@@ -268,6 +268,50 @@
 
                     </div>
                 </section>
+
+                <!-- 유튜브 영상 매거진 -->
+                <section class="youtube-carousel-section mt-5">
+                    <div class="container">
+
+                        <div id="youtubeCarousel" class="carousel slide">
+                            <div class="carousel-inner">
+                                <!-- 첫 번째 영상 -->
+                                <div class="carousel-item active">
+                                    <div class="ratio ratio-16x9">
+                                        <iframe src="https://www.youtube.com/embed/hC9h4AzbwLw"
+                                                title="소개 영상 1" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <!-- 두 번째 영상 -->
+                                <div class="carousel-item">
+                                    <div class="ratio ratio-16x9">
+                                        <iframe src="https://www.youtube.com/embed/f5Hit9JQCkY"
+                                                title="소개 영상 2" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <!-- 세 번째 영상 -->
+                                <div class="carousel-item">
+                                    <div class="ratio ratio-16x9">
+                                        <iframe src="https://www.youtube.com/embed/WTeTa8nprjw"
+                                                title="소개 영상 3" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 캐러셀 컨트롤 (좌우 버튼) -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#youtubeCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">이전</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#youtubeCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">다음</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+
                 </main>                                                
                 
                 <style>

@@ -343,7 +343,7 @@
         flex-direction: column;
         gap: 20px;
     }
-
+    
     .left-panel {
         flex: none;
         width: 100%;
@@ -387,43 +387,43 @@
     .filter-checkboxes {
         gap: 10px;
     }
-
+    
     .checkmark {
         padding: 5px 8px;
         font-size: 12px;
     }
-
+    
     .hospital-item {
         padding: 10px 12px;
     }
-
+    
     .hospital-name {
         font-size: 13px;
     }
-
+    
     .pagination {
         gap: 5px;
     }
-
+    
     .page-link {
         padding: 5px 8px;
         font-size: 11px;
     }
-
+    
     .hospital-info-table th,
     .hospital-info-table td {
         padding: 8px 10px;
         font-size: 12px;
     }
-
+    
     .hospital-info-table th {
         width: 35%;
     }
-
+    
     .hospital-title {
         font-size: 20px;
     }
-
+    
     .hospital-map .map {
         height: 250px;
     }

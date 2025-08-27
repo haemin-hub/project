@@ -6,8 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.List;
 
 @Controller
@@ -52,7 +50,4 @@ public class HelloController {
     public String location() {
         return "location";
     }
-
-
-        }
-
+}
