@@ -212,65 +212,60 @@
                 <div class="content-divider"></div>
 
                 <!-- 오른쪽: TOP3 의료기관 -->
-                <div class="top-companies-cards">
-                    <div class="cards-header">
-                        <h3><spring:message code="main.popular.companies.title"/></h3>
-                        <a href="/companies" class="more-link"><spring:message code="main.popular.companies.more"/> <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                    <div class="company-cards-wrapper">
-                        <!-- 인기 업체 1 -->
-                        <a href="/company/gangnam-hospital" class="company-card">
-                            <div class="card-image">
-                                <img src="/resources/images/dump.jpg" alt="<spring:message code='company.gangnam.name'/>">
-                                <div class="card-badge">1위</div>
-                            </div>
-                            <div class="card-content">
-                                <h4 class="company-name"><spring:message code="company.gangnam.name"/></h4>
-                                <div class="company-details">
-                                    <span class="location"><i class="fas fa-map-marker-alt"></i> <spring:message code="company.gangnam.location"/></span>
-                                    <span class="rating"><i class="fas fa-star"></i> 4.9 (350)</span>
-                                </div>
-                                <p class="company-desc"><spring:message code="company.gangnam.desc"/></p>
-                                <span class="specialty-tag"><spring:message code="company.gangnam.specialty"/></span>
-                            </div>
-                        </a>
+                <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-                        <!-- 인기 업체 2 -->
-                        <a href="/company/seoul-medical" class="company-card">
-                            <div class="card-image">
-                                <img src="/resources/images/2024-11-20.jpg" alt="<spring:message code='company.seoul.name'/>">
-                                <div class="card-badge">2위</div>
-                            </div>
-                            <div class="card-content">
-                                <h4 class="company-name"><spring:message code="company.seoul.name"/></h4>
-                                <div class="company-details">
-                                    <span class="location"><i class="fas fa-map-marker-alt"></i> <spring:message code="company.seoul.location"/></span>
-                                    <span class="rating"><i class="fas fa-star"></i> 4.8 (280)</span>
-                                </div>
-                                <p class="company-desc"><spring:message code="company.seoul.desc"/></p>
-                                <span class="specialty-tag"><spring:message code="company.seoul.specialty"/></span>
-                            </div>
-                        </a>
+                <c:set var="company1" value="${topCompanies[0]}" />
+                <c:set var="company2" value="${topCompanies[1]}" />
+                <c:set var="company3" value="${topCompanies[2]}" />
 
-                        <!-- 인기 업체 3 -->
-                        <a href="/company/busan-dental" class="company-card">
-                            <div class="card-image">
-                                <img src="/resources/images/013_9985 copy.jpg" alt="<spring:message code='company.busan.name'/>">
-                                <div class="card-badge">3위</div>
+                <div class="company-cards-wrapper">
+                    <!-- 인기 업체 1 -->
+                    <a href="/company/${company1.companyId}" class="company-card">
+                        <div class="card-image">
+                            <img src="/resources/images/dump.jpg" alt="${company1.companyName}">
+                            <div class="card-badge">1위</div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="company-name">${company1.companyName}</h4>
+                            <div class="company-details">
+                                <span class="location"><i class="fas fa-map-marker-alt"></i> 강남구</span>
                             </div>
-                            <div class="card-content">
-                                <h4 class="company-name"><spring:message code="company.busan.name"/></h4>
-                                <div class="company-details">
-                                    <span class="location"><i class="fas fa-map-marker-alt"></i> <spring:message code="company.busan.location"/></span>
-                                    <span class="rating"><i class="fas fa-star"></i> 4.7 (210)</span>
-                                </div>
-                                <p class="company-desc"><spring:message code="company.busan.desc"/></p>
-                                <span class="specialty-tag"><spring:message code="company.busan.specialty"/></span>
+                            <span class="specialty-tag">전문 분야</span>
+                        </div>
+                    </a>
+
+                    <!-- 인기 업체 2 -->
+                    <a href="/company/${company2.companyId}" class="company-card">
+                        <div class="card-image">
+                            <img src="/resources/images/2024-11-20.jpg" alt="${company2.companyName}">
+                            <div class="card-badge">2위</div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="company-name">${company2.companyName}</h4>
+                            <div class="company-details">
+                                <span class="location"><i class="fas fa-map-marker-alt"></i> 서초구</span>
                             </div>
-                        </a>
-                    </div>
+                            <span class="specialty-tag">전문 분야</span>
+                        </div>
+                    </a>
+
+                    <!-- 인기 업체 3 -->
+                    <a href="/company/${company3.companyId}" class="company-card">
+                        <div class="card-image">
+                            <img src="/resources/images/013_9985 copy.jpg" alt="${company3.companyName}">
+                            <div class="card-badge">3위</div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="company-name">${company3.companyName}</h4>
+                            <div class="company-details">
+                                <span class="location"><i class="fas fa-map-marker-alt"></i> 마포구</span>
+                            </div>
+                            <span class="specialty-tag">전문 분야</span>
+                        </div>
+                    </a>
                 </div>
-            </div>
+
+
                     </div>
                 </section>
                 </main>                                                

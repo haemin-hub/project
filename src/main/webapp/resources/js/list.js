@@ -43,6 +43,18 @@ function initializeEventListeners() {
                 // 선택된 경우에만 상세 정보 표시
                 if (this.classList.contains('active')) {
                     showHospitalDetail(this);
+                    // 클릭 로그 전송
+                    const companyId = this.dataset.companyId;
+                    if (companyId) {
+                        fetch(`/api/clicks/${companyId}`, { method: "POST" })
+                            .then(response => {
+                                if (!response.ok) throw new Error("클릭 로그 저장 실패");
+                                console.log(`회사 ID ${companyId} 클릭 로그 저장 완료`);
+                            })
+                            .catch(error => {
+                                console.error("에러 발생:", error);
+                            });
+                    }
                 }
             }
         });

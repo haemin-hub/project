@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,28 +55,28 @@
 
             <!-- 병원 목록 -->
             <div class="hospital-list">
-                <div class="hospital-item" data-hospital="더고운성형외과의원">
+                <div class="hospital-item" data-hospital="더고운성형외과의원" data-company-id="87">
                     <div class="hospital-heart">
                         <i class="far fa-heart"></i>
                     </div>
                     <div class="hospital-name">더고운성형외과의원</div>
                 </div>
 
-                <div class="hospital-item" data-hospital="더뷰티성형외과의원">
+                <div class="hospital-item" data-hospital="더뷰티성형외과의원" data-company-id="88">
                     <div class="hospital-heart">
                         <i class="far fa-heart"></i>
                     </div>
                     <div class="hospital-name">더뷰티성형외과의원</div>
                 </div>
 
-                <div class="hospital-item" data-hospital="더바디성형외과의원">
+                <div class="hospital-item" data-hospital="더바디성형외과의원" data-company-id="89">
                     <div class="hospital-heart">
                         <i class="far fa-heart"></i>
                     </div>
                     <div class="hospital-name">더바디성형외과의원</div>
                 </div>
 
-                <div class="hospital-item" data-hospital="픽셀랩성형외과의원">
+                <div class="hospital-item" data-hospital="픽셀랩성형외과의원" data-company-id="90">
                     <div class="hospital-heart">
                         <i class="far fa-heart"></i>
                     </div>
