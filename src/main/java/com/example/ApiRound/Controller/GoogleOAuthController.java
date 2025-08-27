@@ -23,7 +23,7 @@ public class GoogleOAuthController {
     private String redirectUri;
 
     @Autowired
-    @Qualifier("googleSocialUserServiceImpl")
+    @Qualifier("googleSocialUserServiceImpl") //GoogleSocialUserServiceImpl 를 주입하고 싶을 때
     private SocialUserService socialUserService;
 
     // 구글 로그인 URL 생성 메서드 (클라이언트에 URL 전달하거나, 직접 링크로 사용 가능)
