@@ -269,6 +269,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
             color: inherit;
+            cursor: pointer;
         }
         
         .planner-card:hover {
@@ -420,6 +421,226 @@
             .planner-image {
                 width: 70px;
                 height: 70px;
+            }
+        }
+        
+        /* 플래너 모달 스타일 */
+        .planner-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .planner-modal-content {
+            position: relative;
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .planner-modal-close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .planner-modal-close:hover {
+            color: #000;
+        }
+        
+        .modal-screen {
+            width: 100%;
+            min-height: 300px;
+        }
+        
+        /* 첫 번째 화면: 업체 이미지 */
+        .company-image-container {
+            width: 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f8f0f0 0%, #ffe6e6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .company-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,50 Q25,25 50,50 T100,50" fill="none" stroke="%23ffb6c1" stroke-width="2"/><path d="M0,30 Q25,5 50,30 T100,30" fill="none" stroke="%23ffc0cb" stroke-width="2"/><path d="M0,70 Q25,45 50,70 T100,70" fill="none" stroke="%23ffd1dc" stroke-width="2"/></svg>') no-repeat;
+            background-size: 200px 200px;
+            opacity: 0.3;
+        }
+        
+        .company-image-container::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M70,50 Q85,35 100,50 T70,65" fill="none" stroke="%23ffb6c1" stroke-width="2"/><path d="M70,30 Q85,15 100,30 T70,45" fill="none" stroke="%23ffc0cb" stroke-width="2"/><path d="M70,70 Q85,55 100,70 T70,85" fill="none" stroke="%23ffd1dc" stroke-width="2"/></svg>') no-repeat;
+            background-size: 100px 100px;
+            opacity: 0.3;
+        }
+        
+        .company-image-container img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .company-image-container img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* 두 번째 화면: 플래너 정보 */
+        .planner-info-container {
+            display: flex;
+            min-height: 400px;
+        }
+        
+        .planner-info-left {
+            flex: 2;
+            padding: 30px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .planner-info-right {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .planner-profile {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .planner-profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .planner-details {
+            flex: 1;
+        }
+        
+        .planner-company-info {
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .planner-name-info {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .planner-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        .contact-item i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .service-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+        
+        .service-category {
+            background: #f8f9fa;
+            color: #495057;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .service-category:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+        
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .planner-modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+            
+            .planner-info-container {
+                flex-direction: column;
+            }
+            
+            .planner-info-left {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .planner-profile {
+                align-self: center;
+            }
+            
+            .service-categories {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .service-category {
+                min-width: 80px;
             }
         }
     </style>
@@ -686,7 +907,7 @@
         
         <div class="planner-grid">
             <!-- 플래너 1 -->
-            <div class="planner-card">
+            <div class="planner-card" onclick="showPlannerModal('kimhyuna')">
                 <div class="planner-image">
                     <img src="/resources/images/김현아.png" alt="<spring:message code='tourism.planner.kimhyuna.name'/>">
                 </div>
@@ -698,7 +919,7 @@
             </div>
             
             <!-- 플래너 2 -->
-            <div class="planner-card">
+            <div class="planner-card" onclick="showPlannerModal('kangyukyung')">
                 <div class="planner-image">
                     <img src="/resources/images/강유경.png" alt="<spring:message code='tourism.planner.kangyukyung.name'/>">
                 </div>
@@ -710,7 +931,7 @@
             </div>
             
             <!-- 플래너 3 -->
-            <div class="planner-card">
+            <div class="planner-card" onclick="showPlannerModal('kimhaemin')">
                 <div class="planner-image">
                     <img src="/resources/images/김해민.png" alt="<spring:message code='tourism.planner.kimhaemin.name'/>">
                 </div>
@@ -722,7 +943,7 @@
             </div>
             
             <!-- 플래너 4 -->
-            <div class="planner-card">
+            <div class="planner-card" onclick="showPlannerModal('jungminseo')">
                 <div class="planner-image">
                     <img src="/resources/images/정민서.png" alt="<spring:message code='tourism.planner.jungminseo.name'/>">
                 </div>
@@ -735,6 +956,56 @@
         </div>
     </div>
 </section>
+
+<!-- 플래너 팝업 모달 -->
+<div id="plannerModal" class="planner-modal">
+    <div class="planner-modal-content">
+        <span class="planner-modal-close" onclick="closePlannerModal()">&times;</span>
+        
+        <!-- 첫 번째 화면: 업체 이미지 -->
+        <div id="companyImageScreen" class="modal-screen">
+            <div class="company-image-container">
+                <img id="companyImage" src="" alt="<spring:message code='planner.modal.alt.company'/>" onclick="showPlannerInfo()">
+            </div>
+        </div>
+        
+        <!-- 두 번째 화면: 플래너 정보 -->
+        <div id="plannerInfoScreen" class="modal-screen" style="display: none;">
+            <div class="planner-info-container">
+                <div class="planner-info-left">
+                    <div class="planner-profile">
+                        <img id="plannerProfileImage" src="" alt="<spring:message code='planner.modal.alt.profile'/>">
+                    </div>
+                    <div class="planner-details">
+                        <div class="planner-company-info" id="plannerCompanyInfo"></div>
+                        <h2 class="planner-name-info" id="plannerNameInfo"></h2>
+                        <div class="planner-contact">
+                            <div class="contact-item">
+                                <i class="fas fa-phone" style="color: #FFD700;"></i>
+                                <span id="plannerPhone">010-1234-1234</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope" style="color: #6c757d;"></i>
+                                <span id="plannerEmail">mallangping33@gmail.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-heart" style="color: #dc3545;"></i>
+                                <span id="plannerWebsite">www.mallangping.co.kr</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="planner-info-right">
+                    <div class="service-categories">
+                        <div class="service-category"><spring:message code="planner.modal.service.skin"/></div>
+                        <div class="service-category"><spring:message code="planner.modal.service.dental"/></div>
+                        <div class="service-category"><spring:message code="planner.modal.service.diet"/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <%@include file="/common/footer.jsp"%>
 
@@ -852,16 +1123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 플래너 카드 클릭 이벤트
-    const plannerCards = document.querySelectorAll('.planner-card');
-    plannerCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const name = this.querySelector('.planner-name').textContent;
-            alert(`${name} 플래너 상세 페이지로 이동합니다.`);
-            // 실제로는 해당 플래너의 상세 페이지로 이동
-            // window.location.href = `/planner/detail/${plannerId}`;
-        });
-    });
+    // 플래너 카드 클릭 이벤트는 onclick 속성으로 처리됨
     
     // 초기 스크롤 버튼 상태 설정
     updateScrollButtons('popular-packages');
@@ -879,6 +1141,98 @@ document.addEventListener('DOMContentLoaded', function() {
         updateScrollButtons('new-packages');
     });
 });
+
+// 플래너 모달 관련 함수들
+function showPlannerModal(plannerId) {
+    const modal = document.getElementById('plannerModal');
+    const companyImage = document.getElementById('companyImage');
+    const plannerProfileImage = document.getElementById('plannerProfileImage');
+    const plannerCompanyInfo = document.getElementById('plannerCompanyInfo');
+    const plannerNameInfo = document.getElementById('plannerNameInfo');
+    
+    // 플래너별 데이터 설정
+    const plannerData = {
+        kimhyuna: {
+            companyImage: '/resources/images/현아현아업체.jpg',
+            profileImage: '/resources/images/김현아.png',
+            company: '(주)현아현아업체',
+            name: '김현아 플래너',
+            phone: '010-1111-1111',
+            email: 'hyunahyuna@gmail.com',
+            website: 'www.hyunahyuna.co.kr'
+        },
+        kangyukyung: {
+            companyImage: '/resources/images/yoyo업체.jpg',
+            profileImage: '/resources/images/강유경.png',
+            company: '(주)YOYO업체',
+            name: '강유경 플래너',
+            phone: '010-2222-2222',
+            email: 'yoyo@gmail.com',
+            website: 'www.yoyo.co.kr'
+        },
+        kimhaemin: {
+            companyImage: '/resources/images/해민스업체.jpg',
+            profileImage: '/resources/images/김해민.png',
+            company: '(주)해민스업체',
+            name: '김해민 플래너',
+            phone: '010-3333-3333',
+            email: 'haemins@gmail.com',
+            website: 'www.haemins.co.kr'
+        },
+        jungminseo: {
+            companyImage: '/resources/images/말랑핑업체.jpg',
+            profileImage: '/resources/images/정민서.png',
+            company: '(주)말랑핑업체',
+            name: '정민서 플래너',
+            phone: '010-1234-1234',
+            email: 'mallangping33@gmail.com',
+            website: 'www.mallangping.co.kr'
+        }
+    };
+    
+    const data = plannerData[plannerId];
+    
+    // 첫 번째 화면 설정 (업체 이미지)
+    companyImage.src = data.companyImage;
+    companyImage.alt = data.company;
+    
+    // 두 번째 화면 데이터 미리 설정
+    plannerProfileImage.src = data.profileImage;
+    plannerProfileImage.alt = data.name;
+    plannerCompanyInfo.textContent = data.company;
+    plannerNameInfo.textContent = data.name;
+    
+    // 연락처 정보 설정
+    document.getElementById('plannerPhone').textContent = data.phone;
+    document.getElementById('plannerEmail').textContent = data.email;
+    document.getElementById('plannerWebsite').textContent = data.website;
+    
+    // 모달 표시
+    modal.style.display = 'block';
+    
+    // 첫 번째 화면만 표시
+    document.getElementById('companyImageScreen').style.display = 'block';
+    document.getElementById('plannerInfoScreen').style.display = 'none';
+}
+
+function showPlannerInfo() {
+    // 두 번째 화면으로 전환
+    document.getElementById('companyImageScreen').style.display = 'none';
+    document.getElementById('plannerInfoScreen').style.display = 'block';
+}
+
+function closePlannerModal() {
+    const modal = document.getElementById('plannerModal');
+    modal.style.display = 'none';
+}
+
+// 모달 외부 클릭 시 닫기
+window.onclick = function(event) {
+    const modal = document.getElementById('plannerModal');
+    if (event.target === modal) {
+        closePlannerModal();
+    }
+}
 </script>
 </body>
 </html>
