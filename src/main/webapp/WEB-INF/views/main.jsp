@@ -43,7 +43,7 @@
 
             <div class="category-buttons-grid">
                 <!-- 카테고리 버튼 1: 관광 -->
-                <a href="/location?category=tourism" class="category-button hot">
+                <a href="/tourism" class="category-button hot">
                     <div class="category-button-icon">
                         <i class="fas fa-plane"></i>
                     </div>

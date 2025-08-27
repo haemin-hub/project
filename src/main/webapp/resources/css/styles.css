@@ -166,11 +166,12 @@ main, .main-content {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    display: flex;
-    align-items: center;
+    display: inline-block;
     padding: 8px 15px;
     font-weight: 500;
     transition: all 0.3s ease;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .dropdown-toggle::after {
