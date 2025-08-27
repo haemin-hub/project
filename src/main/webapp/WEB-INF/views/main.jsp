@@ -230,7 +230,6 @@
                             <div class="company-details">
                                 <span class="location"><i class="fas fa-map-marker-alt"></i> 강남구</span>
                             </div>
-                            <p class="company-desc">설명 추가 가능</p>
                             <span class="specialty-tag">전문 분야</span>
                         </div>
                     </a>
@@ -246,7 +245,6 @@
                             <div class="company-details">
                                 <span class="location"><i class="fas fa-map-marker-alt"></i> 서초구</span>
                             </div>
-                            <p class="company-desc">설명 추가 가능</p>
                             <span class="specialty-tag">전문 분야</span>
                         </div>
                     </a>
@@ -262,7 +260,6 @@
                             <div class="company-details">
                                 <span class="location"><i class="fas fa-map-marker-alt"></i> 마포구</span>
                             </div>
-                            <p class="company-desc">설명 추가 가능</p>
                             <span class="specialty-tag">전문 분야</span>
                         </div>
                     </a>

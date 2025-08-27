@@ -4,31 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="헤더에 하트 누르면 찜 페이지로 이동&#10;메인페이지 하단 top3 dump이미지로 바꿈">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/ClickLogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Service/ClickLogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Service/ClickLogServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/dto/CompanyClickCountDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/mapper/ClickLogMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/ClickLogMapper.xml" afterDir="false" />
+    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="업체 클릭 수 집계해서 main.jsp에 top3 뿌리기(실제 업체 클릭은 아직 구현 안함, DB에서 insert문 실행해서 확인해야함) application.properties에 본인 db 이름으로 되어있는지 꼭!!!!!!!체크">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dental_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dental_list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/ApiRoundApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/ApiRoundApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/KakaoOAuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/KakaoOAuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/LanguageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/LanguageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/HelloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/HelloController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/GoogleSocialUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/GoogleSocialUserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/KakaoSocialUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/KakaoSocialUserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/SocialUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/SocialUserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/SocialUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/SocialUserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/config/I18nConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/config/I18nConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/mapper/SocialUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/mapper/SocialUserMapper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +200,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756256202566</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="업체 클릭 수 집계해서 main.jsp에 top3 뿌리기(실제 업체 클릭은 아직 구현 안함, DB에서 insert문 실행해서 확인해야함) application.properties에 본인 db 이름으로 되어있는지 꼭!!!!!!!체크">
+      <option name="closed" value="true" />
+      <created>1756277661207</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1756277661207</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -252,7 +238,8 @@
     <MESSAGE value="로고 클릭 시 main으로" />
     <MESSAGE value="번역추가" />
     <MESSAGE value="헤더에 하트 누르면 찜 페이지로 이동&#10;메인페이지 하단 top3 dump이미지로 바꿈" />
-    <option name="LAST_COMMIT_MESSAGE" value="헤더에 하트 누르면 찜 페이지로 이동&#10;메인페이지 하단 top3 dump이미지로 바꿈" />
+    <MESSAGE value="업체 클릭 수 집계해서 main.jsp에 top3 뿌리기(실제 업체 클릭은 아직 구현 안함, DB에서 insert문 실행해서 확인해야함) application.properties에 본인 db 이름으로 되어있는지 꼭!!!!!!!체크" />
+    <option name="LAST_COMMIT_MESSAGE" value="업체 클릭 수 집계해서 main.jsp에 top3 뿌리기(실제 업체 클릭은 아직 구현 안함, DB에서 insert문 실행해서 확인해야함) application.properties에 본인 db 이름으로 되어있는지 꼭!!!!!!!체크" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
