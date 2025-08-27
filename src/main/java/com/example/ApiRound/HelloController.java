@@ -1,8 +1,12 @@
 package com.example.ApiRound;
 
+import com.example.ApiRound.Service.ClickLogService;
+import com.example.ApiRound.dto.CompanyClickCountDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 @Controller
 public class HelloController {
@@ -24,11 +28,6 @@ public class HelloController {
         List<CompanyClickCountDto> topCompanies = clickLogService.getTop3CompaniesLast7Days();
         model.addAttribute("topCompanies", topCompanies);
         return "main"; // /WEB-INF/views/main.jsp
-    }
-
-    @GetMapping("/tourism")
-    public String tourism(Model model) {
-        return "tourism"; // /WEB-INF/views/tourism.jsp로 연결됨
     }
 
     @GetMapping("/plastic-surgery")

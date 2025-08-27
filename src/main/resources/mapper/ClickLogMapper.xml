@@ -22,7 +22,7 @@
         JOIN
         ITEM_LIST i ON c.COMPANY_ID = i.ID
         WHERE
-        c.CLICKED_AT >= SYSDATE - 7
+        c.CLICKED_AT &gt;= SYSDATE - 7
         GROUP BY
         c.COMPANY_ID, i.NAME
         ORDER BY
