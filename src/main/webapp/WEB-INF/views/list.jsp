@@ -25,16 +25,20 @@
 
             <!-- 결과 정보 -->
             <div class="result-info">
-                <!-- messages.properties: list.total.count={0}건 -->
-                <div class="total-count">
-                    <spring:message code="list.total.count" arguments="${totalCount}"/>
+                <!-- 총 건수: 서버가 내려준 totalCount만 보여주도록 -->
+                <div class="total-count" data-total-count="${totalCount}">
+                  <spring:message code="list.total.count" arguments="${totalCount}"/>
                 </div>
+
             </div>
 
             <!-- 병원 목록 (DB 데이터) -->
             <div class="hospital-list">
                 <c:forEach var="h" items="${lists}">
-                    <div class="hospital-item" data-id="${h.id}" data-hospital="${h.name}">
+                    <div class="hospital-item" data-id="${h.id}" data-hospital="${h.name}" 
+                         data-address="${h.address}" data-phone="${h.phone}" 
+                         data-homepage="${h.homepage}" data-region="${h.region}" 
+                         data-subregion="${h.subregion}">
                         <div class="hospital-heart"><i class="far fa-heart"></i></div>
                         <div class="hospital-name">${h.name}</div>
                     </div>
@@ -176,8 +180,9 @@
     </div><!-- /.content-area -->
 </div><!-- /.main-container -->
 
-<!-- 카카오맵 API 스크립트 -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=703e2573e79d7de26254a05a83ea0f4c&libraries=services,clusterer"></script>
+<!-- 구글맵 API 스크립트 -->
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQVKpyFKKbsxbwSkllx6uLr41-OM6ga44&libraries=places">
+</script>
 <script src="/resources/js/map.js"></script>
 <script src="/resources/js/list.js"></script>
 
