@@ -30,14 +30,14 @@
 
 .category-buttons-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     object-fit: contain;
 }
 
 /* 마스크 이미지 특별 스타일 */
 .category-button:nth-child(3) .category-button-icon img {
-    width: 40px;
+    width: 50px;
     height: auto;
     object-fit: contain;
 }
@@ -46,7 +46,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 10px;
+    padding: 25px 15px;
     border-radius: 12px;
     background-color: #fff;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
@@ -90,12 +90,12 @@
 }
 
 .category-button-icon {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .category-button-icon img {
@@ -130,11 +130,23 @@
 }
 
 .category-button:nth-child(6) .category-button-icon i {
-    color: #00ACC1; /* 검진 - 청록색 */
+    color: #00ACC1; /* 한의학 - 청록색 */
+}
+
+.category-button:nth-child(7) .category-button-icon img {
+    width: 50px;
+    height: auto;
+    object-fit: contain;
+}
+
+.category-button:nth-child(8) .category-button-icon img {
+    width: 50px;
+    height: auto;
+    object-fit: contain;
 }
 
 .category-button h3 {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600;
     color: #333;
     margin: 0;
@@ -142,15 +154,21 @@
 }
 
 .category-button p {
-    font-size: 12px;
+    font-size: 14px;
     color: #666;
-    margin: 5px 0 0 0;
+    margin: 8px 0 0 0;
 }
 
 /* 반응형 스타일 */
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
     .category-buttons-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .category-buttons-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
