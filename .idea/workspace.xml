@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="업체 클릭 수 집계해서 main.jsp에 top3 뿌리기(실제 업체 클릭은 아직 구현 안함, DB에서 insert문 실행해서 확인해야함) application.properties에 본인 db 이름으로 되어있는지 꼭!!!!!!!체크">
+    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/HelloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/HelloController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756277661207</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="변경">
+      <option name="closed" value="true" />
+      <created>1756279274853</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1756279274853</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -239,7 +248,8 @@
     <MESSAGE value="번역추가" />
     <MESSAGE value="헤더에 하트 누르면 찜 페이지로 이동&#10;메인페이지 하단 top3 dump이미지로 바꿈" />
     <MESSAGE value="업체 클릭 수 집계해서 main.jsp에 top3 뿌리기(실제 업체 클릭은 아직 구현 안함, DB에서 insert문 실행해서 확인해야함) application.properties에 본인 db 이름으로 되어있는지 꼭!!!!!!!체크" />
-    <option name="LAST_COMMIT_MESSAGE" value="업체 클릭 수 집계해서 main.jsp에 top3 뿌리기(실제 업체 클릭은 아직 구현 안함, DB에서 insert문 실행해서 확인해야함) application.properties에 본인 db 이름으로 되어있는지 꼭!!!!!!!체크" />
+    <MESSAGE value="변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="변경" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

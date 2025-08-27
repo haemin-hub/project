@@ -32,10 +32,6 @@ public class HelloController {
         return "main"; // /WEB-INF/views/main.jsp
     }
 
-    @GetMapping("/tourism")
-    public String tourism(Model model) {
-        return "tourism";
-    }
 
     @GetMapping("/plastic-surgery")
     public String surgery(Model model) {
@@ -110,7 +106,7 @@ public class HelloController {
     @GetMapping("/dental_list")
     public String dental_list(Model model, String region) {
         try {
-            String decodedRegion = java.net.URLDecoder.decode(region, "UTF-8");
+            String decodedRegion = URLDecoder.decode(region, "UTF-8");
             model.addAttribute("region", decodedRegion);
         } catch (Exception e) {
             model.addAttribute("region", region);
