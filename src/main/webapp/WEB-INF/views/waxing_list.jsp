@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HealnGo - 성형외과 목록</title>
+    <title>HealnGo - 왁싱 목록</title>
+    <link rel="stylesheet" href="/resources/css/styles.css">
     <link rel="stylesheet" href="/resources/css/list.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -10,31 +11,37 @@
     <%@include file = "/common/header.jsp"%>
 
     <div class="main-container">
-        <!-- 왼쪽 영역: 필터 및 병원 목록 -->
-        <div class="left-panel">
+        <!-- 지역 정보 표시 -->
+        <div class="region-info">
+            <h2><spring:message code="list.selected.region"/>: ${region}</h2>
+        </div>
+        
+        <div class="content-area">
+            <!-- 왼쪽 영역: 필터 및 병원 목록 -->
+            <div class="left-panel">
             <!-- 필터 섹션 -->
             <div class="filter-section">
                 <div class="filter-row">
                     <div class="filter-checkboxes">
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="eye">
-                            <span class="checkmark">브라질리언</span>
+                            <span class="checkmark"><spring:message code="filter.waxing.brazilian"/></span>
                         </label>
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="nose">
-                            <span class="checkmark">겨드랑이</span>
+                            <span class="checkmark"><spring:message code="filter.waxing.armpit"/></span>
                         </label>
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="chin">
-                            <span class="checkmark">눈썹</span>
+                            <span class="checkmark"><spring:message code="filter.waxing.eyebrow"/></span>
                         </label>
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="mouth">
-                            <span class="checkmark">팔,다리</span>
+                            <span class="checkmark"><spring:message code="filter.waxing.arms"/></span>
                         </label>
                         <label class="filter-checkbox">
                             <input type="checkbox" name="category" value="chest">
-                            <span class="checkmark">인중</span>
+                            <span class="checkmark"><spring:message code="filter.waxing.philtrum"/></span>
                         </label>
                     </div>
                 </div>
@@ -42,7 +49,7 @@
 
             <!-- 결과 정보 -->
             <div class="result-info">
-                <div class="total-count">총 4건</div>
+                <div class="total-count"><spring:message code="list.total.count" arguments="4"/></div>
             </div>
 
             <!-- 병원 목록 -->
@@ -93,7 +100,7 @@
             <div class="detail-container">
                 <div class="detail-placeholder">
                     <i class="fas fa-hospital"></i>
-                    <p>병원을 선택하면 상세 정보가 표시됩니다</p>
+                    <p><spring:message code="list.select.hospital"/></p>
                 </div>
                 
                 <!-- 상세 정보가 동적으로 로드될 영역 -->

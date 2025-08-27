@@ -109,7 +109,7 @@
         }
         
         .sido .active {
-            background: #667eea !important;
+            background: #a4d6a4cc !important;
             color: #fff !important;
             font-weight: 600;
         }
@@ -145,7 +145,7 @@
         }
         
         .back-btn {
-            background: #667eea;
+            background: #a4d6a4cc;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -157,7 +157,7 @@
         }
         
         .back-btn:hover {
-            background: #5a6fd8;
+            background: #005A66;
             color: white;
         }
     </style>
@@ -194,7 +194,6 @@
     </div>
 </div>
 
-//<input type="text" name="type" value="1"></input>
 
 <%@include file = "/common/footer.jsp"%>
 
@@ -329,8 +328,7 @@
                 const region = REGIONS[current].name + ' ' + name;
                 
                 // 리스트 페이지로 이동
-                console.log('url',REGIONS[current].url);
-                //window.location.href = '/list?category=' + ${param.category}encodeURIComponent(category) + '&region=' + encodeURIComponent(region);
+                window.location.href = '/list?category=' + encodeURIComponent(category) + '&region=' + encodeURIComponent(region);
             };
             row.appendChild(left);
             row.appendChild(right);
