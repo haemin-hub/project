@@ -1,13 +1,19 @@
 package com.example.ApiRound.Controller;
 
-import com.example.ApiRound.dto.ListDto;
-import com.example.ApiRound.Service.ListService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
+import com.example.ApiRound.Service.ListService;
+import com.example.ApiRound.dto.ListDto;
 
 @Controller
 @RequestMapping("/list") // URL 기본 prefix
@@ -120,6 +126,17 @@ public class ListController {
         model.addAttribute("subregion", subRegion);
         model.addAttribute("category", category);
 
+        // 디버깅용: 모델에 바인딩된 데이터 확인
+        System.out.println("=== 모델 바인딩 데이터 확인 ===");
+        System.out.println("lists: " + (lists != null ? lists.size() : "null") + "개");
+        System.out.println("totalCount: " + totalCount);
+        System.out.println("region: " + region);
+        System.out.println("subregion: " + subRegion);
+        System.out.println("category: " + category);
+        if (lists != null && !lists.isEmpty()) {
+            System.out.println("첫 번째 항목: " + lists.get(0));
+        }
+
         System.out.println("=== 모델 바인딩 완료 ===");
         System.out.println("lists size: " + (lists != null ? lists.size() : 0));
         System.out.println("totalCount: " + totalCount);
@@ -144,7 +161,7 @@ public class ListController {
                                              @RequestParam(required = false) String subregion,
                                              @RequestParam(required = false) String category,
                                              @RequestParam(defaultValue = "1") int pageNo,
-                                             @RequestParam(defaultValue = "10") int amount,
+                                             @RequestParam(defaultValue = "15") int amount,
                                              Model model) {
 
         // null 가드 + 트리밍
@@ -205,7 +222,7 @@ public class ListController {
     @GetMapping("/category/{category}")
     public String getListByCategoryPaged(@PathVariable String category,
                                          @RequestParam(defaultValue = "1") int pageNo,
-                                         @RequestParam(defaultValue = "10") int amount,
+                                         @RequestParam(defaultValue = "15") int amount,
                                          Model model) {
 
         category = (category == null) ? "" : category.trim();

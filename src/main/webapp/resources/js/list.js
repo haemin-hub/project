@@ -1,4 +1,3 @@
-
 // 값 공백/placeholder 검사
 function isBlank(v) {
   return !v || /^\s*$/.test(v);
@@ -51,13 +50,23 @@ function bindHospitalItemEvents() {
   if (!list || list.dataset.bound === '1') return; // 중복 바인딩 방지
   list.dataset.bound = '1';
 
+  console.log('병원 아이템 이벤트 바인딩 완료');
+
   list.addEventListener('click', function(e) {
+    console.log('클릭 이벤트 발생:', e.target);
+    
     // 클릭된 곳 기준으로 병원 아이템/하트 찾기
     const item  = e.target.closest('.hospital-item');
-    if (!item) return;
+    if (!item) {
+      console.log('병원 아이템을 찾을 수 없습니다');
+      return;
+    }
+
+    console.log('병원 아이템 찾음:', item.dataset.hospital);
 
     const heart = e.target.closest('.hospital-heart');
     if (heart) {
+      console.log('하트 클릭됨');
       e.preventDefault();
       e.stopPropagation();
       toggleHeart(item);
@@ -65,6 +74,7 @@ function bindHospitalItemEvents() {
     }
 
     // 아이템 클릭 → 선택/상세 열기
+    console.log('병원 아이템 클릭됨, 상세 정보 표시 시작');
     selectHospital(item);
     if (item.classList.contains('active')) {
       showHospitalDetail(item);
@@ -75,16 +85,30 @@ function bindHospitalItemEvents() {
 
 // 병원 상세 정보 표시
 function showHospitalDetail(hospitalItem) {
+    console.log('showHospitalDetail 함수 호출됨');
     const hospitalName = hospitalItem.dataset.hospital;
     const detailContent = document.querySelector('.detail-content');
     const detailPlaceholder = document.querySelector('.detail-placeholder');
 
+    console.log('병원 이름:', hospitalName);
+    console.log('detailContent 요소:', detailContent);
+    console.log('detailPlaceholder 요소:', detailPlaceholder);
+
+    if (!detailContent || !detailPlaceholder) {
+        console.error('상세 패널 요소를 찾을 수 없습니다');
+        return;
+    }
+
     // 플레이스홀더 숨기기
     detailPlaceholder.style.display = 'none';
+    console.log('플레이스홀더 숨김');
 
     // 상세 정보 로드 및 표시
     detailContent.style.display = 'block';
-    detailContent.innerHTML = generateHospitalDetailHTML(hospitalName);
+    const detailHTML = generateHospitalDetailHTML(hospitalName);
+    console.log('생성된 상세 HTML:', detailHTML);
+    detailContent.innerHTML = detailHTML;
+    console.log('상세 내용 설정 완료');
 
     // 지도 초기화 (Google Maps API가 로드된 경우)
     const initializeMapWhenReady = () => {
@@ -92,7 +116,7 @@ function showHospitalDetail(hospitalItem) {
         if (mapElement) {
             const hospitalData = getHospitalData(hospitalName);
             console.log('지도 초기화 시작 - 병원:', hospitalName, '주소:', hospitalData.address);
-            
+
             // Google Maps API가 로드되었는지 확인
             if (typeof google !== 'undefined' && google.maps) {
                 // map.js의 initializeMap 함수 사용
@@ -105,7 +129,7 @@ function showHospitalDetail(hospitalItem) {
             console.error('지도 요소를 찾을 수 없습니다.');
         }
     };
-    
+
     // DOM 업데이트 후 지도 초기화 시작 (약간의 지연 추가)
     setTimeout(initializeMapWhenReady, 100);
 
@@ -124,7 +148,7 @@ function generateHospitalDetailHTML(hospitalName) {
       <div class="hospital-header">
         <h2 class="hospital-title">${hospitalName}</h2>
         <div class="hospital-image">
-          <img src="/resources/images/detail/hospital.jpg" alt="${hospitalName}">
+          <div id="photo-gallery" class="photo-gallery">사진 로딩 중…</div>
         </div>
       </div>
 
@@ -159,7 +183,7 @@ function generateHospitalDetailHTML(hospitalName) {
 function getHospitalData(hospitalName) {
     // 현재 페이지의 병원 목록에서 해당 병원 찾기
     const hospitalItems = document.querySelectorAll('.hospital-item');
-    
+
     for (let item of hospitalItems) {
         if (item.dataset.hospital === hospitalName) {
             // DB에서 가져온 실제 데이터 사용
@@ -168,10 +192,10 @@ function getHospitalData(hospitalName) {
             const homepage = item.dataset.homepage || '홈페이지 정보 없음';
             const region = item.dataset.region || '';
             const subregion = item.dataset.subregion || '';
-            
+
             // 지하철 정보는 기본값 사용 (DB에 지하철 정보가 없으므로)
             const subway = '지하철 정보 없음';
-            
+
             return {
                 website: homepage,
                 phone: phone,
@@ -182,7 +206,7 @@ function getHospitalData(hospitalName) {
             };
         }
     }
-    
+
     // 병원을 찾지 못한 경우 기본값 반환
     return {
         website: '-',
