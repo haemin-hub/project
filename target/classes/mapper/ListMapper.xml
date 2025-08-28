@@ -33,7 +33,7 @@
     <select id="findByRegionAndCategory" parameterType="map" resultMap="ListDtoResultMap">
         SELECT * FROM ITEM_LIST
         WHERE region LIKE '%' || #{region} || '%'
-        AND subregion LIKE '%' || #{subregion} || '%'
+        AND address LIKE '%' || #{subregion} || '%'
         AND category LIKE '%' || #{category} || '%'
         ORDER BY id ASC
     </select>
@@ -43,7 +43,7 @@
         SELECT COUNT(*)
         FROM ITEM_LIST
         WHERE region    LIKE '%' || #{region}    || '%'
-        AND subregion LIKE '%' || #{subregion} || '%'
+        AND address LIKE '%' || #{subregion} || '%'
         AND category  LIKE '%' || #{category}  || '%'
     </select>
 
@@ -52,7 +52,7 @@
         SELECT id, name, region, subregion, address, phone, homepage, coord_x, coord_y, category
         FROM ITEM_LIST
         WHERE region    LIKE '%' || #{region}    || '%'
-        AND subregion LIKE '%' || #{subregion} || '%'
+        AND address LIKE '%' || #{subregion} || '%'
         AND category  LIKE '%' || #{category}  || '%'
         ORDER BY id ASC
         OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
