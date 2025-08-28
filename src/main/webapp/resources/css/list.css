@@ -12,21 +12,27 @@
 /* 지역 정보 스타일 */
 .region-info {
     background: #f8f9fa;
-    padding: 15px 20px;
+    padding: 10px 15px;
     border-radius: 8px;
-    border-left: 4px solid #a4d6a4cc;
+    margin-bottom: 15px;
+    border-left: 4px solid #B0DBB4;
+    position: relative;
 }
 
 .region-info h2 {
     margin: 0;
     color: #333;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
-
 
 .region-info h2::before {
     content: '';
+    font-size: 16px;
+    color: #B0DBB4;
 }
 
 /* 왼쪽 패널 */
@@ -358,12 +364,17 @@
     }
 
     .region-info {
-        margin: 15px auto 0;
-        padding: 10px 15px;
+        margin-bottom: 12px;
+        padding: 8px 12px;
     }
 
     .region-info h2 {
-        font-size: 15px;
+        font-size: 13px;
+        gap: 5px;
+    }
+    
+    .region-info h2::before {
+        font-size: 14px;
     }
 }
 
@@ -373,14 +384,17 @@
     }
 
     .region-info {
-        margin: 10px auto 0;
-        padding: 8px 15px;
-        border-radius: 0;
+        margin-bottom: 10px;
+        padding: 6px 10px;
     }
 
     .region-info h2 {
-        font-size: 13px;
-        gap: 6px;
+        font-size: 12px;
+        gap: 4px;
+    }
+    
+    .region-info h2::before {
+        font-size: 12px;
     }
 
 
@@ -427,6 +441,10 @@
     .hospital-map .map {
         height: 250px;
     }
+    .photo-gallery img {
+        display:block; width:100%; height:auto; border-radius:8px; margin:6px 0;
+    }
+
 }
 
 /* 스크롤바 스타일 */
