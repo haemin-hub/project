@@ -97,6 +97,14 @@ public class FavoriteItemController {
         return ResponseEntity.ok("찜 항목 일괄 등록 완료");
     }
 
+    // ✅ 로그인 상태 확인 API
+    @GetMapping("/check-login")
+    @ResponseBody
+    public ResponseEntity<Boolean> checkLogin(HttpSession session) {
+        SocialUserDTO user = getLoginUser(session);
+        return ResponseEntity.ok(user != null);
+    }
+
     // ✅ 로그인 사용자 가져오기 (헬퍼 메서드)
     private SocialUserDTO getLoginUser(HttpSession session) {
         return (SocialUserDTO) session.getAttribute("loginUser");

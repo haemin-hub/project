@@ -217,51 +217,52 @@
                 <c:set var="company3" value="${topCompanies[2]}" />
 
                 <div class="company-cards-wrapper">
-                    <!-- 인기 업체 1 -->
-                    <a href="/list?companyId=${company1.companyId}&category=${category}&region=${region}&subRegion=${subRegion}" class="company-card">
-                        <div class="card-image">
-                            <img src="/resources/images/dump.jpg" alt="${company1.companyName}">
-                            <div class="card-badge">1위</div>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="company-name">${company1.companyName}</h4>
-                            <div class="company-details">
-                                <span class="location"><i class="fas fa-map-marker-alt"></i> 강남구</span>
-                            </div>
-                            <span class="specialty-tag">전문 분야</span>
-                        </div>
-                    </a>
+                                    <!-- 인기 업체 1 -->
+                                    <a href="http://xn--939au0giujp2l.xn--3e0b707e/" class="company-card">
+                                        <div class="card-image">
+                                            <img src="/resources/images/힐링패키지.jpg" alt="${company1.companyName}">
+                                            <div class="card-badge">1위</div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h4 class="company-name">강남 건강안마센터</h4>
+                                            <div class="company-details">
+                                                <span class="location"><i class="fas fa-map-marker-alt"></i> 강남구</span>
+                                            </div>
+                                            <span class="specialty-tag">마사지샵</span>
+                                        </div>
+                                    </a>
 
-                    <!-- 인기 업체 2 -->
-                    <a href="/list?companyId=${company1.companyId}&category=${category}&region=${region}&subRegion=${subRegion}" class="company-card">
-                        <div class="card-image">
-                            <img src="/resources/images/2024-11-20.jpg" alt="${company2.companyName}">
-                            <div class="card-badge">2위</div>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="company-name">${company2.companyName}</h4>
-                            <div class="company-details">
-                                <span class="location"><i class="fas fa-map-marker-alt"></i> 서초구</span>
-                            </div>
-                            <span class="specialty-tag">전문 분야</span>
-                        </div>
-                    </a>
+                                    <!-- 인기 업체 2 -->
+                                    <a href="http://www.miwoo.kr/" class="company-card">
+                                        <div class="card-image">
+                                            <img src="/resources/images/2024-11-20.jpg" alt="${company2.companyName}">
+                                            <div class="card-badge">2위</div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h4 class="company-name">제주도 미우성형외과</h4>
+                                            <div class="company-details">
+                                                <span class="location"><i class="fas fa-map-marker-alt"></i> 제주시</span>
+                                            </div>
+                                            <span class="specialty-tag">성형 외과</span>
+                                        </div>
+                                    </a>
 
-                    <!-- 인기 업체 3 -->
-                    <a href="/list?companyId=${company1.companyId}&category=${category}&region=${region}&subRegion=${subRegion}" class="company-card">
-                        <div class="card-image">
-                            <img src="/resources/images/013_9985 copy.jpg" alt="${company3.companyName}">
-                            <div class="card-badge">3위</div>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="company-name">${company3.companyName}</h4>
-                            <div class="company-details">
-                                <span class="location"><i class="fas fa-map-marker-alt"></i> 마포구</span>
-                            </div>
-                            <span class="specialty-tag">전문 분야</span>
-                        </div>
-                    </a>
-                </div>
+                                    <!-- 인기 업체 3 -->
+                                    <a href="/company/${company3.companyId}" class="company-card">
+                                        <div class="card-image">
+                                            <img src="/resources/images/자기관리패키지.png" alt="${company3.companyName}">
+                                            <div class="card-badge">3위</div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h4 class="company-name">${company3.companyName}</h4>
+                                            <div class="company-details">
+                                                <span class="location"><i class="fas fa-map-marker-alt"></i> 마포구</span>
+                                            </div>
+                                             <span class="specialty-tag">마사지샵</span>
+                                        </div>
+                                    </a>
+                                </div>
+
 
 
                     </div>
@@ -477,319 +478,7 @@
 
 
                 </main>                                                
-                
-                <style>
-                    /* 메인 페이지에서만 푸터 스타일 덮어쓰기 */
-                    #main-footer {
-                        margin-top: 0;
-                        padding-top: 30px;
-                        padding-bottom: 0;
-                    }
-                    body {
-                        min-height: 100vh;
-                        display: flex;
-                        flex-direction: column;
-                    }
-                    main.main-content {
-                        flex: 1;
-                        padding-bottom: 0;
-                        padding-top: 0;
-                    }
 
-                    /* Hero Section 스타일 */
-                    .hero-section {
-                        width: 100%;
-                        height: 500px;
-                        overflow: hidden;
-                        position: relative;
-                    }
-
-                    .hero-image {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        object-position: center;
-                    }
-
-                    /* YouTube 섹션 스타일 */
-                    .youtube-section {
-                        padding: 60px 0;
-                        background: #f8f9fa;
-                    }
-
-                    .section-title {
-                        text-align: center;
-                        margin-bottom: 40px;
-                    }
-
-                    .section-title h2 {
-                        font-size: 2.5rem;
-                        font-weight: 700;
-                        color: #333;
-                        margin-bottom: 10px;
-                    }
-
-                    .section-title p {
-                        font-size: 1.1rem;
-                        color: #666;
-                        margin: 0;
-                    }
-
-                    .scroll-container {
-                        position: relative;
-                        max-width: 100%;
-                        overflow: hidden;
-                    }
-
-                    .youtube-grid {
-                        display: flex;
-                        gap: 25px;
-                        overflow-x: auto;
-                        padding: 20px 0;
-                        scroll-behavior: smooth;
-                        -webkit-overflow-scrolling: touch;
-                        scrollbar-width: none;
-                        -ms-overflow-style: none;
-                    }
-
-                    .youtube-grid::-webkit-scrollbar {
-                        display: none;
-                    }
-
-                    .youtube-card {
-                        background: white;
-                        border-radius: 12px;
-                        overflow: hidden;
-                        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-                        transition: transform 0.3s ease, box-shadow 0.3s ease;
-                        min-width: 280px;
-                        flex-shrink: 0;
-                    }
-
-                    .youtube-card:hover {
-                        transform: translateY(-8px);
-                        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-                    }
-
-                    .youtube-image {
-                        position: relative;
-                        height: 180px;
-                        overflow: hidden;
-                    }
-
-                    .youtube-image img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        transition: transform 0.3s ease;
-                    }
-
-                    .youtube-card:hover .youtube-image img {
-                        transform: scale(1.05);
-                    }
-
-                    .play-button {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        width: 50px;
-                        height: 50px;
-                        background: rgba(255, 255, 255, 0.9);
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        color: #ff0000;
-                        font-size: 18px;
-                        cursor: pointer;
-                        transition: all 0.3s ease;
-                    }
-
-                    .play-button:hover {
-                        background: #ff0000;
-                        color: white;
-                        transform: translate(-50%, -50%) scale(1.1);
-                    }
-
-                    .youtube-badge {
-                        position: absolute;
-                        top: 12px;
-                        right: 12px;
-                        background: #ff6b6b;
-                        color: white;
-                        padding: 4px 10px;
-                        border-radius: 15px;
-                        font-size: 0.75rem;
-                        font-weight: 600;
-                    }
-
-                    .youtube-content {
-                        padding: 20px;
-                    }
-
-                    .youtube-title {
-                        font-size: 1.1rem;
-                        font-weight: 600;
-                        color: #333;
-                        margin-bottom: 8px;
-                        line-height: 1.3;
-                    }
-
-                    .youtube-description {
-                        color: #666;
-                        font-size: 0.9rem;
-                        line-height: 1.4;
-                        margin-bottom: 12px;
-                    }
-
-                    .youtube-features {
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 6px;
-                        margin-bottom: 15px;
-                    }
-
-                    .feature-tag {
-                        background: rgba(176, 219, 180, 0.2);
-                        color: #005a66;
-                        padding: 3px 8px;
-                        border-radius: 12px;
-                        font-size: 0.75rem;
-                        font-weight: 500;
-                    }
-
-                    .youtube-button {
-                        background: #005a66;
-                        color: white;
-                        border: none;
-                        padding: 8px 16px;
-                        border-radius: 8px;
-                        cursor: pointer;
-                        font-weight: 500;
-                        font-size: 0.9rem;
-                        transition: background-color 0.3s ease;
-                        width: 100%;
-                    }
-
-                    .youtube-button:hover {
-                        background: #004850;
-                    }
-
-                    .scroll-button {
-                        position: absolute;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        width: 40px;
-                        height: 40px;
-                        background: white;
-                        border: 1px solid #ddd;
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        cursor: pointer;
-                        transition: all 0.3s ease;
-                        z-index: 10;
-                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-                    }
-
-                    .scroll-button:hover {
-                        background: #005a66;
-                        color: white;
-                        border-color: #005a66;
-                    }
-
-                    .scroll-button.prev {
-                        left: 10px;
-                    }
-
-                    .scroll-button.next {
-                        right: 10px;
-                    }
-
-                    /* YouTube 모달 스타일 */
-                    .modal {
-                        display: none;
-                        position: fixed;
-                        z-index: 1000;
-                        left: 0;
-                        top: 0;
-                        width: 100%;
-                        height: 100%;
-                        background-color: rgba(0, 0, 0, 0.8);
-                    }
-
-                    .modal-content {
-                        background-color: white;
-                        margin: 2% auto;
-                        padding: 20px;
-                        border-radius: 12px;
-                        width: 90%;
-                        max-width: 800px;
-                        position: relative;
-                    }
-
-                    .close {
-                        position: absolute;
-                        right: 15px;
-                        top: 15px;
-                        font-size: 24px;
-                        font-weight: bold;
-                        cursor: pointer;
-                        color: #666;
-                        z-index: 1001;
-                    }
-
-                    .close:hover {
-                        color: #000;
-                    }
-
-                    .youtube-video-container {
-                        position: relative;
-                        width: 100%;
-                        height: 0;
-                        padding-bottom: 56.25%;
-                        margin-top: 20px;
-                    }
-
-                    .youtube-video-container iframe {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        border-radius: 8px;
-                    }
-
-                    /* 반응형 디자인 */
-                    @media (max-width: 768px) {
-                        .section-title h2 {
-                            font-size: 2rem;
-                        }
-
-                        .youtube-card {
-                            min-width: 250px;
-                        }
-
-                        .youtube-image {
-                            height: 150px;
-                        }
-
-                        .scroll-button {
-                            width: 35px;
-                            height: 35px;
-                        }
-
-                        .scroll-button.prev {
-                            left: 5px;
-                        }
-
-                        .scroll-button.next {
-                            right: 5px;
-                        }
-                    }
-                </style>
 
 <%@include file = "/common/footer.jsp"%>
 
