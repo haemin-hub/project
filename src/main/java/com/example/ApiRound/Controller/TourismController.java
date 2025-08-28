@@ -10,4 +10,7 @@ public class TourismController {
     public String tourismList() {
         return "tourism_list";
     }
+
+    @GetMapping("/package")
+    public String packageList() { return "package";}
 }
