@@ -46,21 +46,4 @@ public class KakaoOAuthController {
         return new RedirectView("/main");
     }
 
-    @GetMapping("/logout")
-    public RedirectView logout(HttpSession session) {
-        String accessToken = (String) session.getAttribute("accessToken");
-        if (accessToken != null) {
-            HttpHeaders headers = new HttpHeaders();
-            headers.setBearerAuth(accessToken);
-            HttpEntity<Void> request = new HttpEntity<>(headers);
-
-            try {
-                restTemplate.postForEntity("https://kapi.kakao.com/v1/user/logout", request, String.class);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        session.invalidate();
-        return new RedirectView("/main");
-    }
 }
