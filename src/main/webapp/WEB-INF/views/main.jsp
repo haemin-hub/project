@@ -29,8 +29,8 @@
 
 <main class="main-content">
     <section class="hero-section" style="--bg:url('/resources/images/bannerimg.jpg')">
-            <img src="/resources/images/bannerimg.jpg" alt="HealnGo Main Visual" class="hero-image">
-          </section>
+                <img src="/resources/images/bannerimg.jpg" alt="HealnGo Main Visual" class="hero-image">
+              </section>
 
     <section class="category-buttons-section">
         <div class="category-buttons-container">
