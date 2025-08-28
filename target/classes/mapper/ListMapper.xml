@@ -9,7 +9,7 @@
         <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="region" property="region"/>
-        <result column="subregion" property="subregion"/>
+        <result property="subregion" column="subregion"/>
         <result column="address" property="address"/>
         <result column="phone" property="phone"/>
         <result column="homepage" property="homepage"/>

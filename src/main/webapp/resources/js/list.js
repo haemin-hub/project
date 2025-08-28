@@ -239,28 +239,61 @@ function filterHospitals() {
 
     updateTotalCount();
 }
+function toggleHeart(event, heartContainer) {
+    event.stopPropagation(); // 전체 병원 div 클릭 방지
 
-// 하트 토글
-function toggleHeart(hospitalItem) {
-    const heartIcon = hospitalItem.querySelector('.hospital-heart i');
+    const hospitalItem = heartContainer.closest('.hospital-item');
+    const heartIcon = heartContainer.querySelector('i');
+    const hospitalName = hospitalItem.dataset.hospital;
+    const itemId = hospitalItem.dataset.itemId;
+
+    if (!itemId) {
+        console.error("itemId가 없습니다.");
+        return;
+    }
+
+    let isLiked = false;
 
     if (heartIcon.classList.contains('far')) {
-        // 빈 하트 → 채워진 하트
         heartIcon.classList.remove('far');
         heartIcon.classList.add('fas');
         heartIcon.style.color = '#ff4757';
-        console.log('즐겨찾기 추가:', hospitalItem.dataset.hospital);
+        isLiked = true;
     } else {
-        // 채워진 하트 → 빈 하트
         heartIcon.classList.remove('fas');
         heartIcon.classList.add('far');
         heartIcon.style.color = '#ccc';
-        console.log('즐겨찾기 제거:', hospitalItem.dataset.hospital);
+        isLiked = false;
     }
 
-    // 하트 상태를 localStorage에 저장
-    saveHeartState(hospitalItem.dataset.hospital, heartIcon.classList.contains('fas'));
+    const endpoint = isLiked
+        ? `/favorite/add/${itemId}`
+        : `/favorite/remove/${itemId}`;
+
+    fetch(endpoint, {
+        method: 'POST',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(res => res.text())
+    .then(result => {
+        console.log("서버 응답:", result);
+    })
+    .catch(error => {
+        console.error("서버 요청 실패:", error);
+    });
+
+    // LocalStorage 저장
+    saveHeartState(hospitalName, isLiked);
 }
+
+function saveHeartState(hospitalName, isLiked) {
+    localStorage.setItem(`heart_${hospitalName}`, JSON.stringify(isLiked));
+}
+
+
+
 
 // 병원 선택
 function selectHospital(hospitalItem) {

@@ -33,25 +33,36 @@
 
             </div>
 
-            <!-- 병원 목록 (DB 데이터) -->
-            <div class="hospital-list">
-                <c:forEach var="h" items="${lists}">
-                    <div class="hospital-item" data-id="${h.id}" data-hospital="${h.name}" 
-                         data-address="${h.address}" data-phone="${h.phone}" 
-                         data-homepage="${h.homepage}" data-region="${h.region}" 
-                         data-subregion="${h.subregion}">
-                        <div class="hospital-heart"><i class="far fa-heart"></i></div>
-                        <div class="hospital-name">${h.name}</div>
-                    </div>
-                </c:forEach>
+         <!-- 병원 목록 (DB 데이터) -->
+         <div class="hospital-list">
+             <c:forEach var="h" items="${lists}">
+                 <div class="hospital-item"
+                      data-item-id="${h.id}"
+                      data-hospital="${h.name}"
+                      data-address="${h.address}"
+                      data-phone="${h.phone}"
+                      data-homepage="${h.homepage}"
+                      data-region="${h.region}"
+                      data-subregion="${h.subregion}">
 
-                <c:if test="${empty lists}">
-                  <div class="detail-empty">
-                  <i class="empty"></i>
-                  <p>표시할 결과가 없습니다.</p>
-                  </div>
-                </c:if>
-        </div>
+                     <!-- ❤️ 하트 버튼만 클릭 시 찜 기능 실행 -->
+                     <div class="hospital-heart" onclick="toggleHeart(event, this)">
+                         <i class="far fa-heart"></i>
+                     </div>
+
+                     <!-- 병원 이름 등 정보 출력 -->
+                     <div class="hospital-name">${h.name}</div>
+                 </div>
+             </c:forEach>
+
+             <c:if test="${empty lists}">
+                 <div class="detail-empty">
+                     <i class="empty"></i>
+                     <p>표시할 결과가 없습니다.</p>
+                 </div>
+             </c:if>
+         </div>
+
        <c:if test="${totalPages > 1}">
          <div class="pagination">
            <c:choose>
