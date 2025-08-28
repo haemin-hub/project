@@ -210,86 +210,275 @@
                 <div class="content-divider"></div>
 
                 <!-- 오른쪽: TOP3 의료기관 -->
-                <div class="top-companies-cards">
-                    <div class="cards-header">
-                        <h3><spring:message code="main.popular.companies.title"/></h3>
-                        <a href="/companies" class="more-link"><spring:message code="main.popular.companies.more"/> <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                    <div class="company-cards-wrapper">
-                        <!-- 인기 업체 1 -->
-                        <a href="/company/gangnam-hospital" class="company-card">
-                            <div class="card-image">
-                                <img src="/resources/images/companies/gangnam-hospital.jpg" alt="<spring:message code='company.gangnam.name'/>">
-                                <div class="card-badge">1위</div>
-                            </div>
-                            <div class="card-content">
-                                <h4 class="company-name"><spring:message code="company.gangnam.name"/></h4>
-                                <div class="company-details">
-                                    <span class="location"><i class="fas fa-map-marker-alt"></i> <spring:message code="company.gangnam.location"/></span>
-                                    <span class="rating"><i class="fas fa-star"></i> 4.9 (350)</span>
-                                </div>
-                                <p class="company-desc"><spring:message code="company.gangnam.desc"/></p>
-                                <span class="specialty-tag"><spring:message code="company.gangnam.specialty"/></span>
-                            </div>
-                        </a>
+                <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-                        <!-- 인기 업체 2 -->
-                        <a href="/company/seoul-medical" class="company-card">
-                            <div class="card-image">
-                                <img src="/resources/images/companies/seoul-medical.jpg" alt="<spring:message code='company.seoul.name'/>">
-                                <div class="card-badge">2위</div>
-                            </div>
-                            <div class="card-content">
-                                <h4 class="company-name"><spring:message code="company.seoul.name"/></h4>
-                                <div class="company-details">
-                                    <span class="location"><i class="fas fa-map-marker-alt"></i> <spring:message code="company.seoul.location"/></span>
-                                    <span class="rating"><i class="fas fa-star"></i> 4.8 (280)</span>
-                                </div>
-                                <p class="company-desc"><spring:message code="company.seoul.desc"/></p>
-                                <span class="specialty-tag"><spring:message code="company.seoul.specialty"/></span>
-                            </div>
-                        </a>
+                <c:set var="company1" value="${topCompanies[0]}" />
+                <c:set var="company2" value="${topCompanies[1]}" />
+                <c:set var="company3" value="${topCompanies[2]}" />
 
-                        <!-- 인기 업체 3 -->
-                        <a href="/company/busan-dental" class="company-card">
-                            <div class="card-image">
-                                <img src="/resources/images/companies/busan-dental.jpg" alt="<spring:message code='company.busan.name'/>">
-                                <div class="card-badge">3위</div>
-                            </div>
-                            <div class="card-content">
-                                <h4 class="company-name"><spring:message code="company.busan.name"/></h4>
-                                <div class="company-details">
-                                    <span class="location"><i class="fas fa-map-marker-alt"></i> <spring:message code="company.busan.location"/></span>
-                                    <span class="rating"><i class="fas fa-star"></i> 4.7 (210)</span>
+                <div class="company-cards-wrapper">
+                                    <!-- 인기 업체 1 -->
+                                    <a href="http://xn--939au0giujp2l.xn--3e0b707e/" class="company-card">
+                                        <div class="card-image">
+                                            <img src="/resources/images/힐링패키지.jpg" alt="${company1.companyName}">
+                                            <div class="card-badge">1위</div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h4 class="company-name">강남 건강안마센터</h4>
+                                            <div class="company-details">
+                                                <span class="location"><i class="fas fa-map-marker-alt"></i> 강남구</span>
+                                            </div>
+                                            <span class="specialty-tag">마사지샵</span>
+                                        </div>
+                                    </a>
+
+                                    <!-- 인기 업체 2 -->
+                                    <a href="http://www.miwoo.kr/" class="company-card">
+                                        <div class="card-image">
+                                            <img src="/resources/images/2024-11-20.jpg" alt="${company2.companyName}">
+                                            <div class="card-badge">2위</div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h4 class="company-name">제주도 미우성형외과</h4>
+                                            <div class="company-details">
+                                                <span class="location"><i class="fas fa-map-marker-alt"></i> 제주시</span>
+                                            </div>
+                                            <span class="specialty-tag">성형 외과</span>
+                                        </div>
+                                    </a>
+
+                                    <!-- 인기 업체 3 -->
+                                    <a href="/company/${company3.companyId}" class="company-card">
+                                        <div class="card-image">
+                                            <img src="/resources/images/자기관리패키지.png" alt="${company3.companyName}">
+                                            <div class="card-badge">3위</div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h4 class="company-name">${company3.companyName}</h4>
+                                            <div class="company-details">
+                                                <span class="location"><i class="fas fa-map-marker-alt"></i> 마포구</span>
+                                            </div>
+                                             <span class="specialty-tag">마사지샵</span>
+                                        </div>
+                                    </a>
                                 </div>
-                                <p class="company-desc"><spring:message code="company.busan.desc"/></p>
-                                <span class="specialty-tag"><spring:message code="company.busan.specialty"/></span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+
+
+
                     </div>
                 </section>
-                </main>                                                
-                
-                <style>
-                    /* 메인 페이지에서만 푸터 스타일 덮어쓰기 */
-                    #main-footer {
-                        margin-top: 0;
-                        padding-top: 30px;
-                        padding-bottom: 0;
-                    }
-                    body {
-                        min-height: 100vh;
-                        display: flex;
-                        flex-direction: column;
-                    }
-                    main.main-content {
-                        flex: 1;
-                        padding-bottom: 0;
-                    }
-                </style>
+
+                <!-- 유튜브 영상 매거진 -->
+                <section class="youtube-section mt-5">
+                    <div class="container">
+                        <div class="section-title">
+                            <h2>추천 영상</h2>
+                            <p>HealnGo에서 추천하는 유용한 영상들을 확인해보세요</p>
+                        </div>
+
+                        <div class="scroll-container">
+                            <div class="youtube-grid" id="youtube-videos">
+                                <!-- YouTube 영상 1 -->
+                                <div class="youtube-card">
+                                    <div class="youtube-image">
+                                        <img src="https://img.youtube.com/vi/hC9h4AzbwLw/maxresdefault.jpg" alt="소개 영상 1">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                        <div class="youtube-badge">추천</div>
+                                    </div>
+                                    <div class="youtube-content">
+                                        <h3 class="youtube-title">HealnGo 서비스 소개</h3>
+                                        <p class="youtube-description">의료 관광을 위한 최고의 플랫폼 HealnGo를 소개합니다</p>
+                                        <div class="youtube-features">
+                                            <span class="feature-tag">의료관광</span>
+                                            <span class="feature-tag">서비스소개</span>
+                                        </div>
+                                        <button class="youtube-button"
+                                                data-video="hC9h4AzbwLw"
+                                                onclick="(function(id){
+                                          var m=document.getElementById('youtubeModal'),
+                                              f=document.getElementById('youtubeIframe');
+                                          f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                                          m.style.display='block';
+                                          document.body.style.overflow='hidden';
+                                          if(!window._ytEscBind){ window._ytEscBind=true;
+                                            document.addEventListener('keydown',function(e){
+                                              if(e.key==='Escape'){ f.src=''; m.style.display='none'; document.body.style.overflow=''; }
+                                            });
+                                          }
+                                          m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                        })(this.dataset.video)">
+                                          영상 보기
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- YouTube 영상 2 -->
+                                <div class="youtube-card">
+                                    <div class="youtube-image">
+                                        <img src="https://img.youtube.com/vi/cmn3J6E2PaA/maxresdefault.jpg" alt="소개 영상 2">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                        <div class="youtube-badge">인기</div>
+                                    </div>
+                                    <div class="youtube-content">
+                                        <h3 class="youtube-title">성형 시술 가이드</h3>
+                                        <p class="youtube-description">안전하고 효과적인 성형 시술에 대한 전문가 조언</p>
+                                        <div class="youtube-features">
+                                            <span class="feature-tag">성형외과</span>
+                                            <span class="feature-tag">시술가이드</span>
+                                        </div>
+                                            <button class="youtube-button"
+                                              onclick="(function(id){
+                                                var m=document.getElementById('youtubeModal'),
+                                                    f=document.getElementById('youtubeIframe');
+                                                f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                                                m.style.display='block';
+                                                document.body.style.overflow='hidden';
+                                                if(!window._ytEscBind){ window._ytEscBind=true;
+                                                  document.addEventListener('keydown',function(e){
+                                                    if(e.key==='Escape'){ f.src=''; m.style.display='none'; document.body.style.overflow=''; }
+                                                  });
+                                                }
+                                                m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                              })('cmn3J6E2PaA')">
+                                              영상 보기
+                                            </button>
+                                            </div>
+                                </div>
+
+                                <!-- YouTube 영상 3 -->
+                                <div class="youtube-card">
+                                    <div class="youtube-image">
+                                        <img src="https://img.youtube.com/vi/f5Hit9JQCkY/maxresdefault.jpg" alt="소개 영상 3">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                        <div class="youtube-badge">신규</div>
+                                    </div>
+                                    <div class="youtube-content">
+                                        <h3 class="youtube-title">피부 관리 팁</h3>
+                                        <p class="youtube-description">건강한 피부를 위한 전문적인 관리 방법</p>
+                                        <div class="youtube-features">
+                                            <span class="feature-tag">피부과</span>
+                                            <span class="feature-tag">피부관리</span>
+                                        </div>
+                                        <button class="youtube-button"
+                                          onclick="(function(id){
+                                            var m=document.getElementById('youtubeModal'),
+                                                f=document.getElementById('youtubeIframe');
+                                            f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                                            m.style.display='block';
+                                            document.body.style.overflow='hidden';
+                                            if(!window._ytEscBind){ window._ytEscBind=true;
+                                              document.addEventListener('keydown',function(e){
+                                                if(e.key==='Escape'){ f.src=''; m.style.display='none'; document.body.style.overflow=''; }
+                                              });
+                                            }
+                                            m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                          })('f5Hit9JQCkY')">
+                                          영상 보기
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- YouTube 영상 4 -->
+                                <div class="youtube-card">
+                                    <div class="youtube-image">
+                                        <img src="https://img.youtube.com/vi/8I-08wGeZIE/maxresdefault.jpg" alt="소개 영상 4">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                        <div class="youtube-badge">추천</div>
+                                    </div>
+                                    <div class="youtube-content">
+                                        <h3 class="youtube-title">치과 시술 안내</h3>
+                                        <p class="youtube-description">치과 시술 전후 주의사항과 관리법</p>
+                                        <div class="youtube-features">
+                                            <span class="feature-tag">치과</span>
+                                            <span class="feature-tag">시술안내</span>
+                                        </div>
+                                        <button class="youtube-button"
+                                          onclick="(function(id){
+                                            var m=document.getElementById('youtubeModal'),
+                                                f=document.getElementById('youtubeIframe');
+                                            f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                                            m.style.display='block';
+                                            document.body.style.overflow='hidden';
+                                            if(!window._ytEscBind){ window._ytEscBind=true;
+                                              document.addEventListener('keydown',function(e){
+                                                if(e.key==='Escape'){ f.src=''; m.style.display='none'; document.body.style.overflow=''; }
+                                              });
+                                            }
+                                            m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                          })('8I-08wGeZIE')">
+                                          영상 보기
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- YouTube 영상 5 -->
+                                <div class="youtube-card">
+                                    <div class="youtube-image">
+                                        <img src="https://img.youtube.com/vi/Dy7X4dEed1I/maxresdefault.jpg" alt="소개 영상 5">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                        <div class="youtube-badge">인기</div>
+                                    </div>
+                                    <div class="youtube-content">
+                                        <h3 class="youtube-title">한의학 치료법</h3>
+                                        <p class="youtube-description">전통 한의학을 통한 건강 관리 방법</p>
+                                        <div class="youtube-features">
+                                            <span class="feature-tag">한의원</span>
+                                            <span class="feature-tag">전통의학</span>
+                                        </div>
+                                        <button class="youtube-button"
+                                          onclick="(function(id){
+                                            var m=document.getElementById('youtubeModal'),
+                                                f=document.getElementById('youtubeIframe');
+                                            f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                                            m.style.display='block';
+                                            document.body.style.overflow='hidden';
+                                            if(!window._ytEscBind){ window._ytEscBind=true;
+                                              document.addEventListener('keydown',function(e){
+                                                if(e.key==='Escape'){ f.src=''; m.style.display='none'; document.body.style.overflow=''; }
+                                              });
+                                            }
+                                            m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                          })('Dy7X4dEed1I')">
+                                          영상 보기
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 스크롤 버튼 -->
+                            <button class="scroll-button prev" onclick="scrollYouTube('left')">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="scroll-button next" onclick="scrollYouTube('right')">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- YouTube 모달 -->
+                <div id="youtubeModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeYouTubeModal()">&times;</span>
+                        <div class="youtube-video-container">
+                            <iframe id="youtubeIframe" src="" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+
+                </main>
+
 
 <%@include file = "/common/footer.jsp"%>
 
@@ -297,5 +486,58 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- 카테고리 버튼 JS -->
 <script src="/resources/js/category-buttons.js"></script>
+
+<!-- YouTube 섹션 JavaScript -->
+<script>
+// YouTube 스크롤 기능
+function scrollYouTube(direction) {
+    const grid = document.getElementById('youtube-videos');
+    const scrollAmount = 300;
+
+    if (direction === 'left') {
+        grid.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+    } else {
+        grid.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// YouTube 모달 열기
+function openYouTubeModal(videoId) {
+    const modal = document.getElementById('youtubeModal');
+    const iframe = document.getElementById('youtubeIframe');
+
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    modal.style.display = 'block';
+
+    // 모달 외부 클릭 시 닫기
+    modal.onclick = function(event) {
+        if (event.target === modal) {
+            closeYouTubeModal();
+        }
+    };
+}
+
+// YouTube 모달 닫기
+function closeYouTubeModal() {
+    const modal = document.getElementById('youtubeModal');
+    const iframe = document.getElementById('youtubeIframe');
+
+    iframe.src = '';
+    modal.style.display = 'none';
+}
+
+// ESC 키로 모달 닫기
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeYouTubeModal();
+    }
+});
+</script>
 </body>
 </html>

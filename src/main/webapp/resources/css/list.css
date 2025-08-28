@@ -59,6 +59,7 @@
 }
 
 /* 상세 정보 플레이스홀더 */
+.detail-empty,
 .detail-placeholder {
     display: flex;
     flex-direction: column;
@@ -71,12 +72,14 @@
     align-content: center;
 }
 
+.detail-empty i,
 .detail-placeholder i {
     font-size: 100px;
     margin-bottom: 20px;
     color: #ddd;
 }
 
+.detail-empty p,
 .detail-placeholder p {
     font-size: 16px;
     margin: 0;
@@ -372,7 +375,7 @@
         font-size: 13px;
         gap: 5px;
     }
-    
+
     .region-info h2::before {
         font-size: 14px;
     }
@@ -392,10 +395,11 @@
         font-size: 12px;
         gap: 4px;
     }
-    
+
     .region-info h2::before {
         font-size: 12px;
     }
+
 
     .filter-checkboxes {
         gap: 10px;
@@ -446,3 +450,114 @@
 
 }
 
+/* 스크롤바 스타일 */
+.hospital-list::-webkit-scrollbar,
+.detail-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.hospital-list::-webkit-scrollbar-track,
+.detail-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.hospital-list::-webkit-scrollbar-thumb,
+.detail-content::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.hospital-list::-webkit-scrollbar-thumb:hover,
+.detail-content::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* 즐겨찾기 확인 모달 스타일 */
+.favorite-confirm-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.favorite-confirm-content {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.favorite-confirm-content h3 {
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+}
+
+.favorite-confirm-content p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 25px 0;
+}
+
+.favorite-confirm-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.favorite-confirm-yes,
+.favorite-confirm-no {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+.favorite-confirm-yes {
+    background-color: #005a66;
+    color: white;
+}
+
+.favorite-confirm-yes:hover {
+    background-color: #004850;
+    transform: translateY(-2px);
+}
+
+.favorite-confirm-no {
+    background-color: #f8f9fa;
+    color: #666;
+    border: 1px solid #ddd;
+}
+
+.favorite-confirm-no:hover {
+    background-color: #e9ecef;
+    color: #333;
+}

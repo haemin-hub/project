@@ -613,6 +613,56 @@
             transform: translateY(-2px);
         }
 
+        .service-category.active {
+            background: #e9ecef;
+            border: 2px solid #667eea;
+            transform: none;
+        }
+
+        /* 패키지 모달 전용 사이즈 및 레이아웃 */
+        #packageModal .planner-modal-content {
+            width: 92%;
+            max-width: 1000px;
+        }
+        #packageModal .company-image-container {
+            height: 420px;
+            background: #fff;
+        }
+        #packageModal .company-image-container img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            display: block;
+        }
+        #packageModal .service-categories {
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        #packageModal .service-category {
+            min-width: 110px;
+        }
+
+        /* 패키지 모달 전용 사이즈 및 레이아웃 */
+        #packageModal .planner-modal-content {
+            width: 92%;
+            max-width: 1000px;
+        }
+        #packageModal .company-image-container {
+            height: 420px;
+            background: #fff;
+        }
+        #packageModal .service-categories {
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        #packageModal .service-category {
+            min-width: 110px;
+        }
+
         /* 반응형 디자인 */
         @media (max-width: 768px) {
             .planner-modal-content {
@@ -1007,6 +1057,20 @@
     </div>
 </div>
 
+<!-- 패키지 상세 모달 -->
+<div id="packageModal" class="planner-modal">
+    <div class="planner-modal-content">
+        <span class="planner-modal-close" onclick="closePackageModal()">&times;</span>
+        <div class="company-image-container" id="packageImageContainer">
+            <img id="packageModalImage" src="" alt="Package Image">
+        </div>
+        <div class="planner-info-right" style="padding: 24px 30px 36px;">
+            <div class="service-categories" id="packageCategories"></div>
+        </div>
+    </div>
+</div>
+
+
 <%@include file="/common/footer.jsp"%>
 
 <!-- 부트스트랩 JS -->
@@ -1112,14 +1176,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // 배너 슬라이더 초기화
     initBannerSlider();
 
-    // 패키지 카드 클릭 이벤트
-    const packageCards = document.querySelectorAll('.package-card');
-    packageCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const title = this.querySelector('.package-title').textContent;
-            alert(`${title} 상세 페이지로 이동합니다.`);
-            // 실제로는 해당 패키지의 상세 페이지로 이동
-            // window.location.href = `/package/detail/${packageId}`;
+    // 패키지 상세보기 버튼 클릭 시 모달 오픈 (카테고리 버튼 렌더링)
+    const detailButtons = document.querySelectorAll('.package-button');
+    detailButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const card = this.closest('.package-card');
+            const categories = Array.from(card.querySelectorAll('.feature-tag')).map(el => el.textContent.trim());
+            const imgEl = card.querySelector('.package-image img');
+            const imageUrl = imgEl ? imgEl.getAttribute('src') : '';
+            showPackageModal(categories, imageUrl);
         });
     });
 
@@ -1159,8 +1225,7 @@ function showPlannerModal(plannerId) {
             name: '김현아 플래너',
             phone: '010-1111-1111',
             email: 'hyunahyuna@gmail.com',
-            website: 'www.hyunahyuna.co.kr',
-            services: ['다이어트', '마사지', '부산', '영남지방']
+            website: 'www.hyunahyuna.co.kr'
         },
         kangyukyung: {
             companyImage: '/resources/images/yoyo업체.jpg',
@@ -1169,8 +1234,7 @@ function showPlannerModal(plannerId) {
             name: '강유경 플래너',
             phone: '010-2222-2222',
             email: 'yoyo@gmail.com',
-            website: 'www.yoyo.co.kr',
-            services: ['피부', '자기관리', '시술', '제주도']
+            website: 'www.yoyo.co.kr'
         },
         kimhaemin: {
             companyImage: '/resources/images/해민스업체.jpg',
@@ -1179,8 +1243,7 @@ function showPlannerModal(plannerId) {
             name: '김해민 플래너',
             phone: '010-3333-3333',
             email: 'haemins@gmail.com',
-            website: 'www.haemins.co.kr',
-            services: ['성형', '시술', '호남지방']
+            website: 'www.haemins.co.kr'
         },
         jungminseo: {
             companyImage: '/resources/images/말랑핑업체.jpg',
@@ -1189,8 +1252,7 @@ function showPlannerModal(plannerId) {
             name: '정민서 플래너',
             phone: '010-1234-1234',
             email: 'mallangping33@gmail.com',
-            website: 'www.mallangping.co.kr',
-            services: ['피부', '다이어트', '치과', '수도권']
+            website: 'www.mallangping.co.kr'
         }
     };
 
@@ -1210,17 +1272,6 @@ function showPlannerModal(plannerId) {
     document.getElementById('plannerPhone').textContent = data.phone;
     document.getElementById('plannerEmail').textContent = data.email;
     document.getElementById('plannerWebsite').textContent = data.website;
-    
-    // 서비스 카테고리 동적 생성
-    const serviceCategoriesContainer = document.querySelector('.service-categories');
-    serviceCategoriesContainer.innerHTML = '';
-    
-    data.services.forEach(service => {
-        const serviceCategory = document.createElement('div');
-        serviceCategory.className = 'service-category';
-        serviceCategory.textContent = service;
-        serviceCategoriesContainer.appendChild(serviceCategory);
-    });
 
     // 모달 표시
     modal.style.display = 'block';
@@ -1241,13 +1292,64 @@ function closePlannerModal() {
     modal.style.display = 'none';
 }
 
+// 패키지 카테고리 모달 열기/닫기 (카테고리 선택 시 기존 흐름으로 이동)
+function showPackageModal(categories, imageUrl) {
+    const modal = document.getElementById('packageModal');
+    const catContainer = document.getElementById('packageCategories');
+    const imageElement = document.getElementById('packageModalImage');
+
+    // 이미지 설정
+    imageElement.src = imageUrl || '';
+
+    // 카테고리 버튼 렌더링
+    catContainer.innerHTML = '';
+    (categories || []).forEach(cat => {
+        const el = document.createElement('div');
+        el.className = 'service-category';
+        el.textContent = cat;
+        el.addEventListener('click', function() {
+            // 단일 선택 표시
+            catContainer.querySelectorAll('.service-category').forEach(x => x.classList.remove('active'));
+            this.classList.add('active');
+
+            // 기존 location → list → 상세 흐름으로 이동하도록 카테고리 파라미터 전달
+            const targetUrl = buildListNavigateUrl(cat);
+            window.location.href = targetUrl;
+        });
+        catContainer.appendChild(el);
+    });
+
+    modal.style.display = 'block';
+}
+
+// 리스트 페이지로 이동할 URL 생성 (프로젝트의 기존 흐름에 맞춰 필요 시 경로만 조정)
+function buildListNavigateUrl(categoryLabel) {
+    const params = new URLSearchParams();
+    params.set('category', categoryLabel);
+    // 필요 시 지역/추가 파라미터를 여기서 함께 세팅하세요. 예) params.set('region', 'ALL');
+    // 기존 흐름이 location → list 라면 우선 location으로 전달
+    return '/location?' + params.toString();
+}
+
+function closePackageModal() {
+    const modal = document.getElementById('packageModal');
+    modal.style.display = 'none';
+}
+
+
+
 // 모달 외부 클릭 시 닫기
 window.onclick = function(event) {
-    const modal = document.getElementById('plannerModal');
-    if (event.target === modal) {
+    const plannerModal = document.getElementById('plannerModal');
+    const packageModal = document.getElementById('packageModal');
+    if (event.target === plannerModal) {
         closePlannerModal();
     }
+    if (event.target === packageModal) {
+        closePackageModal();
+    }
 }
+
 </script>
 </body>
 </html>

@@ -7,10 +7,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +46,7 @@ public class ListController {
         if (translatedText == null || translatedText.trim().isEmpty()) return translatedText;
 
         Map<String, String> regionTranslations = new HashMap<>();
-        
+
         // 광역시/도 (영/소문자)
         regionTranslations.put("Seoul","서울");      regionTranslations.put("seoul","서울");
         regionTranslations.put("Busan","부산");      regionTranslations.put("busan","부산");
@@ -111,7 +119,7 @@ public class ListController {
         regionTranslations.put("Anseong","안성시");     regionTranslations.put("anseong","안성시");
         regionTranslations.put("Pocheon","포천시");     regionTranslations.put("pocheon","포천시");
         regionTranslations.put("Yeoncheon","연천군");   regionTranslations.put("yeoncheon","연천군");
-        
+
         // 대구시 구 (영/소문자)
         regionTranslations.put("Jung","중구");          regionTranslations.put("jung","중구");
         regionTranslations.put("Dong","동구");          regionTranslations.put("dong","동구");
@@ -165,7 +173,7 @@ public class ListController {
         regionTranslations.put("慶南","경남");   regionTranslations.put("庆南","경남");
         regionTranslations.put("済州","제주");   regionTranslations.put("济州","제주");
         regionTranslations.put("全国","전국");
-        
+
         // 일본어 지역명 번역 (구/군)
         regionTranslations.put("江南区","강남구"); regionTranslations.put("江东区","강동구");
         regionTranslations.put("江北区","강북구"); regionTranslations.put("江西区","강서구");
@@ -180,7 +188,7 @@ public class ListController {
         regionTranslations.put("龙山区","용산구"); regionTranslations.put("恩平区","은평구");
         regionTranslations.put("钟路区","종로구"); regionTranslations.put("中区","중구");
         regionTranslations.put("中浪区","중랑구");
-        
+
         // 경기도 시/군 일본어 번역
         regionTranslations.put("水原市","수원시"); regionTranslations.put("城南市","성남시");
         regionTranslations.put("安养市","안양시"); regionTranslations.put("富川市","부천시");
@@ -194,35 +202,35 @@ public class ListController {
         regionTranslations.put("加平郡","가평군"); regionTranslations.put("杨平郡","양평군");
         regionTranslations.put("骊州市","여주시"); regionTranslations.put("安城市","안성시");
         regionTranslations.put("抱川市","포천시"); regionTranslations.put("涟川郡","연천군");
-        
+
         // 인천시 구 일본어 번역
         regionTranslations.put("弥邹忽区","미추홀구"); regionTranslations.put("延寿区","연수구");
         regionTranslations.put("南洞区","남동구"); regionTranslations.put("富平区","부평구");
         regionTranslations.put("桂阳区","계양구"); regionTranslations.put("江华郡","강화군");
         regionTranslations.put("瓮津郡","옹진군");
-        
+
         // 부산시 구 일본어 번역
         regionTranslations.put("影岛区","영도구"); regionTranslations.put("釜山镇区","부산진구");
         regionTranslations.put("东莱区","동래구"); regionTranslations.put("海云台区","해운대구");
         regionTranslations.put("沙下区","사하구"); regionTranslations.put("金井区","금정구");
         regionTranslations.put("莲堤区","연제구"); regionTranslations.put("水营区","수영구");
         regionTranslations.put("沙上区","사상구"); regionTranslations.put("机张郡","기장군");
-        
+
         // 대구시 구 일본어 번역
         regionTranslations.put("中区","중구"); regionTranslations.put("东区","동구");
         regionTranslations.put("西区","서구"); regionTranslations.put("南区","남구");
         regionTranslations.put("北区","북구"); regionTranslations.put("寿城区","수성구");
         regionTranslations.put("达西区","달서구"); regionTranslations.put("达城郡","달성군");
-        
+
         // 대전시 구 일본어 번역
         regionTranslations.put("儒城区","유성구"); regionTranslations.put("大德区","대덕구");
-        
+
         // 광주시 구 일본어 번역
         regionTranslations.put("光山区","광산구");
-        
+
         // 울산시 구 일본어 번역
         regionTranslations.put("蔚州郡","울주군");
-        
+
         // 중국어 지역명 번역 (구/군)
         regionTranslations.put("江南区","강남구"); regionTranslations.put("江东区","강동구");
         regionTranslations.put("江北区","강북구"); regionTranslations.put("江西区","강서구");
@@ -237,7 +245,7 @@ public class ListController {
         regionTranslations.put("龙山区","용산구"); regionTranslations.put("恩平区","은평구");
         regionTranslations.put("钟路区","종로구"); regionTranslations.put("中区","중구");
         regionTranslations.put("中浪区","중랑구");
-        
+
         // 경기도 시/군 중국어 번역
         regionTranslations.put("水原市","수원시"); regionTranslations.put("城南市","성남시");
         regionTranslations.put("安养市","안양시"); regionTranslations.put("富川市","부천시");
@@ -251,35 +259,35 @@ public class ListController {
         regionTranslations.put("加平郡","가평군"); regionTranslations.put("杨平郡","양평군");
         regionTranslations.put("骊州市","여주시"); regionTranslations.put("安城市","안성시");
         regionTranslations.put("抱川市","포천시"); regionTranslations.put("涟川郡","연천군");
-        
+
         // 인천시 구 중국어 번역
         regionTranslations.put("弥邹忽区","미추홀구"); regionTranslations.put("延寿区","연수구");
         regionTranslations.put("南洞区","남동구"); regionTranslations.put("富平区","부평구");
         regionTranslations.put("桂阳区","계양구"); regionTranslations.put("江华郡","강화군");
         regionTranslations.put("瓮津郡","옹진군");
-        
+
         // 부산시 구 중국어 번역
         regionTranslations.put("影岛区","영도구"); regionTranslations.put("釜山镇区","부산진구");
         regionTranslations.put("东莱区","동래구"); regionTranslations.put("海云台区","해운대구");
         regionTranslations.put("沙下区","사하구"); regionTranslations.put("金井区","금정구");
         regionTranslations.put("莲堤区","연제구"); regionTranslations.put("水营区","수영구");
         regionTranslations.put("沙上区","사상구"); regionTranslations.put("机张郡","기장군");
-        
+
         // 대구시 구 중국어 번역
         regionTranslations.put("中区","중구"); regionTranslations.put("东区","동구");
         regionTranslations.put("西区","서구"); regionTranslations.put("南区","남구");
         regionTranslations.put("北区","북구"); regionTranslations.put("寿城区","수성구");
         regionTranslations.put("达西区","달서구"); regionTranslations.put("达城郡","달성군");
-        
+
         // 대전시 구 중국어 번역
         regionTranslations.put("儒城区","유성구"); regionTranslations.put("大德区","대덕구");
-        
+
         // 광주시 구 중국어 번역
         regionTranslations.put("光山区","광산구");
-        
+
         // 울산시 구 중국어 번역
         regionTranslations.put("蔚州郡","울주군");
-        
+
         // 영어 지역명 번역 (구/군)
         regionTranslations.put("Gangnam-gu","강남구"); regionTranslations.put("Gangdong-gu","강동구");
         regionTranslations.put("Gangbuk-gu","강북구"); regionTranslations.put("Gangseo-gu","강서구");
@@ -294,7 +302,7 @@ public class ListController {
         regionTranslations.put("Yongsan-gu","용산구"); regionTranslations.put("Eunpyeong-gu","은평구");
         regionTranslations.put("Jongno-gu","종로구"); regionTranslations.put("Jung-gu","중구");
         regionTranslations.put("Jungnang-gu","중랑구");
-        
+
         // 경기도 시/군 영어 번역
         regionTranslations.put("Suwon-si","수원시"); regionTranslations.put("Seongnam-si","성남시");
         regionTranslations.put("Anyang-si","안양시"); regionTranslations.put("Bucheon-si","부천시");
@@ -308,32 +316,32 @@ public class ListController {
         regionTranslations.put("Gapyeong-gun","가평군"); regionTranslations.put("Yangpyeong-gun","양평군");
         regionTranslations.put("Yeoju-si","여주시"); regionTranslations.put("Anseong-si","안성시");
         regionTranslations.put("Pocheon-si","포천시"); regionTranslations.put("Yeoncheon-gun","연천군");
-        
+
         // 인천시 구 영어 번역
         regionTranslations.put("Michuhol-gu","미추홀구"); regionTranslations.put("Yeonsu-gu","연수구");
         regionTranslations.put("Namdong-gu","남동구"); regionTranslations.put("Bupyeong-gu","부평구");
         regionTranslations.put("Gyeyang-gu","계양구"); regionTranslations.put("Ganghwa-gun","강화군");
         regionTranslations.put("Ongjin-gun","옹진군");
-        
+
         // 부산시 구 영어 번역
         regionTranslations.put("Yeongdo-gu","영도구"); regionTranslations.put("Busanjin-gu","부산진구");
         regionTranslations.put("Dongnae-gu","동래구"); regionTranslations.put("Haeundae-gu","해운대구");
         regionTranslations.put("Saha-gu","사하구"); regionTranslations.put("Geumjeong-gu","금정구");
         regionTranslations.put("Yeonje-gu","연제구"); regionTranslations.put("Suyeong-gu","수영구");
         regionTranslations.put("Sasang-gu","사상구"); regionTranslations.put("Gijang-gun","기장군");
-        
+
         // 대구시 구 영어 번역
         regionTranslations.put("Jung-gu","중구"); regionTranslations.put("Dong-gu","동구");
         regionTranslations.put("Seo-gu","서구"); regionTranslations.put("Nam-gu","남구");
         regionTranslations.put("Buk-gu","북구"); regionTranslations.put("Suseong-gu","수성구");
         regionTranslations.put("Dalseo-gu","달서구"); regionTranslations.put("Dalseong-gun","달성군");
-        
+
         // 대전시 구 영어 번역
         regionTranslations.put("Yuseong-gu","유성구"); regionTranslations.put("Daedeok-gu","대덕구");
-        
+
         // 광주시 구 영어 번역
         regionTranslations.put("Gwangsan-gu","광산구");
-        
+
         // 울산시 구 영어 번역
         regionTranslations.put("Ulju-gun","울주군");
 
@@ -426,26 +434,44 @@ public class ListController {
         amount = Math.max(1, amount);
         int offset = (pageNo - 1) * amount;
 
+        // 총 개수 & 현재 페이지 데이터
         int totalCount;
         List<ListDto> lists;
 
         if ("전국".equals(region) && "전국".equals(subRegion)) {
+            System.out.println("=== 전국 카테고리 검색 ===");
+            System.out.println("카테고리: " + category);
+            System.out.println("amount: " + amount + ", offset: " + offset);
             totalCount = listService.countByCategory(category);
-            lists = listService.getListByCategoryPaged(category, amount, offset, locale);
+            lists = listService.getListByCategoryPaged(category, amount, offset);
+            System.out.println("총 개수: " + totalCount);
+            System.out.println("조회된 리스트 개수: " + (lists != null ? lists.size() : 0));
             model.addAttribute("mode", "category");
+
+            // 조회된 데이터 확인
+            if (lists != null && !lists.isEmpty()) {
+                System.out.println("=== 조회된 데이터 샘플 ===");
+                System.out.println("첫 번째 항목: " + lists.get(0));
+            }
         } else {
+            System.out.println("=== 지역별 검색 ===");
+            System.out.println("지역: " + region + ", 구: " + subRegion + ", 카테고리: " + category);
             totalCount = listService.countByRegionAndCategory(region, subRegion, category);
-            lists = listService.getListByRegionAndSubregionPaged(region, subRegion, category, amount, offset, locale);
+            lists = listService.getListByRegionAndSubregionPaged(region, subRegion, category, amount, offset);
             model.addAttribute("mode", "search");
+            System.out.println("총 개수: " + totalCount);
+            System.out.println("조회된 리스트 개수: " + (lists != null ? lists.size() : 0));
         }
-        
+
         System.out.println("총 데이터 개수: " + (lists != null ? lists.size() : 0));
 
+        // 페이지 블록 계산 (blockSize = 5)
         int totalPages = (int) Math.ceil((double) totalCount / amount);
         int blockSize  = 5;
         int startPage  = ((pageNo - 1) / blockSize) * blockSize + 1;
         int endPage    = Math.min(startPage + blockSize - 1, Math.max(totalPages, 1));
 
+        // 모델 바인딩
         model.addAttribute("lists", lists);
         model.addAttribute("totalCount", totalCount);
         model.addAttribute("pageNo", pageNo);
@@ -457,13 +483,23 @@ public class ListController {
         model.addAttribute("subregion", subRegion);
         model.addAttribute("category", category);
 
-        // (옵션) 디버깅: 전체 데이터 샘플
-        try {
-            List<ListDto> allData = listService.getAllList(locale);
-            if (allData != null && !allData.isEmpty()) {
-                System.out.println("샘플데이터1: " + allData.get(0));
-            }
-        } catch (Exception ignore) { }
+        // 디버깅용: 모델에 바인딩된 데이터 확인
+        System.out.println("=== 모델 바인딩 데이터 확인 ===");
+        System.out.println("lists: " + (lists != null ? lists.size() : "null") + "개");
+        System.out.println("totalCount: " + totalCount);
+        System.out.println("region: " + region);
+        System.out.println("subregion: " + subRegion);
+        System.out.println("category: " + category);
+        if (lists != null && !lists.isEmpty()) {
+            System.out.println("첫 번째 항목: " + lists.get(0));
+        }
+
+        System.out.println("=== 모델 바인딩 완료 ===");
+        System.out.println("lists size: " + (lists != null ? lists.size() : 0));
+        System.out.println("totalCount: " + totalCount);
+        System.out.println("totalPages: " + totalPages);
+        System.out.println("startPage: " + startPage);
+        System.out.println("endPage: " + endPage);
 
         return "list";
     }
@@ -483,32 +519,26 @@ public class ListController {
     // ✅ 지역 + 카테고리별 병원 조회 (페이징 적용) → list.jsp
     @GetMapping("/search")
     public String getListByRegionAndCategory(@RequestParam(required = false) String region,
-                                             @RequestParam(required = false, name = "subRegion") String subregion,
+                                             @RequestParam(required = false) String subregion,
                                              @RequestParam(required = false) String category,
                                              @RequestParam(defaultValue = "1") int pageNo,
                                              @RequestParam(defaultValue = "10") int amount,
                                              Model model) {
 
-        String locale = LocaleContextHolder.getLocale().getLanguage();
-        if (locale == null || locale.isEmpty() || locale.equals("ko")) {
-            locale = "ko"; // 기본값
-        }
-
-        String originalRegion    = translateToKorean(region);
-        String originalSubregion = translateToKorean(subregion);
-        String originalCategory  = translateToKorean(category);
-
-        region    = (originalRegion    == null) ? "" : originalRegion.trim();
-        subregion = (originalSubregion == null) ? "" : originalSubregion.trim();
-        category  = (originalCategory  == null) ? "" : originalCategory.trim();
+        // null 가드 + 트리밍
+        region    = (region    == null) ? "" : region.trim();
+        subregion = (subregion == null) ? "" : subregion.trim();
+        category  = (category  == null) ? "" : category.trim();
 
         pageNo = Math.max(1, pageNo);
         amount = Math.max(1, amount);
         int offset = (pageNo - 1) * amount;
 
+        // 총 개수 & 현재 페이지 데이터 (Service에 메서드 구현 필요)
         int totalCount = listService.countByRegionAndCategory(region, subregion, category);
-        List<ListDto> lists = listService.getListByRegionAndSubregionPaged(region, subregion, category, amount, offset, locale);
+        List<ListDto> lists = listService.getListByRegionAndSubregionPaged(region, subregion, category, amount, offset);
 
+        // 페이지 블록 계산 (blockSize = 5)
         int totalPages = (int) Math.ceil((double) totalCount / amount);
         int blockSize  = 5;
         int startPage  = ((pageNo - 1) / blockSize) * blockSize + 1;
@@ -516,8 +546,10 @@ public class ListController {
         Integer prevPage = (startPage > 1) ? startPage - 1 : null;
         Integer nextPage = (endPage < totalPages) ? endPage + 1 : null;
 
+        // 모델 바인딩
         model.addAttribute("lists", lists);
         model.addAttribute("totalCount", totalCount);
+
         model.addAttribute("pageNo", pageNo);
         model.addAttribute("amount", amount);
         model.addAttribute("totalPages", totalPages);
@@ -525,6 +557,7 @@ public class ListController {
         model.addAttribute("endPage", endPage);
         model.addAttribute("prevPage", prevPage);
         model.addAttribute("nextPage", nextPage);
+
         model.addAttribute("region", region);
         model.addAttribute("subregion", subregion);
         model.addAttribute("category", category);
@@ -543,7 +576,7 @@ public class ListController {
     @PostMapping
     public String addList(@ModelAttribute ListDto listDto) {
         listService.addList(listDto);
-        return "redirect:/list";
+        return "redirect:/list"; // 등록 후 목록으로 이동
     }
 
     // 카테고리별(전국) 병원 목록: 페이징
@@ -553,20 +586,13 @@ public class ListController {
                                          @RequestParam(defaultValue = "10") int amount,
                                          Model model) {
 
-        String locale = LocaleContextHolder.getLocale().getLanguage();
-        if (locale == null || locale.isEmpty() || locale.equals("ko")) {
-            locale = "ko"; // 기본값
-        }
-
-        String originalCategory = translateToKorean(category);
-        category = (originalCategory == null) ? "" : originalCategory.trim();
-
-        pageNo = Math.max(1, pageNo);
-        amount = Math.max(1, amount);
+        category = (category == null) ? "" : category.trim();
+        pageNo   = Math.max(1, pageNo);
+        amount   = Math.max(1, amount);
         int offset = (pageNo - 1) * amount;
 
-        int totalCount      = listService.countByCategory(category);
-        List<ListDto> lists = listService.getListByCategoryPaged(category, amount, offset, locale);
+        int totalCount     = listService.countByCategory(category);
+        List<ListDto> lists = listService.getListByCategoryPaged(category, amount, offset);
 
         int totalPages = (int) Math.ceil((double) totalCount / amount);
         int blockSize  = 5;
@@ -575,15 +601,19 @@ public class ListController {
 
         model.addAttribute("lists", lists);
         model.addAttribute("totalCount", totalCount);
+
         model.addAttribute("pageNo", pageNo);
         model.addAttribute("amount", amount);
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
 
-        model.addAttribute("region", "전국");
-        model.addAttribute("subregion", "전국");
-        model.addAttribute("category", category);
+        // 뷰에서 사용
+        model.addAttribute("region", "전국");     // 상단 "선택된 지역" 표시용
+        model.addAttribute("subregion", "전국");      // 비움
+        model.addAttribute("category", category); // 현재 카테고리
+
+        // 페이지네이션 링크 분기용 (JSP에서 사용)
         model.addAttribute("mode", "category");
 
         return "list";
@@ -600,13 +630,13 @@ public class ListController {
             }
             List<String> categories = listService.getAllCategories();
             List<ListDto> allData   = listService.getAllList(locale);
-            
+
             StringBuilder result = new StringBuilder();
             result.append("Database connection successful.\n");
             result.append("Current locale: ").append(locale).append("\n");
             result.append("Categories: ").append(categories).append("\n");
             result.append("Total records: ").append(allData != null ? allData.size() : 0).append("\n");
-            
+
             if (allData != null && !allData.isEmpty()) {
                 result.append("\n=== Sample Data ===\n");
                 ListDto sample = allData.get(0);
@@ -618,7 +648,7 @@ public class ListController {
                 result.append("Region: ").append(sample.getRegion()).append("\n");
                 result.append("Category: ").append(sample.getCategory()).append("\n");
             }
-            
+
             return result.toString();
         } catch (Exception e) {
             return "Database connection failed: " + e.getMessage() + "\n" + e.getStackTrace()[0];

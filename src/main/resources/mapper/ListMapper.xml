@@ -41,7 +41,7 @@
         i.COORD_Y    AS coord_y,
         i.CATEGORY   AS category
                  FROM C##HEALNGO.ITEM_LIST i
-                 LEFT JOIN C##HEALNGO.ITEM_LIST_I18N i18n ON i.ID = i18n.ITEM_ID 
+                 LEFT JOIN C##HEALNGO.ITEM_LIST_I18N i18n ON i.ID = i18n.ITEM_ID
                  AND i18n.LOCALE = #{locale}
     </sql>
 

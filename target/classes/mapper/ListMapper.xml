@@ -41,14 +41,13 @@
         i.COORD_Y    AS coord_y,
         i.CATEGORY   AS category
                  FROM C##HEALNGO.ITEM_LIST i
-                 LEFT JOIN C##HEALNGO.ITEM_LIST_I18N i18n ON i.ID = i18n.ITEM_ID 
+                 LEFT JOIN C##HEALNGO.ITEM_LIST_I18N i18n ON i.ID = i18n.ITEM_ID
                  AND i18n.LOCALE = #{locale}
     </sql>
 
     <!-- 전체 리스트 -->
     <select id="findAll" resultMap="ListDtoResultMap">
-        <include refid="BaseSelectWithI18N"/>
-        ORDER BY i.ID ASC
+        SELECT * FROM ITEM_LIST ORDER BY id ASC
     </select>
 
     <!-- 단건 조회 -->
