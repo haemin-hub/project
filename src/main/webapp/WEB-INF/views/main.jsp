@@ -220,7 +220,7 @@
 
                 <div class="company-cards-wrapper">
                     <!-- 인기 업체 1 -->
-                    <a href="/company/${company1.companyId}" class="company-card">
+                    <a href="/list?companyId=${company1.companyId}&category=${category}&region=${region}&subRegion=${subRegion}" class="company-card">
                         <div class="card-image">
                             <img src="/resources/images/dump.jpg" alt="${company1.companyName}">
                             <div class="card-badge">1위</div>
@@ -235,7 +235,7 @@
                     </a>
 
                     <!-- 인기 업체 2 -->
-                    <a href="/company/${company2.companyId}" class="company-card">
+                    <a href="/list?companyId=${company1.companyId}&category=${category}&region=${region}&subRegion=${subRegion}" class="company-card">
                         <div class="card-image">
                             <img src="/resources/images/2024-11-20.jpg" alt="${company2.companyName}">
                             <div class="card-badge">2위</div>
@@ -250,7 +250,7 @@
                     </a>
 
                     <!-- 인기 업체 3 -->
-                    <a href="/company/${company3.companyId}" class="company-card">
+                    <a href="/list?companyId=${company1.companyId}&category=${category}&region=${region}&subRegion=${subRegion}" class="company-card">
                         <div class="card-image">
                             <img src="/resources/images/013_9985 copy.jpg" alt="${company3.companyName}">
                             <div class="card-badge">3위</div>
