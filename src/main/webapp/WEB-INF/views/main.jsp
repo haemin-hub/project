@@ -28,9 +28,9 @@
 <%@include file = "/common/header.jsp"%>
 
 <main class="main-content">
-    <section class="hero-section">
+    <section>
         <div class="container">
-            <h1><spring:message code="main.banner.space"/></h1>
+            <image src="/resources/images/bannerimg.jpg" alt="HealnGo Main Visual" class="hero-image">
         </div>
     </section>
 
@@ -212,67 +212,106 @@
                 <div class="content-divider"></div>
 
                 <!-- 오른쪽: TOP3 의료기관 -->
-                <div class="top-companies-cards">
-                    <div class="cards-header">
-                        <h3><spring:message code="main.popular.companies.title"/></h3>
-                        <a href="/companies" class="more-link"><spring:message code="main.popular.companies.more"/> <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                    <div class="company-cards-wrapper">
-                        <!-- 인기 업체 1 -->
-                        <a href="/company/gangnam-hospital" class="company-card">
-                            <div class="card-image">
-                                <img src="/resources/images/companies/gangnam-hospital.jpg" alt="<spring:message code='company.gangnam.name'/>">
-                                <div class="card-badge">1위</div>
-                            </div>
-                            <div class="card-content">
-                                <h4 class="company-name"><spring:message code="company.gangnam.name"/></h4>
-                                <div class="company-details">
-                                    <span class="location"><i class="fas fa-map-marker-alt"></i> <spring:message code="company.gangnam.location"/></span>
-                                    <span class="rating"><i class="fas fa-star"></i> 4.9 (350)</span>
-                                </div>
-                                <p class="company-desc"><spring:message code="company.gangnam.desc"/></p>
-                                <span class="specialty-tag"><spring:message code="company.gangnam.specialty"/></span>
-                            </div>
-                        </a>
+                <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-                        <!-- 인기 업체 2 -->
-                        <a href="/company/seoul-medical" class="company-card">
-                            <div class="card-image">
-                                <img src="/resources/images/companies/seoul-medical.jpg" alt="<spring:message code='company.seoul.name'/>">
-                                <div class="card-badge">2위</div>
-                            </div>
-                            <div class="card-content">
-                                <h4 class="company-name"><spring:message code="company.seoul.name"/></h4>
-                                <div class="company-details">
-                                    <span class="location"><i class="fas fa-map-marker-alt"></i> <spring:message code="company.seoul.location"/></span>
-                                    <span class="rating"><i class="fas fa-star"></i> 4.8 (280)</span>
-                                </div>
-                                <p class="company-desc"><spring:message code="company.seoul.desc"/></p>
-                                <span class="specialty-tag"><spring:message code="company.seoul.specialty"/></span>
-                            </div>
-                        </a>
+                <c:set var="company1" value="${topCompanies[0]}" />
+                <c:set var="company2" value="${topCompanies[1]}" />
+                <c:set var="company3" value="${topCompanies[2]}" />
 
-                        <!-- 인기 업체 3 -->
-                        <a href="/company/busan-dental" class="company-card">
-                            <div class="card-image">
-                                <img src="/resources/images/companies/busan-dental.jpg" alt="<spring:message code='company.busan.name'/>">
-                                <div class="card-badge">3위</div>
+                <div class="company-cards-wrapper">
+                    <!-- 인기 업체 1 -->
+                    <a href="/company/${company1.companyId}" class="company-card">
+                        <div class="card-image">
+                            <img src="/resources/images/dump.jpg" alt="${company1.companyName}">
+                            <div class="card-badge">1위</div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="company-name">${company1.companyName}</h4>
+                            <div class="company-details">
+                                <span class="location"><i class="fas fa-map-marker-alt"></i> 강남구</span>
                             </div>
-                            <div class="card-content">
-                                <h4 class="company-name"><spring:message code="company.busan.name"/></h4>
-                                <div class="company-details">
-                                    <span class="location"><i class="fas fa-map-marker-alt"></i> <spring:message code="company.busan.location"/></span>
-                                    <span class="rating"><i class="fas fa-star"></i> 4.7 (210)</span>
-                                </div>
-                                <p class="company-desc"><spring:message code="company.busan.desc"/></p>
-                                <span class="specialty-tag"><spring:message code="company.busan.specialty"/></span>
+                            <span class="specialty-tag">전문 분야</span>
+                        </div>
+                    </a>
+
+                    <!-- 인기 업체 2 -->
+                    <a href="/company/${company2.companyId}" class="company-card">
+                        <div class="card-image">
+                            <img src="/resources/images/2024-11-20.jpg" alt="${company2.companyName}">
+                            <div class="card-badge">2위</div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="company-name">${company2.companyName}</h4>
+                            <div class="company-details">
+                                <span class="location"><i class="fas fa-map-marker-alt"></i> 서초구</span>
                             </div>
-                        </a>
-                    </div>
+                            <span class="specialty-tag">전문 분야</span>
+                        </div>
+                    </a>
+
+                    <!-- 인기 업체 3 -->
+                    <a href="/company/${company3.companyId}" class="company-card">
+                        <div class="card-image">
+                            <img src="/resources/images/013_9985 copy.jpg" alt="${company3.companyName}">
+                            <div class="card-badge">3위</div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="company-name">${company3.companyName}</h4>
+                            <div class="company-details">
+                                <span class="location"><i class="fas fa-map-marker-alt"></i> 마포구</span>
+                            </div>
+                            <span class="specialty-tag">전문 분야</span>
+                        </div>
+                    </a>
                 </div>
-            </div>
+
+
                     </div>
                 </section>
+
+                <!-- 유튜브 영상 매거진 -->
+                <section class="youtube-carousel-section mt-5">
+                    <div class="container">
+
+                        <div id="youtubeCarousel" class="carousel slide">
+                            <div class="carousel-inner">
+                                <!-- 첫 번째 영상 -->
+                                <div class="carousel-item active">
+                                    <div class="ratio ratio-16x9">
+                                        <iframe src="https://www.youtube.com/embed/hC9h4AzbwLw"
+                                                title="소개 영상 1" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <!-- 두 번째 영상 -->
+                                <div class="carousel-item">
+                                    <div class="ratio ratio-16x9">
+                                        <iframe src="https://www.youtube.com/embed/f5Hit9JQCkY"
+                                                title="소개 영상 2" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <!-- 세 번째 영상 -->
+                                <div class="carousel-item">
+                                    <div class="ratio ratio-16x9">
+                                        <iframe src="https://www.youtube.com/embed/WTeTa8nprjw"
+                                                title="소개 영상 3" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 캐러셀 컨트롤 (좌우 버튼) -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#youtubeCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">이전</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#youtubeCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">다음</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+
                 </main>                                                
                 
                 <style>
@@ -290,6 +329,7 @@
                     main.main-content {
                         flex: 1;
                         padding-bottom: 0;
+                        padding-top: 0;
                     }
                 </style>
 

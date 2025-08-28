@@ -52,8 +52,7 @@ function bindHospitalItemEvents() {
   list.dataset.bound = '1';
 
   list.addEventListener('click', function(e) {
-    // 클릭된 곳 기준으로 병원 아이템/하트 찾기
-    const item  = e.target.closest('.hospital-item');
+    const item = e.target.closest('.hospital-item');
     if (!item) return;
 
     const heart = e.target.closest('.hospital-heart');
@@ -68,6 +67,19 @@ function bindHospitalItemEvents() {
     selectHospital(item);
     if (item.classList.contains('active')) {
       showHospitalDetail(item);
+
+      // 클릭 로그 전송 코드 추가
+      const companyId = item.dataset.companyId;  // dataset에 companyId가 있어야 함
+      if (companyId) {
+        fetch(`/api/clicks/${companyId}`, { method: "POST" })
+          .then(response => {
+            if (!response.ok) throw new Error("클릭 로그 저장 실패");
+            console.log(`회사 ID ${companyId} 클릭 로그 저장 완료`);
+          })
+          .catch(error => {
+            console.error("에러 발생:", error);
+          });
+      }
     }
   });
 }

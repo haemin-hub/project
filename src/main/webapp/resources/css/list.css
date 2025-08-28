@@ -343,7 +343,7 @@
         flex-direction: column;
         gap: 20px;
     }
-
+    
     .left-panel {
         flex: none;
         width: 100%;
@@ -383,48 +383,71 @@
         gap: 6px;
     }
 
+
     .filter-checkboxes {
         gap: 10px;
     }
-
+    
     .checkmark {
         padding: 5px 8px;
         font-size: 12px;
     }
-
+    
     .hospital-item {
         padding: 10px 12px;
     }
-
+    
     .hospital-name {
         font-size: 13px;
     }
-
+    
     .pagination {
         gap: 5px;
     }
-
+    
     .page-link {
         padding: 5px 8px;
         font-size: 11px;
     }
-
+    
     .hospital-info-table th,
     .hospital-info-table td {
         padding: 8px 10px;
         font-size: 12px;
     }
-
+    
     .hospital-info-table th {
         width: 35%;
     }
-
+    
     .hospital-title {
         font-size: 20px;
     }
-
+    
     .hospital-map .map {
         height: 250px;
     }
 }
 
+/* 스크롤바 스타일 */
+.hospital-list::-webkit-scrollbar,
+.detail-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.hospital-list::-webkit-scrollbar-track,
+.detail-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.hospital-list::-webkit-scrollbar-thumb,
+.detail-content::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.hospital-list::-webkit-scrollbar-thumb:hover,
+.detail-content::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
