@@ -59,6 +59,7 @@
 }
 
 /* 상세 정보 플레이스홀더 */
+.detail-empty,
 .detail-placeholder {
     display: flex;
     flex-direction: column;
@@ -71,12 +72,14 @@
     align-content: center;
 }
 
+.detail-empty i,
 .detail-placeholder i {
     font-size: 100px;
     margin-bottom: 20px;
     color: #ddd;
 }
 
+.detail-empty p,
 .detail-placeholder p {
     font-size: 16px;
     margin: 0;
@@ -349,7 +352,7 @@
         flex-direction: column;
         gap: 20px;
     }
-    
+
     .left-panel {
         flex: none;
         width: 100%;
@@ -372,7 +375,7 @@
         font-size: 13px;
         gap: 5px;
     }
-    
+
     .region-info h2::before {
         font-size: 14px;
     }
@@ -392,7 +395,7 @@
         font-size: 12px;
         gap: 4px;
     }
-    
+
     .region-info h2::before {
         font-size: 12px;
     }
@@ -401,43 +404,43 @@
     .filter-checkboxes {
         gap: 10px;
     }
-    
+
     .checkmark {
         padding: 5px 8px;
         font-size: 12px;
     }
-    
+
     .hospital-item {
         padding: 10px 12px;
     }
-    
+
     .hospital-name {
         font-size: 13px;
     }
-    
+
     .pagination {
         gap: 5px;
     }
-    
+
     .page-link {
         padding: 5px 8px;
         font-size: 11px;
     }
-    
+
     .hospital-info-table th,
     .hospital-info-table td {
         padding: 8px 10px;
         font-size: 12px;
     }
-    
+
     .hospital-info-table th {
         width: 35%;
     }
-    
+
     .hospital-title {
         font-size: 20px;
     }
-    
+
     .hospital-map .map {
         height: 250px;
     }

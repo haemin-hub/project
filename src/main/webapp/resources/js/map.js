@@ -5,33 +5,92 @@ let globalInfoWindow = null; // 모든 마커에서 재사용
 
 // 사진 갤러리 HTML 생성 유틸
 function buildPhotoGallery(photos = [], max = 3, size = { maxWidth: 380, maxHeight: 260 }) {
-  if (!photos || photos.length === 0) return '<div style="color:#888">사진 없음</div>';
-  const imgs = photos
-    .slice(0, max)
-    .map((p) => {
-      const url = p.getUrl(size);
-      return `<img src="${url}" style="width:100%;height:auto;border-radius:8px;margin:6px 0" loading="lazy" />`;
-    })
-    .join("");
+  console.log('buildPhotoGallery 호출됨, photos:', photos);
+  
+  if (!photos || photos.length === 0) {
+    console.log('사진이 없습니다');
+    return `
+      <div style="text-align:center;padding:20px;color:#888">
+        <i class="fas fa-image" style="font-size:48px;margin-bottom:10px;display:block;"></i>
+        <div>사진 없음</div>
+      </div>
+    `;
+  }
+  
+  try {
+    const imgs = photos
+      .slice(0, max)
+      .map((p, index) => {
+        console.log(`사진 ${index + 1}:`, p);
+        let url;
+        try {
+          url = p.getUrl(size);
+          console.log(`사진 ${index + 1} URL:`, url);
+        } catch (error) {
+          console.error(`사진 ${index + 1} URL 생성 실패:`, error);
+          return '';
+        }
+        
+        if (!url) {
+          console.error(`사진 ${index + 1} URL이 비어있음`);
+          return '';
+        }
+        
+        return `<img src="${url}" style="width:100%;height:auto;border-radius:8px;margin:6px 0" loading="lazy" onerror="this.style.display='none'; console.error('이미지 로드 실패:', this.src)" />`;
+      })
+      .filter(img => img !== '') // 빈 문자열 제거
+      .join("");
 
-  // 저작권/출처 표기 (가능하면)
-  const attributions = photos[0].html_attributions?.join(" • ") || "";
-  const attrHtml = attributions
-    ? `<div style="font-size:11px;color:#999;margin-top:4px">${attributions}</div>`
-    : "";
+    if (!imgs) {
+      console.log('유효한 이미지가 없음');
+      return `
+        <div style="text-align:center;padding:20px;color:#888">
+          <i class="fas fa-image" style="font-size:48px;margin-bottom:10px;display:block;"></i>
+          <div>사진 로드 실패</div>
+        </div>
+      `;
+    }
 
-  return `${imgs}${attrHtml}`;
+    // 저작권/출처 표기 (가능하면)
+    const attributions = photos[0].html_attributions?.join(" • ") || "";
+    const attrHtml = attributions
+      ? `<div style="font-size:11px;color:#999;margin-top:4px">${attributions}</div>`
+      : "";
+
+    const result = `${imgs}${attrHtml}`;
+    console.log('생성된 갤러리 HTML:', result);
+    return result;
+  } catch (error) {
+    console.error('사진 갤러리 생성 중 오류:', error);
+    return `
+      <div style="text-align:center;padding:20px;color:#888">
+        <i class="fas fa-image" style="font-size:48px;margin-bottom:10px;display:block;"></i>
+        <div>사진 로드 실패</div>
+      </div>
+    `;
+  }
 }
 
 // 패널(photo-gallery)에 사진 HTML 주입
 function renderPhotoGalleryToPanel(html, root = document) {
+  console.log('renderPhotoGalleryToPanel 호출됨, html:', html);
+  console.log('root:', root);
+  
   try {
     const box = (root && root.querySelector)
       ? root.querySelector('#photo-gallery')
       : document.querySelector('#photo-gallery');
-    if (box) box.innerHTML = html;
+    
+    console.log('찾은 photo-gallery 요소:', box);
+    
+    if (box) {
+      box.innerHTML = html;
+      console.log('photo-gallery에 HTML 주입 완료');
+    } else {
+      console.error('photo-gallery 요소를 찾을 수 없습니다');
+    }
   } catch (e) {
-    console.warn('photo-gallery 주입 실패:', e);
+    console.error('photo-gallery 주입 실패:', e);
   }
 }
 
@@ -182,14 +241,21 @@ function initializeMap(mapElement, hospitalName, address) {
 
         // findPlace 결과에 이미 photos가 있으면 바로 사용
         const found = findResults[0];
+        console.log('findPlace 결과:', found);
+        console.log('found.photos:', found.photos);
+        
         let photoSection = "";
         if (found.photos?.length) {
+          console.log('findPlace에서 사진 발견, 갤러리 생성 시작');
           photoSection = buildPhotoGallery(found.photos, 3);
           globalInfoWindow.setContent(baseContent + photoSection);
           globalInfoWindow.open(map, currentMarker);
           // 패널에도 주입
           renderPhotoGalleryToPanel(photoSection, mapElement.closest('.detail-content') || document);
+          console.log('findPlace 사진으로 InfoWindow 및 패널 업데이트 완료');
           return;
+        } else {
+          console.log('findPlace에서 사진을 찾을 수 없음');
         }
 
         // 2-4) 더 풍부한 사진을 위해 getDetails 호출 (placeId 기반)
@@ -206,13 +272,19 @@ function initializeMap(mapElement, hospitalName, address) {
             fields: ["name", "formatted_address", "photos", "url", "website"],
           },
           (place, detailsStatus) => {
+            console.log('getDetails 결과:', place);
+            console.log('getDetails 상태:', detailsStatus);
+            console.log('place.photos:', place?.photos);
+            
             if (detailsStatus !== google.maps.places.PlacesServiceStatus.OK || !place) {
+              console.log('getDetails 실패 또는 place 없음');
               globalInfoWindow.setContent(baseContent + `<div style="color:#888">상세정보 없음</div>`);
               globalInfoWindow.open(map, currentMarker);
               renderPhotoGalleryToPanel('<div style="color:#888">사진 없음</div>', mapElement.closest('.detail-content') || document);
               return;
             }
 
+            console.log('getDetails에서 사진 발견, 갤러리 생성 시작');
             const gallery = buildPhotoGallery(place.photos, 3);
             const links = `
               <div style="margin-top:6px;font-size:12px">
