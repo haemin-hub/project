@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HealnGo - 병원 목록</title>
+    <title><spring:message code="list.page.title"/></title>
     <link rel="stylesheet" href="/resources/css/styles.css">
     <link rel="stylesheet" href="/resources/css/list.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,7 +21,7 @@
 
             <!-- 지역 정보 -->
             <div class="region-info">
-                <h2><spring:message code="list.selected.region"/>: ${region}</h2>
+                <h2><spring:message code="list.selected.region"/>: ${region} ${subregion}</h2>
             </div>
 
             <!-- 결과 정보 -->
@@ -36,17 +36,17 @@
             <!-- 병원 목록 (DB 데이터) -->
             <div class="hospital-list">
                 <c:forEach var="h" items="${lists}">
-                    <div class="hospital-item" data-id="${h.id}" data-hospital="${h.name}" 
-                         data-address="${h.address}" data-phone="${h.phone}" 
+                    <div class="hospital-item" data-id="${h.id}" data-hospital="${h.nameLabel != null ? h.nameLabel : h.name}" 
+                         data-address="${h.addressLabel != null ? h.addressLabel : h.address}" data-phone="${h.phone}" 
                          data-homepage="${h.homepage}" data-region="${h.region}" 
                          data-subregion="${h.subregion}">
                         <div class="hospital-heart"><i class="far fa-heart"></i></div>
-                        <div class="hospital-name">${h.name}</div>
+                        <div class="hospital-name">${h.nameLabel != null ? h.nameLabel : h.name}</div>
                     </div>
                 </c:forEach>
 
                 <c:if test="${empty lists}">
-                    <div class="empty">표시할 결과가 없습니다.</div>
+                    <div class="empty"><spring:message code="list.empty.message"/></div>
                 </c:if>
         </div>
         <c:if test="${totalPages > 1}">
@@ -170,7 +170,7 @@
             <div class="detail-container">
                 <div class="detail-placeholder">
                     <i class="fas fa-hospital"></i>
-                    <p>병원을 선택하면 상세 정보가 표시됩니다</p>
+                    <p><spring:message code="list.hospital.select.message"/></p>
                 </div>
                 <div class="detail-content" style="display: none;">
                     <!-- AJAX로 상세 정보가 표시됩니다 -->

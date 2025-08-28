@@ -5,22 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="631d26cc-4593-4b90-944f-05a153968fb4" name="변경" comment="Merge remote-tracking branch 'origin/yoyo' into hyeonah&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/webapp/WEB-INF/views/login.jsp&#10;#&#9;target/classes/com/example/ApiRound/Controller/GoogleOAuthController.class&#10;#&#9;target/classes/com/example/ApiRound/Controller/KakaoOAuthController.class&#10;#&#9;target/classes/com/example/ApiRound/Controller/LanguageController.class&#10;#&#9;target/classes/com/example/ApiRound/Controller/LoginController.class&#10;#&#9;target/classes/com/example/ApiRound/HelloController.class&#10;#&#9;target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst&#10;#&#9;target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst&#10;#&#9;target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst&#10;#&#9;target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/LanguageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/LanguageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/ListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/ListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Service/ListService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Service/ListService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Service/ListServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Service/ListServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/dto/ListDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/dto/ListDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/mapper/ListMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/mapper/ListMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ListMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ListMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/messages_ja.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_ja.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/messages_zh.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_zh.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tourism_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tourism_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/list.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/list.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/location.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/location.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/ApiRoundApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/ApiRoundApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/GoogleOAuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/GoogleOAuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/KakaoOAuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/KakaoOAuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/LanguageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/LanguageController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/ListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/ListController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/LogoutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/LogoutController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/TourismController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/TourismController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/GoogleSocialUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/GoogleSocialUserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/KakaoSocialUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/KakaoSocialUserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/ListService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/ListService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/ListServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/ListServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/SocialUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/SocialUserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/SocialUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/SocialUserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/config/I18nConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/config/I18nConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/ListDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/ListDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/SocialUserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/SocialUserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/mapper/ListMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/mapper/ListMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/mapper/SocialUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/mapper/SocialUserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ListMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/ListMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages_en.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/messages_ja.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages_ja.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/messages_zh.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages_zh.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/ApiRound/ApiRoundApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/ApiRound/ApiRoundApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/ApiRound/Hello.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/ApiRound/Hello.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +74,9 @@
     &quot;accountId&quot;: &quot;5ab9e3e2-6d35-4445-a42a-fcbbe25473e9&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -127,7 +162,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756292924481</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Merge remote-tracking branch 'origin/yoyo' into hyeonah&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/webapp/WEB-INF/views/login.jsp&#10;#&#9;target/classes/com/example/ApiRound/Controller/GoogleOAuthController.class&#10;#&#9;target/classes/com/example/ApiRound/Controller/KakaoOAuthController.class&#10;#&#9;target/classes/com/example/ApiRound/Controller/LanguageController.class&#10;#&#9;target/classes/com/example/ApiRound/Controller/LoginController.class&#10;#&#9;target/classes/com/example/ApiRound/HelloController.class&#10;#&#9;target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst&#10;#&#9;target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst&#10;#&#9;target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst&#10;#&#9;target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst">
+      <option name="closed" value="true" />
+      <created>1756344584466</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1756344584466</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

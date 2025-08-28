@@ -28,11 +28,9 @@
 <%@include file = "/common/header.jsp"%>
 
 <main class="main-content">
-    <section class="hero-section">
-        <div class="container">
-            <h1><spring:message code="main.banner.space"/></h1>
-        </div>
-    </section>
+    <section class="hero-section" style="--bg:url('/resources/images/bannerimg.jpg')">
+        <img src="/resources/images/bannerimg.jpg" alt="HealnGo Main Visual" class="hero-image">
+      </section>
 
     <section class="category-buttons-section">
         <div class="category-buttons-container">

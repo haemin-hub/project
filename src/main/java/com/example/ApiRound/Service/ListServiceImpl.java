@@ -1,8 +1,8 @@
 package com.example.ApiRound.Service;
 
+import com.example.ApiRound.Service.ListService;
 import com.example.ApiRound.dto.ListDto;
 import com.example.ApiRound.mapper.ListMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,34 +12,33 @@ public class ListServiceImpl implements ListService {
 
     private final ListMapper listMapper;
 
-    @Autowired
     public ListServiceImpl(ListMapper listMapper) {
         this.listMapper = listMapper;
     }
 
     @Override
-    public List<ListDto> getAllList() {
-        return listMapper.findAll();
+    public List<ListDto> getAllList(String locale) {
+        return listMapper.findAll(locale);
     }
 
     @Override
-    public ListDto getListById(Long id) {
-        return listMapper.findById(id);
+    public ListDto getListById(Long id, String locale) {
+        return listMapper.findById(id, locale);
     }
 
     @Override
-    public void addList(ListDto listDto) {
-        listMapper.insert(listDto);  // mapper에서 insert 메서드를 만들어야 함
+    public void addList(ListDto hospital) {
+        listMapper.insert(hospital);
     }
 
     @Override
-    public List<ListDto> getListByCategory(String category) {
-        return listMapper.findByCategory(category);
+    public List<ListDto> getListByCategory(String category, String locale) {
+        return listMapper.findByCategory(category, locale);
     }
 
     @Override
-    public List<ListDto> getListByRegionAndSubregion(String region, String subregion, String category) {
-        return listMapper.findByRegionAndCategory(region, subregion, category);
+    public List<ListDto> getListByRegionAndSubregion(String region, String subRegion, String category, String locale) {
+        return listMapper.findByRegionAndCategory(region, subRegion, category, locale);
     }
 
     @Override
@@ -49,8 +48,8 @@ public class ListServiceImpl implements ListService {
 
     @Override
     public List<ListDto> getListByRegionAndSubregionPaged(String region, String subregion, String category,
-                                                          int limit, int offset) {
-        return listMapper.findByRegionAndCategoryPaged(region, subregion, category, limit, offset);
+                                                          int amount, int offset, String locale) {
+        return listMapper.findByRegionAndCategoryPaged(region, subregion, category, amount, offset, locale);
     }
 
     @Override
@@ -59,8 +58,8 @@ public class ListServiceImpl implements ListService {
     }
 
     @Override
-    public List<ListDto> getListByCategoryPaged(String category, int amount, int offset) {
-        return listMapper.findByCategoryPaged(category, amount, offset);
+    public List<ListDto> getListByCategoryPaged(String category, int amount, int offset, String locale) {
+        return listMapper.findByCategoryPaged(category, amount, offset, locale);
     }
 
     @Override
