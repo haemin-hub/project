@@ -46,7 +46,7 @@
         AND subregion LIKE '%' || #{subregion} || '%'
         AND category  LIKE '%' || #{category}  || '%'
     </select>
-
+ 
     <!-- 페이징 조회 (Oracle 12c+) -->
     <select id="findByRegionAndCategoryPaged" parameterType="map" resultMap="ListDtoResultMap">
         SELECT id, name, region, subregion, address, phone, homepage, coord_x, coord_y, category
