@@ -124,7 +124,7 @@ function generateHospitalDetailHTML(hospitalName) {
       <div class="hospital-header">
         <h2 class="hospital-title">${hospitalName}</h2>
         <div class="hospital-image">
-          <img src="/resources/images/detail/hospital.jpg" alt="${hospitalName}">
+          <div id="photo-gallery" class="photo-gallery">사진 로딩 중…</div>
         </div>
       </div>
 

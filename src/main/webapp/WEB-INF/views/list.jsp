@@ -13,15 +13,16 @@
 <body>
 <%@include file="/common/header.jsp"%>
 
-<!-- ✅ region-info는 main-container 밖(위) 에 둡니다 -->
-<div class="region-info">
-    <h2><spring:message code="list.selected.region"/>: ${region}</h2>
-</div>
 <!-- ✅ main-container 바로 아래에 left/right 가 오도록 -->
 <div class="main-container">
 
         <!-- 왼쪽: 필터 + 목록 -->
         <div class="left-panel">
+
+            <!-- 지역 정보 -->
+            <div class="region-info">
+                <h2><spring:message code="list.selected.region"/>: ${region}</h2>
+            </div>
 
             <!-- 결과 정보 -->
             <div class="result-info">
@@ -181,7 +182,8 @@
 </div><!-- /.main-container -->
 
 <!-- 구글맵 API 스크립트 -->
-<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQVKpyFKKbsxbwSkllx6uLr41-OM6ga44&libraries=places">
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQVKpyFKKbsxbwSkllx6uLr41-OM6ga44&libraries=places&callback=initMap">
 </script>
 <script src="/resources/js/map.js"></script>
 <script src="/resources/js/list.js"></script>

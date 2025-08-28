@@ -1159,7 +1159,8 @@ function showPlannerModal(plannerId) {
             name: '김현아 플래너',
             phone: '010-1111-1111',
             email: 'hyunahyuna@gmail.com',
-            website: 'www.hyunahyuna.co.kr'
+            website: 'www.hyunahyuna.co.kr',
+            services: ['다이어트', '마사지', '부산', '영남지방']
         },
         kangyukyung: {
             companyImage: '/resources/images/yoyo업체.jpg',
@@ -1168,7 +1169,8 @@ function showPlannerModal(plannerId) {
             name: '강유경 플래너',
             phone: '010-2222-2222',
             email: 'yoyo@gmail.com',
-            website: 'www.yoyo.co.kr'
+            website: 'www.yoyo.co.kr',
+            services: ['피부', '자기관리', '시술', '제주도']
         },
         kimhaemin: {
             companyImage: '/resources/images/해민스업체.jpg',
@@ -1177,7 +1179,8 @@ function showPlannerModal(plannerId) {
             name: '김해민 플래너',
             phone: '010-3333-3333',
             email: 'haemins@gmail.com',
-            website: 'www.haemins.co.kr'
+            website: 'www.haemins.co.kr',
+            services: ['성형', '시술', '호남지방']
         },
         jungminseo: {
             companyImage: '/resources/images/말랑핑업체.jpg',
@@ -1186,7 +1189,8 @@ function showPlannerModal(plannerId) {
             name: '정민서 플래너',
             phone: '010-1234-1234',
             email: 'mallangping33@gmail.com',
-            website: 'www.mallangping.co.kr'
+            website: 'www.mallangping.co.kr',
+            services: ['피부', '다이어트', '치과', '수도권']
         }
     };
 
@@ -1206,6 +1210,17 @@ function showPlannerModal(plannerId) {
     document.getElementById('plannerPhone').textContent = data.phone;
     document.getElementById('plannerEmail').textContent = data.email;
     document.getElementById('plannerWebsite').textContent = data.website;
+    
+    // 서비스 카테고리 동적 생성
+    const serviceCategoriesContainer = document.querySelector('.service-categories');
+    serviceCategoriesContainer.innerHTML = '';
+    
+    data.services.forEach(service => {
+        const serviceCategory = document.createElement('div');
+        serviceCategory.className = 'service-category';
+        serviceCategory.textContent = service;
+        serviceCategoriesContainer.appendChild(serviceCategory);
+    });
 
     // 모달 표시
     modal.style.display = 'block';
