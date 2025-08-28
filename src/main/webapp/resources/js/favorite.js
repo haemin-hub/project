@@ -80,6 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
     loadFavoriteHospitals(); // 먼저 favoriteHospitals 데이터 로드
     loadFavorites();
     setupModal();
+    restoreHeartStates(); // 하트 상태 복원
+    bindHospitalItemEvents(); // 병원 아이템 이벤트 바인딩
 });
 
 // 즐겨찾기 목록 로드
@@ -267,6 +269,134 @@ function openMap(address) {
 // 메인 페이지로 이동
 function goToMain() {
     window.location.href = '/main';
+}
+
+// 하트 상태를 localStorage에서 복원 (list.js와 동일한 로직)
+function restoreHeartStates() {
+    try {
+        // favoriteHospitals 배열에서 하트 상태 확인
+        const favoriteHospitalNames = JSON.parse(localStorage.getItem('favoriteHospitals') || '[]');
+        const hospitalItems = document.querySelectorAll('.hospital-item');
+
+        hospitalItems.forEach(item => {
+            const hospitalName = item.dataset.hospital;
+            const heartIcon = item.querySelector('.hospital-heart i');
+
+            if (favoriteHospitalNames.includes(hospitalName) && heartIcon) {
+                // favoriteHospitals에 있으면 채워진 하트로 설정
+                heartIcon.classList.remove('far');
+                heartIcon.classList.add('fas');
+                heartIcon.style.color = '#ff4757';
+                console.log('하트 상태 복원:', hospitalName, '활성화');
+            } else if (heartIcon) {
+                // favoriteHospitals에 없으면 빈 하트로 설정
+                heartIcon.classList.remove('fas');
+                heartIcon.classList.add('far');
+                heartIcon.style.color = '#ccc';
+            }
+        });
+
+        console.log('하트 상태 복원 완료');
+    } catch (error) {
+        console.error('하트 상태 복원 중 오류:', error);
+    }
+}
+
+// 병원 아이템 이벤트 바인딩 (list.js와 동일한 로직)
+function bindHospitalItemEvents() {
+    const list = document.querySelector('.hospital-list');
+    if (!list || list.dataset.bound === '1') return; // 중복 바인딩 방지
+    list.dataset.bound = '1';
+
+    list.addEventListener('click', function(e) {
+        const item = e.target.closest('.hospital-item');
+        if (!item) return;
+
+        const heart = e.target.closest('.hospital-heart');
+        if (heart) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleHeart(item);
+            return;
+        }
+
+        // 아이템 클릭 → 선택/상세 열기
+        selectHospital(item);
+        if (item.classList.contains('active')) {
+            showHospitalDetail(item);
+        }
+    });
+}
+
+// 하트 토글 (list.js와 동일한 로직)
+function toggleHeart(hospitalItem) {
+    const heartIcon = hospitalItem.querySelector('.hospital-heart i');
+
+    if (heartIcon.classList.contains('far')) {
+        // 빈 하트 → 채워진 하트
+        heartIcon.classList.remove('far');
+        heartIcon.classList.add('fas');
+        heartIcon.style.color = '#ff4757';
+        console.log('즐겨찾기 추가:', hospitalItem.dataset.hospital);
+        
+        // favoriteHospitals localStorage에 추가
+        try {
+            const favoriteHospitalNames = JSON.parse(localStorage.getItem('favoriteHospitals') || '[]');
+            if (!favoriteHospitalNames.includes(hospitalItem.dataset.hospital)) {
+                favoriteHospitalNames.push(hospitalItem.dataset.hospital);
+                localStorage.setItem('favoriteHospitals', JSON.stringify(favoriteHospitalNames));
+                console.log('favoriteHospitals에 추가:', hospitalItem.dataset.hospital);
+            }
+        } catch (error) {
+            console.error('favoriteHospitals 저장 중 오류:', error);
+        }
+        
+    } else {
+        // 채워진 하트 → 빈 하트
+        heartIcon.classList.remove('fas');
+        heartIcon.classList.add('far');
+        heartIcon.style.color = '#ccc';
+        console.log('즐겨찾기 제거:', hospitalItem.dataset.hospital);
+        
+        // favoriteHospitals localStorage에서 제거
+        try {
+            const favoriteHospitalNames = JSON.parse(localStorage.getItem('favoriteHospitals') || '[]');
+            const updatedFavorites = favoriteHospitalNames.filter(name => name !== hospitalItem.dataset.hospital);
+            localStorage.setItem('favoriteHospitals', JSON.stringify(updatedFavorites));
+            console.log('favoriteHospitals에서 제거:', hospitalItem.dataset.hospital);
+        } catch (error) {
+            console.error('favoriteHospitals 제거 중 오류:', error);
+        }
+        
+        // 즐겨찾기에서 제거되면 목록에서도 제거
+        removeFavorite(hospitalItem.dataset.hospital);
+    }
+}
+
+// 병원 선택 (list.js와 동일한 로직)
+function selectHospital(hospitalItem) {
+    // 현재 선택된 병원이 다시 클릭된 경우 선택 취소
+    if (hospitalItem.classList.contains('active')) {
+        hospitalItem.classList.remove('active');
+        console.log('병원 선택 취소:', hospitalItem.dataset.hospital);
+    } else {
+        // 기존 선택 해제
+        const activeItems = document.querySelectorAll('.hospital-item.active');
+        activeItems.forEach(item => {
+            item.classList.remove('active');
+        });
+
+        // 새로운 선택
+        hospitalItem.classList.add('active');
+        console.log('병원 선택:', hospitalItem.dataset.hospital);
+    }
+}
+
+// 병원 상세 정보 표시 (list.js와 동일한 로직)
+function showHospitalDetail(hospitalItem) {
+    const hospitalName = hospitalItem.dataset.hospital;
+    console.log('상세 정보 표시:', hospitalName);
+    // 여기에 상세 정보 표시 로직 추가
 }
 
 // 즐겨찾기 추가 (다른 페이지에서 호출)
