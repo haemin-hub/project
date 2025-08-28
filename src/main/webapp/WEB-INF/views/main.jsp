@@ -220,39 +220,39 @@
 
                 <div class="company-cards-wrapper">
                     <!-- 인기 업체 1 -->
-                    <a href="/company/${company1.companyId}" class="company-card">
+                    <a href="http://xn--939au0giujp2l.xn--3e0b707e/" class="company-card">
                         <div class="card-image">
-                            <img src="/resources/images/dump.jpg" alt="${company1.companyName}">
+                            <img src="/resources/images/힐링패키지.jpg" alt="${company1.companyName}">
                             <div class="card-badge">1위</div>
                         </div>
                         <div class="card-content">
-                            <h4 class="company-name">${company1.companyName}</h4>
+                            <h4 class="company-name">강남 건강안마센터</h4>
                             <div class="company-details">
                                 <span class="location"><i class="fas fa-map-marker-alt"></i> 강남구</span>
                             </div>
-                            <span class="specialty-tag">전문 분야</span>
+                            <span class="specialty-tag">마사지샵</span>
                         </div>
                     </a>
 
                     <!-- 인기 업체 2 -->
-                    <a href="/company/${company2.companyId}" class="company-card">
+                    <a href="http://www.miwoo.kr/" class="company-card">
                         <div class="card-image">
                             <img src="/resources/images/2024-11-20.jpg" alt="${company2.companyName}">
                             <div class="card-badge">2위</div>
                         </div>
                         <div class="card-content">
-                            <h4 class="company-name">${company2.companyName}</h4>
+                            <h4 class="company-name">제주도 미우성형외과</h4>
                             <div class="company-details">
-                                <span class="location"><i class="fas fa-map-marker-alt"></i> 서초구</span>
+                                <span class="location"><i class="fas fa-map-marker-alt"></i> 제주시</span>
                             </div>
-                            <span class="specialty-tag">전문 분야</span>
+                            <span class="specialty-tag">성형 외과</span>
                         </div>
                     </a>
 
                     <!-- 인기 업체 3 -->
                     <a href="/company/${company3.companyId}" class="company-card">
                         <div class="card-image">
-                            <img src="/resources/images/013_9985 copy.jpg" alt="${company3.companyName}">
+                            <img src="/resources/images/자기관리패키지.png" alt="${company3.companyName}">
                             <div class="card-badge">3위</div>
                         </div>
                         <div class="card-content">
@@ -260,7 +260,7 @@
                             <div class="company-details">
                                 <span class="location"><i class="fas fa-map-marker-alt"></i> 마포구</span>
                             </div>
-                            <span class="specialty-tag">전문 분야</span>
+                            <span class="specialty-tag">마사지샵</span>
                         </div>
                     </a>
                 </div>
