@@ -19,13 +19,13 @@
             overflow: hidden;
             background: #f8f9fa;
         }
-        
+
         .banner-slider {
             position: relative;
             width: 100%;
             height: 100%;
         }
-        
+
         .banner-slide {
             position: absolute;
             top: 0;
@@ -38,11 +38,11 @@
             background-position: center;
             background-repeat: no-repeat;
         }
-        
+
         .banner-slide.active {
             opacity: 1;
         }
-        
+
         .banner-content {
             position: absolute;
             top: 50%;
@@ -53,18 +53,18 @@
             z-index: 2;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
-        
+
         .banner-content h1 {
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 20px;
         }
-        
+
         .banner-content p {
             font-size: 1.2rem;
             opacity: 0.9;
         }
-        
+
         .banner-overlay {
             position: absolute;
             top: 0;
@@ -74,7 +74,7 @@
             background: rgba(0, 0, 0, 0.3);
             z-index: 1;
         }
-        
+
         .banner-indicators {
             position: absolute;
             bottom: 20px;
@@ -84,7 +84,7 @@
             gap: 10px;
             z-index: 3;
         }
-        
+
         .banner-indicator {
             width: 12px;
             height: 12px;
@@ -93,32 +93,32 @@
             cursor: pointer;
             transition: background 0.5s ease;
         }
-        
+
         .banner-indicator.active {
             background: white;
         }
-        
+
         .package-section {
             padding: 60px 0;
         }
-        
+
         .section-title {
             text-align: center;
             margin-bottom: 50px;
         }
-        
+
         .section-title h2 {
             font-size: 2.5rem;
             font-weight: 700;
             color: #333;
             margin-bottom: 15px;
         }
-        
+
         .section-title p {
             font-size: 1.1rem;
             color: #666;
         }
-        
+
         .package-grid {
             display: flex;
             gap: 30px;
@@ -128,25 +128,25 @@
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
         }
-        
+
         .package-grid::-webkit-scrollbar {
             height: 8px;
         }
-        
+
         .package-grid::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 4px;
         }
-        
+
         .package-grid::-webkit-scrollbar-thumb {
             background: #B0DBB4;
             border-radius: 4px;
         }
-        
+
         .package-grid::-webkit-scrollbar-thumb:hover {
             background: #005A66;
         }
-        
+
         .package-card {
             background: white;
             border-radius: 15px;
@@ -158,29 +158,29 @@
             min-width: 320px;
             flex-shrink: 0;
         }
-        
+
         .package-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
-        
+
         .package-image {
             position: relative;
             height: 250px;
             overflow: hidden;
         }
-        
+
         .package-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-        
+
         .package-card:hover .package-image img {
             transform: scale(1.05);
         }
-        
+
         .package-badge {
             position: absolute;
             top: 15px;
@@ -192,32 +192,32 @@
             font-size: 0.8rem;
             font-weight: 600;
         }
-        
+
         .package-content {
             padding: 25px;
         }
-        
+
         .package-title {
             font-size: 1.3rem;
             font-weight: 600;
             color: #333;
             margin-bottom: 10px;
         }
-        
+
         .package-description {
             color: #666;
             font-size: 0.95rem;
             line-height: 1.5;
             margin-bottom: 15px;
         }
-        
+
         .package-features {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin-bottom: 20px;
         }
-        
+
         .feature-tag {
             background: #f8f9fa;
             color: #495057;
@@ -237,17 +237,17 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
+
         .package-button:hover {
             background: linear-gradient(135deg, #B0DBB4 0%, #005A66 100%);
             transform: translateY(-2px);
         }
-        
+
         .planner-section {
             padding: 60px 0;
             background: white;
         }
-        
+
         .planner-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -257,7 +257,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         .planner-card {
             display: flex;
             align-items: center;
@@ -271,12 +271,12 @@
             color: inherit;
             cursor: pointer;
         }
-        
+
         .planner-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
-        
+
         .planner-image {
             width: 80px;
             height: 80px;
@@ -284,62 +284,62 @@
             overflow: hidden;
             flex-shrink: 0;
         }
-        
+
         .planner-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .planner-content {
             flex: 1;
         }
-        
+
         .planner-company {
             font-size: 0.85rem;
             color: #667eea;
             font-weight: 600;
             margin-bottom: 5px;
         }
-        
+
         .planner-name {
             font-size: 1.1rem;
             font-weight: 700;
             color: #333;
             margin-bottom: 8px;
         }
-        
+
         .planner-description {
             color: #666;
             font-size: 0.85rem;
             line-height: 1.4;
         }
-        
+
         .breadcrumb-section {
             background: #f8f9fa;
             padding: 20px 0;
         }
-        
+
         .breadcrumb {
             margin: 0;
             background: transparent;
         }
-        
+
         .breadcrumb-item a {
             color: #667eea;
             text-decoration: none;
         }
-        
+
         .breadcrumb-item.active {
             color: #6c757d;
         }
-        
+
         /* 스크롤 버튼 스타일 */
         .scroll-container {
             position: relative;
             overflow: hidden;
         }
-        
+
         .scroll-button {
             position: absolute;
             top: 50%;
@@ -357,73 +357,73 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
-        
+
         .scroll-button:hover {
             background: #005A66;
             color: white;
             transform: translateY(-50%) scale(1.1);
         }
-        
+
         .scroll-button.prev {
             left: 10px;
         }
-        
+
         .scroll-button.next {
             right: 10px;
         }
-        
+
         .scroll-button i {
             font-size: 18px;
             color: #005A66;
             transition: color 0.3s ease;
         }
-        
+
         .scroll-button:hover i {
             color: white;
         }
-        
+
         .scroll-button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: translateY(-50%) scale(1);
         }
-        
+
         .scroll-button:disabled:hover {
             background: rgba(255, 255, 255, 0.9);
             transform: translateY(-50%) scale(1);
         }
-        
+
         .scroll-button:disabled i {
             color: #005A66;
         }
-        
+
         @media (max-width: 768px) {
             .tourism-hero h1 {
                 font-size: 2rem;
             }
-            
+
             .package-card {
                 min-width: 280px;
             }
-            
+
             .planner-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
                 max-width: 100%;
             }
-            
+
             .planner-card {
                 flex-direction: column;
                 text-align: center;
                 gap: 15px;
             }
-            
+
             .planner-image {
                 width: 70px;
                 height: 70px;
             }
         }
-        
+
         /* 플래너 모달 스타일 */
         .planner-modal {
             display: none;
@@ -435,7 +435,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
         }
-        
+
         .planner-modal-content {
             position: relative;
             background-color: white;
@@ -447,7 +447,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             overflow: hidden;
         }
-        
+
         .planner-modal-close {
             position: absolute;
             right: 20px;
@@ -458,16 +458,16 @@
             cursor: pointer;
             z-index: 1001;
         }
-        
+
         .planner-modal-close:hover {
             color: #000;
         }
-        
+
         .modal-screen {
             width: 100%;
             min-height: 300px;
         }
-        
+
         /* 첫 번째 화면: 업체 이미지 */
         .company-image-container {
             width: 100%;
@@ -479,7 +479,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .company-image-container::before {
             content: '';
             position: absolute;
@@ -491,7 +491,7 @@
             background-size: 200px 200px;
             opacity: 0.3;
         }
-        
+
         .company-image-container::after {
             content: '';
             position: absolute;
@@ -503,7 +503,7 @@
             background-size: 100px 100px;
             opacity: 0.3;
         }
-        
+
         .company-image-container img {
             max-width: 80%;
             max-height: 80%;
@@ -513,24 +513,24 @@
             z-index: 1;
             position: relative;
         }
-        
+
         .company-image-container img:hover {
             transform: scale(1.05);
         }
-        
+
         /* 두 번째 화면: 플래너 정보 */
         .planner-info-container {
             display: flex;
             min-height: 400px;
         }
-        
+
         .planner-info-left {
             flex: 2;
             padding: 30px;
             display: flex;
             gap: 20px;
         }
-        
+
         .planner-info-right {
             flex: 1;
             padding: 30px;
@@ -538,7 +538,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .planner-profile {
             width: 120px;
             height: 120px;
@@ -546,37 +546,37 @@
             overflow: hidden;
             flex-shrink: 0;
         }
-        
+
         .planner-profile img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .planner-details {
             flex: 1;
         }
-        
+
         .planner-company-info {
             font-size: 0.9rem;
             color: #667eea;
             font-weight: 600;
             margin-bottom: 5px;
         }
-        
+
         .planner-name-info {
             font-size: 1.8rem;
             font-weight: bold;
             color: #333;
             margin-bottom: 20px;
         }
-        
+
         .planner-contact {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
-        
+
         .contact-item {
             display: flex;
             align-items: center;
@@ -584,19 +584,19 @@
             font-size: 0.95rem;
             color: #666;
         }
-        
+
         .contact-item i {
             width: 20px;
             text-align: center;
         }
-        
+
         .service-categories {
             display: flex;
             flex-direction: column;
             gap: 10px;
             width: 100%;
         }
-        
+
         .service-category {
             background: #f8f9fa;
             color: #495057;
@@ -607,7 +607,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .service-category:hover {
             background: #e9ecef;
             transform: translateY(-2px);
@@ -1292,7 +1292,7 @@ function closePlannerModal() {
     modal.style.display = 'none';
 }
 
-// 패키지 카테고리 모달 열기/닫기 (카테고리 버튼만 렌더링)
+// 패키지 카테고리 모달 열기/닫기 (카테고리 선택 시 기존 흐름으로 이동)
 function showPackageModal(categories, imageUrl) {
     const modal = document.getElementById('packageModal');
     const catContainer = document.getElementById('packageCategories');
@@ -1308,12 +1308,27 @@ function showPackageModal(categories, imageUrl) {
         el.className = 'service-category';
         el.textContent = cat;
         el.addEventListener('click', function() {
-            this.classList.toggle('active');
+            // 단일 선택 표시
+            catContainer.querySelectorAll('.service-category').forEach(x => x.classList.remove('active'));
+            this.classList.add('active');
+
+            // 기존 location → list → 상세 흐름으로 이동하도록 카테고리 파라미터 전달
+            const targetUrl = buildListNavigateUrl(cat);
+            window.location.href = targetUrl;
         });
         catContainer.appendChild(el);
     });
 
     modal.style.display = 'block';
+}
+
+// 리스트 페이지로 이동할 URL 생성 (프로젝트의 기존 흐름에 맞춰 필요 시 경로만 조정)
+function buildListNavigateUrl(categoryLabel) {
+    const params = new URLSearchParams();
+    params.set('category', categoryLabel);
+    // 필요 시 지역/추가 파라미터를 여기서 함께 세팅하세요. 예) params.set('region', 'ALL');
+    // 기존 흐름이 location → list 라면 우선 location으로 전달
+    return '/location?' + params.toString();
 }
 
 function closePackageModal() {
