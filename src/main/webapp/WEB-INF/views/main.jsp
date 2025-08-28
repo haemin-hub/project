@@ -293,7 +293,23 @@
                                             <span class="feature-tag">의료관광</span>
                                             <span class="feature-tag">서비스소개</span>
                                         </div>
-                                        <button class="youtube-button" onclick="openYouTubeModal('hC9h4AzbwLw')">영상 보기</button>
+                                        <button class="youtube-button"
+                                                data-video="hC9h4AzbwLw"
+                                                onclick="(function(id){
+                                          var m=document.getElementById('youtubeModal'),
+                                              f=document.getElementById('youtubeIframe');
+                                          f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                                          m.style.display='block';
+                                          document.body.style.overflow='hidden';
+                                          if(!window._ytEscBind){ window._ytEscBind=true;
+                                            document.addEventListener('keydown',function(e){
+                                              if(e.key==='Escape'){ f.src=''; m.style.display='none'; document.body.style.overflow=''; }
+                                            });
+                                          }
+                                          m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                        })(this.dataset.video)">
+                                          영상 보기
+                                        </button>
                                     </div>
                                 </div>
 
@@ -313,8 +329,23 @@
                                             <span class="feature-tag">성형외과</span>
                                             <span class="feature-tag">시술가이드</span>
                                         </div>
-                                        <button class="youtube-button" onclick="openYouTubeModal('cmn3J6E2PaA')">영상 보기</button>
-                                    </div>
+                                            <button class="youtube-button"
+                                              onclick="(function(id){
+                                                var m=document.getElementById('youtubeModal'),
+                                                    f=document.getElementById('youtubeIframe');
+                                                f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                                                m.style.display='block';
+                                                document.body.style.overflow='hidden';
+                                                if(!window._ytEscBind){ window._ytEscBind=true;
+                                                  document.addEventListener('keydown',function(e){
+                                                    if(e.key==='Escape'){ f.src=''; m.style.display='none'; document.body.style.overflow=''; }
+                                                  });
+                                                }
+                                                m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                              })('cmn3J6E2PaA')">
+                                              영상 보기
+                                            </button>
+                                            </div>
                                 </div>
 
                                 <!-- YouTube 영상 3 -->
@@ -333,7 +364,22 @@
                                             <span class="feature-tag">피부과</span>
                                             <span class="feature-tag">피부관리</span>
                                         </div>
-                                        <button class="youtube-button" onclick="openYouTubeModal('f5Hit9JQCkY')">영상 보기</button>
+                                        <button class="youtube-button"
+                                          onclick="(function(id){
+                                            var m=document.getElementById('youtubeModal'),
+                                                f=document.getElementById('youtubeIframe');
+                                            f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                                            m.style.display='block';
+                                            document.body.style.overflow='hidden';
+                                            if(!window._ytEscBind){ window._ytEscBind=true;
+                                              document.addEventListener('keydown',function(e){
+                                                if(e.key==='Escape'){ f.src=''; m.style.display='none'; document.body.style.overflow=''; }
+                                              });
+                                            }
+                                            m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                          })('f5Hit9JQCkY')">
+                                          영상 보기
+                                        </button>
                                     </div>
                                 </div>
 
@@ -353,7 +399,22 @@
                                             <span class="feature-tag">치과</span>
                                             <span class="feature-tag">시술안내</span>
                                         </div>
-                                        <button class="youtube-button" onclick="openYouTubeModal('8I-08wGeZIE')">영상 보기</button>
+                                        <button class="youtube-button"
+                                          onclick="(function(id){
+                                            var m=document.getElementById('youtubeModal'),
+                                                f=document.getElementById('youtubeIframe');
+                                            f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                                            m.style.display='block';
+                                            document.body.style.overflow='hidden';
+                                            if(!window._ytEscBind){ window._ytEscBind=true;
+                                              document.addEventListener('keydown',function(e){
+                                                if(e.key==='Escape'){ f.src=''; m.style.display='none'; document.body.style.overflow=''; }
+                                              });
+                                            }
+                                            m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                          })('8I-08wGeZIE')">
+                                          영상 보기
+                                        </button>
                                     </div>
                                 </div>
 
@@ -373,7 +434,22 @@
                                             <span class="feature-tag">한의원</span>
                                             <span class="feature-tag">전통의학</span>
                                         </div>
-                                        <button class="youtube-button" onclick="openYouTubeModal('Dy7X4dEed1I')">영상 보기</button>
+                                        <button class="youtube-button"
+                                          onclick="(function(id){
+                                            var m=document.getElementById('youtubeModal'),
+                                                f=document.getElementById('youtubeIframe');
+                                            f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                                            m.style.display='block';
+                                            document.body.style.overflow='hidden';
+                                            if(!window._ytEscBind){ window._ytEscBind=true;
+                                              document.addEventListener('keydown',function(e){
+                                                if(e.key==='Escape'){ f.src=''; m.style.display='none'; document.body.style.overflow=''; }
+                                              });
+                                            }
+                                            m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                          })('Dy7X4dEed1I')">
+                                          영상 보기
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -625,11 +701,11 @@
                     }
 
                     .scroll-button.prev {
-                        left: -20px;
+                        left: 10px;
                     }
 
                     .scroll-button.next {
-                        right: -20px;
+                        right: 10px;
                     }
 
                     /* YouTube 모달 스타일 */
@@ -706,11 +782,11 @@
                         }
 
                         .scroll-button.prev {
-                            left: -15px;
+                            left: 5px;
                         }
 
                         .scroll-button.next {
-                            right: -15px;
+                            right: 5px;
                         }
                     }
                 </style>
