@@ -47,7 +47,7 @@
                       data-subregion="${h.subregion}">
 
                      <!-- ❤️ 하트 버튼만 클릭 시 찜 기능 실행 -->
-                     <div class="hospital-heart" onclick="toggleHeart(event, this)">
+                     <div class="hospital-heart">
                          <i class="far fa-heart"></i>
                      </div>
 
