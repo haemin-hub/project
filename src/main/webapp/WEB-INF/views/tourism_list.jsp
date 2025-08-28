@@ -612,33 +612,83 @@
             background: #e9ecef;
             transform: translateY(-2px);
         }
-        
+
+        .service-category.active {
+            background: #e9ecef;
+            border: 2px solid #667eea;
+            transform: none;
+        }
+
+        /* 패키지 모달 전용 사이즈 및 레이아웃 */
+        #packageModal .planner-modal-content {
+            width: 92%;
+            max-width: 1000px;
+        }
+        #packageModal .company-image-container {
+            height: 420px;
+            background: #fff;
+        }
+        #packageModal .company-image-container img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            display: block;
+        }
+        #packageModal .service-categories {
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        #packageModal .service-category {
+            min-width: 110px;
+        }
+
+        /* 패키지 모달 전용 사이즈 및 레이아웃 */
+        #packageModal .planner-modal-content {
+            width: 92%;
+            max-width: 1000px;
+        }
+        #packageModal .company-image-container {
+            height: 420px;
+            background: #fff;
+        }
+        #packageModal .service-categories {
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        #packageModal .service-category {
+            min-width: 110px;
+        }
+
         /* 반응형 디자인 */
         @media (max-width: 768px) {
             .planner-modal-content {
                 width: 95%;
                 margin: 10% auto;
             }
-            
+
             .planner-info-container {
                 flex-direction: column;
             }
-            
+
             .planner-info-left {
                 flex-direction: column;
                 text-align: center;
             }
-            
+
             .planner-profile {
                 align-self: center;
             }
-            
+
             .service-categories {
                 flex-direction: row;
                 justify-content: center;
                 flex-wrap: wrap;
             }
-            
+
             .service-category {
                 min-width: 80px;
             }
@@ -646,7 +696,6 @@
     </style>
 </head>
 <body>
-
 <%@include file="/common/header.jsp"%>
 
 <!-- 브레드크럼 -->
@@ -655,7 +704,8 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/main">홈</a></li>
-                <li class="breadcrumb-item active"><spring:message code="tourism.breadcrumb"/></li>
+                <li class="breadcrumb-item"><a href="/main">메인</a></li>
+                                 <li class="breadcrumb-item active"><spring:message code="tourism.breadcrumb"/></li>
             </ol>
         </nav>
     </div>
@@ -672,7 +722,7 @@
                  <p><spring:message code="tourism.subtitle"/></p>
              </div>
          </div>
-        
+
                  <!-- 배너 2 -->
          <div class="banner-slide" style="background-image: url('/resources/images/패키지배너2.png');">
              <div class="banner-overlay"></div>
@@ -681,7 +731,7 @@
                  <p><spring:message code="tourism.subtitle"/></p>
              </div>
          </div>
-        
+
                  <!-- 배너 3 -->
          <div class="banner-slide" style="background-image: url('/resources/images/패키지배너3.png');">
              <div class="banner-overlay"></div>
@@ -690,7 +740,7 @@
                  <p><spring:message code="tourism.subtitle"/></p>
              </div>
          </div>
-        
+
                  <!-- 배너 4 -->
          <div class="banner-slide" style="background-image: url('/resources/images/패키지배너4.png');">
              <div class="banner-overlay"></div>
@@ -699,7 +749,7 @@
                  <p><spring:message code="tourism.subtitle"/></p>
              </div>
          </div>
-        
+
         <!-- 인디케이터 -->
         <div class="banner-indicators">
             <div class="banner-indicator active" data-slide="0"></div>
@@ -719,7 +769,7 @@
                          <h2><spring:message code="tourism.best.packages.title"/></h2>
              <p><spring:message code="tourism.best.packages.subtitle"/></p>
         </div>
-        
+
         <div class="scroll-container">
             <div class="package-grid" id="popular-packages">
             <!-- 인기 패키지 1 -->
@@ -739,7 +789,7 @@
                      <button class="package-button"><spring:message code="tourism.button.detail"/></button>
                 </div>
             </div>
-            
+
             <!-- 인기 패키지 2 -->
             <div class="package-card" data-category="popular package">
                                  <div class="package-image">
@@ -757,7 +807,7 @@
                      <button class="package-button"><spring:message code="tourism.button.detail"/></button>
                 </div>
             </div>
-            
+
             <!-- 인기 패키지 3 -->
             <div class="package-card" data-category="popular package">
                                  <div class="package-image">
@@ -775,7 +825,7 @@
                      <button class="package-button"><spring:message code="tourism.button.detail"/></button>
                 </div>
             </div>
-            
+
             <!-- 인기 패키지 4 -->
             <div class="package-card" data-category="popular package">
                                  <div class="package-image">
@@ -812,7 +862,7 @@
                          <h2><spring:message code="tourism.new.packages.title"/></h2>
              <p><spring:message code="tourism.new.packages.subtitle"/></p>
         </div>
-        
+
         <div class="scroll-container">
             <div class="package-grid" id="new-packages">
             <!-- 새로운 패키지 1 -->
@@ -832,7 +882,7 @@
                      <button class="package-button"><spring:message code="tourism.button.detail"/></button>
                 </div>
             </div>
-            
+
             <!-- 새로운 패키지 2 -->
             <div class="package-card" data-category="new package">
                                  <div class="package-image">
@@ -850,7 +900,7 @@
                      <button class="package-button"><spring:message code="tourism.button.detail"/></button>
                 </div>
             </div>
-            
+
             <!-- 새로운 패키지 3 -->
             <div class="package-card" data-category="new package">
                                  <div class="package-image">
@@ -868,7 +918,7 @@
                      <button class="package-button"><spring:message code="tourism.button.detail"/></button>
                 </div>
             </div>
-            
+
             <!-- 새로운 패키지 4 -->
             <div class="package-card" data-category="new package">
                                  <div class="package-image">
@@ -904,7 +954,7 @@
                          <h2><spring:message code="tourism.best.planners.title"/></h2>
              <p><spring:message code="tourism.best.planners.subtitle"/></p>
         </div>
-        
+
         <div class="planner-grid">
             <!-- 플래너 1 -->
             <div class="planner-card" onclick="showPlannerModal('kimhyuna')">
@@ -917,7 +967,7 @@
                     <p class="planner-description"><spring:message code="tourism.planner.kimhyuna.description"/></p>
                 </div>
             </div>
-            
+
             <!-- 플래너 2 -->
             <div class="planner-card" onclick="showPlannerModal('kangyukyung')">
                 <div class="planner-image">
@@ -929,7 +979,7 @@
                     <p class="planner-description"><spring:message code="tourism.planner.kangyukyung.description"/></p>
                 </div>
             </div>
-            
+
             <!-- 플래너 3 -->
             <div class="planner-card" onclick="showPlannerModal('kimhaemin')">
                 <div class="planner-image">
@@ -941,7 +991,7 @@
                     <p class="planner-description"><spring:message code="tourism.planner.kimhaemin.description"/></p>
                 </div>
             </div>
-            
+
             <!-- 플래너 4 -->
             <div class="planner-card" onclick="showPlannerModal('jungminseo')">
                 <div class="planner-image">
@@ -961,14 +1011,14 @@
 <div id="plannerModal" class="planner-modal">
     <div class="planner-modal-content">
         <span class="planner-modal-close" onclick="closePlannerModal()">&times;</span>
-        
+
         <!-- 첫 번째 화면: 업체 이미지 -->
         <div id="companyImageScreen" class="modal-screen">
             <div class="company-image-container">
                 <img id="companyImage" src="" alt="<spring:message code='planner.modal.alt.company'/>" onclick="showPlannerInfo()">
             </div>
         </div>
-        
+
         <!-- 두 번째 화면: 플래너 정보 -->
         <div id="plannerInfoScreen" class="modal-screen" style="display: none;">
             <div class="planner-info-container">
@@ -1007,6 +1057,20 @@
     </div>
 </div>
 
+<!-- 패키지 상세 모달 -->
+<div id="packageModal" class="planner-modal">
+    <div class="planner-modal-content">
+        <span class="planner-modal-close" onclick="closePackageModal()">&times;</span>
+        <div class="company-image-container" id="packageImageContainer">
+            <img id="packageModalImage" src="" alt="Package Image">
+        </div>
+        <div class="planner-info-right" style="padding: 24px 30px 36px;">
+            <div class="service-categories" id="packageCategories"></div>
+        </div>
+    </div>
+</div>
+
+
 <%@include file="/common/footer.jsp"%>
 
 <!-- 부트스트랩 JS -->
@@ -1021,22 +1085,22 @@ let slideInterval;
 function initBannerSlider() {
     const slides = document.querySelectorAll('.banner-slide');
     const indicators = document.querySelectorAll('.banner-indicator');
-    
+
     function showSlide(index) {
         // 모든 슬라이드 비활성화
         slides.forEach(slide => slide.classList.remove('active'));
         indicators.forEach(indicator => indicator.classList.remove('active'));
-        
+
         // 현재 슬라이드 활성화
         slides[index].classList.add('active');
         indicators[index].classList.add('active');
     }
-    
+
     function nextSlide() {
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
     }
-    
+
     // 인디케이터 클릭 이벤트
     indicators.forEach((indicator, index) => {
         indicator.addEventListener('click', function() {
@@ -1045,20 +1109,20 @@ function initBannerSlider() {
             resetInterval();
         });
     });
-    
+
     // 자동 슬라이드 시작
     function startAutoSlide() {
         slideInterval = setInterval(nextSlide, 3000); // 3초마다 전환
     }
-    
+
     function resetInterval() {
         clearInterval(slideInterval);
         startAutoSlide();
     }
-    
+
     // 자동 슬라이드 시작
     startAutoSlide();
-    
+
     // 마우스 호버 시 자동 슬라이드 일시정지
     const slider = document.querySelector('.banner-slider');
     slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
@@ -1069,7 +1133,7 @@ function initBannerSlider() {
 function scrollPackages(containerId, direction) {
     const container = document.getElementById(containerId);
     const scrollAmount = 300; // 한 번에 스크롤할 픽셀 수
-    
+
     if (direction === 'left') {
         container.scrollBy({
             left: -scrollAmount,
@@ -1081,7 +1145,7 @@ function scrollPackages(containerId, direction) {
             behavior: 'smooth'
         });
     }
-    
+
     // 스크롤 버튼 상태 업데이트
     updateScrollButtons(containerId);
 }
@@ -1092,14 +1156,14 @@ function updateScrollButtons(containerId) {
     const scrollContainer = container.parentElement;
     const prevButton = scrollContainer.querySelector('.scroll-button.prev');
     const nextButton = scrollContainer.querySelector('.scroll-button.next');
-    
+
     // 왼쪽 스크롤 버튼 상태
     if (container.scrollLeft <= 0) {
         prevButton.disabled = true;
     } else {
         prevButton.disabled = false;
     }
-    
+
     // 오른쪽 스크롤 버튼 상태
     if (container.scrollLeft >= container.scrollWidth - container.clientWidth) {
         nextButton.disabled = true;
@@ -1112,29 +1176,33 @@ document.addEventListener('DOMContentLoaded', function() {
     // 배너 슬라이더 초기화
     initBannerSlider();
 
-    // 상세보기 버튼 클릭 시 package 페이지로 이동
+    // 패키지 상세보기 버튼 클릭 시 모달 오픈 (카테고리 버튼 렌더링)
     const detailButtons = document.querySelectorAll('.package-button');
     detailButtons.forEach(btn => {
         btn.addEventListener('click', function(e) {
-            e.stopPropagation(); // 카드 클릭 이벤트와 중복 방지
-            window.location.href = '/package';
+            e.stopPropagation();
+            const card = this.closest('.package-card');
+            const categories = Array.from(card.querySelectorAll('.feature-tag')).map(el => el.textContent.trim());
+            const imgEl = card.querySelector('.package-image img');
+            const imageUrl = imgEl ? imgEl.getAttribute('src') : '';
+            showPackageModal(categories, imageUrl);
         });
     });
-    
+
     // 플래너 카드 클릭 이벤트는 onclick 속성으로 처리됨
-    
+
     // 초기 스크롤 버튼 상태 설정
     updateScrollButtons('popular-packages');
     updateScrollButtons('new-packages');
-    
+
     // 스크롤 이벤트 리스너 추가
     const popularContainer = document.getElementById('popular-packages');
     const newContainer = document.getElementById('new-packages');
-    
+
     popularContainer.addEventListener('scroll', function() {
         updateScrollButtons('popular-packages');
     });
-    
+
     newContainer.addEventListener('scroll', function() {
         updateScrollButtons('new-packages');
     });
@@ -1147,7 +1215,7 @@ function showPlannerModal(plannerId) {
     const plannerProfileImage = document.getElementById('plannerProfileImage');
     const plannerCompanyInfo = document.getElementById('plannerCompanyInfo');
     const plannerNameInfo = document.getElementById('plannerNameInfo');
-    
+
     // 플래너별 데이터 설정
     const plannerData = {
         kimhyuna: {
@@ -1187,27 +1255,27 @@ function showPlannerModal(plannerId) {
             website: 'www.mallangping.co.kr'
         }
     };
-    
+
     const data = plannerData[plannerId];
-    
+
     // 첫 번째 화면 설정 (업체 이미지)
     companyImage.src = data.companyImage;
     companyImage.alt = data.company;
-    
+
     // 두 번째 화면 데이터 미리 설정
     plannerProfileImage.src = data.profileImage;
     plannerProfileImage.alt = data.name;
     plannerCompanyInfo.textContent = data.company;
     plannerNameInfo.textContent = data.name;
-    
+
     // 연락처 정보 설정
     document.getElementById('plannerPhone').textContent = data.phone;
     document.getElementById('plannerEmail').textContent = data.email;
     document.getElementById('plannerWebsite').textContent = data.website;
-    
+
     // 모달 표시
     modal.style.display = 'block';
-    
+
     // 첫 번째 화면만 표시
     document.getElementById('companyImageScreen').style.display = 'block';
     document.getElementById('plannerInfoScreen').style.display = 'none';
@@ -1224,13 +1292,49 @@ function closePlannerModal() {
     modal.style.display = 'none';
 }
 
+// 패키지 카테고리 모달 열기/닫기 (카테고리 버튼만 렌더링)
+function showPackageModal(categories, imageUrl) {
+    const modal = document.getElementById('packageModal');
+    const catContainer = document.getElementById('packageCategories');
+    const imageElement = document.getElementById('packageModalImage');
+
+    // 이미지 설정
+    imageElement.src = imageUrl || '';
+
+    // 카테고리 버튼 렌더링
+    catContainer.innerHTML = '';
+    (categories || []).forEach(cat => {
+        const el = document.createElement('div');
+        el.className = 'service-category';
+        el.textContent = cat;
+        el.addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+        catContainer.appendChild(el);
+    });
+
+    modal.style.display = 'block';
+}
+
+function closePackageModal() {
+    const modal = document.getElementById('packageModal');
+    modal.style.display = 'none';
+}
+
+
+
 // 모달 외부 클릭 시 닫기
 window.onclick = function(event) {
-    const modal = document.getElementById('plannerModal');
-    if (event.target === modal) {
+    const plannerModal = document.getElementById('plannerModal');
+    const packageModal = document.getElementById('packageModal');
+    if (event.target === plannerModal) {
         closePlannerModal();
     }
+    if (event.target === packageModal) {
+        closePackageModal();
+    }
 }
+
 </script>
 </body>
 </html>

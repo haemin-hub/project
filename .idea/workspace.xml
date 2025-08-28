@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="TOP3, 클릭하면 INSERT" />
+    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="package.jsp">
+      <change afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/TourismController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/TourismController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/package.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tourism_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tourism_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/ListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/ListController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/TourismController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/TourismController.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,37 +96,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ApiRoundApplication.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "haemin",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/enjoy/Desktop/정민서/ApiRound/ApiRound",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "모듈",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true",
-    "애플리케이션.ApiRoundApplication.executor": "Run",
-    "애플리케이션.SpringI18nAApplication.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ApiRoundApplication.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;haemin&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/enjoy/Desktop/정민서/ApiRound/ApiRound&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;애플리케이션.ApiRoundApplication.executor&quot;: &quot;Run&quot;,
+    &quot;애플리케이션.SpringI18nAApplication.executor&quot;: &quot;Run&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "oracle"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;oracle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\enjoy\Desktop\정민서\ApiRound\ApiRound\src\main\java" />
@@ -189,7 +197,7 @@
       <updated>1755847739815</updated>
       <workItem from="1756345522218" duration="552000" />
       <workItem from="1756346099762" duration="5878000" />
-      <workItem from="1756352053544" duration="1183000" />
+      <workItem from="1756352053544" duration="10222000" />
     </task>
     <task id="LOCAL-00001" summary="번역추가">
       <option name="closed" value="true" />
@@ -303,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756352620075</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="package.jsp">
+      <option name="closed" value="true" />
+      <created>1756356928572</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1756356928572</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,7 +356,8 @@
     <MESSAGE value="변경" />
     <MESSAGE value="민서꺼 풀해온 뒤 푸시" />
     <MESSAGE value="TOP3, 클릭하면 INSERT" />
-    <option name="LAST_COMMIT_MESSAGE" value="TOP3, 클릭하면 INSERT" />
+    <MESSAGE value="package.jsp" />
+    <option name="LAST_COMMIT_MESSAGE" value="package.jsp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -355,5 +372,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
