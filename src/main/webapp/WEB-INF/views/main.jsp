@@ -28,11 +28,9 @@
 <%@include file = "/common/header.jsp"%>
 
 <main class="main-content">
-    <section>
-        <div class="container">
-            <image src="/resources/images/bannerimg.jpg" alt="HealnGo Main Visual" class="hero-image">
-        </div>
-    </section>
+    <section class="hero-section" style="--bg:url('/resources/images/bannerimg.jpg')">
+            <img src="/resources/images/bannerimg.jpg" alt="HealnGo Main Visual" class="hero-image">
+          </section>
 
     <section class="category-buttons-section">
         <div class="category-buttons-container">
@@ -270,46 +268,136 @@
                 </section>
 
                 <!-- 유튜브 영상 매거진 -->
-                <section class="youtube-carousel-section mt-5">
+                <section class="youtube-section mt-5">
                     <div class="container">
+                        <div class="section-title">
+                            <h2>추천 영상</h2>
+                            <p>HealnGo에서 추천하는 유용한 영상들을 확인해보세요</p>
+                        </div>
 
-                        <div id="youtubeCarousel" class="carousel slide">
-                            <div class="carousel-inner">
-                                <!-- 첫 번째 영상 -->
-                                <div class="carousel-item active">
-                                    <div class="ratio ratio-16x9">
-                                        <iframe src="https://www.youtube.com/embed/hC9h4AzbwLw"
-                                                title="소개 영상 1" allowfullscreen></iframe>
+                        <div class="scroll-container">
+                            <div class="youtube-grid" id="youtube-videos">
+                                <!-- YouTube 영상 1 -->
+                                <div class="youtube-card">
+                                    <div class="youtube-image">
+                                        <img src="https://img.youtube.com/vi/hC9h4AzbwLw/maxresdefault.jpg" alt="소개 영상 1">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                        <div class="youtube-badge">추천</div>
+                                    </div>
+                                    <div class="youtube-content">
+                                        <h3 class="youtube-title">HealnGo 서비스 소개</h3>
+                                        <p class="youtube-description">의료 관광을 위한 최고의 플랫폼 HealnGo를 소개합니다</p>
+                                        <div class="youtube-features">
+                                            <span class="feature-tag">의료관광</span>
+                                            <span class="feature-tag">서비스소개</span>
+                                        </div>
+                                        <button class="youtube-button" onclick="openYouTubeModal('hC9h4AzbwLw')">영상 보기</button>
                                     </div>
                                 </div>
-                                <!-- 두 번째 영상 -->
-                                <div class="carousel-item">
-                                    <div class="ratio ratio-16x9">
-                                        <iframe src="https://www.youtube.com/embed/f5Hit9JQCkY"
-                                                title="소개 영상 2" allowfullscreen></iframe>
+
+                                <!-- YouTube 영상 2 -->
+                                <div class="youtube-card">
+                                    <div class="youtube-image">
+                                        <img src="https://img.youtube.com/vi/cmn3J6E2PaA/maxresdefault.jpg" alt="소개 영상 2">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                        <div class="youtube-badge">인기</div>
+                                    </div>
+                                    <div class="youtube-content">
+                                        <h3 class="youtube-title">성형 시술 가이드</h3>
+                                        <p class="youtube-description">안전하고 효과적인 성형 시술에 대한 전문가 조언</p>
+                                        <div class="youtube-features">
+                                            <span class="feature-tag">성형외과</span>
+                                            <span class="feature-tag">시술가이드</span>
+                                        </div>
+                                        <button class="youtube-button" onclick="openYouTubeModal('cmn3J6E2PaA')">영상 보기</button>
                                     </div>
                                 </div>
-                                <!-- 세 번째 영상 -->
-                                <div class="carousel-item">
-                                    <div class="ratio ratio-16x9">
-                                        <iframe src="https://www.youtube.com/embed/WTeTa8nprjw"
-                                                title="소개 영상 3" allowfullscreen></iframe>
+
+                                <!-- YouTube 영상 3 -->
+                                <div class="youtube-card">
+                                    <div class="youtube-image">
+                                        <img src="https://img.youtube.com/vi/f5Hit9JQCkY/maxresdefault.jpg" alt="소개 영상 3">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                        <div class="youtube-badge">신규</div>
+                                    </div>
+                                    <div class="youtube-content">
+                                        <h3 class="youtube-title">피부 관리 팁</h3>
+                                        <p class="youtube-description">건강한 피부를 위한 전문적인 관리 방법</p>
+                                        <div class="youtube-features">
+                                            <span class="feature-tag">피부과</span>
+                                            <span class="feature-tag">피부관리</span>
+                                        </div>
+                                        <button class="youtube-button" onclick="openYouTubeModal('f5Hit9JQCkY')">영상 보기</button>
+                                    </div>
+                                </div>
+
+                                <!-- YouTube 영상 4 -->
+                                <div class="youtube-card">
+                                    <div class="youtube-image">
+                                        <img src="https://img.youtube.com/vi/8I-08wGeZIE/maxresdefault.jpg" alt="소개 영상 4">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                        <div class="youtube-badge">추천</div>
+                                    </div>
+                                    <div class="youtube-content">
+                                        <h3 class="youtube-title">치과 시술 안내</h3>
+                                        <p class="youtube-description">치과 시술 전후 주의사항과 관리법</p>
+                                        <div class="youtube-features">
+                                            <span class="feature-tag">치과</span>
+                                            <span class="feature-tag">시술안내</span>
+                                        </div>
+                                        <button class="youtube-button" onclick="openYouTubeModal('8I-08wGeZIE')">영상 보기</button>
+                                    </div>
+                                </div>
+
+                                <!-- YouTube 영상 5 -->
+                                <div class="youtube-card">
+                                    <div class="youtube-image">
+                                        <img src="https://img.youtube.com/vi/Dy7X4dEed1I/maxresdefault.jpg" alt="소개 영상 5">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                        <div class="youtube-badge">인기</div>
+                                    </div>
+                                    <div class="youtube-content">
+                                        <h3 class="youtube-title">한의학 치료법</h3>
+                                        <p class="youtube-description">전통 한의학을 통한 건강 관리 방법</p>
+                                        <div class="youtube-features">
+                                            <span class="feature-tag">한의원</span>
+                                            <span class="feature-tag">전통의학</span>
+                                        </div>
+                                        <button class="youtube-button" onclick="openYouTubeModal('Dy7X4dEed1I')">영상 보기</button>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- 캐러셀 컨트롤 (좌우 버튼) -->
-                            <button class="carousel-control-prev" type="button" data-bs-target="#youtubeCarousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">이전</span>
+                            
+                            <!-- 스크롤 버튼 -->
+                            <button class="scroll-button prev" onclick="scrollYouTube('left')">
+                                <i class="fas fa-chevron-left"></i>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#youtubeCarousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">다음</span>
+                            <button class="scroll-button next" onclick="scrollYouTube('right')">
+                                <i class="fas fa-chevron-right"></i>
                             </button>
                         </div>
                     </div>
                 </section>
+
+                <!-- YouTube 모달 -->
+                <div id="youtubeModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeYouTubeModal()">&times;</span>
+                        <div class="youtube-video-container">
+                            <iframe id="youtubeIframe" src="" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
 
 
                 </main>                                                
@@ -331,6 +419,300 @@
                         padding-bottom: 0;
                         padding-top: 0;
                     }
+
+                    /* Hero Section 스타일 */
+                    .hero-section {
+                        width: 100%;
+                        height: 500px;
+                        overflow: hidden;
+                        position: relative;
+                    }
+
+                    .hero-image {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+
+                    /* YouTube 섹션 스타일 */
+                    .youtube-section {
+                        padding: 60px 0;
+                        background: #f8f9fa;
+                    }
+
+                    .section-title {
+                        text-align: center;
+                        margin-bottom: 40px;
+                    }
+
+                    .section-title h2 {
+                        font-size: 2.5rem;
+                        font-weight: 700;
+                        color: #333;
+                        margin-bottom: 10px;
+                    }
+
+                    .section-title p {
+                        font-size: 1.1rem;
+                        color: #666;
+                        margin: 0;
+                    }
+
+                    .scroll-container {
+                        position: relative;
+                        max-width: 100%;
+                        overflow: hidden;
+                    }
+
+                    .youtube-grid {
+                        display: flex;
+                        gap: 25px;
+                        overflow-x: auto;
+                        padding: 20px 0;
+                        scroll-behavior: smooth;
+                        -webkit-overflow-scrolling: touch;
+                        scrollbar-width: none;
+                        -ms-overflow-style: none;
+                    }
+
+                    .youtube-grid::-webkit-scrollbar {
+                        display: none;
+                    }
+
+                    .youtube-card {
+                        background: white;
+                        border-radius: 12px;
+                        overflow: hidden;
+                        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                        min-width: 280px;
+                        flex-shrink: 0;
+                    }
+
+                    .youtube-card:hover {
+                        transform: translateY(-8px);
+                        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+                    }
+
+                    .youtube-image {
+                        position: relative;
+                        height: 180px;
+                        overflow: hidden;
+                    }
+
+                    .youtube-image img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: transform 0.3s ease;
+                    }
+
+                    .youtube-card:hover .youtube-image img {
+                        transform: scale(1.05);
+                    }
+
+                    .play-button {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 50px;
+                        height: 50px;
+                        background: rgba(255, 255, 255, 0.9);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #ff0000;
+                        font-size: 18px;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                    }
+
+                    .play-button:hover {
+                        background: #ff0000;
+                        color: white;
+                        transform: translate(-50%, -50%) scale(1.1);
+                    }
+
+                    .youtube-badge {
+                        position: absolute;
+                        top: 12px;
+                        right: 12px;
+                        background: #ff6b6b;
+                        color: white;
+                        padding: 4px 10px;
+                        border-radius: 15px;
+                        font-size: 0.75rem;
+                        font-weight: 600;
+                    }
+
+                    .youtube-content {
+                        padding: 20px;
+                    }
+
+                    .youtube-title {
+                        font-size: 1.1rem;
+                        font-weight: 600;
+                        color: #333;
+                        margin-bottom: 8px;
+                        line-height: 1.3;
+                    }
+
+                    .youtube-description {
+                        color: #666;
+                        font-size: 0.9rem;
+                        line-height: 1.4;
+                        margin-bottom: 12px;
+                    }
+
+                    .youtube-features {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 6px;
+                        margin-bottom: 15px;
+                    }
+
+                    .feature-tag {
+                        background: rgba(176, 219, 180, 0.2);
+                        color: #005a66;
+                        padding: 3px 8px;
+                        border-radius: 12px;
+                        font-size: 0.75rem;
+                        font-weight: 500;
+                    }
+
+                    .youtube-button {
+                        background: #005a66;
+                        color: white;
+                        border: none;
+                        padding: 8px 16px;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-weight: 500;
+                        font-size: 0.9rem;
+                        transition: background-color 0.3s ease;
+                        width: 100%;
+                    }
+
+                    .youtube-button:hover {
+                        background: #004850;
+                    }
+
+                    .scroll-button {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 40px;
+                        height: 40px;
+                        background: white;
+                        border: 1px solid #ddd;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        z-index: 10;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                    }
+
+                    .scroll-button:hover {
+                        background: #005a66;
+                        color: white;
+                        border-color: #005a66;
+                    }
+
+                    .scroll-button.prev {
+                        left: -20px;
+                    }
+
+                    .scroll-button.next {
+                        right: -20px;
+                    }
+
+                    /* YouTube 모달 스타일 */
+                    .modal {
+                        display: none;
+                        position: fixed;
+                        z-index: 1000;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.8);
+                    }
+
+                    .modal-content {
+                        background-color: white;
+                        margin: 2% auto;
+                        padding: 20px;
+                        border-radius: 12px;
+                        width: 90%;
+                        max-width: 800px;
+                        position: relative;
+                    }
+
+                    .close {
+                        position: absolute;
+                        right: 15px;
+                        top: 15px;
+                        font-size: 24px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        color: #666;
+                        z-index: 1001;
+                    }
+
+                    .close:hover {
+                        color: #000;
+                    }
+
+                    .youtube-video-container {
+                        position: relative;
+                        width: 100%;
+                        height: 0;
+                        padding-bottom: 56.25%;
+                        margin-top: 20px;
+                    }
+
+                    .youtube-video-container iframe {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 8px;
+                    }
+
+                    /* 반응형 디자인 */
+                    @media (max-width: 768px) {
+                        .section-title h2 {
+                            font-size: 2rem;
+                        }
+
+                        .youtube-card {
+                            min-width: 250px;
+                        }
+
+                        .youtube-image {
+                            height: 150px;
+                        }
+
+                        .scroll-button {
+                            width: 35px;
+                            height: 35px;
+                        }
+
+                        .scroll-button.prev {
+                            left: -15px;
+                        }
+
+                        .scroll-button.next {
+                            right: -15px;
+                        }
+                    }
                 </style>
 
 <%@include file = "/common/footer.jsp"%>
@@ -339,5 +721,58 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- 카테고리 버튼 JS -->
 <script src="/resources/js/category-buttons.js"></script>
+
+<!-- YouTube 섹션 JavaScript -->
+<script>
+// YouTube 스크롤 기능
+function scrollYouTube(direction) {
+    const grid = document.getElementById('youtube-videos');
+    const scrollAmount = 300;
+    
+    if (direction === 'left') {
+        grid.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+    } else {
+        grid.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// YouTube 모달 열기
+function openYouTubeModal(videoId) {
+    const modal = document.getElementById('youtubeModal');
+    const iframe = document.getElementById('youtubeIframe');
+    
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    modal.style.display = 'block';
+    
+    // 모달 외부 클릭 시 닫기
+    modal.onclick = function(event) {
+        if (event.target === modal) {
+            closeYouTubeModal();
+        }
+    };
+}
+
+// YouTube 모달 닫기
+function closeYouTubeModal() {
+    const modal = document.getElementById('youtubeModal');
+    const iframe = document.getElementById('youtubeIframe');
+    
+    iframe.src = '';
+    modal.style.display = 'none';
+}
+
+// ESC 키로 모달 닫기
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeYouTubeModal();
+    }
+});
+</script>
 </body>
 </html>

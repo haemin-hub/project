@@ -45,4 +45,3 @@ public class HelloController {
         return "location";
     }
 }
-
