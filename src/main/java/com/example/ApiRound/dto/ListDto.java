@@ -18,4 +18,5 @@ public class ListDto {
     private Double coordX; // 위도/경도는 double 타입이 적합
     private Double coordY;
     private String category;
+    private String imageUrl; // 사진 URL 필드 추가
 }

@@ -75,12 +75,10 @@ public class FavoriteItemController {
 
         List<ListDto> favorites = favoriteItemService.getFavoritesByUserId(user.getUserId());
 
-        model.addAttribute("lists", favorites);
-        model.addAttribute("region", "");
-        model.addAttribute("subregion", "");
+        model.addAttribute("favorites", favorites);
         model.addAttribute("totalCount", favorites.size());
 
-        return "list"; // 병원 리스트 JSP 재활용
+        return "favorite"; // 즐겨찾기 전용 JSP 사용
     }
 
     // ✅ 비로그인 유저가 localStorage에서 즐겨찾기 전송 (마이그레이션)

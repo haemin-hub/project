@@ -17,6 +17,7 @@
         <result property="coordX" column="COORD_X"/>
         <result property="coordY" column="COORD_Y"/>
         <result property="category" column="CATEGORY"/>
+        <result property="imageUrl" column="IMAGE_URL"/>
     </resultMap>
 
     <!-- 찜 추가 -->

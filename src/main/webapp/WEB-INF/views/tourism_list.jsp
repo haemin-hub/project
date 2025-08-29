@@ -452,11 +452,12 @@
             background-color: white;
             margin: 5% auto;
             padding: 0;
-            border-radius: 15px;
+            border-radius: 20px;
             width: 90%;
-            max-width: 800px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
             overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .planner-modal-close {
@@ -464,14 +465,25 @@
             right: 20px;
             top: 15px;
             color: #aaa;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .planner-modal-close:hover {
-            color: #000;
+            color: #005a66;
+            background: white;
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .modal-screen {
@@ -655,67 +667,116 @@
             min-width: 110px;
         }
 
-        /* 패키지 모달 새 디자인 */
-        #packageModal .planner-modal-content {
-            width: 92%;
-            max-width: 720px;
-            text-align: center; /* 모든 텍스트 기본 중앙 정렬 */
-        }
-        #packageModal .package-modal-header {
-            padding: 24px 32px;
-            border-bottom: 1px solid #f1f3f5;
-        }
-        #packageModal .package-name {
-            margin: 0;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #333;
-        }
-        #packageModal .package-modal-body {
-            padding: 24px 32px 32px;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* 내부 요소 가운데 정렬 */
-            gap: 20px;
-        }
-        #packageModal .section-label {
-            font-size: 0.85rem;
-            color: #868e96;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-        #packageModal .chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center; /* 칩들 가운데 정렬 */
-        }
-        #packageModal .chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #f1f3f5;
-            color: #495057;
-            padding: 8px 14px;
-            border-radius: 9999px;
-            font-weight: 500;
-            user-select: none;
-        }
-        #packageModal .chip i {
-            font-size: 0.95rem;
-            color: #4c6ef5;
-        }
-        #packageModal .chip.clickable {
-            cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.08s ease;
-        }
-        #packageModal .chip.clickable:hover {
-            background: #e9ecef;
-        }
-        #packageModal .chip.clickable:active {
-            transform: translateY(1px);
-        }
+        /* ===== Package modal - header 를 화이트 톤으로 간결하게 ===== */
+#packageModal .planner-modal-content{
+  width: 92%;
+  max-width: 800px;
+  background: #fff;
+  text-align: center;
+}
+#packageModal .package-modal-header{
+  padding: 22px 28px;
+  border-bottom: 1px solid #e9ecef;
+}
+#packageModal .package-name{
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #333;
+}
+
+/* ===== 상단 3타일(이미지 카드) ===== */
+#packageModal .package-images-section{ margin: 6px 0 18px; }
+#packageModal .package-image-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  justify-items: center;
+}
+#packageModal .tile-card{
+  width: 180px;
+  max-width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  transition: transform .2s ease, box-shadow .2s ease;
+  cursor: pointer;
+}
+#packageModal .tile-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(0,0,0,.12);
+}
+#packageModal .tile-img{
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+#packageModal .tile-caption{
+  background: #f8f9fa;
+  font-weight: 700;
+  color: #2f6f4f;
+  padding: 10px 8px;
+  font-size: .95rem;
+}
+
+/* ===== 초록색 세그먼트(탭) ===== */
+#packageModal .segment{
+  display: inline-flex;
+  background: #e7f4ea;
+  border-radius: 12px;
+  padding: 4px;
+  gap: 6px;
+  margin: 2px 0 8px;
+}
+#packageModal .segment-btn{
+  border: 0;
+  background: transparent;
+  font-weight: 700;
+  color: #2f6f4f;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+#packageModal .segment-btn.active{
+  background: #aee0b7; /* 밝은 초록 */
+}
+
+/* ===== 서비스 리스트 ===== */
+#packageModal .service-list-section{ margin-top: 8px; }
+#packageModal .service-list{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  max-width: 720px;
+  margin: 0 auto 10px;
+}
+#packageModal .service-item{
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 14px 16px;
+  text-align: left;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+#packageModal .service-item:hover{
+  box-shadow: 0 10px 26px rgba(0,0,0,.08);
+  transform: translateY(-2px);
+}
+#packageModal .service-title{
+  font-size: .98rem;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 6px;
+}
+#packageModal .service-description{
+  font-size: .86rem;
+  color: #666;
+  line-height: 1.45;
+}
+
+
 
         /* 반응형 디자인 */
         @media (max-width: 768px) {
@@ -746,6 +807,10 @@
             .service-category {
                 min-width: 80px;
             }
+
+            #packageModal .package-image-grid{ grid-template-columns: 1fr; }
+  #packageModal .service-list{ grid-template-columns: 1fr; }
+  #packageModal .tile-card{ width: 88%; }
         }
     </style>
 </head>
@@ -1120,17 +1185,31 @@
         </div>
 
         <div class="package-modal-body">
-            <div class="mb-4">
-                <p id="packageModalDescription" class="package-description"></p>
-                <div id="packageCategoryChips" class="chips"></div>
+
+            <!-- 이미지 타일 3개 -->
+            <div class="package-images-section">
+              <div class="package-image-grid">
+                <div class="tile-card" data-category="waxing">
+                  <img src="/resources/images/packages/packagewaxing.png" alt="왁싱" class="tile-img">
+                  <div class="tile-caption">왁싱</div>
+                </div>
+                <div class="tile-card" data-category="plasticsurgery">
+                  <img src="/resources/images/packages/packageplastic.png" alt="성형외과" class="tile-img">
+                  <div class="tile-caption">성형외과</div>
+                </div>
+                <div class="tile-card" data-category="dermatology">
+                  <img src="/resources/images/packages/packageph.png" alt="피부과" class="tile-img">
+                  <div class="tile-caption">피부과</div>
+                </div>
+              </div>
             </div>
-            <div>
-                <div class="section-label">지역</div>
-                <div id="packageRegionChips" class="chips"></div>
-                <!-- 상세 지역 칩 표시 영역 -->
-                <div id="packageDetailRegion" style="margin-top:12px;"></div>
+
+            <!-- 서비스 목록 -->
+            <div class="service-list-section">
+              <div class="service-list" id="serviceList"></div>
             </div>
-        </div>
+          </div>
+
     </div>
 </div>
 
@@ -1360,108 +1439,85 @@ function closePlannerModal() {
     modal.classList.remove('show');
     modal.style.display = 'none';
 }
-
-// 패키지 모달 열기 (지역/상세지역 표시)
-function showPackageModal(packageName, categories, description) {
-    const modal = document.getElementById('packageModal');
-    const titleEl = document.getElementById('packageModalTitle');
-    const descEl = document.getElementById('packageModalDescription');
-    const categoryChips = document.getElementById('packageCategoryChips');
-    const regionChips = document.getElementById('packageRegionChips');
-    const detailRegionDiv = document.getElementById('packageDetailRegion');
-
-    // 제목/설명 설정
-    titleEl.textContent = packageName || '패키지';
-    if (descEl) {
-        descEl.textContent = description || '';
-    }
-
-    // 카테고리 아이콘 매핑
-    const categoryIconMap = {
-        '피부과': 'fa-spa' ,
-        '치과': 'fa-tooth',
-        '왁싱샵': 'fa-cut',
-        '한의원': 'fa-leaf',
-        '약국': 'fa-pills',
-        '마사지샵': 'fa-hand-paper',
-        '성형외과': 'fa-user-md',
-        '한방병원': 'fa-clinic-medical'
-    };
-
-    // 카테고리 칩 렌더링 (아이콘 포함)
-    categoryChips.innerHTML = '';
-    (categories || []).forEach(cat => {
-        const chip = document.createElement('span');
-        chip.className = 'chip';
-        const iconClass = categoryIconMap[cat] || 'fa-tags';
-        chip.innerHTML = '<i class="fas ' + iconClass + '"></i><span>' + cat + '</span>';
-        categoryChips.appendChild(chip);
+// ====== 패키지 서비스 데이터(전역) ======
+const serviceData = {
+  waxing: [
+    { title: '[여성]종아리 5회(무릎 포함)', description: '아포지플러스, 클라리티, 산드로 듀얼, 라이트 쉬어듀엣 등' },
+    { title: '[여성]허벅지 5회', description: '아포지플러스, 클라리티, 산드로 듀얼, 라이트 쉬어듀엣 등' }
+  ],
+  plasticsurgery: [
+    { title: '시그니처 색소 패키지', description: '엑셀V레이저 3회 + 레블라이트 SI토닝 3회 + 비타민관리 3회' },
+    { title: '시그니처 모공 패키지', description: '시크릿/프락셀 3회 + 카프리레이저 3회 + 재생관리 3회' }
+  ],
+  dermatology: [
+    { title: '크라이오셀 + 촉촉팩', description: '자가세안 - X로션 - 크라이오셀 - 촉촉팩 - 마무리' },
+    { title: '듀얼토닝 + 촉촉팩', description: '자가세안 - X로션 - 듀얼토닝 - 촉촉팩 - 마무리' }
+  ]
+};
+// 2) 유틸
+function renderServices(category){
+  const list = document.getElementById('serviceList');
+  const items = serviceData[category] || [];
+  console.log('Rendering services for category:', category, 'Items:', items); // 디버깅용
+  list.innerHTML = items.map(it => `
+    <div class="service-item">
+      <div class="service-title">${it.title}</div>
+      <div class="service-description">${it.description}</div>
+    </div>
+  `).join('');
+}
+function setActiveSegment(category){
+  document.querySelectorAll('#packageSegment .segment-btn')
+    .forEach(b => {
+      if(b.dataset.category === category) {
+        b.classList.add('active');
+      } else {
+        b.classList.remove('active');
+      }
     });
-
-    // 지역 및 상세 지역 데이터
-    const regionDetailMap = {
-        '서울': ['서울 강남', '서울 마포'],
-        '제주': ['제주 서귀포시'],
-        '부산': ['부산 중구']
-    };
-    const regions = Object.keys(regionDetailMap);
-
-    // 지역 칩 렌더링 (클릭 가능)
-    regionChips.innerHTML = '';
-    regions.forEach(region => {
-        const chip = document.createElement('span');
-        chip.className = 'chip clickable';
-        chip.innerHTML = '<i class="fas fa-map-marker-alt"></i><span>' + region + '</span>';
-        chip.addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('상세 페이지 준비중입니다.');
-        });
-        regionChips.appendChild(chip);
-    });
-
-    // 상세 지역 칩 렌더링
-    // 지역 칩은 사용하지 않으므로 비움
-    regionChips.innerHTML = '';
-
-    // 상세 지역 칩 렌더링 (클릭 시 안내)
-    detailRegionDiv.innerHTML = '';
-    regions.forEach((region) => {
-
-        // 상세 지역 칩들
-        const details = regionDetailMap[region] || [];
-        if (details.length > 0) {
-            const detailWrap = document.createElement('div');
-            detailWrap.className = 'chips';
-            detailWrap.style.margin = '8px 0 16px 0';
-            detailWrap.style.justifyContent = 'center';
-            detailWrap.style.gap = '10px';
-            details.forEach(d => {
-                const span = document.createElement('span');
-                span.className = 'chip clickable';
-                span.style.background = '#e9ecef';
-                span.innerHTML = '<i class="fas fa-location-arrow"></i> ' + d;
-                span.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('상세 페이지 준비중입니다.');
-                });
-                detailWrap.appendChild(span);
-            });
-            detailRegionDiv.appendChild(detailWrap);
-        }
-    });
-
-    // 모달 표시 (페이드인)
-    modal.classList.remove('show');
-    modal.style.display = 'block';
-    requestAnimationFrame(() => modal.classList.add('show'));
 }
 
-function closePackageModal() {
-    const modal = document.getElementById('packageModal');
-    modal.classList.remove('show');
-    modal.style.display = 'none';
-}
+// 3) showPackageModal (단일)
+function showPackageModal(packageName, categories, description){
+  const modal = document.getElementById('packageModal');
+  document.getElementById('packageModalTitle').textContent = packageName || '패키지';
 
+  const initial = 'dermatology';
+
+  // 초기 서비스 목록 렌더링
+  setTimeout(() => {
+    setActiveSegment(initial);
+    renderServices(initial);
+  }, 100);
+
+  // 세그먼트 버튼 클릭 이벤트
+  document.querySelectorAll('#packageSegment .segment-btn').forEach(btn=>{
+    btn.onclick = () => {
+      setActiveSegment(btn.dataset.category);
+      renderServices(btn.dataset.category);
+    };
+  });
+
+  // 타일 카드 클릭 이벤트
+  document.querySelectorAll('#packageModal .tile-card').forEach(tile=>{
+    tile.onclick = () => {
+      const c = tile.dataset.category;
+      setActiveSegment(c);
+      renderServices(c);
+      document.getElementById('serviceList').scrollIntoView({behavior:'smooth', block:'center'});
+    };
+  });
+
+  modal.classList.remove('show');
+  modal.style.display = 'block';
+  requestAnimationFrame(()=> modal.classList.add('show'));
+}
+// ====== 모달 닫기 ======
+function closePackageModal(){
+  const modal = document.getElementById('packageModal');
+  modal.classList.remove('show');
+  modal.style.display = 'none';
+}
 
 
 // 모달 외부 클릭 시 닫기
