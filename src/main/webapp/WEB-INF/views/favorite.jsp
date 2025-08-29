@@ -1,10 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>HealnGo 즐겨찾기</title>
     <link rel="stylesheet" href="/resources/css/favorite.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <%@include file = "/common/header.jsp"%>
@@ -16,105 +18,69 @@
                 <i class="fas fa-heart"></i>
             </div>
             <h1 class="favorite-title">즐겨찾기 병원</h1>
-
         </div>
 
         <!-- 즐겨찾기 목록 -->
         <div class="favorite-list">
-            <!-- 즐겨찾기 항목 1 -->
-            <div class="favorite-item" data-id="1">
-                <div class="item-banner">
-                    <span class="day-number">1</span>
-                </div>
-                <div class="item-content">
-                    <div class="item-info">
-                        <h3 class="hospital-name">픽셀랩성형외과의원</h3>
-                        <div class="hospital-details">
-                            <p class="hospital-address"><i class="fas fa-map-marker-alt"></i> 서울 서초구 서초대로73길 42</p>
-                            <p class="hospital-phone"><i class="fas fa-phone"></i> 02-595-8568</p>
-                            <p class="hospital-hours"><i class="fas fa-clock"></i> 10:00 - 20:00</p>
+            <c:choose>
+                <c:when test="${empty favorites}">
+                    <div class="empty-favorites">
+                        <div class="empty-icon">
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-plus empty-plus"></i>
                         </div>
-                        <div class="hospital-tags">
-                            <span class="tag">성형외과</span>
-                            <span class="tag">리프팅</span>
-                            <span class="tag">지방성형</span>
+                        <div class="empty-content">
+                        <h3>즐겨찾기한 병원이 없어요</h3>
+                        <p class="empty-description">관심 있는 병원을 찾아서<br><span class="highlight">❤️ 하트를 눌러보세요!</span></p>
+                        </div>
+                        <div class="empty-actions">
+                            <a href="/main" class="btn-primary">병원 찾아보기</a>
                         </div>
                     </div>
-                    <div class="item-image">
-                        <img src="/resources/images/detail/hospital.jpg" alt="픽셀랩성형외과">
-                    </div>
-                </div>
-                <div class="item-actions">
-                    <button class="btn-detail" onclick="showDetail(1)">상세보기</button>
-                    <button class="btn-remove" onclick="removeFavorite(1)">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- 즐겨찾기 항목 2 -->
-            <div class="favorite-item" data-id="2">
-                <div class="item-banner">
-                    <span class="day-number">2</span>
-                </div>
-                <div class="item-content">
-                    <div class="item-info">
-                        <h3 class="hospital-name">강남성형외과의원</h3>
-                        <div class="hospital-details">
-                            <p class="hospital-address"><i class="fas fa-map-marker-alt"></i> 서울 강남구 테헤란로 123</p>
-                            <p class="hospital-phone"><i class="fas fa-phone"></i> 02-123-4567</p>
-                            <p class="hospital-hours"><i class="fas fa-clock"></i> 09:00 - 18:00</p>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach var="favorite" items="${favorites}" varStatus="status">
+                        <div class="favorite-item" data-id="${favorite.id}" data-hospital="${favorite.name}">
+                            <div class="item-banner">
+                                <span class="day-number">${status.count}</span>
+                            </div>
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3 class="hospital-name">${favorite.name}</h3>
+                                    <div class="hospital-details">
+                                        <p class="hospital-address">
+                                            <i class="fas fa-map-marker-alt"></i> 
+                                            ${not empty favorite.address ? favorite.address : '주소 정보 없음'}
+                                        </p>
+                                        <p class="hospital-phone">
+                                            <i class="fas fa-phone"></i> 
+                                            ${not empty favorite.phone ? favorite.phone : '연락처 정보 없음'}
+                                        </p>
+                                        <p class="hospital-hours">
+                                            <i class="fas fa-clock"></i> 
+                                            운영시간 정보 없음
+                                        </p>
+                                    </div>
+                                    <div class="hospital-tags">
+                                        <span class="tag">${favorite.region}</span>
+                                        <span class="tag">${favorite.subregion}</span>
+                                        <c:if test="${not empty favorite.category}">
+                                            <span class="tag">${favorite.category}</span>
+                                        </c:if>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-actions">
+                                <button class="btn-detail" onclick="showDetail(${favorite.id})">상세보기</button>
+                                <button class="btn-remove">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div class="hospital-tags">
-                            <span class="tag">성형외과</span>
-                            <span class="tag">눈성형</span>
-                            <span class="tag">코성형</span>
-                        </div>
-                    </div>
-                    <div class="item-image">
-                        <img src="/resources/images/detail/hospital.jpg" alt="강남성형외과">
-                    </div>
-                </div>
-                <div class="item-actions">
-                    <button class="btn-detail" onclick="showDetail(2)">상세보기</button>
-                    <button class="btn-remove" onclick="removeFavorite(2)">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- 즐겨찾기 항목 3 -->
-            <div class="favorite-item" data-id="3">
-                <div class="item-banner">
-                    <span class="day-number">3</span>
-                </div>
-                <div class="item-content">
-                    <div class="item-info">
-                        <h3 class="hospital-name">부산치과병원</h3>
-                        <div class="hospital-details">
-                            <p class="hospital-address"><i class="fas fa-map-marker-alt"></i> 부산 해운대구 해운대로 456</p>
-                            <p class="hospital-phone"><i class="fas fa-phone"></i> 051-987-6543</p>
-                            <p class="hospital-hours"><i class="fas fa-clock"></i> 08:00 - 19:00</p>
-                        </div>
-                        <div class="hospital-tags">
-                            <span class="tag">치과</span>
-                            <span class="tag">임플란트</span>
-                            <span class="tag">교정</span>
-                        </div>
-                    </div>
-                    <div class="item-image">
-                        <img src="/resources/images/detail/hospital.jpg" alt="부산치과병원">
-                    </div>
-                </div>
-                <div class="item-actions">
-                    <button class="btn-detail" onclick="showDetail(3)">상세보기</button>
-                    <button class="btn-remove" onclick="removeFavorite(3)">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-            </div>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
         </div>
-
     </div>
 
     <!-- 상세보기 모달 -->

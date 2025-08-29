@@ -307,6 +307,15 @@
                                             });
                                           }
                                           m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                          // X 버튼 클릭 이벤트 추가
+                                          var closeBtn = m.querySelector('.close');
+                                          if(closeBtn) {
+                                            closeBtn.onclick = function() {
+                                              f.src=''; 
+                                              m.style.display='none'; 
+                                              document.body.style.overflow='';
+                                            };
+                                          }
                                         })(this.dataset.video)">
                                           영상 보기
                                         </button>
@@ -342,6 +351,15 @@
                                                   });
                                                 }
                                                 m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                                // X 버튼 클릭 이벤트 추가
+                                                var closeBtn = m.querySelector('.close');
+                                                if(closeBtn) {
+                                                  closeBtn.onclick = function() {
+                                                    f.src=''; 
+                                                    m.style.display='none'; 
+                                                    document.body.style.overflow='';
+                                                  };
+                                                }
                                               })('cmn3J6E2PaA')">
                                               영상 보기
                                             </button>
@@ -377,6 +395,15 @@
                                               });
                                             }
                                             m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                            // X 버튼 클릭 이벤트 추가
+                                            var closeBtn = m.querySelector('.close');
+                                            if(closeBtn) {
+                                              closeBtn.onclick = function() {
+                                                f.src=''; 
+                                                m.style.display='none'; 
+                                                document.body.style.overflow='';
+                                              };
+                                            }
                                           })('f5Hit9JQCkY')">
                                           영상 보기
                                         </button>
@@ -412,6 +439,15 @@
                                               });
                                             }
                                             m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                            // X 버튼 클릭 이벤트 추가
+                                            var closeBtn = m.querySelector('.close');
+                                            if(closeBtn) {
+                                              closeBtn.onclick = function() {
+                                                f.src=''; 
+                                                m.style.display='none'; 
+                                                document.body.style.overflow='';
+                                              };
+                                            }
                                           })('8I-08wGeZIE')">
                                           영상 보기
                                         </button>
@@ -447,6 +483,15 @@
                                               });
                                             }
                                             m.onclick=function(e){ if(e.target===m){ f.src=''; m.style.display='none'; document.body.style.overflow=''; } };
+                                            // X 버튼 클릭 이벤트 추가
+                                            var closeBtn = m.querySelector('.close');
+                                            if(closeBtn) {
+                                              closeBtn.onclick = function() {
+                                                f.src=''; 
+                                                m.style.display='none'; 
+                                                document.body.style.overflow='';
+                                              };
+                                            }
                                           })('Dy7X4dEed1I')">
                                           영상 보기
                                         </button>
@@ -529,6 +574,8 @@ function closeYouTubeModal() {
     
     iframe.src = '';
     modal.style.display = 'none';
+    // 스크롤 복원
+    document.body.style.overflow = '';
 }
 
 // ESC 키로 모달 닫기

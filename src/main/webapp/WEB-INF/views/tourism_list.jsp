@@ -434,6 +434,17 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0; /* 페이드인 기본값 */
+        }
+
+        /* 열릴 때 페이드인 처리 */
+        .planner-modal.show {
+            animation: modalFadeIn 500ms ease forwards;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .planner-modal-content {
@@ -441,11 +452,12 @@
             background-color: white;
             margin: 5% auto;
             padding: 0;
-            border-radius: 15px;
+            border-radius: 20px;
             width: 90%;
-            max-width: 800px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
             overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .planner-modal-close {
@@ -453,14 +465,25 @@
             right: 20px;
             top: 15px;
             color: #aaa;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .planner-modal-close:hover {
-            color: #000;
+            color: #005a66;
+            background: white;
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .modal-screen {
@@ -644,24 +667,116 @@
             min-width: 110px;
         }
 
-        /* 패키지 모달 전용 사이즈 및 레이아웃 */
-        #packageModal .planner-modal-content {
-            width: 92%;
-            max-width: 1000px;
-        }
-        #packageModal .company-image-container {
-            height: 420px;
-            background: #fff;
-        }
-        #packageModal .service-categories {
-            flex-direction: row;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        #packageModal .service-category {
-            min-width: 110px;
-        }
+        /* ===== Package modal - header 를 화이트 톤으로 간결하게 ===== */
+#packageModal .planner-modal-content{
+  width: 92%;
+  max-width: 800px;
+  background: #fff;
+  text-align: center;
+}
+#packageModal .package-modal-header{
+  padding: 22px 28px;
+  border-bottom: 1px solid #e9ecef;
+}
+#packageModal .package-name{
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #333;
+}
+
+/* ===== 상단 3타일(이미지 카드) ===== */
+#packageModal .package-images-section{ margin: 6px 0 18px; }
+#packageModal .package-image-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  justify-items: center;
+}
+#packageModal .tile-card{
+  width: 180px;
+  max-width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  transition: transform .2s ease, box-shadow .2s ease;
+  cursor: pointer;
+}
+#packageModal .tile-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(0,0,0,.12);
+}
+#packageModal .tile-img{
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+#packageModal .tile-caption{
+  background: #f8f9fa;
+  font-weight: 700;
+  color: #2f6f4f;
+  padding: 10px 8px;
+  font-size: .95rem;
+}
+
+/* ===== 초록색 세그먼트(탭) ===== */
+#packageModal .segment{
+  display: inline-flex;
+  background: #e7f4ea;
+  border-radius: 12px;
+  padding: 4px;
+  gap: 6px;
+  margin: 2px 0 8px;
+}
+#packageModal .segment-btn{
+  border: 0;
+  background: transparent;
+  font-weight: 700;
+  color: #2f6f4f;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+#packageModal .segment-btn.active{
+  background: #aee0b7; /* 밝은 초록 */
+}
+
+/* ===== 서비스 리스트 ===== */
+#packageModal .service-list-section{ margin-top: 8px; }
+#packageModal .service-list{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  max-width: 720px;
+  margin: 0 auto 10px;
+}
+#packageModal .service-item{
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 14px 16px;
+  text-align: left;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+#packageModal .service-item:hover{
+  box-shadow: 0 10px 26px rgba(0,0,0,.08);
+  transform: translateY(-2px);
+}
+#packageModal .service-title{
+  font-size: .98rem;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 6px;
+}
+#packageModal .service-description{
+  font-size: .86rem;
+  color: #666;
+  line-height: 1.45;
+}
+
+
 
         /* 반응형 디자인 */
         @media (max-width: 768px) {
@@ -692,6 +807,10 @@
             .service-category {
                 min-width: 80px;
             }
+
+            #packageModal .package-image-grid{ grid-template-columns: 1fr; }
+  #packageModal .service-list{ grid-template-columns: 1fr; }
+  #packageModal .tile-card{ width: 88%; }
         }
     </style>
 </head>
@@ -776,7 +895,6 @@
             <div class="package-card" data-category="popular package">
                                  <div class="package-image">
                      <img src="/resources/images/화이트닝패키지.png" alt="<spring:message code='tourism.package.whitening.title'/>">
-                     <div class="package-badge"><spring:message code="tourism.badge.popular"/></div>
                  </div>
                 <div class="package-content">
                                          <h3 class="package-title"><spring:message code="tourism.package.whitening.title"/></h3>
@@ -1061,12 +1179,37 @@
 <div id="packageModal" class="planner-modal">
     <div class="planner-modal-content">
         <span class="planner-modal-close" onclick="closePackageModal()">&times;</span>
-        <div class="company-image-container" id="packageImageContainer">
-            <img id="packageModalImage" src="" alt="Package Image">
+
+        <div class="package-modal-header">
+            <h2 id="packageModalTitle" class="package-name"></h2>
         </div>
-        <div class="planner-info-right" style="padding: 24px 30px 36px;">
-            <div class="service-categories" id="packageCategories"></div>
-        </div>
+
+        <div class="package-modal-body">
+
+            <!-- 이미지 타일 3개 -->
+            <div class="package-images-section">
+              <div class="package-image-grid">
+                <div class="tile-card" data-category="waxing">
+                  <img src="/resources/images/packages/packagewaxing.png" alt="왁싱" class="tile-img">
+                  <div class="tile-caption">왁싱</div>
+                </div>
+                <div class="tile-card" data-category="plasticsurgery">
+                  <img src="/resources/images/packages/packageplastic.png" alt="성형외과" class="tile-img">
+                  <div class="tile-caption">성형외과</div>
+                </div>
+                <div class="tile-card" data-category="dermatology">
+                  <img src="/resources/images/packages/packageph.png" alt="피부과" class="tile-img">
+                  <div class="tile-caption">피부과</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 서비스 목록 -->
+            <div class="service-list-section">
+              <div class="service-list" id="serviceList"></div>
+            </div>
+          </div>
+
     </div>
 </div>
 
@@ -1176,16 +1319,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // 배너 슬라이더 초기화
     initBannerSlider();
 
-    // 패키지 상세보기 버튼 클릭 시 모달 오픈 (카테고리 버튼 렌더링)
+    // 패키지 상세보기 버튼 클릭 시 모달 오픈 (새 디자인)
     const detailButtons = document.querySelectorAll('.package-button');
     detailButtons.forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
             const card = this.closest('.package-card');
+            const titleEl = card.querySelector('.package-title');
+            const descEl = card.querySelector('.package-description');
+            const packageName = titleEl ? titleEl.textContent.trim() : '패키지';
+            const description = descEl ? descEl.textContent.trim() : '';
             const categories = Array.from(card.querySelectorAll('.feature-tag')).map(el => el.textContent.trim());
-            const imgEl = card.querySelector('.package-image img');
-            const imageUrl = imgEl ? imgEl.getAttribute('src') : '';
-            showPackageModal(categories, imageUrl);
+            showPackageModal(packageName, categories, description);
         });
     });
 
@@ -1273,8 +1418,10 @@ function showPlannerModal(plannerId) {
     document.getElementById('plannerEmail').textContent = data.email;
     document.getElementById('plannerWebsite').textContent = data.website;
 
-    // 모달 표시
+    // 모달 표시 (페이드인)
+    modal.classList.remove('show');
     modal.style.display = 'block';
+    requestAnimationFrame(() => modal.classList.add('show'));
 
     // 첫 번째 화면만 표시
     document.getElementById('companyImageScreen').style.display = 'block';
@@ -1289,53 +1436,88 @@ function showPlannerInfo() {
 
 function closePlannerModal() {
     const modal = document.getElementById('plannerModal');
+    modal.classList.remove('show');
     modal.style.display = 'none';
 }
-
-// 패키지 카테고리 모달 열기/닫기 (카테고리 선택 시 기존 흐름으로 이동)
-function showPackageModal(categories, imageUrl) {
-    const modal = document.getElementById('packageModal');
-    const catContainer = document.getElementById('packageCategories');
-    const imageElement = document.getElementById('packageModalImage');
-
-    // 이미지 설정
-    imageElement.src = imageUrl || '';
-
-    // 카테고리 버튼 렌더링
-    catContainer.innerHTML = '';
-    (categories || []).forEach(cat => {
-        const el = document.createElement('div');
-        el.className = 'service-category';
-        el.textContent = cat;
-        el.addEventListener('click', function() {
-            // 단일 선택 표시
-            catContainer.querySelectorAll('.service-category').forEach(x => x.classList.remove('active'));
-            this.classList.add('active');
-
-            // 기존 location → list → 상세 흐름으로 이동하도록 카테고리 파라미터 전달
-            const targetUrl = buildListNavigateUrl(cat);
-            window.location.href = targetUrl;
-        });
-        catContainer.appendChild(el);
+// ====== 패키지 서비스 데이터(전역) ======
+const serviceData = {
+  waxing: [
+    { title: '[여성]종아리 5회(무릎 포함)', description: '아포지플러스, 클라리티, 산드로 듀얼, 라이트 쉬어듀엣 등' },
+    { title: '[여성]허벅지 5회', description: '아포지플러스, 클라리티, 산드로 듀얼, 라이트 쉬어듀엣 등' }
+  ],
+  plasticsurgery: [
+    { title: '시그니처 색소 패키지', description: '엑셀V레이저 3회 + 레블라이트 SI토닝 3회 + 비타민관리 3회' },
+    { title: '시그니처 모공 패키지', description: '시크릿/프락셀 3회 + 카프리레이저 3회 + 재생관리 3회' }
+  ],
+  dermatology: [
+    { title: '크라이오셀 + 촉촉팩', description: '자가세안 - X로션 - 크라이오셀 - 촉촉팩 - 마무리' },
+    { title: '듀얼토닝 + 촉촉팩', description: '자가세안 - X로션 - 듀얼토닝 - 촉촉팩 - 마무리' }
+  ]
+};
+// 2) 유틸
+function renderServices(category){
+  const list = document.getElementById('serviceList');
+  const items = serviceData[category] || [];
+  console.log('Rendering services for category:', category, 'Items:', items); // 디버깅용
+  list.innerHTML = items.map(it => `
+    <div class="service-item">
+      <div class="service-title">${it.title}</div>
+      <div class="service-description">${it.description}</div>
+    </div>
+  `).join('');
+}
+function setActiveSegment(category){
+  document.querySelectorAll('#packageSegment .segment-btn')
+    .forEach(b => {
+      if(b.dataset.category === category) {
+        b.classList.add('active');
+      } else {
+        b.classList.remove('active');
+      }
     });
-
-    modal.style.display = 'block';
 }
 
-// 리스트 페이지로 이동할 URL 생성 (프로젝트의 기존 흐름에 맞춰 필요 시 경로만 조정)
-function buildListNavigateUrl(categoryLabel) {
-    const params = new URLSearchParams();
-    params.set('category', categoryLabel);
-    // 필요 시 지역/추가 파라미터를 여기서 함께 세팅하세요. 예) params.set('region', 'ALL');
-    // 기존 흐름이 location → list 라면 우선 location으로 전달
-    return '/location?' + params.toString();
-}
+// 3) showPackageModal (단일)
+function showPackageModal(packageName, categories, description){
+  const modal = document.getElementById('packageModal');
+  document.getElementById('packageModalTitle').textContent = packageName || '패키지';
 
-function closePackageModal() {
-    const modal = document.getElementById('packageModal');
-    modal.style.display = 'none';
-}
+  const initial = 'dermatology';
 
+  // 초기 서비스 목록 렌더링
+  setTimeout(() => {
+    setActiveSegment(initial);
+    renderServices(initial);
+  }, 100);
+
+  // 세그먼트 버튼 클릭 이벤트
+  document.querySelectorAll('#packageSegment .segment-btn').forEach(btn=>{
+    btn.onclick = () => {
+      setActiveSegment(btn.dataset.category);
+      renderServices(btn.dataset.category);
+    };
+  });
+
+  // 타일 카드 클릭 이벤트
+  document.querySelectorAll('#packageModal .tile-card').forEach(tile=>{
+    tile.onclick = () => {
+      const c = tile.dataset.category;
+      setActiveSegment(c);
+      renderServices(c);
+      document.getElementById('serviceList').scrollIntoView({behavior:'smooth', block:'center'});
+    };
+  });
+
+  modal.classList.remove('show');
+  modal.style.display = 'block';
+  requestAnimationFrame(()=> modal.classList.add('show'));
+}
+// ====== 모달 닫기 ======
+function closePackageModal(){
+  const modal = document.getElementById('packageModal');
+  modal.classList.remove('show');
+  modal.style.display = 'none';
+}
 
 
 // 모달 외부 클릭 시 닫기

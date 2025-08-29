@@ -609,7 +609,7 @@ function showFavoriteConfirmModal(hospitalItem) {
         <div id="favoriteConfirmModal" class="favorite-confirm-modal">
             <div class="favorite-confirm-content">
                 <h3>즐겨찾기 확인</h3>
-                <p>"${hospitalName}"을(를) 즐겨찾기에 추가하고<br>즐겨찾기 페이지로 이동하시겠습니까?</p>
+                <p>"${hospitalName}"을(를) 즐겨찾기에<br>추가하고 즐겨찾기 페이지로<br>이동하시겠습니까?</p>
                 <div class="favorite-confirm-buttons">
                     <button class="favorite-confirm-yes" data-item-id="${itemId}" data-hospital-name="${hospitalName}">네</button>
                     <button class="favorite-confirm-no">아니오</button>
@@ -651,26 +651,16 @@ function showFavoriteConfirmModal(hospitalItem) {
     });
     
     noBtn.addEventListener('click', () => {
-        // "아니오" 클릭 시 하트 상태를 원래대로 되돌리기
-        if (heartIcon) {
-            heartIcon.classList.remove('fas');
-            heartIcon.classList.add('far');
-            heartIcon.style.color = '#ccc';
-            console.log('하트 상태 원래대로 복원됨');
-        }
+        // "아니오" 클릭 시에도 찜하기는 그대로 추가하고 모달만 닫기
+        addToFavoriteWithoutNavigate(itemId, hospitalItem);
         closeFavoriteConfirmModal();
     });
     
-    // 모달 외부 클릭 시 닫기 (하트 상태 되돌리기 포함)
+    // 모달 외부 클릭 시 닫기 (찜하기는 그대로 추가)
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             // "아니오"와 동일한 동작
-            if (heartIcon) {
-                heartIcon.classList.remove('fas');
-                heartIcon.classList.add('far');
-                heartIcon.style.color = '#ccc';
-                console.log('모달 외부 클릭으로 하트 상태 복원됨');
-            }
+            addToFavoriteWithoutNavigate(itemId, hospitalItem);
             closeFavoriteConfirmModal();
         }
     });
@@ -739,6 +729,37 @@ function saveHeartState(hospitalName, isLiked) {
     }
 }
 
+// 즐겨찾기 추가 (페이지 이동 없음)
+function addToFavoriteWithoutNavigate(itemId, hospitalItem) {
+    const heartIcon = hospitalItem.querySelector('.hospital-heart i');
+    const hospitalName = hospitalItem.dataset.hospital;
+
+    // localStorage에 하트 상태 저장
+    saveHeartState(hospitalName, true);
+
+    // 서버에 즐겨찾기 추가 요청
+    fetch(`/favorite/add/${itemId}`, {
+        method: 'POST',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(res => res.text())
+    .then(result => {
+        console.log("즐겨찾기 추가 성공 (페이지 이동 없음):", result);
+        // 하트 상태는 이미 변경되어 있으므로 추가 작업 불필요
+    })
+    .catch(error => {
+        console.error("즐겨찾기 추가 실패:", error);
+        // 실패 시 하트 상태 되돌리기
+        heartIcon.classList.remove('fas');
+        heartIcon.classList.add('far');
+        heartIcon.style.color = '#ccc';
+        // localStorage에서도 제거
+        saveHeartState(hospitalName, false);
+    });
+}
+
 // 즐겨찾기 추가 및 페이지 이동
 function addToFavoriteAndNavigate(itemId, hospitalItem) {
     const heartIcon = hospitalItem.querySelector('.hospital-heart i');
@@ -757,7 +778,7 @@ function addToFavoriteAndNavigate(itemId, hospitalItem) {
     .then(res => res.text())
     .then(result => {
         console.log("즐겨찾기 추가 성공:", result);
-        // favorite 페이지로 이동
+        // favorite 페이지로 이동 (favorite.css가 적용된 페이지)
         window.location.href = '/favorite';
     })
     .catch(error => {
