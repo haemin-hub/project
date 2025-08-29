@@ -4,30 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="tourism_list css, js, jsp">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/favorite.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="클릭 로그 수정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/ClickLogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/ClickLogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/ListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/ListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Service/ClickLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Service/ClickLogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Service/ClickLogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Service/ClickLogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/mapper/ClickLogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/mapper/ClickLogMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/dto/CompanyClickCountDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/dto/CompanyClickCountDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ClickLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ClickLogMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/FavoriteItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/FavoriteItemMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/favorite.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/favorite.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/favorite.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/favorite.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/ClickLogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/ClickLogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/ListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/ListController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/ClickLogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/ClickLogServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/FavoriteItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/FavoriteItemDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/popular-cities.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/popular-cities.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/CompanyClickCountDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/CompanyClickCountDto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mapper/ClickLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/ClickLogMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/FavoriteItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/FavoriteItemMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +200,7 @@
       <workItem from="1756346099762" duration="5878000" />
       <workItem from="1756352053544" duration="18426000" />
       <workItem from="1756374471153" duration="12381000" />
-      <workItem from="1756426101559" duration="20435000" />
+      <workItem from="1756426101559" duration="22062000" />
     </task>
     <task id="LOCAL-00001" summary="번역추가">
       <option name="closed" value="true" />
@@ -386,7 +370,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756448619260</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="클릭 로그 수정">
+      <option name="closed" value="true" />
+      <created>1756451384627</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1756451384627</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +419,8 @@
     <MESSAGE value="모달창" />
     <MESSAGE value="업체 클릭 시 click_logs에 insert 들어가도록 보완" />
     <MESSAGE value="tourism_list css, js, jsp" />
-    <option name="LAST_COMMIT_MESSAGE" value="tourism_list css, js, jsp" />
+    <MESSAGE value="클릭 로그 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="클릭 로그 수정" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -226,9 +226,9 @@
                                         <div class="card-content">
                                             <h4 class="company-name">${company1.companyName}</h4>
                                             <div class="company-details">
-                                                <span class="location"><i class="fas fa-map-marker-alt"></i> 강남구</span>
+                                                <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company1.subregion ? company1.region : company1.subregion}</span>
                                             </div>
-                                            <span class="specialty-tag">마사지샵</span>
+                                            <span class="specialty-tag">${company1.category}</span>
                                         </div>
                                     </a>
 
@@ -241,9 +241,9 @@
                                         <div class="card-content">
                                             <h4 class="company-name">${company2.companyName}</h4>
                                             <div class="company-details">
-                                                <span class="location"><i class="fas fa-map-marker-alt"></i> 제주시</span>
+                                                <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company2.subregion ? company2.region : company2.subregion}</span>
                                             </div>
-                                            <span class="specialty-tag">성형 외과</span>
+                                            <span class="specialty-tag">${company2.category}</span>
                                         </div>
                                     </a>
 
@@ -256,9 +256,9 @@
                                         <div class="card-content">
                                             <h4 class="company-name">${company3.companyName}</h4>
                                             <div class="company-details">
-                                                <span class="location"><i class="fas fa-map-marker-alt"></i> 마포구</span>
+                                                <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company3.subregion ? company3.region : company3.subregion}</span>
                                             </div>
-                                             <span class="specialty-tag">마사지샵</span>
+                                             <span class="specialty-tag">${company3.category}</span>
                                         </div>
                                     </a>
                                 </div>

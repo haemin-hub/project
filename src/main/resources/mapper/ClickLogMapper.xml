@@ -11,12 +11,15 @@
         VALUES (#{companyId}, CURRENT_TIMESTAMP)
     </insert>
 
-    <!-- 최근 7일간 업체별 클릭 수 + 업체명 -->
+    <!-- 최근 7일간 업체별 클릭 수 + 업체 정보 -->
     <select id="getClickCountsLast7Days" resultType="com.example.ApiRound.dto.CompanyClickCountDto">
         SELECT
             c.COMPANY_ID AS companyId,
-            i.NAME AS companyName,
-            COUNT(*) AS clickCount
+            i.NAME       AS companyName,
+            COUNT(*)     AS clickCount,
+            i.REGION     AS region,
+            i.SUBREGION  AS subregion,
+            i.CATEGORY   AS category
         FROM
             CLICK_LOGS c
                 JOIN
@@ -24,19 +27,22 @@
         WHERE
             c.CLICKED_AT &gt;= SYSDATE - 7
         GROUP BY
-            c.COMPANY_ID, i.NAME
+            c.COMPANY_ID, i.NAME, i.REGION, i.SUBREGION, i.CATEGORY
         ORDER BY
             clickCount DESC
     </select>
 
-    <!-- 제일 많이 클릭된 업체 3개 -->
+    <!-- 제일 많이 클릭된 업체 3개 (업체 정보 포함) -->
     <select id="getTop3CompaniesLast7Days" resultType="com.example.ApiRound.dto.CompanyClickCountDto">
         SELECT *
         FROM (
                  SELECT
                      c.COMPANY_ID AS companyId,
-                     i.NAME AS companyName,
-                     COUNT(*) AS clickCount
+                     i.NAME       AS companyName,
+                     COUNT(*)     AS clickCount,
+                     i.REGION     AS region,
+                     i.SUBREGION  AS subregion,
+                     i.CATEGORY   AS category
                  FROM
                      CLICK_LOGS c
                          JOIN
@@ -44,7 +50,7 @@
                  WHERE
                      c.CLICKED_AT &gt;= SYSDATE - 7
                  GROUP BY
-                     c.COMPANY_ID, i.NAME
+                     c.COMPANY_ID, i.NAME, i.REGION, i.SUBREGION, i.CATEGORY
                  ORDER BY
                      clickCount DESC
              )
