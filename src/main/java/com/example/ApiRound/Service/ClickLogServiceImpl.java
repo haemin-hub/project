@@ -1,3 +1,4 @@
+
 package com.example.ApiRound.Service;
 
 import com.example.ApiRound.dto.CompanyClickCountDto;
@@ -20,9 +21,9 @@ public class ClickLogServiceImpl implements ClickLogService {
     @Transactional
     @Override
     public void logClick(Long companyId) {
-            System.out.println(">>> 클릭된 업체 ID: " + companyId);
-            clickLogMapper.insertClickLog(companyId);
-        }
+        System.out.println(">>> 클릭된 업체 ID: " + companyId);
+        clickLogMapper.insertClickLog(companyId);
+    }
 
 
     @Override

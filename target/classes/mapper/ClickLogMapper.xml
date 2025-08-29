@@ -14,40 +14,40 @@
     <!-- 최근 7일간 업체별 클릭 수 + 업체명 -->
     <select id="getClickCountsLast7Days" resultType="com.example.ApiRound.dto.CompanyClickCountDto">
         SELECT
-        c.COMPANY_ID AS companyId,
-        i.NAME AS companyName,
-        COUNT(*) AS clickCount
+            c.COMPANY_ID AS companyId,
+            i.NAME AS companyName,
+            COUNT(*) AS clickCount
         FROM
-        CLICK_LOGS c
-        JOIN
-        ITEM_LIST i ON c.COMPANY_ID = i.ID
+            CLICK_LOGS c
+                JOIN
+            ITEM_LIST i ON c.COMPANY_ID = i.ID
         WHERE
-        c.CLICKED_AT &gt;= SYSDATE - 7
+            c.CLICKED_AT &gt;= SYSDATE - 7
         GROUP BY
-        c.COMPANY_ID, i.NAME
+            c.COMPANY_ID, i.NAME
         ORDER BY
-        clickCount DESC
+            clickCount DESC
     </select>
 
     <!-- 제일 많이 클릭된 업체 3개 -->
     <select id="getTop3CompaniesLast7Days" resultType="com.example.ApiRound.dto.CompanyClickCountDto">
         SELECT *
         FROM (
-        SELECT
-        c.COMPANY_ID AS companyId,
-        i.NAME AS companyName,
-        COUNT(*) AS clickCount
-        FROM
-        CLICK_LOGS c
-        JOIN
-        ITEM_LIST i ON c.COMPANY_ID = i.ID
-        WHERE
-        c.CLICKED_AT &gt;= SYSDATE - 7
-        GROUP BY
-        c.COMPANY_ID, i.NAME
-        ORDER BY
-        clickCount DESC
-        )
+                 SELECT
+                     c.COMPANY_ID AS companyId,
+                     i.NAME AS companyName,
+                     COUNT(*) AS clickCount
+                 FROM
+                     CLICK_LOGS c
+                         JOIN
+                     ITEM_LIST i ON c.COMPANY_ID = i.ID
+                 WHERE
+                     c.CLICKED_AT &gt;= SYSDATE - 7
+                 GROUP BY
+                     c.COMPANY_ID, i.NAME
+                 ORDER BY
+                     clickCount DESC
+             )
         WHERE ROWNUM &lt;= 3
     </select>
 

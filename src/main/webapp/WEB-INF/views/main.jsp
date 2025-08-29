@@ -224,7 +224,7 @@
                                             <div class="card-badge">1위</div>
                                         </div>
                                         <div class="card-content">
-                                            <h4 class="company-name">강남 건강안마센터</h4>
+                                            <h4 class="company-name">${company1.companyName}</h4>
                                             <div class="company-details">
                                                 <span class="location"><i class="fas fa-map-marker-alt"></i> 강남구</span>
                                             </div>
@@ -239,7 +239,7 @@
                                             <div class="card-badge">2위</div>
                                         </div>
                                         <div class="card-content">
-                                            <h4 class="company-name">제주도 미우성형외과</h4>
+                                            <h4 class="company-name">${company2.companyName}</h4>
                                             <div class="company-details">
                                                 <span class="location"><i class="fas fa-map-marker-alt"></i> 제주시</span>
                                             </div>
@@ -312,8 +312,8 @@
                                           var closeBtn = m.querySelector('.close');
                                           if(closeBtn) {
                                             closeBtn.onclick = function() {
-                                              f.src=''; 
-                                              m.style.display='none'; 
+                                              f.src='';
+                                              m.style.display='none';
                                               document.body.style.overflow='';
                                             };
                                           }
@@ -356,8 +356,8 @@
                                                 var closeBtn = m.querySelector('.close');
                                                 if(closeBtn) {
                                                   closeBtn.onclick = function() {
-                                                    f.src=''; 
-                                                    m.style.display='none'; 
+                                                    f.src='';
+                                                    m.style.display='none';
                                                     document.body.style.overflow='';
                                                   };
                                                 }
@@ -400,8 +400,8 @@
                                             var closeBtn = m.querySelector('.close');
                                             if(closeBtn) {
                                               closeBtn.onclick = function() {
-                                                f.src=''; 
-                                                m.style.display='none'; 
+                                                f.src='';
+                                                m.style.display='none';
                                                 document.body.style.overflow='';
                                               };
                                             }
@@ -444,8 +444,8 @@
                                             var closeBtn = m.querySelector('.close');
                                             if(closeBtn) {
                                               closeBtn.onclick = function() {
-                                                f.src=''; 
-                                                m.style.display='none'; 
+                                                f.src='';
+                                                m.style.display='none';
                                                 document.body.style.overflow='';
                                               };
                                             }
@@ -488,8 +488,8 @@
                                             var closeBtn = m.querySelector('.close');
                                             if(closeBtn) {
                                               closeBtn.onclick = function() {
-                                                f.src=''; 
-                                                m.style.display='none'; 
+                                                f.src='';
+                                                m.style.display='none';
                                                 document.body.style.overflow='';
                                               };
                                             }
@@ -499,7 +499,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- 스크롤 버튼 -->
                             <button class="scroll-button prev" onclick="scrollYouTube('left')">
                                 <i class="fas fa-chevron-left"></i>
@@ -522,7 +522,7 @@
                 </div>
 
 
-                </main>                                                
+                </main>
 
 
 <%@include file = "/common/footer.jsp"%>
@@ -538,7 +538,7 @@
 function scrollYouTube(direction) {
     const grid = document.getElementById('youtube-videos');
     const scrollAmount = 300;
-    
+
     if (direction === 'left') {
         grid.scrollBy({
             left: -scrollAmount,
@@ -556,10 +556,10 @@ function scrollYouTube(direction) {
 function openYouTubeModal(videoId) {
     const modal = document.getElementById('youtubeModal');
     const iframe = document.getElementById('youtubeIframe');
-    
+
     iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
     modal.style.display = 'block';
-    
+
     // 모달 외부 클릭 시 닫기
     modal.onclick = function(event) {
         if (event.target === modal) {
@@ -572,7 +572,7 @@ function openYouTubeModal(videoId) {
 function closeYouTubeModal() {
     const modal = document.getElementById('youtubeModal');
     const iframe = document.getElementById('youtubeIframe');
-    
+
     iframe.src = '';
     modal.style.display = 'none';
     // 스크롤 복원
