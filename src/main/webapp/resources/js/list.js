@@ -77,6 +77,8 @@ function bindHospitalItemEvents() {
     console.log('병원 아이템 클릭됨, 상세 정보 표시 시작');
     selectHospital(item);
     if (item.classList.contains('active')) {
+      // 업체 클릭 로그 전송
+      logCompanyClick(item);
       showHospitalDetail(item);
     }
   });
@@ -260,6 +262,67 @@ function toggleHeart(hospitalItem) {
 
     // 하트 상태를 localStorage에 저장
     saveHeartState(hospitalItem.dataset.hospital, heartIcon.classList.contains('fas'));
+}
+
+// 클릭 로그 전송
+function logCompanyClick(hospitalItem) {
+    try {
+        // 다양한 속성에서 companyId 탐색 (data-company-id, data-id, data-list-id, 하위 요소)
+        const pickId = (el) => {
+            if (!el) return null;
+            const c1 = el.dataset.companyId || el.getAttribute('data-company-id');
+            const c2 = el.dataset.id || el.getAttribute('data-id');
+            const c3 = el.dataset.listId || el.getAttribute('data-list-id');
+            const candidate = c1 || c2 || c3;
+            if (candidate) return candidate;
+            const inner = el.querySelector('[data-company-id],[data-id],[data-list-id]');
+            return inner ? (inner.dataset.companyId || inner.getAttribute('data-company-id') || inner.dataset.id || inner.getAttribute('data-id') || inner.dataset.listId || inner.getAttribute('data-list-id')) : null;
+        };
+
+        const raw = pickId(hospitalItem);
+        const companyId = raw ? Number(raw) : NaN;
+        if (!companyId || Number.isNaN(companyId)) {
+            console.warn('companyId가 없어 클릭 로그 전송을 건너뜁니다.', hospitalItem);
+            return;
+        }
+
+        const headers = Object.assign(
+            { 'X-Requested-With': 'XMLHttpRequest' },
+            getCsrfHeaders()
+        );
+
+        fetch(`/api/clicks/${companyId}`, {
+            method: 'POST',
+            headers,
+            credentials: 'same-origin' // 쿠키 기반 CSRF/세션 전송
+        }).then(res => {
+            if (!res.ok) {
+                console.warn('클릭 로그 전송 실패:', res.status);
+            } else {
+                // console.debug('클릭 로그 전송 성공:', companyId);
+            }
+        }).catch(err => {
+            console.error('클릭 로그 전송 중 오류:', err);
+        });
+    } catch (e) {
+        console.error('클릭 로그 처리 중 예외:', e);
+    }
+}
+
+// CSRF 토큰이 있으면 자동 포함
+function getCsrfHeaders() {
+    try {
+        const tokenMeta = document.querySelector('meta[name="_csrf"]');
+        const headerMeta = document.querySelector('meta[name="_csrf_header"]');
+        const token = tokenMeta ? tokenMeta.getAttribute('content') : null;
+        const header = headerMeta ? headerMeta.getAttribute('content') : null;
+        if (token && header) {
+            const h = {};
+            h[header] = token;
+            return h;
+        }
+    } catch {}
+    return {};
 }
 
 // 병원 선택
@@ -469,3 +532,4 @@ async function ajaxNavigate(url, { push = true } = {}) {
     if (listWrap) listWrap.style.opacity = '';
   }
 }
+

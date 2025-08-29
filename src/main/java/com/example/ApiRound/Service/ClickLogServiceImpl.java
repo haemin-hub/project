@@ -3,6 +3,7 @@ package com.example.ApiRound.Service;
 import com.example.ApiRound.dto.CompanyClickCountDto;
 import com.example.ApiRound.mapper.ClickLogMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class ClickLogServiceImpl implements ClickLogService {
         this.clickLogMapper = clickLogMapper;
     }
 
+    @Transactional
     @Override
     public void logClick(Long companyId) {
             System.out.println(">>> 클릭된 업체 ID: " + companyId);
