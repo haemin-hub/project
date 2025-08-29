@@ -1,7 +1,10 @@
 // Header JavaScript 기능
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('Header JavaScript 로드됨');
-    
+
+    // 로그인 여부 확인 (JSP 변수 전달)
+    const isLoggedIn = <%= (loginUser != null) ? "true" : "false" %>;
+
     // 헤더 생성 함수
     function createHeader() {
         const header = document.createElement('header');
@@ -16,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         `;
-        
+
         header.innerHTML = `
             <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center;">
                 <a href="/" style="font-size: 1.8rem; font-weight: bold; text-decoration: none; color: white;">
@@ -28,14 +31,19 @@ document.addEventListener('DOMContentLoaded', function() {
                         <li><a href="/category" style="color: white; text-decoration: none; font-weight: 500;">카테고리</a></li>
                         <li><a href="/cities" style="color: white; text-decoration: none; font-weight: 500;">도시별</a></li>
                         <li><a href="/companies" style="color: white; text-decoration: none; font-weight: 500;">업체</a></li>
+                        <li>
+                            <a href="#" id="favorite-link" style="color: white; text-decoration: none; font-weight: 500;">
+                                <i class="fa-solid fa-heart"></i> 찜
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
         `;
-        
+
         return header;
     }
-    
+
     // 메인 콘텐츠 생성 함수
     function createMainContent() {
         const main = document.createElement('main');
@@ -43,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             margin-top: 80px;
             padding: 2rem;
         `;
-        
+
         main.innerHTML = `
             <div style="max-width: 1200px; margin: 0 auto;">
                 <h1 style="color: #333; margin-bottom: 1rem;">ApiRound에 오신 것을 환영합니다!</h1>
@@ -53,30 +61,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         `;
-        
+
         return main;
     }
-    
+
     // 페이지에 헤더와 메인 콘텐츠 추가
     const body = document.body;
-    
-    // 기존 내용 제거
     body.innerHTML = '';
-    
+
     // Font Awesome 아이콘 추가
     const fontAwesome = document.createElement('link');
     fontAwesome.rel = 'stylesheet';
     fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
     document.head.appendChild(fontAwesome);
-    
+
     // 헤더 추가
     body.appendChild(createHeader());
-    
+
     // 메인 콘텐츠 추가
     body.appendChild(createMainContent());
-    
+
     // 스크롤 효과 추가
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         const header = document.querySelector('header');
         if (header) {
             if (window.scrollY > 50) {
@@ -88,7 +94,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    
-    console.log('헤더와 메인 콘텐츠가 JavaScript로 생성되었습니다!');
-});
 
+    console.log('헤더와 메인 콘텐츠가 JavaScript로 생성되었습니다!');
+
+    // ⭐ 찜 아이콘 클릭 시 로그인 여부에 따라 동작
+    document.addEventListener('click', function (e) {
+        const target = e.target.closest('#favorite-link');
+        if (target) {
+            e.preventDefault();
+            if (isLoggedIn) {
+                window.location.href = '/favorite'; // 로그인 유저 찜 페이지
+            } else {
+                window.location.href = '/guest-favorite'; // 비로그인 찜 페이지
+            }
+        }
+    });
+});

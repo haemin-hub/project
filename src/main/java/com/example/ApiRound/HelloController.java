@@ -40,15 +40,8 @@ public class HelloController {
         return "skincare"; // /WEB-INF/views/skincare.jsp로 연결됨
     }
 
-    @GetMapping("/favorite")
-    public String favorite(Model model) {
-        return "favorite"; // /WEB-INF/views/favorite.jsp로 연결됨
-    }
-
-
     @GetMapping("/location")
     public String location() {
         return "location";
     }
 }
-
