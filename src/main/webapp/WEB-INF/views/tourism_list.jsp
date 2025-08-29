@@ -434,6 +434,17 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0; /* 페이드인 기본값 */
+        }
+
+        /* 열릴 때 페이드인 처리 */
+        .planner-modal.show {
+            animation: modalFadeIn 500ms ease forwards;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .planner-modal-content {
@@ -644,23 +655,66 @@
             min-width: 110px;
         }
 
-        /* 패키지 모달 전용 사이즈 및 레이아웃 */
+        /* 패키지 모달 새 디자인 */
         #packageModal .planner-modal-content {
             width: 92%;
-            max-width: 1000px;
+            max-width: 720px;
+            text-align: center; /* 모든 텍스트 기본 중앙 정렬 */
         }
-        #packageModal .company-image-container {
-            height: 420px;
-            background: #fff;
+        #packageModal .package-modal-header {
+            padding: 24px 32px;
+            border-bottom: 1px solid #f1f3f5;
         }
-        #packageModal .service-categories {
-            flex-direction: row;
-            justify-content: center;
+        #packageModal .package-name {
+            margin: 0;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #333;
+        }
+        #packageModal .package-modal-body {
+            padding: 24px 32px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 내부 요소 가운데 정렬 */
+            gap: 20px;
+        }
+        #packageModal .section-label {
+            font-size: 0.85rem;
+            color: #868e96;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        #packageModal .chips {
+            display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
+            justify-content: center; /* 칩들 가운데 정렬 */
         }
-        #packageModal .service-category {
-            min-width: 110px;
+        #packageModal .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f1f3f5;
+            color: #495057;
+            padding: 8px 14px;
+            border-radius: 9999px;
+            font-weight: 500;
+            user-select: none;
+        }
+        #packageModal .chip i {
+            font-size: 0.95rem;
+            color: #4c6ef5;
+        }
+        #packageModal .chip.clickable {
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.08s ease;
+        }
+        #packageModal .chip.clickable:hover {
+            background: #e9ecef;
+        }
+        #packageModal .chip.clickable:active {
+            transform: translateY(1px);
         }
 
         /* 반응형 디자인 */
@@ -776,7 +830,6 @@
             <div class="package-card" data-category="popular package">
                                  <div class="package-image">
                      <img src="/resources/images/화이트닝패키지.png" alt="<spring:message code='tourism.package.whitening.title'/>">
-                     <div class="package-badge"><spring:message code="tourism.badge.popular"/></div>
                  </div>
                 <div class="package-content">
                                          <h3 class="package-title"><spring:message code="tourism.package.whitening.title"/></h3>
@@ -1061,11 +1114,22 @@
 <div id="packageModal" class="planner-modal">
     <div class="planner-modal-content">
         <span class="planner-modal-close" onclick="closePackageModal()">&times;</span>
-        <div class="company-image-container" id="packageImageContainer">
-            <img id="packageModalImage" src="" alt="Package Image">
+
+        <div class="package-modal-header">
+            <h2 id="packageModalTitle" class="package-name"></h2>
         </div>
-        <div class="planner-info-right" style="padding: 24px 30px 36px;">
-            <div class="service-categories" id="packageCategories"></div>
+
+        <div class="package-modal-body">
+            <div class="mb-4">
+                <p id="packageModalDescription" class="package-description"></p>
+                <div id="packageCategoryChips" class="chips"></div>
+            </div>
+            <div>
+                <div class="section-label">지역</div>
+                <div id="packageRegionChips" class="chips"></div>
+                <!-- 상세 지역 칩 표시 영역 -->
+                <div id="packageDetailRegion" style="margin-top:12px;"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -1176,16 +1240,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // 배너 슬라이더 초기화
     initBannerSlider();
 
-    // 패키지 상세보기 버튼 클릭 시 모달 오픈 (카테고리 버튼 렌더링)
+    // 패키지 상세보기 버튼 클릭 시 모달 오픈 (새 디자인)
     const detailButtons = document.querySelectorAll('.package-button');
     detailButtons.forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
             const card = this.closest('.package-card');
+            const titleEl = card.querySelector('.package-title');
+            const descEl = card.querySelector('.package-description');
+            const packageName = titleEl ? titleEl.textContent.trim() : '패키지';
+            const description = descEl ? descEl.textContent.trim() : '';
             const categories = Array.from(card.querySelectorAll('.feature-tag')).map(el => el.textContent.trim());
-            const imgEl = card.querySelector('.package-image img');
-            const imageUrl = imgEl ? imgEl.getAttribute('src') : '';
-            showPackageModal(categories, imageUrl);
+            showPackageModal(packageName, categories, description);
         });
     });
 
@@ -1273,8 +1339,10 @@ function showPlannerModal(plannerId) {
     document.getElementById('plannerEmail').textContent = data.email;
     document.getElementById('plannerWebsite').textContent = data.website;
 
-    // 모달 표시
+    // 모달 표시 (페이드인)
+    modal.classList.remove('show');
     modal.style.display = 'block';
+    requestAnimationFrame(() => modal.classList.add('show'));
 
     // 첫 번째 화면만 표시
     document.getElementById('companyImageScreen').style.display = 'block';
@@ -1289,50 +1357,108 @@ function showPlannerInfo() {
 
 function closePlannerModal() {
     const modal = document.getElementById('plannerModal');
+    modal.classList.remove('show');
     modal.style.display = 'none';
 }
 
-// 패키지 카테고리 모달 열기/닫기 (카테고리 선택 시 기존 흐름으로 이동)
-function showPackageModal(categories, imageUrl) {
+// 패키지 모달 열기 (지역/상세지역 표시)
+function showPackageModal(packageName, categories, description) {
     const modal = document.getElementById('packageModal');
-    const catContainer = document.getElementById('packageCategories');
-    const imageElement = document.getElementById('packageModalImage');
+    const titleEl = document.getElementById('packageModalTitle');
+    const descEl = document.getElementById('packageModalDescription');
+    const categoryChips = document.getElementById('packageCategoryChips');
+    const regionChips = document.getElementById('packageRegionChips');
+    const detailRegionDiv = document.getElementById('packageDetailRegion');
 
-    // 이미지 설정
-    imageElement.src = imageUrl || '';
+    // 제목/설명 설정
+    titleEl.textContent = packageName || '패키지';
+    if (descEl) {
+        descEl.textContent = description || '';
+    }
 
-    // 카테고리 버튼 렌더링
-    catContainer.innerHTML = '';
+    // 카테고리 아이콘 매핑
+    const categoryIconMap = {
+        '피부과': 'fa-spa' ,
+        '치과': 'fa-tooth',
+        '왁싱샵': 'fa-cut',
+        '한의원': 'fa-leaf',
+        '약국': 'fa-pills',
+        '마사지샵': 'fa-hand-paper',
+        '성형외과': 'fa-user-md',
+        '한방병원': 'fa-clinic-medical'
+    };
+
+    // 카테고리 칩 렌더링 (아이콘 포함)
+    categoryChips.innerHTML = '';
     (categories || []).forEach(cat => {
-        const el = document.createElement('div');
-        el.className = 'service-category';
-        el.textContent = cat;
-        el.addEventListener('click', function() {
-            // 단일 선택 표시
-            catContainer.querySelectorAll('.service-category').forEach(x => x.classList.remove('active'));
-            this.classList.add('active');
-
-            // 기존 location → list → 상세 흐름으로 이동하도록 카테고리 파라미터 전달
-            const targetUrl = buildListNavigateUrl(cat);
-            window.location.href = targetUrl;
-        });
-        catContainer.appendChild(el);
+        const chip = document.createElement('span');
+        chip.className = 'chip';
+        const iconClass = categoryIconMap[cat] || 'fa-tags';
+        chip.innerHTML = '<i class="fas ' + iconClass + '"></i><span>' + cat + '</span>';
+        categoryChips.appendChild(chip);
     });
 
-    modal.style.display = 'block';
-}
+    // 지역 및 상세 지역 데이터
+    const regionDetailMap = {
+        '서울': ['서울 강남', '서울 마포'],
+        '제주': ['제주 서귀포시'],
+        '부산': ['부산 중구']
+    };
+    const regions = Object.keys(regionDetailMap);
 
-// 리스트 페이지로 이동할 URL 생성 (프로젝트의 기존 흐름에 맞춰 필요 시 경로만 조정)
-function buildListNavigateUrl(categoryLabel) {
-    const params = new URLSearchParams();
-    params.set('category', categoryLabel);
-    // 필요 시 지역/추가 파라미터를 여기서 함께 세팅하세요. 예) params.set('region', 'ALL');
-    // 기존 흐름이 location → list 라면 우선 location으로 전달
-    return '/location?' + params.toString();
+    // 지역 칩 렌더링 (클릭 가능)
+    regionChips.innerHTML = '';
+    regions.forEach(region => {
+        const chip = document.createElement('span');
+        chip.className = 'chip clickable';
+        chip.innerHTML = '<i class="fas fa-map-marker-alt"></i><span>' + region + '</span>';
+        chip.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('상세 페이지 준비중입니다.');
+        });
+        regionChips.appendChild(chip);
+    });
+
+    // 상세 지역 칩 렌더링
+    // 지역 칩은 사용하지 않으므로 비움
+    regionChips.innerHTML = '';
+
+    // 상세 지역 칩 렌더링 (클릭 시 안내)
+    detailRegionDiv.innerHTML = '';
+    regions.forEach((region) => {
+
+        // 상세 지역 칩들
+        const details = regionDetailMap[region] || [];
+        if (details.length > 0) {
+            const detailWrap = document.createElement('div');
+            detailWrap.className = 'chips';
+            detailWrap.style.margin = '8px 0 16px 0';
+            detailWrap.style.justifyContent = 'center';
+            detailWrap.style.gap = '10px';
+            details.forEach(d => {
+                const span = document.createElement('span');
+                span.className = 'chip clickable';
+                span.style.background = '#e9ecef';
+                span.innerHTML = '<i class="fas fa-location-arrow"></i> ' + d;
+                span.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('상세 페이지 준비중입니다.');
+                });
+                detailWrap.appendChild(span);
+            });
+            detailRegionDiv.appendChild(detailWrap);
+        }
+    });
+
+    // 모달 표시 (페이드인)
+    modal.classList.remove('show');
+    modal.style.display = 'block';
+    requestAnimationFrame(() => modal.classList.add('show'));
 }
 
 function closePackageModal() {
     const modal = document.getElementById('packageModal');
+    modal.classList.remove('show');
     modal.style.display = 'none';
 }
 

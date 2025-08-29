@@ -408,19 +408,47 @@ address p {
     margin-bottom: 0;
 }
 
-.hero-section {
-    background: linear-gradient(135deg, rgba(164, 214, 164, 0.8) 0%, rgba(137, 198, 155, 0.8) 100%);
-    text-align: center;
-    margin-bottom: 50px;
-    /* border-radius 속성 제거 */
-    box-shadow: 0 4px 15px rgba(67, 120, 67, 0.1);
+.hero-section{
+    position: relative;
+    width: 100vw;                 /* 화면 가로 전체 */
+    margin-left: 50%;
+    transform: translateX(-50%);  /* 부모의 중앙 기준으로 full-bleed */
+    overflow: hidden;
 }
-.hero-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(67, 120, 67, 0.2);
-    margin-bottom: 20px;
+
+.hero-section::before{
+    content: "";
+    position: absolute; inset: 0;
+    background-image: var(--bg);
+    background-size: cover;          /* 좌우 가득 */
+    background-position: center;     /* 필요시 center 30% 등으로 조정 */
+    filter: blur(18px) saturate(0.95);
+    transform: scale(1.08);          /* 블러 경계 숨김 */
+}
+
+.hero-image{
+    position: relative; z-index: 1;
+    height: 100%;
+    width: auto;
+    object-fit: contain;             /* 잘림 없음 */
+    object-position: center;         /* 필요시 center 30% 등으로 수직 위치 미세조정 */
+    display: block;
+    margin: 0 auto;
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%,
+    rgba(0,0,0,1) 7%,
+    rgba(0,0,0,1) 93%,
+    rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%,
+    rgba(0,0,0,1) 7%,
+    rgba(0,0,0,1) 93%,
+    rgba(0,0,0,0) 100%);
+}
+
+.hero-section::after{
+    content:"";
+    position:absolute; inset:0; z-index: 1;
+    pointer-events:none;
+    background: linear-gradient(to left, rgba(0,0,0,.16), transparent 18%, transparent 82%, rgba(0,0,0,.16));
 }
 
 .btn-primary {
