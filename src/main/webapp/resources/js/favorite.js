@@ -117,33 +117,33 @@ function removeFavorite(itemId) {
             'X-Requested-With': 'XMLHttpRequest'
         }
     })
-        .then(response => {
-            if (response.ok) {
-                console.log('즐겨찾기 제거 성공');
-                // 해당 항목을 화면에서 제거
-                const item = document.querySelector(`[data-id="${itemId}"]`);
-                if (item) {
-                    item.style.animation = 'fadeOut 0.3s ease';
-                    setTimeout(() => {
-                        item.remove();
-                        // 모든 항목이 제거되었는지 확인
-                        const remainingItems = document.querySelectorAll('.favorite-item');
-                        if (remainingItems.length === 0) {
-                            showEmptyState();
-                        } else {
-                            // 카드 레이아웃 다시 조정
-                            adjustCardLayout();
-                        }
-                    }, 300);
-                }
-            } else {
-                throw new Error('즐겨찾기 제거 실패');
+    .then(response => {
+        if (response.ok) {
+            console.log('즐겨찾기 제거 성공');
+            // 해당 항목을 화면에서 제거
+            const item = document.querySelector(`[data-id="${itemId}"]`);
+            if (item) {
+                item.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => {
+                    item.remove();
+                    // 모든 항목이 제거되었는지 확인
+                    const remainingItems = document.querySelectorAll('.favorite-item');
+                    if (remainingItems.length === 0) {
+                        showEmptyState();
+                    } else {
+                        // 카드 레이아웃 다시 조정
+                        adjustCardLayout();
+                    }
+                }, 300);
             }
-        })
-        .catch(error => {
-            console.error('즐겨찾기 제거 오류:', error);
-            alert('즐겨찾기 제거에 실패했습니다. 다시 시도해주세요.');
-        });
+        } else {
+            throw new Error('즐겨찾기 제거 실패');
+        }
+    })
+    .catch(error => {
+        console.error('즐겨찾기 제거 오류:', error);
+        alert('즐겨찾기 제거에 실패했습니다. 다시 시도해주세요.');
+    });
 }
 
 // 카드 레이아웃 조정
