@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="클릭 로그 수정">
+    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="main.jsp 인기 업체 클릭 시 상세 페이지로 이동">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/dto/CompanyClickCountDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/dto/CompanyClickCountDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ClickLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ClickLogMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/list.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +198,7 @@
       <workItem from="1756426101559" duration="22062000" />
       <workItem from="1756524197218" duration="1755000" />
       <workItem from="1756530219982" duration="8485000" />
-      <workItem from="1756685360087" duration="10616000" />
+      <workItem from="1756685360087" duration="14838000" />
     </task>
     <task id="LOCAL-00001" summary="번역추가">
       <option name="closed" value="true" />
@@ -387,7 +384,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756685403180</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="main.jsp 인기 업체 클릭 시 상세 페이지로 이동">
+      <option name="closed" value="true" />
+      <created>1756696749030</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1756696749030</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,7 +434,8 @@
     <MESSAGE value="업체 클릭 시 click_logs에 insert 들어가도록 보완" />
     <MESSAGE value="tourism_list css, js, jsp" />
     <MESSAGE value="클릭 로그 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="클릭 로그 수정" />
+    <MESSAGE value="main.jsp 인기 업체 클릭 시 상세 페이지로 이동" />
+    <option name="LAST_COMMIT_MESSAGE" value="main.jsp 인기 업체 클릭 시 상세 페이지로 이동" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
