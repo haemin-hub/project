@@ -280,11 +280,11 @@ const CATEGORY_IMAGE = {
   waxing: '/resources/images/packages/packagewaxing.png',
   dermatology: '/resources/images/packages/packageph.png',
   plasticsurgery: '/resources/images/packages/packageplastic.png',
-  dental: '/resources/images/packages/packageplastic.png',
-  pharmacy: '/resources/images/packages/packageph.png',
-  massage: '/resources/images/packages/packageplastic.png',
-  oriental: '/resources/images/packages/packageplastic.png',
-  orientalHospital: '/resources/images/packages/packageplastic.png'
+  dental: '/resources/images/packages/packagedental.png',
+  pharmacy: '/resources/images/packages/packagePharmacy.jpg',
+  massage: '/resources/images/packages/packagesmilemassage.png',
+  oriental: '/resources/images/packages/packageOriental.jpg',
+  orientalHospital: '/resources/images/packages/packageOrientalHospital.jpg'
 };
 
 function buildCategoryTiles(keys){
@@ -337,7 +337,6 @@ function renderAllServices(categoryKeys){
     `).join('');
     return `
       <div class="service-category-group" id="cat-${key}">
-        
         <div class="service-list">
           ${listHtml}
         </div>
@@ -367,15 +366,61 @@ function showPackageModal(packageName, categories, description){
 
   // 인식된 카테고리가 없으면 기본값
   const keysToUse = mappedKeys.length ? mappedKeys : ['dermatology'];
+  const isMany = keysToUse.length >= 4;
 
-  // 타일 동적 렌더링
+  // 타일 동적 렌더링 + 그리드 정렬 조정
   const grid = document.querySelector('#packageModal .package-image-grid');
   if (grid) {
     grid.innerHTML = buildCategoryTiles(keysToUse);
+
+    // 카테고리가 4개 이상이면 4열 그리드로 고정해 줄 맞춤
+    if (isMany) {
+      grid.style.display = 'grid';
+      grid.style.gridTemplateColumns = 'repeat(4, minmax(0, 1fr))';
+      grid.style.gap = '12px';
+      grid.style.alignItems = 'start';
+    } else {
+      // 원상 복구
+      grid.style.display = '';
+      grid.style.gridTemplateColumns = '';
+      grid.style.gap = '';
+      grid.style.alignItems = '';
+    }
+
+    // 타일 이미지 높이 통일로 카드 높이 균일화
+    document.querySelectorAll('#packageModal .tile-card .tile-img').forEach(img => {
+      if (isMany) {
+        img.style.height = '90px';
+        img.style.objectFit = 'cover';
+        img.style.width = '100%';
+        img.style.height = '100%';
+      } else {
+        img.style.height = '';
+        img.style.objectFit = '';
+        img.style.width = '';
+        img.style.height = '';
+      }
+    });
   }
 
   // 모든 카테고리 서비스 한 번에 렌더링
   renderAllServices(keysToUse);
+
+  // 서비스 리스트를 2열 그리드로 전환(카테고리 4개 이상 시)
+  const columns = document.querySelector('#serviceList .service-columns');
+  if (columns) {
+    if (isMany) {
+      columns.style.display = 'grid';
+      columns.style.gridTemplateColumns = 'repeat(4, minmax(0, 1fr))';
+      columns.style.gap = '16px';
+      columns.style.alignItems = 'start';
+    } else {
+      columns.style.display = '';
+      columns.style.gridTemplateColumns = '';
+      columns.style.gap = '';
+      columns.style.alignItems = '';
+    }
+  }
 
   // 타일 클릭 시 해당 카테고리 섹션으로 스크롤
   document.querySelectorAll('#packageModal .tile-card').forEach(tile=>{
@@ -389,6 +434,19 @@ function showPackageModal(packageName, categories, description){
       }
     };
   });
+
+  // 모달 폭 살짝 확장(가능할 경우) 및 상태 클래스 토글
+  modal.classList.toggle('many-categories', isMany);
+  const modalContent = modal.querySelector('.modal-content');
+  if (modalContent) {
+    if (isMany) {
+      modalContent.style.maxWidth = '900px';
+      modalContent.style.width = '90%';
+    } else {
+      modalContent.style.maxWidth = '';
+      modalContent.style.width = '';
+    }
+  }
 
   // 모달 표시
   modal.classList.remove('show');

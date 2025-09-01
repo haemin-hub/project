@@ -220,7 +220,7 @@
                                     <!-- 인기 업체 1 -->
                                     <a href="http://xn--939au0giujp2l.xn--3e0b707e/" class="company-card">
                                         <div class="card-image">
-                                            <img src="/resources/images/힐링패키지.jpg" alt="${company1.companyName}">
+                                            <img src="" alt="${company1.companyName}" data-gquery="${company1.companyName} ${empty company1.subregion ? company1.region : company1.subregion}" loading="lazy">
                                             <div class="card-badge">1위</div>
                                         </div>
                                         <div class="card-content">
@@ -235,7 +235,7 @@
                                     <!-- 인기 업체 2 -->
                                     <a href="http://www.miwoo.kr/" class="company-card">
                                         <div class="card-image">
-                                            <img src="/resources/images/2024-11-20.jpg" alt="${company2.companyName}">
+                                            <img src="" alt="${company2.companyName}" data-gquery="${company2.companyName} ${empty company2.subregion ? company2.region : company2.subregion}" loading="lazy">
                                             <div class="card-badge">2위</div>
                                         </div>
                                         <div class="card-content">
@@ -250,7 +250,7 @@
                                     <!-- 인기 업체 3 -->
                                     <a href="/company/${company3.companyId}" class="company-card">
                                         <div class="card-image">
-                                            <img src="/resources/images/자기관리패키지.png" alt="${company3.companyName}">
+                                            <img src="" alt="${company3.companyName}" data-gquery="${company3.companyName} ${empty company3.subregion ? company3.region : company3.subregion}" loading="lazy">
                                             <div class="card-badge">3위</div>
                                         </div>
                                         <div class="card-content">
@@ -585,6 +585,58 @@ document.addEventListener('keydown', function(event) {
         closeYouTubeModal();
     }
 });
+</script>
+
+<!-- Google Maps Places API: TOP3 업체 이미지 자동 교체 -->
+<script>
+  // Google Places에서 사진을 찾아 카드 이미지에 세팅
+  function initTopCompaniesPhotos() {
+    try {
+      const imgs = document.querySelectorAll('.company-cards-wrapper .company-card .card-image img[data-gquery]');
+      if (!imgs.length || typeof google === 'undefined' || !google.maps || !google.maps.places) {
+        return;
+      }
+      // 보이지 않는 맵 컨테이너 (PlacesService를 위한 의존성)
+      const holder = document.createElement('div');
+      holder.style.display = 'none';
+      document.body.appendChild(holder);
+      const map = new google.maps.Map(holder);
+      const service = new google.maps.places.PlacesService(map);
+
+      imgs.forEach(function(img) {
+        const query = img.getAttribute('data-gquery');
+        if (!query) return;
+        service.findPlaceFromQuery(
+          { query: query, fields: ['photos'] },
+          function(results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK &&
+                results && results.length &&
+                results[0].photos && results[0].photos.length) {
+              try {
+                const url = results[0].photos[0].getUrl({ maxWidth: 560, maxHeight: 380 });
+                if (url) img.src = url;
+              } catch (e) {
+                console.warn('사진 URL 생성 실패:', e);
+              }
+            } else {
+              // 사진이 없을 때는 그대로 두거나 필요 시 기본 이미지를 지정하세요.
+              // img.src = '/resources/images/no-image.png';
+            }
+          }
+        );
+      });
+    } catch (e) {
+      console.error('TOP3 사진 초기화 실패:', e);
+    }
+  }
+
+  // API가 이미 로드된 경우 대비
+  if (typeof google !== 'undefined' && google.maps && google.maps.places) {
+    initTopCompaniesPhotos();
+  }
+</script>
+<script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQVKpyFKKbsxbwSkllx6uLr41-OM6ga44&libraries=places&callback=initTopCompaniesPhotos">
 </script>
 </body>
 </html>

@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="클릭 로그 수정">
+      <change afterPath="$PROJECT_DIR$/.idea/project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/dto/CompanyClickCountDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/dto/CompanyClickCountDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ClickLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ClickLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/popular-cities.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/popular-cities.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/CompanyClickCountDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/CompanyClickCountDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ClickLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/ClickLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/tourism_list.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/tourism_list.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/tourism_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/tourism_list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/TourPackageDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/TourPackageDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/TourPackageItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/TourPackageItemDto.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,8 +72,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/082025/project.git&quot;,
-    &quot;accountId&quot;: &quot;d53b577d-4bab-4d28-bb9d-761e7eb776e6&quot;
+    &quot;url&quot;: &quot;https://github.com/APIROUND/project.git&quot;,
+    &quot;accountId&quot;: &quot;578bab63-3494-499e-8e26-90b72c1114da&quot;
   }
 }</component>
   <component name="LogFilters">
@@ -133,7 +137,7 @@
       <recent name="C:\Users\enjoy\Desktop\정민서\ApiRound\ApiRound\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ApiRoundApplication">
+  <component name="RunManager" selected="애플리케이션.ApiRoundApplication">
     <configuration name="ApiRoundApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.ApiRound.ApiRoundApplication" />
       <module name="ApiRound" />
@@ -168,21 +172,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.ApiRoundApplication" />
-      <item itemvalue="Application.SpringI18nAApplication" />
       <item itemvalue="Spring Boot.ApiRoundApplication" />
+      <item itemvalue="애플리케이션.ApiRoundApplication" />
+      <item itemvalue="애플리케이션.SpringI18nAApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ApiRoundApplication" />
+        <item itemvalue="애플리케이션.ApiRoundApplication" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
-        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
       </set>
     </attachedChunks>
   </component>
@@ -201,6 +205,8 @@
       <workItem from="1756352053544" duration="18426000" />
       <workItem from="1756374471153" duration="12381000" />
       <workItem from="1756426101559" duration="22062000" />
+      <workItem from="1756524197218" duration="1755000" />
+      <workItem from="1756530219982" duration="8485000" />
     </task>
     <task id="LOCAL-00001" summary="번역추가">
       <option name="closed" value="true" />
