@@ -39,10 +39,14 @@ document.addEventListener('DOMContentLoaded', async function() {
     // updateTotalCount();
     await restoreHeartStates();
 
+    const didAutoOpen = await autoSelectFromQuery();
+
     const detailContent = document.querySelector('.detail-content');
     const detailPlaceholder = document.querySelector('.detail-placeholder');
-    if (detailContent) detailContent.style.display = 'none';
-    if (detailPlaceholder) detailPlaceholder.style.display = 'block';
+    if (!didAutoOpen) {
+        if (detailContent) detailContent.style.display = 'none';
+        if (detailPlaceholder) detailPlaceholder.style.display = 'block';
+    }
 });
 
 function bindHospitalItemEvents() {
@@ -171,38 +175,6 @@ function showHospitalDetail(hospitalItem) {
     console.log('상세 정보 표시:', hospitalName);
 }
 
-// 클릭 로그 API 호출 (컨텍스트 경로/CSRF 자동 처리)
-function logCompanyClick(companyId) {
-    try {
-        if (!companyId) {
-            console.warn('companyId가 비어 있어 클릭 로그를 건너뜁니다.');
-            return;
-        }
-        const ctx = (window.APP_CTX || '').replace(/\/+$/, '');
-        const url = `${ctx}/api/clicks/${encodeURIComponent(companyId)}`;
-
-        const headers = {};
-        const csrfToken = document.querySelector('meta[name="_csrf"]')?.getAttribute('content');
-        const csrfHeader = document.querySelector('meta[name="_csrf_header"]')?.getAttribute('content');
-        if (csrfToken && csrfHeader) {
-            headers[csrfHeader] = csrfToken;
-        }
-
-        fetch(url, { method: 'POST', headers })
-            .then(async (res) => {
-                if (!res.ok) {
-                    const body = await res.text().catch(() => '');
-                    throw new Error(`POST ${url} -> ${res.status} ${res.statusText} ${body}`);
-                }
-                console.debug('클릭 로그 저장 완료:', companyId);
-            })
-            .catch(err => {
-                console.warn('클릭 로그 저장 실패:', err);
-            });
-    } catch (e) {
-        console.warn('클릭 로그 실행 중 예외:', e);
-    }
-}
 
 
 // 클릭 로그 API 호출
@@ -849,4 +821,61 @@ function addToFavoriteAndNavigate(itemId, hospitalItem) {
             // localStorage에서도 제거
             saveHeartState(hospitalName, false);
         });
+}
+
+// 초기 진입 시 URL의 Id 또는 name 파라미터로 상세 자동 오픈
+async function autoSelectFromQuery() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const idParam = params.get('Id') || params.get('id');
+        const nameParam = params.get('name') || params.get('hospital') || params.get('company');
+
+        // 아이템 찾기 함수
+        const findTargetItem = () => {
+            // 1) Id로 찾기
+            if (idParam) {
+                const byId = document.querySelector(`.hospital-item[data-item-id="${idParam}"]`);
+                if (byId) return byId;
+            }
+            // 2) name으로 찾기 (정확 일치)
+            if (nameParam) {
+                const name = nameParam.trim();
+                const items = document.querySelectorAll('.hospital-item');
+                for (const el of items) {
+                    if ((el.dataset.hospital || '').trim() === name) {
+                        return el;
+                    }
+                }
+            }
+            return null;
+        };
+
+        // DOM 준비 지연 대응: 최대 10회, 100ms 간격으로 재시도
+        let attempt = 0;
+        let item = findTargetItem();
+        while (!item && attempt < 10) {
+            await new Promise(r => setTimeout(r, 100));
+            item = findTargetItem();
+            attempt++;
+        }
+        if (!item) return false;
+
+        // 선택 및 상세 표시
+        selectHospital(item);
+        if (item.classList.contains('active')) {
+            // 클릭 로그 전송 (컨텍스트 경로/CSRF 처리 포함)
+            logCompanyClick(item.dataset.itemId);
+            showHospitalDetail(item);
+        }
+
+        // 좌측 목록 내에서 해당 아이템으로 스크롤
+        try {
+            item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } catch (_) {}
+
+        return true;
+    } catch (e) {
+        console.warn('URL 기반 자동 상세 오픈 실패:', e);
+        return false;
+    }
 }
