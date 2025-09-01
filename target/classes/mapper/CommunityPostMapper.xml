@@ -15,12 +15,15 @@
         <result property="category" column="CATEGORY"/>
         <result property="isDeleted" column="IS_DELETED"/>
         <result property="isUpdate" column="IS_UPDATE"/>
+        <result property="profileImage" column="PROFILE_IMAGE"/>
     </resultMap>
 
     <select id="findAllPosts" resultMap="PostMap">
-        SELECT * FROM community_post
-        WHERE is_deleted = 'N'
-        ORDER BY create_at DESC
+        SELECT cp.*, su.profile_image AS PROFILE_IMAGE
+        FROM community_post cp
+        LEFT JOIN social_user su ON su.user_id = cp.post_id
+        WHERE cp.is_deleted = 'N'
+        ORDER BY cp.like_count DESC, cp.create_at DESC
     </select>
 
     <insert id="insertPost" parameterType="com.example.ApiRound.dto.CommunityPostDto">
