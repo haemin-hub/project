@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="커뮤니티 DB 연결">
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/CommunityPostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/CommunityPostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/CommunityPostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/CommunityPostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/community.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/community.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/CommunityPostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/CommunityPostController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -416,7 +422,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756708737056</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="커뮤니티 DB 연결">
+      <option name="closed" value="true" />
+      <created>1756709260122</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1756709260122</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

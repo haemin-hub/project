@@ -34,29 +34,26 @@
 
     <!-- ✅ DB에서 가져온 글을 community-show 박스로 반복 출력 -->
     <c:forEach var="p" items="${posts}">
-    div class="community-show is-open" data-post-id="${p.id}">
-          <div class="show-title">
-            <strong>${p.title}</strong>
-          </div>
-
-          <div class="show-btn-wrap">
-            <span class="show-meta">
-              <c:out value="${p.authorName != null ? p.authorName : '익명'}"/>
-              ·
-              <fmt:formatDate value="${p.createdAt}" pattern="yyyy-MM-dd"/>
-            </span>
-            <!-- (선택) 수정/삭제 버튼 -->
-            <!-- <button class="show-update">수정</button>
-            <button class="show-delete">삭제</button> -->
-          </div>
-
-          <hr/>
-
-          <div class="show-content">
-            <c:out value="${p.content}"/>
-          </div>
+      <div class="community-show is-open" data-post-id="${p.postId}">
+        <div class="show-title">
+          <strong>${p.title}</strong>
         </div>
-      </c:forEach>
+
+        <div class="show-btn-wrap">
+          <span class="show-meta">
+            <c:out value="${p.userId != null ? p.userId : '익명'}"/>
+            ·
+            <fmt:formatDate value="${p.createAt}" pattern="yyyy-MM-dd"/>
+          </span>
+        </div>
+
+        <hr/>
+
+        <div class="show-content">
+          <c:out value="${p.content}"/>
+        </div>
+      </div>
+    </c:forEach>
 
       <!-- 데이터 없을 때 -->
         <c:if test="${empty posts}">

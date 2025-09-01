@@ -16,11 +16,12 @@ public class CommunityPostController {
     @Autowired
     private CommunityPostService service;
 
-    @GetMapping("/list")
+    @GetMapping("")
     public String listPosts(Model model){
         List<CommunityPostDto> posts = service.getAllPosts();
+        System.out.println("posts size: " + posts.size());  // 데이터 크기 출력
         model.addAttribute("posts",posts);
-        return "community/list";
+        return "community";
     }
 
     @GetMapping("/view/{postId}")
