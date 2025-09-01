@@ -1,6 +1,8 @@
 package com.example.ApiRound;
 
 import com.example.ApiRound.Service.ClickLogService;
+import com.example.ApiRound.Service.CommunityPostService;
+import com.example.ApiRound.dto.CommunityPostDto;
 import com.example.ApiRound.dto.CompanyClickCountDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,22 +14,27 @@ import java.util.List;
 public class HelloController {
 
     private final ClickLogService clickLogService;
+    private final CommunityPostService communityPostService;
 
-    public HelloController(ClickLogService clickLogService) {
+    public HelloController(ClickLogService clickLogService, CommunityPostService communityPostService) {
         this.clickLogService = clickLogService;
+        this.communityPostService = communityPostService;
+    }
+    @GetMapping("/main")
+    public String main(Model model) {
+        List<CompanyClickCountDto> topCompanies = clickLogService.getTop3CompaniesLast7Days();
+        List<CommunityPostDto> communityPosts = communityPostService.getAllPosts(); // 또는 getRecentPosts()
+
+        model.addAttribute("topCompanies", topCompanies);
+        model.addAttribute("posts", communityPosts);
+
+        return "main"; // main.jsp
     }
 
     @GetMapping("/hello")
     public String hello(Model model) {
         model.addAttribute("message", "JSP 테스트 성공!");
         return "hello"; // /WEB-INF/views/hello.jsp로 연결됨
-    }
-
-    @GetMapping("/main")
-    public String main(Model model) {
-        List<CompanyClickCountDto> topCompanies = clickLogService.getTop3CompaniesLast7Days();
-        model.addAttribute("topCompanies", topCompanies);
-        return "main"; // /WEB-INF/views/main.jsp
     }
 
     @GetMapping("/plastic-surgery")
@@ -44,4 +51,5 @@ public class HelloController {
     public String location() {
         return "location";
     }
+
 }

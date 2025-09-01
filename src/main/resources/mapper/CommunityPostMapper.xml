@@ -5,14 +5,22 @@
 
 <mapper namespace="com.example.ApiRound.mapper.CommunityPostMapper">
 
-    <select id="findAllPosts" resultType="com.example.ApiRound.dto.CommunityPostDto">
+    <resultMap id="PostMap" type="com.example.ApiRound.dto.CommunityPostDto">
+        <result property="postId" column="POST_ID"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="title" column="TITLE"/>
+        <result property="content" column="CONTENT"/>
+        <result property="createAt" column="CREATE_AT"/>
+        <result property="likeCount" column="LIKE_COUNT"/>
+        <result property="category" column="CATEGORY"/>
+        <result property="isDeleted" column="IS_DELETED"/>
+        <result property="isUpdate" column="IS_UPDATE"/>
+    </resultMap>
+
+    <select id="findAllPosts" resultMap="PostMap">
         SELECT * FROM community_post
         WHERE is_deleted = 'N'
         ORDER BY create_at DESC
-    </select>
-
-    <select id="findPostById" resultType="com.example.ApiRound.dto.CommunityPostDto">
-        SELECT * FROM community_post WHERE post_id = #{postId}
     </select>
 
     <insert id="insertPost" parameterType="com.example.ApiRound.dto.CommunityPostDto">

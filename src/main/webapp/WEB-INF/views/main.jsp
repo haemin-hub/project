@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -238,71 +241,34 @@
                 <!-- 왼쪽: 커뮤니티 코멘트 (디자인 전용) -->
                 <div class="community-comments">
                     <div class="community-header">
-                        <div class="title">커뮤니티 코멘트</div>
+                        <div class="title">커뮤니티</div>
                         <a href="/community" class="more-link">더 보기 <i class="fas fa-chevron-right"></i></a>
                     </div>
 
-                    <div class="comments-list">
-                        <!-- 코멘트 카드 1 -->
-                        <div class="comment-card">
-                            <div class="user">
-                                <img class="avatar" src="/resources/images/avatar1.png" alt="avatar"
-                                     onerror="this.onerror=null;this.src='https://i.pravatar.cc/72?img=1';">
-                                <div class="meta">
-                                    <div class="nickname">하늘정원</div>
-                                    <div class="date">방금 전</div>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <span class="tag">피부과</span>
-                                <div class="text">여드름 흉터 레이저 시술 받고 왔어요. 회복 팁 몇 가지 공유합니다!</div>
-                            </div>
-                            <div class="actions">
-                                <span><i class="far fa-thumbs-up"></i> 128</span>
-                                <span><i class="far fa-comment"></i> 34</span>
-                            </div>
-                        </div>
+                   <div class="comments-list">
+                       <c:forEach var="post" items="${posts}" begin="0" end="4">
+                           <div class="comment-card">
+                               <div class="user">
+                                   <img class="avatar" src="/resources/images/default-avatar.png" alt="avatar"
+                                        onerror="this.onerror=null;this.src='https://i.pravatar.cc/72';">
+                                   <div class="meta">
+                                       <div class="nickname">${post.userId}</div>
+                                       <div class="date">
+                                           <fmt:formatDate value="${post.createAt}" pattern="yyyy-MM-dd" />
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="content">
+                                   <span class="tag">${post.category}</span>
+                                   <div class="text">${post.content}</div>
+                               </div>
+                               <div class="actions">
+                                   <span><i class="far fa-thumbs-up"></i> ${post.likeCount}</span>
+                               </div>
+                           </div>
+                       </c:forEach>
+                   </div>
 
-                        <!-- 코멘트 카드 2 -->
-                        <div class="comment-card">
-                            <div class="user">
-                                <img class="avatar" src="/resources/images/avatar2.png" alt="avatar"
-                                     onerror="this.onerror=null;this.src='https://i.pravatar.cc/72?img=2';">
-                                <div class="meta">
-                                    <div class="nickname">소금바다</div>
-                                    <div class="date">1시간 전</div>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <span class="tag">치과</span>
-                                <div class="text">임플란트 상담 다녀왔는데, 비교 체크리스트 만들어봤습니다.</div>
-                            </div>
-                            <div class="actions">
-                                <span><i class="far fa-thumbs-up"></i> 76</span>
-                                <span><i class="far fa-comment"></i> 12</span>
-                            </div>
-                        </div>
-
-                        <!-- 코멘트 카드 3 -->
-                        <div class="comment-card">
-                            <div class="user">
-                                <img class="avatar" src="/resources/images/avatar3.png" alt="avatar"
-                                     onerror="this.onerror=null;this.src='https://i.pravatar.cc/72?img=3';">
-                                <div class="meta">
-                                    <div class="nickname">초록나무</div>
-                                    <div class="date">어제</div>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <span class="tag">한의원</span>
-                                <div class="text">침 치료 받고 나서 어깨가 한결 가벼워졌네요. 비용/효과 정리!</div>
-                            </div>
-                            <div class="actions">
-                                <span><i class="far fa-thumbs-up"></i> 54</span>
-                                <span><i class="far fa-comment"></i> 9</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- 가운데 구분선 -->
