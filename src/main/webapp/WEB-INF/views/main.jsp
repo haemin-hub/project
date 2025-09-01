@@ -22,6 +22,117 @@
         .tripbtoz-popular-cities {
             box-shadow: 0 8px 30px rgba(67, 120, 67, 0.15);
         }
+
+        /* 커뮤니티 코멘트 (좌측 박스) */
+        .community-comments {
+            flex: 0 0 420px;
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 8px 30px rgba(67, 120, 67, 0.08);
+            margin-top: -110px; /* 타이틀 라인에 맞추기 위해 살짝 위로 올림 */
+            display: flex;               /* 헤더 + 리스트 수직 배치 */
+            flex-direction: column;
+            max-height: 480px;           /* 높이 제한으로 TOP3와 하단 라인 맞춤 */
+            overflow: hidden;            /* 컨테이너 넘침 숨김 */
+        }
+        .community-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .community-header .title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2f3a3a;
+        }
+        .community-header .more-link {
+            font-size: 12px;
+            color: #2a7a5b;
+            text-decoration: none;
+        }
+        .community-header .more-link:hover {
+            text-decoration: underline;
+        }
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1 1 auto;      /* 남은 공간을 차지하여 스크롤 영역이 되도록 */
+            overflow-y: auto;    /* 내부 스크롤 */
+        }
+        .comment-card {
+            border: 1px solid #f0f2f4;
+            border-radius: 10px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: box-shadow .2s ease, transform .2s ease;
+            background: #fff;
+        }
+        .comment-card:hover {
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+        .comment-card .user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .comment-card .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #f2f4f6;
+        }
+        .comment-card .meta {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .comment-card .nickname {
+            font-size: 13px;
+            font-weight: 600;
+            color: #2b2f33;
+        }
+        .comment-card .date {
+            font-size: 11px;
+            color: #8a8f94;
+        }
+        .comment-card .content .tag {
+            display: inline-block;
+            margin-bottom: 6px;
+            padding: 2px 8px;
+            font-size: 11px;
+            background: #eef7f1;
+            color: #2a7a5b;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+        .comment-card .content .text {
+            font-size: 14px;
+            color: #3b4045;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .comment-card .actions {
+            display: flex;
+            gap: 14px;
+            font-size: 12px;
+            color: #6b7278;
+        }
+
+        /* 반응형 처리 */
+        @media (max-width: 1024px) {
+            .community-comments { flex: 1 1 auto; margin-top: 0; max-height: none; overflow: visible; }
+        }
     </style>
 </head>
 <body>
@@ -124,85 +235,73 @@
             </div>
 
             <div class="popular-content-wrapper">
-                <!-- 왼쪽: 국내 급상승 인기 도시 -->
-                <div class="tripbtoz-popular-cities">
-                    <div class="tripbtoz-cities-header">
-                        <div class="tripbtoz-cities-title">
-                            <span><spring:message code="main.popular.cities.title"/></span>
-                        </div>
+                <!-- 왼쪽: 커뮤니티 코멘트 (디자인 전용) -->
+                <div class="community-comments">
+                    <div class="community-header">
+                        <div class="title">커뮤니티 코멘트</div>
+                        <a href="/community" class="more-link">더 보기 <i class="fas fa-chevron-right"></i></a>
                     </div>
-                    <div class="tripbtoz-cities-divider"></div>
-                    <div class="tripbtoz-cities-list">
-                        <a href="/city/gyeongju" class="tripbtoz-city-item">
-                            <div class="city-rank">1</div>
-                            <div class="city-trend no-change">
-                                <i class="fas fa-minus"></i>
+
+                    <div class="comments-list">
+                        <!-- 코멘트 카드 1 -->
+                        <div class="comment-card">
+                            <div class="user">
+                                <img class="avatar" src="/resources/images/avatar1.png" alt="avatar"
+                                     onerror="this.onerror=null;this.src='https://i.pravatar.cc/72?img=1';">
+                                <div class="meta">
+                                    <div class="nickname">하늘정원</div>
+                                    <div class="date">방금 전</div>
+                                </div>
                             </div>
-                            <div class="city-name"><spring:message code="city.gyeongju"/></div>
-                        </a>
-                        <a href="/city/jeju" class="tripbtoz-city-item">
-                            <div class="city-rank">2</div>
-                            <div class="city-trend up">
-                                <i class="fas fa-arrow-up"></i>
+                            <div class="content">
+                                <span class="tag">피부과</span>
+                                <div class="text">여드름 흉터 레이저 시술 받고 왔어요. 회복 팁 몇 가지 공유합니다!</div>
                             </div>
-                            <div class="city-name"><spring:message code="city.jeju"/></div>
-                        </a>
-                        <a href="/city/seogwipo" class="tripbtoz-city-item">
-                            <div class="city-rank">3</div>
-                            <div class="city-trend down">
-                                <i class="fas fa-arrow-down"></i>
+                            <div class="actions">
+                                <span><i class="far fa-thumbs-up"></i> 128</span>
+                                <span><i class="far fa-comment"></i> 34</span>
                             </div>
-                            <div class="city-name"><spring:message code="city.seogwipo"/></div>
-                        </a>
-                        <a href="/city/yeosu" class="tripbtoz-city-item">
-                            <div class="city-rank">4</div>
-                            <div class="city-trend no-change">
-                                <i class="fas fa-minus"></i>
+                        </div>
+
+                        <!-- 코멘트 카드 2 -->
+                        <div class="comment-card">
+                            <div class="user">
+                                <img class="avatar" src="/resources/images/avatar2.png" alt="avatar"
+                                     onerror="this.onerror=null;this.src='https://i.pravatar.cc/72?img=2';">
+                                <div class="meta">
+                                    <div class="nickname">소금바다</div>
+                                    <div class="date">1시간 전</div>
+                                </div>
                             </div>
-                            <div class="city-name"><spring:message code="city.yeosu"/></div>
-                        </a>
-                        <a href="/city/sokcho" class="tripbtoz-city-item" >
-                            <div class="city-rank">5</div>
-                            <div class="city-trend up">
-                                <i class="fas fa-arrow-up"></i>
+                            <div class="content">
+                                <span class="tag">치과</span>
+                                <div class="text">임플란트 상담 다녀왔는데, 비교 체크리스트 만들어봤습니다.</div>
                             </div>
-                            <div class="city-name"><spring:message code="city.sokcho"/></div>
-                        </a>
-                        <a href="/city/jeonju" class="tripbtoz-city-item">
-                            <div class="city-rank">6</div>
-                            <div class="city-trend no-change">
-                                <i class="fas fa-minus"></i>
+                            <div class="actions">
+                                <span><i class="far fa-thumbs-up"></i> 76</span>
+                                <span><i class="far fa-comment"></i> 12</span>
                             </div>
-                            <div class="city-name"><spring:message code="city.jeonju"/></div>
-                        </a>
-                        <a href="/city/haeundae" class="tripbtoz-city-item">
-                            <div class="city-rank">7</div>
-                            <div class="city-trend up">
-                                <i class="fas fa-arrow-up"></i>
+                        </div>
+
+                        <!-- 코멘트 카드 3 -->
+                        <div class="comment-card">
+                            <div class="user">
+                                <img class="avatar" src="/resources/images/avatar3.png" alt="avatar"
+                                     onerror="this.onerror=null;this.src='https://i.pravatar.cc/72?img=3';">
+                                <div class="meta">
+                                    <div class="nickname">초록나무</div>
+                                    <div class="date">어제</div>
+                                </div>
                             </div>
-                            <div class="city-name"><spring:message code="city.haeundae"/></div>
-                        </a>
-                        <a href="/city/gangneung" class="tripbtoz-city-item">
-                            <div class="city-rank">8</div>
-                            <div class="city-trend up">
-                                <i class="fas fa-arrow-up"></i>
+                            <div class="content">
+                                <span class="tag">한의원</span>
+                                <div class="text">침 치료 받고 나서 어깨가 한결 가벼워졌네요. 비용/효과 정리!</div>
                             </div>
-                            <div class="city-name"><spring:message code="city.gangneung"/></div>
-                        </a>
-                        <a href="/city/yangyang" class="tripbtoz-city-item">
-                            <div class="city-rank">9</div>
-                            <div class="city-trend down">
-                                <i class="fas fa-arrow-down"></i>
+                            <div class="actions">
+                                <span><i class="far fa-thumbs-up"></i> 54</span>
+                                <span><i class="far fa-comment"></i> 9</span>
                             </div>
-                            <div class="city-name"><spring:message code="city.yangyang"/></div>
-                        </a>
-                        <a href="/city/gunsan" class="tripbtoz-city-item">
-                            <div class="city-rank">10</div>
-                            <div class="city-trend up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="city-name"><spring:message code="city.gunsan"/></div>
-                        </a>
+                        </div>
                     </div>
                 </div>
 
@@ -218,9 +317,9 @@
 
                 <div class="company-cards-wrapper">
                                     <!-- 인기 업체 1 -->
-                                    <a href="http://xn--939au0giujp2l.xn--3e0b707e/" class="company-card">
+                                    <a href="/list?category=${company1.category}&region=${company1.region}&Id=${company1.companyId}&name=${company1.companyName}" class="company-card">
                                         <div class="card-image">
-                                            <img src="" alt="${company1.companyName}" data-gquery="${company1.companyName} ${empty company1.subregion ? company1.region : company1.subregion}" loading="lazy">
+                                            <img src="" alt="${company1.companyName}" data-gquery="${company1.companyName} ${empty company1.subregion ? company1.region : company1.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
                                             <div class="card-badge">1위</div>
                                         </div>
                                         <div class="card-content">
@@ -233,9 +332,9 @@
                                     </a>
 
                                     <!-- 인기 업체 2 -->
-                                    <a href="http://www.miwoo.kr/" class="company-card">
+                                    <a href="/list?category=${company2.category}&region=${company2.region}&Id=${company2.companyId}&name=${company2.companyName}" class="company-card">
                                         <div class="card-image">
-                                            <img src="" alt="${company2.companyName}" data-gquery="${company2.companyName} ${empty company2.subregion ? company2.region : company2.subregion}" loading="lazy">
+                                            <img src="" alt="${company2.companyName}" data-gquery="${company2.companyName} ${empty company2.subregion ? company2.region : company2.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
                                             <div class="card-badge">2위</div>
                                         </div>
                                         <div class="card-content">
@@ -248,9 +347,9 @@
                                     </a>
 
                                     <!-- 인기 업체 3 -->
-                                    <a href="/company/${company3.companyId}" class="company-card">
+                                    <a href="/list?category=${company3.category}&region=${company3.region}&Id=${company3.companyId}&name=${company3.companyName}" class="company-card">
                                         <div class="card-image">
-                                            <img src="" alt="${company3.companyName}" data-gquery="${company3.companyName} ${empty company3.subregion ? company3.region : company3.subregion}" loading="lazy">
+                                            <img src="" alt="${company3.companyName}" data-gquery="${company3.companyName} ${empty company3.subregion ? company3.region : company3.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
                                             <div class="card-badge">3위</div>
                                         </div>
                                         <div class="card-content">
@@ -593,7 +692,16 @@ document.addEventListener('keydown', function(event) {
   function initTopCompaniesPhotos() {
     try {
       const imgs = document.querySelectorAll('.company-cards-wrapper .company-card .card-image img[data-gquery]');
-      if (!imgs.length || typeof google === 'undefined' || !google.maps || !google.maps.places) {
+      if (!imgs.length) {
+        return;
+      }
+      // 구글 API 미로딩 시: 구글 이미지를 가져올 수 없으므로 기본 이미지로 대체
+      if (typeof google === 'undefined' || !google.maps || !google.maps.places) {
+        imgs.forEach(function(img) {
+          if (!img.getAttribute('src')) {
+            img.src = '/resources/images/dump.jpg';
+          }
+        });
         return;
       }
       // 보이지 않는 맵 컨테이너 (PlacesService를 위한 의존성)
@@ -617,10 +725,11 @@ document.addEventListener('keydown', function(event) {
                 if (url) img.src = url;
               } catch (e) {
                 console.warn('사진 URL 생성 실패:', e);
+                img.src = '/resources/images/dump.jpg';
               }
             } else {
-              // 사진이 없을 때는 그대로 두거나 필요 시 기본 이미지를 지정하세요.
-              // img.src = '/resources/images/no-image.png';
+              // 구글 사진이 없을 때만 기본 이미지로 표시
+              img.src = '/resources/images/dump.jpg';
             }
           }
         );
