@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.ApiRound.Service.ListService;
+import com.example.ApiRound.Service.ClickLogService;
 import com.example.ApiRound.dto.ListDto;
 
 @Controller
@@ -20,10 +21,12 @@ import com.example.ApiRound.dto.ListDto;
 public class ListController {
 
     private final ListService listService;
+    private final ClickLogService clickLogService;
 
     @Autowired
-    public ListController(ListService listService) {
+    public ListController(ListService listService, ClickLogService clickLogService) {
         this.listService = listService;
+        this.clickLogService = clickLogService;
     }
 
     public String redirectList(String region, String category) {
@@ -150,6 +153,9 @@ public class ListController {
     // 단일 병원 조회 → detail.jsp
     @GetMapping("/{id}")
     public String getListById(@PathVariable Long id, Model model) {
+        // 업체 상세 페이지 진입 시 클릭 로그 기록
+        clickLogService.logClick(id);
+
         ListDto hospital = listService.getListById(id);
         model.addAttribute("list", hospital);
         return "detail";

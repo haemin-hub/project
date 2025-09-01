@@ -1,118 +1,120 @@
 // 값 공백/placeholder 검사
 function isBlank(v) {
-  return !v || /^\s*$/.test(v);
+    return !v || /^\s*$/.test(v);
 }
 
 // 홈페이지를 안전하게 HTML로 렌더 (없으면 링크 없이 텍스트만)
 function websiteToHtml(raw) {
-  const text = (raw || '').trim();
+    const text = (raw || '').trim();
 
-  // 비어있거나 placeholder면 링크 만들지 않음
-  if (isBlank(text) || text === '-' || text === '홈페이지 정보 없음') {
-    return '홈페이지 정보 없음';
-  }
+    // 비어있거나 placeholder면 링크 만들지 않음
+    if (isBlank(text) || text === '-' || text === '홈페이지 정보 없음') {
+        return '홈페이지 정보 없음';
+    }
 
-  // 스킴 없으면 https 붙이기
-  let url = text;
-  if (!/^https?:\/\//i.test(url)) {
-    url = 'https://' + url;
-  }
+    // 스킴 없으면 https 붙이기
+    let url = text;
+    if (!/^https?:\/\//i.test(url)) {
+        url = 'https://' + url;
+    }
 
-  // URL 유효성 최종 체크 실패 시에도 링크 금지
-  try {
-    new URL(url);
-  } catch {
-    return '홈페이지 정보 없음';
-  }
+    // URL 유효성 최종 체크 실패 시에도 링크 금지
+    try {
+        new URL(url);
+    } catch {
+        return '홈페이지 정보 없음';
+    }
 
-  // 정상일 때만 앵커로 렌더
-  return `<a href="${url}" target="_blank" rel="noopener">${text}</a>`;
+    // 정상일 때만 앵커로 렌더
+    return `<a href="${url}" target="_blank" rel="noopener">${text}</a>`;
 }
 
 
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', async function() {
-   console.log('병원 목록 페이지 로드 완료');
+    console.log('병원 목록 페이지 로드 완료');
 
-   bindHospitalItemEvents();   // ✅ 여기서 호출
-   bindPagination();           // ✅ AJAX 페이징 바인딩
-   // updateTotalCount();
-   await restoreHeartStates();
+    bindHospitalItemEvents();   // ✅ 여기서 호출
+    bindPagination();           // ✅ AJAX 페이징 바인딩
+    // updateTotalCount();
+    await restoreHeartStates();
 
-   const detailContent = document.querySelector('.detail-content');
-   const detailPlaceholder = document.querySelector('.detail-placeholder');
-   if (detailContent) detailContent.style.display = 'none';
-   if (detailPlaceholder) detailPlaceholder.style.display = 'block';
- });
+    const detailContent = document.querySelector('.detail-content');
+    const detailPlaceholder = document.querySelector('.detail-placeholder');
+    if (detailContent) detailContent.style.display = 'none';
+    if (detailPlaceholder) detailPlaceholder.style.display = 'block';
+});
 
 function bindHospitalItemEvents() {
-  const list = document.querySelector('.hospital-list');
-  console.log('찾은 hospital-list:', list);
-  
-  if (!list || list.dataset.bound === '1') {
-    console.log('이벤트 바인딩 건너뜀 - 리스트 없음 또는 이미 바인딩됨');
-    return; // 중복 바인딩 방지
-  }
-  list.dataset.bound = '1';
+    const list = document.querySelector('.hospital-list');
+    console.log('찾은 hospital-list:', list);
 
-  console.log('병원 아이템 이벤트 바인딩 완료');
+    if (!list || list.dataset.bound === '1') {
+        console.log('이벤트 바인딩 건너뜀 - 리스트 없음 또는 이미 바인딩됨');
+        return; // 중복 바인딩 방지
+    }
+    list.dataset.bound = '1';
 
-  list.addEventListener('click', function(e) {
-    console.log('클릭 이벤트 발생:', e.target);
-    
-    // 하트 클릭 확인 (하트 요소 또는 하트 아이콘 클릭)
-    const heart = e.target.closest('.hospital-heart');
-    const heartIcon = e.target.closest('.hospital-heart i');
-    
-    if (heart || heartIcon) {
-      console.log('하트 클릭 감지됨');
-      
-      // 병원 아이템 찾기
-      const item = (heart || heartIcon).closest('.hospital-item');
-      if (!item) {
-        console.log('병원 아이템을 찾을 수 없습니다');
-        return;
-      }
-      
-      console.log('하트 요소:', heart);
-      console.log('병원 아이템:', item);
-      console.log('병원 이름:', item.dataset.hospital);
-      console.log('아이템 ID:', item.dataset.itemId);
-      
-      e.preventDefault();
-      e.stopPropagation();
-      
-      // 하트 상태 확인
-      const heartIconElement = item.querySelector('.hospital-heart i');
-      const isCurrentlyLiked = heartIconElement.classList.contains('fas');
-      
-      if (isCurrentlyLiked) {
-        // 이미 즐겨찾기된 상태면 바로 삭제
-        removeFromFavorite(item);
-      } else {
-        // 즐겨찾기되지 않은 상태면 모달창 표시
-        try {
-          showFavoriteConfirmModal(item);
-          console.log('모달창 호출 완료');
-        } catch (error) {
-          console.error('모달창 호출 중 오류:', error);
+    console.log('병원 아이템 이벤트 바인딩 완료');
+
+    list.addEventListener('click', function(e) {
+        console.log('클릭 이벤트 발생:', e.target);
+
+        // 하트 클릭 확인 (하트 요소 또는 하트 아이콘 클릭)
+        const heart = e.target.closest('.hospital-heart');
+        const heartIcon = e.target.closest('.hospital-heart i');
+
+        if (heart || heartIcon) {
+            console.log('하트 클릭 감지됨');
+
+            // 병원 아이템 찾기
+            const item = (heart || heartIcon).closest('.hospital-item');
+            if (!item) {
+                console.log('병원 아이템을 찾을 수 없습니다');
+                return;
+            }
+
+            console.log('하트 요소:', heart);
+            console.log('병원 아이템:', item);
+            console.log('병원 이름:', item.dataset.hospital);
+            console.log('아이템 ID:', item.dataset.itemId);
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            // 하트 상태 확인
+            const heartIconElement = item.querySelector('.hospital-heart i');
+            const isCurrentlyLiked = heartIconElement.classList.contains('fas');
+
+            if (isCurrentlyLiked) {
+                // 이미 즐겨찾기된 상태면 바로 삭제
+                removeFromFavorite(item);
+            } else {
+                // 즐겨찾기되지 않은 상태면 모달창 표시
+                try {
+                    showFavoriteConfirmModal(item);
+                    console.log('모달창 호출 완료');
+                } catch (error) {
+                    console.error('모달창 호출 중 오류:', error);
+                }
+            }
+            return;
         }
-      }
-      return;
-    }
-    
-    // 병원 아이템 클릭 확인 (하트가 아닌 경우만)
-    const item = e.target.closest('.hospital-item');
-    if (!item) {
-      return;
-    }
 
-    console.log('병원 아이템 클릭됨, 상세 정보 표시 시작');
-    selectHospital(item);
-    if (item.classList.contains('active')) {
-      showHospitalDetail(item);
-    }
-  });
+        // 병원 아이템 클릭 확인 (하트가 아닌 경우만)
+        const item = e.target.closest('.hospital-item');
+        if (!item) {
+            return;
+        }
+
+        console.log('병원 아이템 클릭됨, 상세 정보 표시 시작');
+        selectHospital(item);
+        if (item.classList.contains('active')) {
+                // 클릭 로그 전송 (컨텍스트 경로/CSRF 처리 포함)
+                logCompanyClick(item.dataset.itemId);
+            showHospitalDetail(item);
+        }
+    });
 }
 
 
@@ -168,15 +170,72 @@ function showHospitalDetail(hospitalItem) {
 
     console.log('상세 정보 표시:', hospitalName);
 }
+
+// 클릭 로그 API 호출 (컨텍스트 경로/CSRF 자동 처리)
+function logCompanyClick(companyId) {
+    try {
+        if (!companyId) {
+            console.warn('companyId가 비어 있어 클릭 로그를 건너뜁니다.');
+            return;
+        }
+        const ctx = (window.APP_CTX || '').replace(/\/+$/, '');
+        const url = `${ctx}/api/clicks/${encodeURIComponent(companyId)}`;
+
+        const headers = {};
+        const csrfToken = document.querySelector('meta[name="_csrf"]')?.getAttribute('content');
+        const csrfHeader = document.querySelector('meta[name="_csrf_header"]')?.getAttribute('content');
+        if (csrfToken && csrfHeader) {
+            headers[csrfHeader] = csrfToken;
+        }
+
+        fetch(url, { method: 'POST', headers })
+            .then(async (res) => {
+                if (!res.ok) {
+                    const body = await res.text().catch(() => '');
+                    throw new Error(`POST ${url} -> ${res.status} ${res.statusText} ${body}`);
+                }
+                console.debug('클릭 로그 저장 완료:', companyId);
+            })
+            .catch(err => {
+                console.warn('클릭 로그 저장 실패:', err);
+            });
+    } catch (e) {
+        console.warn('클릭 로그 실행 중 예외:', e);
+    }
+}
+
+
+// 클릭 로그 API 호출
+function logCompanyClick(companyId) {
+    try {
+        if (!companyId) {
+            console.warn('companyId가 비어 있어 클릭 로그를 건너뜁니다.');
+            return;
+        }
+        fetch(`/api/clicks/${encodeURIComponent(companyId)}`, {
+            method: 'POST'
+        }).then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP ${res.status}`);
+            }
+            console.debug('클릭 로그 저장 완료:', companyId);
+        }).catch(err => {
+            console.warn('클릭 로그 저장 실패:', err);
+        });
+    } catch (e) {
+        console.warn('클릭 로그 실행 중 예외:', e);
+    }
+}
+
 function generateHospitalDetailHTML(hospitalName) {
-  const data = getHospitalData(hospitalName);
+    const data = getHospitalData(hospitalName);
 
-  const websiteHtml = websiteToHtml(data.website);
-  const phone   = (!isBlank(data.phone) && data.phone !== '전화번호 정보 없음')
-                  ? data.phone : '연락처 정보 없음';
-  const address = !isBlank(data.address) ? data.address : '주소 정보 없음';
+    const websiteHtml = websiteToHtml(data.website);
+    const phone   = (!isBlank(data.phone) && data.phone !== '전화번호 정보 없음')
+        ? data.phone : '연락처 정보 없음';
+    const address = !isBlank(data.address) ? data.address : '주소 정보 없음';
 
-  return `
+    return `
     <div class="hospital-detail-info">
       <div class="hospital-header">
         <h2 class="hospital-title">${hospitalName}</h2>
@@ -259,9 +318,9 @@ function filterHospitals() {
     hospitalItems.forEach(item => {
         const hospitalName = item.querySelector('.hospital-name').textContent;
         const shouldShow = selectedCategories.length === 0 ||
-                          selectedCategories.some(category =>
-                              hospitalName.includes(getCategoryKeyword(category))
-                          );
+            selectedCategories.some(category =>
+                hospitalName.includes(getCategoryKeyword(category))
+            );
 
         if (shouldShow) {
             item.style.display = 'flex';
@@ -387,7 +446,7 @@ async function checkLoginStatus() {
 async function restoreHeartStates() {
     try {
         const hospitalItems = document.querySelectorAll('.hospital-item');
-        
+
         // 현재 페이지가 즐겨찾기 페이지인지 확인
         const isFavoritePage = window.location.pathname === '/favorite';
         console.log('현재 페이지가 즐겨찾기 페이지인가?:', isFavoritePage);
@@ -397,7 +456,7 @@ async function restoreHeartStates() {
             hospitalItems.forEach(item => {
                 const hospitalName = item.dataset.hospital;
                 const heartIcon = item.querySelector('.hospital-heart i');
-                
+
                 if (heartIcon) {
                     heartIcon.classList.remove('far');
                     heartIcon.classList.add('fas');
@@ -408,13 +467,13 @@ async function restoreHeartStates() {
         } else {
             // 로그인 상태 확인
             const isLoggedIn = await checkLoginStatus();
-            
+
             if (!isLoggedIn) {
                 // 로그아웃 상태면 모든 하트를 빈 하트로 표시
                 hospitalItems.forEach(item => {
                     const hospitalName = item.dataset.hospital;
                     const heartIcon = item.querySelector('.hospital-heart i');
-                    
+
                     if (heartIcon) {
                         // 모든 하트를 빈 하트로 표시
                         heartIcon.classList.remove('fas');
@@ -431,12 +490,12 @@ async function restoreHeartStates() {
                     if (favoritesResponse.ok) {
                         const favorites = await favoritesResponse.json();
                         const favoriteItemIds = favorites.map(fav => fav.id);
-                        
+
                         hospitalItems.forEach(item => {
                             const hospitalName = item.dataset.hospital;
                             const heartIcon = item.querySelector('.hospital-heart i');
                             const itemId = parseInt(item.dataset.itemId);
-                            
+
                             if (heartIcon) {
                                 if (favoriteItemIds.includes(itemId)) {
                                     // 서버에서 찜해둔 하트는 빨간색으로 표시
@@ -461,7 +520,7 @@ async function restoreHeartStates() {
                         hospitalItems.forEach(item => {
                             const hospitalName = item.dataset.hospital;
                             const heartIcon = item.querySelector('.hospital-heart i');
-                            
+
                             if (heartIcon) {
                                 if (heartStates[hospitalName]) {
                                     heartIcon.classList.remove('far');
@@ -484,7 +543,7 @@ async function restoreHeartStates() {
                     hospitalItems.forEach(item => {
                         const hospitalName = item.dataset.hospital;
                         const heartIcon = item.querySelector('.hospital-heart i');
-                        
+
                         if (heartIcon) {
                             if (heartStates[hospitalName]) {
                                 heartIcon.classList.remove('far');
@@ -513,88 +572,88 @@ async function restoreHeartStates() {
 
 // 초기 바인딩 (DOMContentLoaded 끝에 호출)
 function bindPagination() {
-  const pager = document.querySelector('.pagination');
-  if (!pager || pager.dataset.bound === '1') return;
-  pager.dataset.bound = '1';
+    const pager = document.querySelector('.pagination');
+    if (!pager || pager.dataset.bound === '1') return;
+    pager.dataset.bound = '1';
 
-  pager.addEventListener('click', function (e) {
-    const a = e.target.closest('a.page-link');
-    if (!a) return;
-    e.preventDefault();
-    ajaxNavigate(a.href);
-  });
+    pager.addEventListener('click', function (e) {
+        const a = e.target.closest('a.page-link');
+        if (!a) return;
+        e.preventDefault();
+        ajaxNavigate(a.href);
+    });
 }
 
 // 히스토리 뒤로/앞으로도 AJAX로 복원
 window.addEventListener('popstate', () => {
-  ajaxNavigate(location.href, { push: false });
+    ajaxNavigate(location.href, { push: false });
 });
 
 // 공통: 서버에서 받은 HTML에서 필요한 부분만 교체
 function replaceSection(doc, selector) {
-  const newEl = doc.querySelector(selector);
-  const curEl = document.querySelector(selector);
-  if (newEl && curEl) {
-    curEl.innerHTML = newEl.innerHTML;
-  }
+    const newEl = doc.querySelector(selector);
+    const curEl = document.querySelector(selector);
+    if (newEl && curEl) {
+        curEl.innerHTML = newEl.innerHTML;
+    }
 }
 
 // 핵심: 링크를 AJAX로 로드해서 부분 교체 + URL 갱신
 async function ajaxNavigate(url, { push = true } = {}) {
-  try {
-    // 로딩 상태(선택): 리스트 살짝 투명하게
-    const listWrap = document.querySelector('.hospital-list');
-    if (listWrap) listWrap.style.opacity = '0.5';
+    try {
+        // 로딩 상태(선택): 리스트 살짝 투명하게
+        const listWrap = document.querySelector('.hospital-list');
+        if (listWrap) listWrap.style.opacity = '0.5';
 
-    const res = await fetch(url, {
-      headers: { 'X-Requested-With': 'XMLHttpRequest' }
-    });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
+        const res = await fetch(url, {
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
 
-    const html = await res.text();
-    const doc = new DOMParser().parseFromString(html, 'text/html');
+        const html = await res.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
 
-    // 필요한 영역만 갈아끼우기
-    replaceSection(doc, '.hospital-list');
-    replaceSection(doc, '.pagination');
-    replaceSection(doc, '.total-count');
+        // 필요한 영역만 갈아끼우기
+        replaceSection(doc, '.hospital-list');
+        replaceSection(doc, '.pagination');
+        replaceSection(doc, '.total-count');
 
-    // 교체 후 필요한 이벤트 다시 바인딩
-    bindHospitalItemEvents();  // 병원 아이템/하트 클릭 등
-    // pagination 컨테이너는 같은 노드이면 이벤트 위임 유지됨
-    // 만약 .pagination 자체를 통으로 교체한다면 아래 한 줄을 다시 호출:
-    bindPagination();
+        // 교체 후 필요한 이벤트 다시 바인딩
+        bindHospitalItemEvents();  // 병원 아이템/하트 클릭 등
+        // pagination 컨테이너는 같은 노드이면 이벤트 위임 유지됨
+        // 만약 .pagination 자체를 통으로 교체한다면 아래 한 줄을 다시 호출:
+        bindPagination();
 
-    // URL만 바꾸고 페이지는 그대로 유지
-    if (push) history.pushState({ url }, '', url);
+        // URL만 바꾸고 페이지는 그대로 유지
+        if (push) history.pushState({ url }, '', url);
 
-    // 부드럽게 리스트 상단으로 스크롤
-    const leftPanel = document.querySelector('.left-panel');
-    if (leftPanel) {
-      leftPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // 부드럽게 리스트 상단으로 스크롤
+        const leftPanel = document.querySelector('.left-panel');
+        if (leftPanel) {
+            leftPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+    } catch (err) {
+        console.error('AJAX 페이지 네비게이션 실패, 폴백으로 이동합니다.', err);
+        // 문제가 생기면 그냥 원래 방식으로 이동
+        window.location.href = url;
+    } finally {
+        const listWrap = document.querySelector('.hospital-list');
+        if (listWrap) listWrap.style.opacity = '';
     }
-
-  } catch (err) {
-    console.error('AJAX 페이지 네비게이션 실패, 폴백으로 이동합니다.', err);
-    // 문제가 생기면 그냥 원래 방식으로 이동
-    window.location.href = url;
-  } finally {
-    const listWrap = document.querySelector('.hospital-list');
-    if (listWrap) listWrap.style.opacity = '';
-  }
 }
 
 // 즐겨찾기 확인 모달창 표시
 function showFavoriteConfirmModal(hospitalItem) {
     console.log('showFavoriteConfirmModal 함수 호출됨');
     console.log('전달받은 hospitalItem:', hospitalItem);
-    
+
     const hospitalName = hospitalItem.dataset.hospital;
     const itemId = hospitalItem.dataset.itemId;
-    
+
     console.log('병원 이름:', hospitalName);
     console.log('아이템 ID:', itemId);
-    
+
     // 먼저 하트 상태를 빨간색으로 변경 (즉시 피드백)
     const heartIcon = hospitalItem.querySelector('.hospital-heart i');
     if (heartIcon) {
@@ -603,7 +662,7 @@ function showFavoriteConfirmModal(hospitalItem) {
         heartIcon.style.color = '#ff4757';
         console.log('하트 상태 즉시 변경됨');
     }
-    
+
     // 모달 HTML 생성
     const modalHTML = `
         <div id="favoriteConfirmModal" class="favorite-confirm-modal">
@@ -617,45 +676,45 @@ function showFavoriteConfirmModal(hospitalItem) {
             </div>
         </div>
     `;
-    
+
     console.log('생성된 모달 HTML:', modalHTML);
-    
+
     // 기존 모달 제거
     const existingModal = document.getElementById('favoriteConfirmModal');
     if (existingModal) {
         existingModal.remove();
     }
-    
+
     // 새 모달 추가
     document.body.insertAdjacentHTML('beforeend', modalHTML);
     console.log('모달 HTML DOM에 추가됨');
-    
+
     // 모달 스타일 적용
     const modal = document.getElementById('favoriteConfirmModal');
     console.log('찾은 모달 요소:', modal);
-    
+
     if (modal) {
         modal.style.display = 'flex';
         console.log('모달 표시 설정 완료');
     } else {
         console.error('모달 요소를 찾을 수 없습니다!');
     }
-    
+
     // 이벤트 리스너 추가
     const yesBtn = modal.querySelector('.favorite-confirm-yes');
     const noBtn = modal.querySelector('.favorite-confirm-no');
-    
+
     yesBtn.addEventListener('click', () => {
         addToFavoriteAndNavigate(itemId, hospitalItem);
         closeFavoriteConfirmModal();
     });
-    
+
     noBtn.addEventListener('click', () => {
         // "아니오" 클릭 시에도 찜하기는 그대로 추가하고 모달만 닫기
         addToFavoriteWithoutNavigate(itemId, hospitalItem);
         closeFavoriteConfirmModal();
     });
-    
+
     // 모달 외부 클릭 시 닫기 (찜하기는 그대로 추가)
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -679,7 +738,7 @@ function removeFromFavorite(hospitalItem) {
     const heartIcon = hospitalItem.querySelector('.hospital-heart i');
     const hospitalName = hospitalItem.dataset.hospital;
     const itemId = hospitalItem.dataset.itemId;
-    
+
     // 현재 페이지가 즐겨찾기 페이지인지 확인
     const isFavoritePage = window.location.pathname === '/favorite';
 
@@ -698,23 +757,23 @@ function removeFromFavorite(hospitalItem) {
             'X-Requested-With': 'XMLHttpRequest'
         }
     })
-    .then(res => res.text())
-    .then(result => {
-        console.log("즐겨찾기 삭제 성공:", result);
-        // 즐겨찾기 페이지에서는 삭제 후 페이지 새로고침
-        if (isFavoritePage) {
-            window.location.reload();
-        }
-    })
-    .catch(error => {
-        console.error("즐겨찾기 삭제 실패:", error);
-        // 실패 시 하트 상태 되돌리기
-        heartIcon.classList.remove('far');
-        heartIcon.classList.add('fas');
-        heartIcon.style.color = '#ff4757';
-        // localStorage에서도 되돌리기
-        saveHeartState(hospitalName, true);
-    });
+        .then(res => res.text())
+        .then(result => {
+            console.log("즐겨찾기 삭제 성공:", result);
+            // 즐겨찾기 페이지에서는 삭제 후 페이지 새로고침
+            if (isFavoritePage) {
+                window.location.reload();
+            }
+        })
+        .catch(error => {
+            console.error("즐겨찾기 삭제 실패:", error);
+            // 실패 시 하트 상태 되돌리기
+            heartIcon.classList.remove('far');
+            heartIcon.classList.add('fas');
+            heartIcon.style.color = '#ff4757';
+            // localStorage에서도 되돌리기
+            saveHeartState(hospitalName, true);
+        });
 }
 
 // 하트 상태를 localStorage에 저장
@@ -744,20 +803,20 @@ function addToFavoriteWithoutNavigate(itemId, hospitalItem) {
             'X-Requested-With': 'XMLHttpRequest'
         }
     })
-    .then(res => res.text())
-    .then(result => {
-        console.log("즐겨찾기 추가 성공 (페이지 이동 없음):", result);
-        // 하트 상태는 이미 변경되어 있으므로 추가 작업 불필요
-    })
-    .catch(error => {
-        console.error("즐겨찾기 추가 실패:", error);
-        // 실패 시 하트 상태 되돌리기
-        heartIcon.classList.remove('fas');
-        heartIcon.classList.add('far');
-        heartIcon.style.color = '#ccc';
-        // localStorage에서도 제거
-        saveHeartState(hospitalName, false);
-    });
+        .then(res => res.text())
+        .then(result => {
+            console.log("즐겨찾기 추가 성공 (페이지 이동 없음):", result);
+            // 하트 상태는 이미 변경되어 있으므로 추가 작업 불필요
+        })
+        .catch(error => {
+            console.error("즐겨찾기 추가 실패:", error);
+            // 실패 시 하트 상태 되돌리기
+            heartIcon.classList.remove('fas');
+            heartIcon.classList.add('far');
+            heartIcon.style.color = '#ccc';
+            // localStorage에서도 제거
+            saveHeartState(hospitalName, false);
+        });
 }
 
 // 즐겨찾기 추가 및 페이지 이동
@@ -775,19 +834,19 @@ function addToFavoriteAndNavigate(itemId, hospitalItem) {
             'X-Requested-With': 'XMLHttpRequest'
         }
     })
-    .then(res => res.text())
-    .then(result => {
-        console.log("즐겨찾기 추가 성공:", result);
-        // favorite 페이지로 이동 (favorite.css가 적용된 페이지)
-        window.location.href = '/favorite';
-    })
-    .catch(error => {
-        console.error("즐겨찾기 추가 실패:", error);
-        // 실패 시 하트 상태 되돌리기
-        heartIcon.classList.remove('fas');
-        heartIcon.classList.add('far');
-        heartIcon.style.color = '#ccc';
-        // localStorage에서도 제거
-        saveHeartState(hospitalName, false);
-    });
+        .then(res => res.text())
+        .then(result => {
+            console.log("즐겨찾기 추가 성공:", result);
+            // favorite 페이지로 이동 (favorite.css가 적용된 페이지)
+            window.location.href = '/favorite';
+        })
+        .catch(error => {
+            console.error("즐겨찾기 추가 실패:", error);
+            // 실패 시 하트 상태 되돌리기
+            heartIcon.classList.remove('fas');
+            heartIcon.classList.add('far');
+            heartIcon.style.color = '#ccc';
+            // localStorage에서도 제거
+            saveHeartState(hospitalName, false);
+        });
 }
