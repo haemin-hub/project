@@ -17,13 +17,13 @@
         <result property="coordX" column="COORD_X"/>
         <result property="coordY" column="COORD_Y"/>
         <result property="category" column="CATEGORY"/>
+        <result property="imageUrl" column="IMAGE_URL"/>
     </resultMap>
 
     <!-- 찜 추가 -->
     <insert id="insertFavorite" parameterType="com.example.ApiRound.dto.FavoriteItemDto">
-        INSERT INTO favorite_item (id, user_id, item_id)
-        VALUES (FAVORITE_ITEM_SEQ.NEXTVAL, #{userId}, #{itemId})
-
+        INSERT INTO FAVORITE_ITEM (ID, USER_ID, ITEM_ID, CREATED_AT)
+        VALUES (FAVORITE_ITEM_SEQ.NEXTVAL, #{userId}, #{itemId}, SYSTIMESTAMP)
     </insert>
 
     <!-- 찜 삭제 -->
@@ -42,19 +42,19 @@
     <!-- 유저별 찜한 아이템 목록 조회 -->
     <select id="getFavoritesByUserId" parameterType="long" resultMap="FavoriteItemResultMap">
         SELECT
-        I.ID,
-        I.NAME,
-        I.REGION,
-        I.SUBREGION,
-        I.ADDRESS,
-        I.PHONE,
-        I.HOMEPAGE,
-        I.COORD_X,
-        I.COORD_Y,
-        I.CATEGORY
+            I.ID,
+            I.NAME,
+            I.REGION,
+            I.SUBREGION,
+            I.ADDRESS,
+            I.PHONE,
+            I.HOMEPAGE,
+            I.COORD_X,
+            I.COORD_Y,
+            I.CATEGORY
         FROM FAVORITE_ITEM F
-        JOIN ITEM_LIST I ON F.ITEM_ID = I.ID
-        WHERE F.USER_ID = #{userId}
+                 JOIN ITEM_LIST I ON F.ITEM_ID = I.ID
+        WHERE F.USER_ID = #{value}
         ORDER BY F.CREATED_AT DESC
     </select>
 

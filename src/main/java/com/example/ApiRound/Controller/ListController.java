@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.ApiRound.Service.ListService;
+import com.example.ApiRound.Service.ClickLogService;
 import com.example.ApiRound.dto.ListDto;
 
 @Controller
@@ -35,10 +36,12 @@ import com.example.ApiRound.dto.ListDto;
 public class ListController {
 
     private final ListService listService;
+    private final ClickLogService clickLogService;
 
     @Autowired
-    public ListController(ListService listService) {
+    public ListController(ListService listService, ClickLogService clickLogService) {
         this.listService = listService;
+        this.clickLogService = clickLogService;
     }
 
     // 번역된 파라미터를 한국어로 변환하는 메서드
@@ -379,23 +382,19 @@ public class ListController {
 
     public String redirectList(String region, String category) {
         try {
-            String originalRegion = translateToKorean(region);
-            String originalCategory = translateToKorean(category);
+            String decodedRegion = java.net.URLDecoder.decode(region, "UTF-8");
+            String encodedRegion = java.net.URLEncoder.encode(decodedRegion, "UTF-8");
 
-            String decodedRegion = URLDecoder.decode(originalRegion, StandardCharsets.UTF_8.name());
-            String encodedRegion  = URLEncoder.encode(decodedRegion, StandardCharsets.UTF_8.name());
-
-            switch (originalCategory) {
-                case "dental":          return "redirect:/list/search?region=" + encodedRegion + "&category=dental";
-                case "korean.medicine": return "redirect:/list/search?region=" + encodedRegion + "&category=korean.medicine";
-                case "massage":         return "redirect:/list/search?region=" + encodedRegion + "&category=massage";
-                case "pharmacy":        return "redirect:/list/search?region=" + encodedRegion + "&category=pharmacy";
-                case "skin":            return "redirect:/list/search?region=" + encodedRegion + "&category=skin";
-                case "waxing":          return "redirect:/list/search?region=" + encodedRegion + "&category=waxing";
-                case "plastic":
-                case "tourism":
-                default:                return "redirect:/list/search?region=" + encodedRegion + "&category=plastic";
-            }
+            return switch (category) {
+                case "dental"          -> "redirect:/list/search?region=" + encodedRegion + "&category=dental";
+                case "korean.medicine" -> "redirect:/list/search?region=" + encodedRegion + "&category=korean.medicine";
+                case "massage"         -> "redirect:/list/search?region=" + encodedRegion + "&category=massage";
+                case "pharmacy"        -> "redirect:/list/search?region=" + encodedRegion + "&category=pharmacy";
+                case "skin"            -> "redirect:/list/search?region=" + encodedRegion + "&category=skin";
+                case "waxing"          -> "redirect:/list/search?region=" + encodedRegion + "&category=waxing";
+                case "plastic", "tourism" -> "redirect:/list/search?region=" + encodedRegion + "&category=plastic";
+                default                -> "redirect:/list/search?region=" + encodedRegion + "&category=plastic";
+            };
         } catch (Exception e) {
             return "redirect:/list/search?region=" + region + "&category=" + category;
         }
@@ -410,20 +409,24 @@ public class ListController {
                              @RequestParam(defaultValue = "1") int pageNo,
                              @RequestParam(defaultValue = "15") int amount) {
 
-        // 현재 언어코드 ('en'|'ja'|'zh'|'ko')
-        String locale = LocaleContextHolder.getLocale().getLanguage();
-        if (locale == null || locale.isEmpty() || locale.equals("ko")) {
-            locale = "ko"; // 기본값
+        System.out.println("=== 요청 파라미터 ===");
+        System.out.println("region: " + region);
+        System.out.println("category: " + category);
+        System.out.println("subRegion: " + subRegion);
+        System.out.println("pageNo: " + pageNo);
+        System.out.println("amount: " + amount);
+        
+        // 디버깅용: 모든 카테고리 값 출력
+        List<String> allCategories = listService.getAllCategories();
+        System.out.println("=== 데이터베이스의 모든 카테고리 ===");
+        for (String cat : allCategories) {
+            System.out.println("카테고리: " + cat);
         }
 
-        // 번역 파라미터 → 한글로 정규화
-        String originalRegion    = translateToKorean(region);
-        String originalSubRegion = translateToKorean(subRegion);
-        String originalCategory  = translateToKorean(category);
-
-        region    = (originalRegion    == null) ? "" : originalRegion.trim();
-        subRegion = (originalSubRegion == null) ? "" : originalSubRegion.trim();
-        category  = (originalCategory  == null) ? "" : originalCategory.trim();
+        // null 가드 + 트리밍
+        region    = (region    == null) ? "" : region.trim();
+        subRegion = (subRegion == null) ? "" : subRegion.trim();
+        category  = (category  == null) ? "" : category.trim();
 
         System.out.println("=== 디버깅 정보 ===");
         System.out.println("현재 locale: " + locale);
@@ -437,7 +440,8 @@ public class ListController {
         // 총 개수 & 현재 페이지 데이터
         int totalCount;
         List<ListDto> lists;
-
+        
+        // region과 subRegion이 "전국"일 때는 카테고리만으로 검색
         if ("전국".equals(region) && "전국".equals(subRegion)) {
             System.out.println("=== 전국 카테고리 검색 ===");
             System.out.println("카테고리: " + category);
@@ -501,12 +505,16 @@ public class ListController {
         System.out.println("startPage: " + startPage);
         System.out.println("endPage: " + endPage);
 
-        return "list";
+        return "list"; // /WEB-INF/views/list.jsp
     }
 
     // 단일 병원 조회 → detail.jsp
     @GetMapping("/{id}")
     public String getListById(@PathVariable Long id, Model model) {
+        // 업체 상세 페이지 진입 시 클릭 로그 기록
+        clickLogService.logClick(id);
+
+        ListDto hospital = listService.getListById(id);
         String locale = LocaleContextHolder.getLocale().getLanguage();
         if (locale == null || locale.isEmpty() || locale.equals("ko")) {
             locale = "ko"; // 기본값
@@ -522,7 +530,7 @@ public class ListController {
                                              @RequestParam(required = false) String subregion,
                                              @RequestParam(required = false) String category,
                                              @RequestParam(defaultValue = "1") int pageNo,
-                                             @RequestParam(defaultValue = "10") int amount,
+                                             @RequestParam(defaultValue = "15") int amount,
                                              Model model) {
 
         // null 가드 + 트리밍
@@ -583,7 +591,7 @@ public class ListController {
     @GetMapping("/category/{category}")
     public String getListByCategoryPaged(@PathVariable String category,
                                          @RequestParam(defaultValue = "1") int pageNo,
-                                         @RequestParam(defaultValue = "10") int amount,
+                                         @RequestParam(defaultValue = "15") int amount,
                                          Model model) {
 
         category = (category == null) ? "" : category.trim();

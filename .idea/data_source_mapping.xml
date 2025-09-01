@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="DataSourcePerFileMappings">
-    <file url="das://61354c49-bace-4789-a702-be69d6217d71/schema/APIROUND/table/TOUR_PACKAGE.sql" value="61354c49-bace-4789-a702-be69d6217d71" />
-    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/61354c49-bace-4789-a702-be69d6217d71/console.sql" value="61354c49-bace-4789-a702-be69d6217d71" />
-  </component>
-</project>
