@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="commit">
+    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="커뮤니티 DB 연결">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CommunityPostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CommunityPostMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/CommunityPostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/CommunityPostMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -396,7 +393,23 @@
       <option name="project" value="LOCAL" />
       <updated>1756705115884</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="커뮤니티 DB 연결">
+      <option name="closed" value="true" />
+      <created>1756707578233</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1756707578233</updated>
+    </task>
+    <task id="LOCAL-00030" summary="커뮤니티 DB 연결">
+      <option name="closed" value="true" />
+      <created>1756707631528</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1756707631529</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -435,7 +448,8 @@
     <MESSAGE value="찜 기능 추가" />
     <MESSAGE value="인기 추천 top3 더미데이터" />
     <MESSAGE value="commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <MESSAGE value="커뮤니티 DB 연결" />
+    <option name="LAST_COMMIT_MESSAGE" value="커뮤니티 DB 연결" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
