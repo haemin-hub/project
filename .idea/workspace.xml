@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="commit">
+    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="25.08.29_추가올리기">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CommunityPostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CommunityPostMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/ListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/ListController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/HelloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/HelloController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/CommunityPostDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/CommunityPostDto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mapper/CommunityPostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/CommunityPostMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +71,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/APIROUND/project.git&quot;,
-    &quot;accountId&quot;: &quot;a8ce86f7-4831-4c90-9700-74a09ffd6fdf&quot;
+    &quot;accountId&quot;: &quot;80a2f24e-7e79-450c-b184-4c9d87c5850b&quot;
   }
 }</component>
   <component name="LogFilters">
@@ -106,10 +110,10 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;yoyo&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;hyeonah&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/enjoy/Desktop/ApiRound/src/main/webapp/resources/images/packages&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/dev/first_project/ApiRound/src/main/webapp/resources/js&quot;,
     &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -120,7 +124,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\enjoy\Desktop\ApiRound\src\main\webapp\resources\images\packages" />
+      <recent name="C:\dev\first_project\ApiRound\src\main\webapp\resources\js" />
+      <recent name="C:\dev\first_project\ApiRound\src\main\webapp\resources\css" />
+      <recent name="C:\dev\first_project\ApiRound\src\main\webapp\WEB-INF\views" />
       <recent name="C:\Users\enjoy\Desktop\ApiRound\src\main\webapp\resources\images\detail" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -292,111 +298,39 @@
       <option name="project" value="LOCAL" />
       <updated>1756351012013</updated>
     </task>
-    <task id="LOCAL-00016" summary="찜 기능 추가">
+    <task id="LOCAL-00016" summary="25.08.28_유튜브 수정완료">
       <option name="closed" value="true" />
-      <created>1756364008414</created>
+      <created>1756371606847</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1756364008414</updated>
+      <updated>1756371606847</updated>
     </task>
-    <task id="LOCAL-00017" summary="찜 기능 추가">
+    <task id="LOCAL-00017" summary="25.08.28_찜 넣기 수정">
       <option name="closed" value="true" />
-      <created>1756365768243</created>
+      <created>1756375047049</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1756365768243</updated>
+      <updated>1756375047049</updated>
     </task>
-    <task id="LOCAL-00018" summary="인기 추천 top3 더미데이터">
+    <task id="LOCAL-00018" summary="25.08.29_찜하기 수정(즐겨찾기 모달, 찜하기 화면), 패키지 상세보기 다자인 수정 필요">
       <option name="closed" value="true" />
-      <created>1756369846967</created>
+      <created>1756435582719</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1756369846967</updated>
+      <updated>1756435582719</updated>
     </task>
-    <task id="LOCAL-00019" summary="인기 추천 top3 더미데이터">
+    <task id="LOCAL-00019" summary="25.08.29_추가올리기">
       <option name="closed" value="true" />
-      <created>1756370481085</created>
+      <created>1756446012254</created>
       <option name="number" value="00019" />
       <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1756370481085</updated>
+      <updated>1756446012254</updated>
     </task>
-    <task id="LOCAL-00020" summary="commit">
-      <option name="closed" value="true" />
-      <created>1756371758779</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1756371758779</updated>
-    </task>
-    <task id="LOCAL-00021" summary="commit">
-      <option name="closed" value="true" />
-      <created>1756375313759</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1756375313759</updated>
-    </task>
-    <task id="LOCAL-00022" summary="commit">
-      <option name="closed" value="true" />
-      <created>1756438970425</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1756438970425</updated>
-    </task>
-    <task id="LOCAL-00023" summary="commit">
-      <option name="closed" value="true" />
-      <created>1756438993123</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1756438993123</updated>
-    </task>
-    <task id="LOCAL-00024" summary="commit">
-      <option name="closed" value="true" />
-      <created>1756438997109</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1756438997109</updated>
-    </task>
-    <task id="LOCAL-00025" summary="commit">
-      <option name="closed" value="true" />
-      <created>1756446197702</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1756446197702</updated>
-    </task>
-    <task id="LOCAL-00026" summary="commit">
-      <option name="closed" value="true" />
-      <created>1756687505236</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1756687505236</updated>
-    </task>
-    <task id="LOCAL-00027" summary="commit">
-      <option name="closed" value="true" />
-      <created>1756705068610</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1756705068610</updated>
-    </task>
-    <task id="LOCAL-00028" summary="commit">
-      <option name="closed" value="true" />
-      <created>1756705115884</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1756705115884</updated>
-    </task>
-    <option name="localTasksCounter" value="29" />
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -432,10 +366,11 @@
     <MESSAGE value="package 백단 및 리스트 병합" />
     <MESSAGE value="아현쓰" />
     <MESSAGE value="COMMIT" />
-    <MESSAGE value="찜 기능 추가" />
-    <MESSAGE value="인기 추천 top3 더미데이터" />
-    <MESSAGE value="commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <MESSAGE value="25.08.28_유튜브 수정완료" />
+    <MESSAGE value="25.08.28_찜 넣기 수정" />
+    <MESSAGE value="25.08.29_찜하기 수정(즐겨찾기 모달, 찜하기 화면), 패키지 상세보기 다자인 수정 필요" />
+    <MESSAGE value="25.08.29_추가올리기" />
+    <option name="LAST_COMMIT_MESSAGE" value="25.08.29_추가올리기" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

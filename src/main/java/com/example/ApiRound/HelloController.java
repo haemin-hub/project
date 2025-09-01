@@ -52,4 +52,8 @@ public class HelloController {
         return "location";
     }
 
+    @GetMapping("/community")
+    public String community() {
+        return "community";
+    }
 }

@@ -20,7 +20,7 @@
     <select id="findAllPosts" resultMap="PostMap">
         SELECT * FROM community_post
         WHERE is_deleted = 'N'
-        ORDER BY create_at DESC
+        ORDER BY like_count DESC, create_at DESC
     </select>
 
     <insert id="insertPost" parameterType="com.example.ApiRound.dto.CommunityPostDto">
