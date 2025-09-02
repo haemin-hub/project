@@ -2,39 +2,55 @@ package com.example.ApiRound.Service;
 
 import com.example.ApiRound.dto.CommunityPostDto;
 import com.example.ApiRound.mapper.CommunityPostMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-public class CommunityPostServiceImpl implements CommunityPostService{
+public class CommunityPostServiceImpl implements CommunityPostService {
 
-    @Autowired
-    private CommunityPostMapper mapper;
+    private final CommunityPostMapper mapper;
+
+    // 생성자 주입 (필드 @Autowired 대신 깔끔하고 컴파일 안전)
+    public CommunityPostServiceImpl(CommunityPostMapper mapper) {
+        this.mapper = mapper;
+    }
 
     @Override
-    public List<CommunityPostDto> getAllPosts(){
+    public List<CommunityPostDto> getAllPosts() {
         return mapper.findAllPosts();
     }
 
     @Override
-    public CommunityPostDto getPostbyId(int postId){
+    public CommunityPostDto getPostbyId(int postId) {
         return mapper.findPostbyId(postId);
     }
 
     @Override
-    public void createPost(CommunityPostDto post){
+    @Transactional
+    public void createPost(CommunityPostDto post) {
+        if (post == null) return;
+        // 세션에서 못 채우면 익명으로
+        if (post.getUserId() == null || post.getUserId().trim().isEmpty()) {
+            post.setUserId("익명");
+        }
+        // POST_ID는 트리거가 채우게 null 유지
         mapper.insertPost(post);
     }
 
     @Override
-    public void updatePost(CommunityPostDto post){
+    @Transactional
+    public void updatePost(CommunityPostDto post) {
+        // 컨트롤러에서 postId, title, content만 채워서 보내면
+        // 매퍼 XML에서 title/content만 업데이트 하도록 이미 구성
+        if (post == null) return;
         mapper.updatePost(post);
     }
 
     @Override
-    public  void deletePost(int postId){
+    @Transactional
+    public void deletePost(int postId) {
         mapper.softDeletePost(postId);
     }
 }

@@ -78,12 +78,35 @@
     margin: 0 20px;
 }
 
+.insert-title-down {
+    display: flex;
+    justify-content: space-between;
+    align-item: center;
+    gap: 10px;                      /* 간격 */
+}
+
 /* 제목 입력창 */
 .insert-title {
+    flex:1 1 auto;
     border: none;
     font-size: 18px;
     padding: 20px;
     outline: none;               /* 클릭 시 기본 파란 테두리 제거 */
+}
+
+/* 로그인 버튼 */
+.login-btn-community {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #fff;
+    border: 1px solid #fff;
+    color: #005a66;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    margin-right: 20px;
 }
 
 /* 내용 입력창 */
@@ -148,10 +171,41 @@
     background: #005a66;
     color: #fff;
 }
+/* 카테고리 버튼 커스텀 컬러 */
+.btn-category{
+  background:#fff !important;
+  border-color:#fff !important;
+  color:#005a66 !important;
+}
+
+.btn-category:hover{
+  background:#fff !important;
+  border-color:#fff !important;
+}
+
+/* 드롭다운 메뉴 스타일 + 스크롤 */
+.dropdown-menu{
+  background:#fff !important;
+  color:#005a66 !important;
+  max-height:200px;          /* 넘치면 세로 스크롤 */
+  overflow-y:auto;
+  border:1px solid #005a66;
+}
+.dropdown-item{ color:#005a66 !important; }
+.dropdown-item:hover,
+.dropdown-item:focus{
+  background:#005a66 !important;
+  color:#fff !important;
+}
+
+.dropdown .btn-category {
+  height: 100%;                   /* input 높이에 맞추고 싶으면 */
+  display: flex;
+  align-items: center;            /* 버튼 내부 텍스트도 세로 정렬 */
+}
 
 /* ==== 작성한 글 보여주는 박스 ==== */
 .community-show {
-  /* display: none;  ← 제거 */
   display: flex;                /* 항상 보이게 */
   flex-direction: column;
   margin-top: 20px;
@@ -177,17 +231,42 @@
   /* height: 30px;  ← 제거(줄바꿈 허용) */
   display: flex;
   align-items: center;
+  justify-content: space-between;
   box-sizing: border-box;
+}
+
+/* 메타 정보 (날짜, 카테고리) */
+.show-meta {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 20px;
+}
+
+.show-meta::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    background-color: #ccc;
+    border-radius: 50%;
+}
+
+.show-meta::after {
+    content: '';
+    width: 3px;
+    height: 3px;
+    background-color: #ccc;
+    border-radius: 50%;
 }
 
 /* 내용 영역 */
 .show-content {
   font-size: 14px;
-  padding: 16px 20px;
-  /* height: 80px;  ← 제거(내용 길어져도 보이게) */
-  white-space: pre-wrap;        /* 줄바꿈/개행 유지 */
-  line-height: 1.6;
-  box-sizing: border-box;
+  white-space: pre-line;        /* 줄바꿈 유지, 들여쓰기 제거 */
+  padding-left: 20px;                   /* 들여쓰기 제거 */
 }
 
 /* 버튼 묶음 */
@@ -221,6 +300,7 @@
    padding: 8px 14px;
    border-radius: 6px;
    transition: background .2s;
+   margin-top: 20px;
  }
 
 /* 삭제버튼 누른 후 모달창 */
@@ -279,4 +359,124 @@
 }
 .delete-confirm-cancel:hover {
   background: #ddd;
+}
+
+/* 수정/삭제 버튼 색상 조정 */
+.show-update {
+    background-color: #005a66; 
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.show-cancel {
+    background-color: #95a5a6; /* 회색 */
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.show-delete {
+    background-color: #005a66; 
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 수정 모드 입력 필드 */
+.title-edit {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.content-edit {
+  width: 80%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* 수정/취소/저장/삭제 버튼 색상 조정 */
+.show-update {
+    background-color: #005a66; 
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.show-cancel {
+    background-color: #95a5a6; /* 회색 */
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.show-save {
+    background-color: #27ae60; /* 초록색 */
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.show-delete {
+    background-color: #005a66; 
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 로그인 안내 메시지 */
+.login-notice {
+    color: #666;
+    font-size: 14px;
+    font-style: italic;
+    padding: 10px 0;
+}
+
+/* 로그인 버튼 */
+.login-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #005a66;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #004d5a;
+    color: white;
+    text-decoration: none;
 }

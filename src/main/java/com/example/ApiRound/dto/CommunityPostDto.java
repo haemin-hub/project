@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 public class CommunityPostDto {
     private int postId;
     private String userId;
+    private String authorName;  // 추가: 작성자 이름
     private String title;
     private String content;
     private Timestamp createAt;
@@ -20,6 +21,5 @@ public class CommunityPostDto {
     private String isDeleted;
     private String isUpdate;
     private String profileImage; // SOCIAL_USER.PROFILE_IMAGE 매핑 필드
-
 
 }
