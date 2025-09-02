@@ -19,5 +19,7 @@ public class CommunityPostDto {
     private String category;
     private String isDeleted;
     private String isUpdate;
+    private String profileImage; // SOCIAL_USER.PROFILE_IMAGE 매핑 필드
+
 
 }

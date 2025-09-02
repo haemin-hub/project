@@ -21,11 +21,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- 트립비토즈 스타일 추가 -->
     <style>
-        /* 추가 스타일 적용 */
-        .tripbtoz-popular-cities {
-            box-shadow: 0 8px 30px rgba(67, 120, 67, 0.15);
-        }
 
+        .popular-content-wrapper {
+            margin-top: 30px;
+        }
         /* 커뮤니티 코멘트 (좌측 박스) */
         .community-comments {
             flex: 0 0 420px;
@@ -34,7 +33,6 @@
             border-radius: 12px;
             padding: 16px;
             box-shadow: 0 8px 30px rgba(67, 120, 67, 0.08);
-            margin-top: -110px; /* 타이틀 라인에 맞추기 위해 살짝 위로 올림 */
             display: flex;               /* 헤더 + 리스트 수직 배치 */
             flex-direction: column;
             max-height: 480px;           /* 높이 제한으로 TOP3와 하단 라인 맞춤 */
@@ -133,9 +131,98 @@
         }
 
         /* 반응형 처리 */
-        @media (max-width: 1024px) {
-            .community-comments { flex: 1 1 auto; margin-top: 0; max-height: none; overflow: visible; }
+        @media (max-width: 1200px) {
+            .popular-content-wrapper { gap: 24px; }
         }
+        @media (max-width: 1024px) {
+            .popular-content-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* 내부 요소들을 수평 중앙 정렬 */
+            }
+            .community-comments {
+                flex: 0 1 auto;      /* 데스크톱의 420px 고정 폭 오버라이드 */
+                margin-top: 0;
+                max-height: none;
+                overflow: visible;
+                width: 100%;
+                max-width: 720px;    /* 가독성 있는 최대 폭 */
+                margin-left: auto;   /* 가운데 정렬 */
+                margin-right: auto;  /* 가운데 정렬 */
+            }
+            .content-divider { display: none; }
+            .company-cards-wrapper {
+                width: 100%;
+                max-width: 980px;    /* 카드 그리드도 가운데 정렬 느낌 유지 */
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 반응형 카드 그리드 */
+                gap: 16px;
+                justify-content: center;
+                align-items: stretch;
+            }
+            .company-cards-wrapper .company-card {
+                width: 100%;
+                max-width: 420px; /* 카드 형태 유지 */
+                margin: 0 auto;
+                display: block;
+            }
+            /* TOP3 카드 이미지의 고정 비율 및 동일 높이 보장 */
+            .company-cards-wrapper .company-card .card-image {
+                position: relative;
+                width: 100%;
+                aspect-ratio: 3 / 2; /* 3:2 비율로 통일 */
+                overflow: hidden;
+            }
+            .company-cards-wrapper .company-card .card-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
+
+            /* 우측 TOP3 컨테이너와 타이틀 */
+            .popular-right {
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 auto;
+            }
+            .popular-title {
+                margin-bottom: 12px; /* 타이틀 아래 간격 */
+            }
+            .popular-title h2 {
+                font-size: 22px;
+                font-weight: 700;
+                color: #2f3a3a;
+                margin: 0;
+            }
+            .popular-title p {
+                font-size: 13px;
+                color: #6b7278;
+                margin: 4px 0 0;
+            }
+
+        /* 인기 TOP3 타이틀 블록 */
+        .popular-title {
+            margin-bottom: 12px; /* 타이틀 아래 공간 */
+            text-align: center;  /* 카드 컨테이너 중앙 정렬 */
+        }
+        .popular-title h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2f3a3a;
+            margin: 0;
+        }
+        .popular-title p {
+            font-size: 13px;
+            color: #6b7278;
+            margin: 4px 0 0;
+        }
+        /* 카드들을 살짝 아래로 내려 공간 확보 */
+        .company-cards-wrapper {
+            margin-top: 8px;
+        }
+
     </style>
 </head>
 <body>
@@ -232,25 +319,21 @@
                 <!-- 인기 도시 및 TOP3 의료기관 섹션 -->
                 <section class="popular-section">
                     <div class="container">
-            <div class="section-title-area">
-                <div class="main-title"><spring:message code="main.popular.title"/></div>
-                <p class="sub-title"><spring:message code="main.popular.subtitle"/></p>
-            </div>
-
             <div class="popular-content-wrapper">
                 <!-- 왼쪽: 커뮤니티 코멘트 (디자인 전용) -->
                 <div class="community-comments">
                     <div class="community-header">
-                        <div class="title">커뮤니티</div>
-                        <a href="/community" class="more-link">더 보기 <i class="fas fa-chevron-right"></i></a>
+                        <div class="title"><spring:message code="main.popular.community"/></div>
+                        <a href="/community" class="more-link"><spring:message code="main.popular.more"/><i class="fas fa-chevron-right"></i></a>
                     </div>
 
                    <div class="comments-list">
                        <c:forEach var="post" items="${posts}" begin="0" end="4">
                            <div class="comment-card">
                                <div class="user">
-                                   <img class="avatar" src="/resources/images/default-avatar.png" alt="avatar"
-                                        onerror="this.onerror=null;this.src='https://i.pravatar.cc/72';">
+                                   <img class="avatar" src="${empty post.profileImage ? 'https://i.pravatar.cc/72?img=1' : post.profileImage}"
+                                        alt="avatar"
+                                        onerror="this.onerror=null;this.src='https://i.pravatar.cc/72?img=1';">
                                    <div class="meta">
                                        <div class="nickname">${post.userId}</div>
                                        <div class="date">
@@ -281,55 +364,63 @@
                 <c:set var="company2" value="${topCompanies[1]}" />
                 <c:set var="company3" value="${topCompanies[2]}" />
 
-                <div class="company-cards-wrapper">
-                                    <!-- 인기 업체 1 -->
-                                    <a href="/list?category=${company1.category}&region=${company1.region}&Id=${company1.companyId}&name=${company1.companyName}" class="company-card">
-                                        <div class="card-image">
-                                            <img src="" alt="${company1.companyName}" data-gquery="${company1.companyName} ${empty company1.subregion ? company1.region : company1.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
-                                            <div class="card-badge">1위</div>
-                                        </div>
-                                        <div class="card-content">
-                                            <h4 class="company-name">${company1.companyName}</h4>
-                                            <div class="company-details">
-                                                <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company1.subregion ? company1.region : company1.subregion}</span>
+                <div class="popular-right">
+                    <div class="popular-title">
+                        <h2><spring:message code="main.popular.title"/></h2>
+                        <p><spring:message code="main.popular.subtitle"/></p>
+                    </div>
+
+                    <div class="company-cards-wrapper">
+                                        <!-- 인기 업체 1 -->
+                                        <a href="/list?category=${company1.category}&region=${company1.region}&Id=${company1.companyId}&name=${company1.companyName}" class="company-card">
+                                            <div class="card-image">
+                                                <img src="" alt="${company1.companyName}" data-gquery="${company1.companyName} ${empty company1.subregion ? company1.region : company1.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
+                                                <div class="card-badge">1위</div>
                                             </div>
-                                            <span class="specialty-tag">${company1.category}</span>
-                                        </div>
-                                    </a>
-
-                                    <!-- 인기 업체 2 -->
-                                    <a href="/list?category=${company2.category}&region=${company2.region}&Id=${company2.companyId}&name=${company2.companyName}" class="company-card">
-                                        <div class="card-image">
-                                            <img src="" alt="${company2.companyName}" data-gquery="${company2.companyName} ${empty company2.subregion ? company2.region : company2.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
-                                            <div class="card-badge">2위</div>
-                                        </div>
-                                        <div class="card-content">
-                                            <h4 class="company-name">${company2.companyName}</h4>
-                                            <div class="company-details">
-                                                <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company2.subregion ? company2.region : company2.subregion}</span>
+                                            <div class="card-content">
+                                                <h4 class="company-name">${company1.companyName}</h4>
+                                                <div class="company-details">
+                                                    <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company1.subregion ? company1.region : company1.subregion}</span>
+                                                </div>
+                                                <span class="specialty-tag">${company1.category}</span>
                                             </div>
-                                            <span class="specialty-tag">${company2.category}</span>
-                                        </div>
-                                    </a>
+                                        </a>
 
-                                    <!-- 인기 업체 3 -->
-                                    <a href="/list?category=${company3.category}&region=${company3.region}&Id=${company3.companyId}&name=${company3.companyName}" class="company-card">
-                                        <div class="card-image">
-                                            <img src="" alt="${company3.companyName}" data-gquery="${company3.companyName} ${empty company3.subregion ? company3.region : company3.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
-                                            <div class="card-badge">3위</div>
-                                        </div>
-                                        <div class="card-content">
-                                            <h4 class="company-name">${company3.companyName}</h4>
-                                            <div class="company-details">
-                                                <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company3.subregion ? company3.region : company3.subregion}</span>
+                                        <!-- 인기 업체 2 -->
+                                        <a href="/list?category=${company2.category}&region=${company2.region}&Id=${company2.companyId}&name=${company2.companyName}" class="company-card">
+                                            <div class="card-image">
+                                                <img src="" alt="${company2.companyName}" data-gquery="${company2.companyName} ${empty company2.subregion ? company2.region : company2.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
+                                                <div class="card-badge">2위</div>
                                             </div>
-                                             <span class="specialty-tag">${company3.category}</span>
-                                        </div>
-                                    </a>
-                                </div>
+                                            <div class="card-content">
+                                                <h4 class="company-name">${company2.companyName}</h4>
+                                                <div class="company-details">
+                                                    <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company2.subregion ? company2.region : company2.subregion}</span>
+                                                </div>
+                                                <span class="specialty-tag">${company2.category}</span>
+                                            </div>
+                                        </a>
+
+                                        <!-- 인기 업체 3 -->
+                                        <a href="/list?category=${company3.category}&region=${company3.region}&Id=${company3.companyId}&name=${company3.companyName}" class="company-card">
+                                            <div class="card-image">
+                                                <img src="" alt="${company3.companyName}" data-gquery="${company3.companyName} ${empty company3.subregion ? company3.region : company3.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
+                                                <div class="card-badge">3위</div>
+                                            </div>
+                                            <div class="card-content">
+                                                <h4 class="company-name">${company3.companyName}</h4>
+                                                <div class="company-details">
+                                                    <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company3.subregion ? company3.region : company3.subregion}</span>
+                                                </div>
+                                                 <span class="specialty-tag">${company3.category}</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                </div>
 
 
 
+                    </div>
                     </div>
                 </section>
 
@@ -337,8 +428,8 @@
                 <section class="youtube-section mt-5">
                     <div class="container">
                         <div class="section-title">
-                            <h2>추천 영상</h2>
-                            <p>HealnGo에서 추천하는 유용한 영상들을 확인해보세요</p>
+                            <h2><spring:message code="main.youtube.recommendation"/></h2>
+                            <p><spring:message code="main.youtube.comment"/></p>
                         </div>
 
                         <div class="scroll-container">
