@@ -81,4 +81,37 @@
         AND is_deleted = 'N'
     </update>
 
+        <!-- 좋아요 카운트 증가 -->
+        <update id="incrementLikeCount" parameterType="int">
+            UPDATE COMMUNITY_POST
+            SET LIKE_COUNT = NVL(LIKE_COUNT, 0) + 1
+            WHERE POST_ID = #{postId}
+              AND IS_DELETED = 'N'
+        </update>
+
+        <!-- 좋아요 카운트 감소(0 미만 방지) -->
+        <update id="decrementLikeCount" parameterType="int">
+            UPDATE COMMUNITY_POST
+            SET LIKE_COUNT = CASE WHEN NVL(LIKE_COUNT, 0) > 0 THEN LIKE_COUNT - 1 ELSE 0 END
+            WHERE POST_ID = #{postId}
+              AND IS_DELETED = 'N'
+        </update>
+
+        <!-- 현재 좋아요 카운트 조회 -->
+        <select id="getLikeCount" parameterType="int" resultType="int">
+            SELECT NVL(LIKE_COUNT, 0)
+            FROM COMMUNITY_POST
+            WHERE POST_ID = #{postId}
+              AND IS_DELETED = 'N'
+        </select>
+
+    <!-- 좋아요 여부 확인 -->
+    <select id="hasUserLiked" resultType="int">
+        SELECT COUNT(1)
+        FROM COMMUNITY_POST
+        WHERE POST_ID = #{postId}
+          AND USER_ID = #{userId}
+    </select>
+
+
 </mapper>

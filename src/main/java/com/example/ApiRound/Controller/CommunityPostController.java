@@ -10,6 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/community")
@@ -20,8 +24,15 @@ public class CommunityPostController {
 
     // 목록: /community, /community/ , /community/list 모두 허용
     @GetMapping({"", "/", "/list"})
-    public String listPosts(Model model){
+    public String listPosts(Model model, HttpSession session){
         List<CommunityPostDto> posts = service.getAllPosts();
+        SocialUserDTO loginUser = (SocialUserDTO) session.getAttribute("loginUser");
+        if (loginUser != null) {
+            for (CommunityPostDto p : posts) {
+                boolean liked = service.hasUserLiked(p.getPostId(), loginUser.getName());
+                p.setLikedByCurrentUser(liked);
+            }
+        }
         System.out.println("posts size: " + posts.size());
         model.addAttribute("posts", posts);
         return "community";                 // /WEB-INF/views/community.jsp
@@ -179,4 +190,47 @@ public class CommunityPostController {
         service.createPost(post);
         return "success";
     }
+
+        // 좋아요 토글: 세션에 사용자별 likedPosts를 저장하여 토글 상태를 관리
+        @PostMapping(value="/like/toggle", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+        @ResponseBody
+        public java.util.Map<String, Object> toggleLike(@RequestParam int postId, HttpSession session) {
+            java.util.Map<String, Object> resp = new java.util.HashMap<>();
+            com.example.ApiRound.dto.SocialUserDTO loginUser = (com.example.ApiRound.dto.SocialUserDTO) session.getAttribute("loginUser");
+            if (loginUser == null) {
+                resp.put("status", "login_required");
+                return resp;
+            }
+
+            Object likedAttr = session.getAttribute("likedPosts");
+            java.util.Set<Integer> likedPosts;
+            if (likedAttr instanceof java.util.Set) {
+                likedPosts = (java.util.Set<Integer>) likedAttr;
+            } else {
+                likedPosts = new java.util.HashSet<>();
+                session.setAttribute("likedPosts", likedPosts);
+            }
+
+            boolean alreadyLiked = likedPosts.contains(postId);
+            try {
+                if (alreadyLiked) {
+                    // 취소 → 카운트 감소
+                    service.decrementLikeCount(postId);
+                    likedPosts.remove(postId);
+                } else {
+                    // 좋아요 → 카운트 증가
+                    service.incrementLikeCount(postId);
+                    likedPosts.add(postId);
+                }
+                int newCount = service.getLikeCount(postId);
+                resp.put("status", "success");
+                resp.put("liked", !alreadyLiked);
+                resp.put("likeCount", newCount);
+            } catch (Exception e) {
+                e.printStackTrace();
+                resp.put("status", "fail");
+            }
+            return resp;
+        }
+
 }

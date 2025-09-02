@@ -231,7 +231,8 @@
   /* height: 30px;  ← 제거(줄바꿈 허용) */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 8px;
   box-sizing: border-box;
 }
 
@@ -479,4 +480,34 @@
     background-color: #004d5a;
     color: white;
     text-decoration: none;
+}
+
+/* 좋아요 버튼을 카테고리 옆으로 배치 */
+.show-title .like-toggle {
+  display: none; /* 메타 영역으로 이동 전까지 숨김 */
+}
+
+.show-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.show-meta .like-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #005a66;
+  cursor: pointer;
+}
+
+.show-meta .like-toggle .like-count {
+  margin-left: 4px;
+  font-weight: 600;
+  color: #005a66;
+}
+
+.show-meta .like-toggle i.far,
+.show-meta .like-toggle i.fas {
+  font-size: 16px;
 }

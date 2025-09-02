@@ -13,7 +13,7 @@
 <%@include file = "/common/header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<div class="community-container">
+<div class="community-container" data-logged-in="${not empty sessionScope.loginUser}">
     <!-- 상단 제목 섹션 -->
     <div class="community-header">
         <h1 class="community-title">community</h1>
@@ -66,6 +66,17 @@
       <div class="community-show is-open" data-post-id="${p.postId}" data-category="${p.category}">
         <div class="show-title">
           <strong class="title-text">${p.title}</strong>
+            <span class="like-toggle ms-2" role="button" aria-label="좋아요" data-liked="${p.likedByCurrentUser}">
+              <c:choose>
+                <c:when test="${p.likedByCurrentUser}">
+                  <i class="fas fa-thumbs-up"></i>
+                </c:when>
+                <c:otherwise>
+                  <i class="far fa-thumbs-up"></i>
+                </c:otherwise>
+              </c:choose>
+              <span class="like-count">${p.likeCount}</span>
+            </span>
           <input type="text" class="title-edit" value="${p.title}" style="display: none;">
           <c:choose>
             <c:when test="${p.userId != null}">${p.userId}</c:when>

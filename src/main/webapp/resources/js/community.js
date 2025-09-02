@@ -275,6 +275,17 @@ document.addEventListener('click', async (e) => {
   }
 });
 
+// 초기 로드 시 좋아요 버튼을 메타 영역(카테고리) 뒤로 이동
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.community-show').forEach(card => {
+    const like = card.querySelector('.show-title .like-toggle');
+    const meta = card.querySelector('.show-meta');
+    if (like && meta) {
+      meta.appendChild(like);
+    }
+  });
+});
+
 // 편집 모드 종료
 function exitEditMode(card, restoreOriginal = false) {
   const titleText = card.querySelector('.title-text');
@@ -411,4 +422,54 @@ document.addEventListener('click', function (e) {
     if (ev.target === modal) modal.remove();
   });
 });
+
+// 좋아요 토글
+document.addEventListener('click', async (e) => {
+  const toggle = e.target.closest('.like-toggle');
+  if (!toggle) return;
+  try {
+    const container = document.querySelector('.community-container');
+    const loggedIn = container?.dataset.loggedIn === 'true';
+    if (!loggedIn) {
+      alert('로그인이 필요합니다.');
+      window.location.href = '/login';
+      return;
+    }
+    const card = toggle.closest('.community-show');
+    const postId = card?.dataset.postId;
+    if (!postId) return;
+
+    const res = await fetch('/community/like/toggle', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ postId })
+    });
+    const data = await res.json().catch(() => ({}));
+
+    if (data.status === 'login_required') {
+      alert('로그인이 필요합니다.');
+      window.location.href = '/login';
+      return;
+    }
+    if (data.status !== 'success') {
+      alert('처리 중 오류가 발생했습니다.');
+      return;
+    }
+
+    const icon = toggle.querySelector('i');
+    if (icon) {
+      icon.classList.toggle('fas', data.liked === true);
+      icon.classList.toggle('far', data.liked !== true);
+    }
+    const countEl = toggle.querySelector('.like-count');
+    if (countEl && typeof data.likeCount === 'number') {
+      countEl.textContent = data.likeCount;
+    }
+    toggle.dataset.liked = String(data.liked === true);
+  } catch (err) {
+    console.error(err);
+    alert('서버 오류가 발생했습니다.');
+  }
+});
+
 

@@ -53,4 +53,25 @@ public class CommunityPostServiceImpl implements CommunityPostService {
     public void deletePost(int postId) {
         mapper.softDeletePost(postId);
     }
+    @Override
+    public boolean hasUserLiked(int postId, String userName) {
+        return mapper.hasUserLiked(postId, userName) > 0;
+    }
+
+    @Override
+    @Transactional
+    public void incrementLikeCount(int postId) {
+        mapper.incrementLikeCount(postId);
+    }
+
+    @Override
+    @Transactional
+    public void decrementLikeCount(int postId) {
+        mapper.decrementLikeCount(postId);
+    }
+
+    @Override
+    public int getLikeCount(int postId) {
+        return mapper.getLikeCount(postId);
+    }
 }

@@ -21,5 +21,6 @@ public class CommunityPostDto {
     private String isDeleted;
     private String isUpdate;
     private String profileImage; // SOCIAL_USER.PROFILE_IMAGE 매핑 필드
+        private boolean likedByCurrentUser; // 현재 로그인 사용자의 좋아요 여부(뷰 렌더링용)
 
 }
