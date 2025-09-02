@@ -19,9 +19,6 @@
     </resultMap>
 
     <select id="findAllPosts" resultMap="PostMap">
-        SELECT * FROM community_post
-        WHERE is_deleted = 'N'
-        ORDER BY like_count DESC, create_at DESC
         SELECT cp.*, su.profile_image AS PROFILE_IMAGE
         FROM community_post cp
         LEFT JOIN social_user su ON su.user_id = cp.post_id
