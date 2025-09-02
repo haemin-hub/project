@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +19,12 @@
                     <img src="/resources/images/detail/hospital.jpg" alt="병원">
                 </div>
                 <div class="hospital-info">
-                    <h3 class="hospital-title">픽셀랩성형외과의원</h3>
-                    <p class="hospital-address">서울 서초구 서초대로73길 42 강남역리가스퀘어 3층</p>
+                    <h3 class="hospital-title">
+                        ${not empty list.nameLabel ? list.nameLabel : list.name}
+                    </h3>
+                    <p class="hospital-address">
+                        ${not empty list.addressLabel ? list.addressLabel : list.address}
+                    </p>
                     <div class="hospital-tags">
                         <span class="tag">성형외과</span>
                         <span class="tag">리프팅</span>
@@ -37,7 +43,9 @@
                         <div class="detail-hospital">
                             <img src="/resources/images/detail/hospital.jpg" alt="병원">
                         </div>
-                        <h2 class="hospital_title">픽셀랩성형외과의원</h2>
+                        <h2 class="hospital_title">
+                            ${not empty list.nameLabel ? list.nameLabel : list.name}
+                        </h2>
                     </div>
 
                     <table border="1">

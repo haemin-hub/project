@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -418,6 +419,75 @@
 
 <!-- 부트스트랩 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- 번역 데이터를 JavaScript로 전달 -->
+<script>
+// Spring i18n 메시지를 JavaScript에서 사용할 수 있도록 전달
+window.i18nMessages = {
+    // 플래너 모달 번역
+    'planner.modal.alt.company': '<spring:message code="planner.modal.alt.company" javaScriptEscape="true"/>',
+    'planner.modal.alt.profile': '<spring:message code="planner.modal.alt.profile" javaScriptEscape="true"/>',
+    'planner.modal.service.skin': '<spring:message code="planner.modal.service.skin" javaScriptEscape="true"/>',
+    'planner.modal.service.dental': '<spring:message code="planner.modal.service.dental" javaScriptEscape="true"/>',
+    'planner.modal.service.diet': '<spring:message code="planner.modal.service.diet" javaScriptEscape="true"/>',
+    
+    // 패키지 모달 번역
+    'package.modal.category.waxing': '<spring:message code="package.modal.category.waxing" javaScriptEscape="true"/>',
+    'package.modal.category.plasticsurgery': '<spring:message code="package.modal.category.plasticsurgery" javaScriptEscape="true"/>',
+    'package.modal.category.dermatology': '<spring:message code="package.modal.category.dermatology" javaScriptEscape="true"/>',
+    'package.modal.category.dental': '<spring:message code="package.modal.category.dental" javaScriptEscape="true"/>',
+    'package.modal.category.pharmacy': '<spring:message code="package.modal.category.pharmacy" javaScriptEscape="true"/>',
+    'package.modal.category.massage': '<spring:message code="package.modal.category.massage" javaScriptEscape="true"/>',
+    'package.modal.category.oriental': '<spring:message code="package.modal.category.oriental" javaScriptEscape="true"/>',
+    'package.modal.category.orientalHospital': '<spring:message code="package.modal.category.orientalHospital" javaScriptEscape="true"/>',
+    
+    // 서비스 데이터 번역
+    'service.waxing.leg5.title': '<spring:message code="service.waxing.leg5.title" javaScriptEscape="true"/>',
+    'service.waxing.leg5.description': '<spring:message code="service.waxing.leg5.description" javaScriptEscape="true"/>',
+    'service.waxing.thigh5.title': '<spring:message code="service.waxing.thigh5.title" javaScriptEscape="true"/>',
+    'service.waxing.thigh5.description': '<spring:message code="service.waxing.thigh5.description" javaScriptEscape="true"/>',
+    
+    'service.plasticsurgery.signature.color.title': '<spring:message code="service.plasticsurgery.signature.color.title" javaScriptEscape="true"/>',
+    'service.plasticsurgery.signature.color.description': '<spring:message code="service.plasticsurgery.signature.color.description" javaScriptEscape="true"/>',
+    'service.plasticsurgery.signature.pore.title': '<spring:message code="service.plasticsurgery.signature.pore.title" javaScriptEscape="true"/>',
+    'service.plasticsurgery.signature.pore.description': '<spring:message code="service.plasticsurgery.signature.pore.description" javaScriptEscape="true"/>',
+    
+    'service.dermatology.cryocell.title': '<spring:message code="service.dermatology.cryocell.title" javaScriptEscape="true"/>',
+    'service.dermatology.cryocell.description': '<spring:message code="service.dermatology.cryocell.description" javaScriptEscape="true"/>',
+    'service.dermatology.dualtone.title': '<spring:message code="service.dermatology.dualtone.title" javaScriptEscape="true"/>',
+    'service.dermatology.dualtone.description': '<spring:message code="service.dermatology.dualtone.description" javaScriptEscape="true"/>',
+    
+    'service.dental.scaling.title': '<spring:message code="service.dental.scaling.title" javaScriptEscape="true"/>',
+    'service.dental.scaling.description': '<spring:message code="service.dental.scaling.description" javaScriptEscape="true"/>',
+    'service.dental.whitening.title': '<spring:message code="service.dental.whitening.title" javaScriptEscape="true"/>',
+    'service.dental.whitening.description': '<spring:message code="service.dental.whitening.description" javaScriptEscape="true"/>',
+    
+    'service.pharmacy.travel.title': '<spring:message code="service.pharmacy.travel.title" javaScriptEscape="true"/>',
+    'service.pharmacy.travel.description': '<spring:message code="service.pharmacy.travel.description" javaScriptEscape="true"/>',
+    'service.pharmacy.skin.title': '<spring:message code="service.pharmacy.skin.title" javaScriptEscape="true"/>',
+    'service.pharmacy.skin.description': '<spring:message code="service.pharmacy.skin.description" javaScriptEscape="true"/>',
+    
+    'service.massage.aroma.title': '<spring:message code="service.massage.aroma.title" javaScriptEscape="true"/>',
+    'service.massage.aroma.description': '<spring:message code="service.massage.aroma.description" javaScriptEscape="true"/>',
+    'service.massage.foot.title': '<spring:message code="service.massage.foot.title" javaScriptEscape="true"/>',
+    'service.massage.foot.description': '<spring:message code="service.massage.foot.description" javaScriptEscape="true"/>',
+    
+    'service.oriental.diet.title': '<spring:message code="service.oriental.diet.title" javaScriptEscape="true"/>',
+    'service.oriental.diet.description': '<spring:message code="service.oriental.diet.description" javaScriptEscape="true"/>',
+    'service.oriental.shape.title': '<spring:message code="service.oriental.shape.title" javaScriptEscape="true"/>',
+    'service.oriental.shape.description': '<spring:message code="service.oriental.shape.description" javaScriptEscape="true"/>',
+    
+    'service.orientalHospital.pain.title': '<spring:message code="service.orientalHospital.pain.title" javaScriptEscape="true"/>',
+    'service.orientalHospital.pain.description': '<spring:message code="service.orientalHospital.pain.description" javaScriptEscape="true"/>',
+    'service.orientalHospital.rehab.title': '<spring:message code="service.orientalHospital.rehab.title" javaScriptEscape="true"/>',
+    'service.orientalHospital.rehab.description': '<spring:message code="service.orientalHospital.rehab.description" javaScriptEscape="true"/>'
+};
+
+// 번역 함수
+function getMessage(key) {
+    return window.i18nMessages[key] || key;
+}
+</script>
 
 <script src="/resources/js/tourism_list.js"></script>
 </body>
