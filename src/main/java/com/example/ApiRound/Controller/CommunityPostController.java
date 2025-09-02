@@ -60,4 +60,14 @@ public class CommunityPostController {
         service.deletePost(postId);
         return "redirect:/community/list";
     }
+
+    @PostMapping("/insert")
+    @ResponseBody
+    public String insertPost(@RequestParam String title, @RequestParam String content) {
+        CommunityPostDto post = new CommunityPostDto();
+        post.setTitle(title);
+        post.setContent(content);
+        service.createPost(post);
+        return "success";
+    }
 }

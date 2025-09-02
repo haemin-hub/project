@@ -27,7 +27,7 @@
         INSERT INTO community_post (
         post_id, user_id, title, content, create_at, like_count, category, is_deleted, is_update
         ) VALUES (
-        #{postId}, #{userId}, #{title}, #{content}, SYSDATE, 0, #{category}, 'N', 'N'
+        #{postId}, #{userId, jdbcType=VARCHAR}, #{title}, #{content}, SYSDATE, 0, #{category}, 'N', 'N'
         )
     </insert>
 
