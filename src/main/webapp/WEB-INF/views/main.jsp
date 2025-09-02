@@ -230,8 +230,8 @@
 
 <main class="main-content">
     <section class="hero-section" style="--bg:url('/resources/images/bannerimg.jpg')">
-                <img src="/resources/images/bannerimg.jpg" alt="HealnGo Main Visual" class="hero-image">
-              </section>
+        <img src="/resources/images/bannerimg.jpg" alt="HealnGo Main Visual" class="hero-image">
+      </section>
 
     <section class="category-buttons-section">
         <div class="category-buttons-container">
@@ -319,6 +319,11 @@
                 <!-- 인기 도시 및 TOP3 의료기관 섹션 -->
                 <section class="popular-section">
                     <div class="container">
+            <div class="section-title-area">
+                <div class="main-title"><spring:message code="main.popular.title"/></div>
+                <p class="sub-title"><spring:message code="main.popular.subtitle"/></p>
+            </div>
+
             <div class="popular-content-wrapper">
                 <!-- 왼쪽: 커뮤니티 코멘트 (디자인 전용) -->
                 <div class="community-comments">
