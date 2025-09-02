@@ -94,13 +94,34 @@ function updateScrollButtons(containerId) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing tourism page...');
+    
+    // 모달 요소들 확인
+    const plannerModal = document.getElementById('plannerModal');
+    const packageModal = document.getElementById('packageModal');
+    
+    if (!plannerModal) {
+        console.error('Planner modal not found!');
+    } else {
+        console.log('Planner modal found');
+    }
+    
+    if (!packageModal) {
+        console.error('Package modal not found!');
+    } else {
+        console.log('Package modal found');
+    }
+    
     // 배너 슬라이더 초기화
     initBannerSlider();
 
     // 패키지 상세보기 버튼 클릭 시 모달 오픈 (새 디자인)
     const detailButtons = document.querySelectorAll('.package-button');
-    detailButtons.forEach(btn => {
+    console.log('Found package buttons:', detailButtons.length);
+    
+    detailButtons.forEach((btn, index) => {
         btn.addEventListener('click', function(e) {
+            console.log('Package button clicked:', index);
             e.stopPropagation();
             const card = this.closest('.package-card');
             const titleEl = card.querySelector('.package-title');
@@ -108,11 +129,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const packageName = titleEl ? titleEl.textContent.trim() : '패키지';
             const description = descEl ? descEl.textContent.trim() : '';
             const categories = Array.from(card.querySelectorAll('.feature-tag')).map(el => el.textContent.trim());
+            console.log('Package data:', { packageName, categories, description });
             showPackageModal(packageName, categories, description);
         });
     });
 
     // 플래너 카드 클릭 이벤트는 onclick 속성으로 처리됨
+    const plannerCards = document.querySelectorAll('.planner-card');
+    console.log('Found planner cards:', plannerCards.length);
 
     // 초기 스크롤 버튼 상태 설정
     updateScrollButtons('popular-packages');
@@ -133,11 +157,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 플래너 모달 관련 함수들
 function showPlannerModal(plannerId) {
+    console.log('showPlannerModal called with:', plannerId);
     const modal = document.getElementById('plannerModal');
     const companyImage = document.getElementById('companyImage');
     const plannerProfileImage = document.getElementById('plannerProfileImage');
     const plannerCompanyInfo = document.getElementById('plannerCompanyInfo');
     const plannerNameInfo = document.getElementById('plannerNameInfo');
+    
+    console.log('Modal elements:', { modal, companyImage, plannerProfileImage, plannerCompanyInfo, plannerNameInfo });
+    
+    if (!modal) {
+        console.error('Planner modal not found!');
+        return;
+    }
 
     // 플래너별 데이터 설정
     const plannerData = {
@@ -197,9 +229,18 @@ function showPlannerModal(plannerId) {
     document.getElementById('plannerWebsite').textContent = data.website;
 
     // 모달 표시 (페이드인)
-    modal.classList.remove('show');
+    console.log('Showing planner modal...');
     modal.style.display = 'block';
-    requestAnimationFrame(() => modal.classList.add('show'));
+    modal.style.opacity = '0';
+    
+    // 강제로 리플로우 발생
+    modal.offsetHeight;
+    
+    requestAnimationFrame(() => {
+        modal.style.opacity = '1';
+        modal.classList.add('show');
+        console.log('Modal should be visible now');
+    });
 
     // 첫 번째 화면만 표시
     document.getElementById('companyImageScreen').style.display = 'block';
@@ -213,9 +254,16 @@ function showPlannerInfo() {
 }
 
 function closePlannerModal() {
+    console.log('Closing planner modal...');
     const modal = document.getElementById('plannerModal');
-    modal.classList.remove('show');
-    modal.style.display = 'none';
+    if (modal) {
+        modal.style.opacity = '0';
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            console.log('Planner modal hidden');
+        }, 300);
+    }
 }
 // ====== 패키지 서비스 데이터(전역) ======
 const serviceData = {
@@ -354,7 +402,14 @@ function renderAllServices(categoryKeys){
 
 // 3) showPackageModal (단일)
 function showPackageModal(packageName, categories, description){
+  console.log('showPackageModal called with:', packageName, categories, description);
   const modal = document.getElementById('packageModal');
+  
+  if (!modal) {
+      console.error('Package modal not found!');
+      return;
+  }
+  
   document.getElementById('packageModalTitle').textContent = packageName || '패키지';
 
   // feature-tag 텍스트를 내부 키로 매핑하고 중복 제거
@@ -449,15 +504,31 @@ function showPackageModal(packageName, categories, description){
   }
 
   // 모달 표시
-  modal.classList.remove('show');
+  console.log('Showing package modal...');
   modal.style.display = 'block';
-  requestAnimationFrame(()=> modal.classList.add('show'));
+  modal.style.opacity = '0';
+  
+  // 강제로 리플로우 발생
+  modal.offsetHeight;
+  
+  requestAnimationFrame(() => {
+      modal.style.opacity = '1';
+      modal.classList.add('show');
+      console.log('Package modal should be visible now');
+  });
 }
 // ====== 모달 닫기 ======
 function closePackageModal(){
+  console.log('Closing package modal...');
   const modal = document.getElementById('packageModal');
-  modal.classList.remove('show');
-  modal.style.display = 'none';
+  if (modal) {
+      modal.style.opacity = '0';
+      modal.classList.remove('show');
+      setTimeout(() => {
+          modal.style.display = 'none';
+          console.log('Package modal hidden');
+      }, 300);
+  }
 }
 
 
@@ -472,3 +543,11 @@ window.onclick = function(event) {
         closePackageModal();
     }
 }
+
+// ESC 키로 모달 닫기
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closePlannerModal();
+        closePackageModal();
+    }
+});
