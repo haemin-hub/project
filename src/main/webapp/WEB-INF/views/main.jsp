@@ -25,7 +25,7 @@
         .popular-content-wrapper {
             margin-top: 30px;
         }
-        /* 커뮤니티 코멘트 (좌측 박스) */
+        /* Community Comments (Left Box) */
         .community-comments {
             flex: 0 0 420px;
             background: #fff;
@@ -33,10 +33,10 @@
             border-radius: 12px;
             padding: 16px;
             box-shadow: 0 8px 30px rgba(67, 120, 67, 0.08);
-            display: flex;               /* 헤더 + 리스트 수직 배치 */
+            display: flex;               /* Header + List vertical layout */
             flex-direction: column;
-            max-height: 480px;           /* 높이 제한으로 TOP3와 하단 라인 맞춤 */
-            overflow: hidden;            /* 컨테이너 넘침 숨김 */
+            max-height: 480px;           /* Height limit to align with TOP3 and bottom line */
+            overflow: hidden;            /* Hide container overflow */
         }
         .community-header {
             display: flex;
@@ -61,8 +61,8 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            flex: 1 1 auto;      /* 남은 공간을 차지하여 스크롤 영역이 되도록 */
-            overflow-y: auto;    /* 내부 스크롤 */
+            flex: 1 1 auto;      /* Take remaining space to become scroll area */
+            overflow-y: auto;    /* Internal scroll */
         }
         .comment-card {
             border: 1px solid #f0f2f4;
@@ -130,7 +130,7 @@
             color: #6b7278;
         }
 
-        /* 반응형 처리 */
+        /* Responsive Design */
         @media (max-width: 1200px) {
             .popular-content-wrapper { gap: 24px; }
         }
@@ -138,39 +138,39 @@
             .popular-content-wrapper {
                 display: flex;
                 flex-direction: column;
-                align-items: center; /* 내부 요소들을 수평 중앙 정렬 */
+                align-items: center; /* Center align internal elements horizontally */
             }
             .community-comments {
-                flex: 0 1 auto;      /* 데스크톱의 420px 고정 폭 오버라이드 */
+                flex: 0 1 auto;      /* Override desktop 420px fixed width */
                 margin-top: 0;
                 max-height: none;
                 overflow: visible;
                 width: 100%;
-                max-width: 720px;    /* 가독성 있는 최대 폭 */
-                margin-left: auto;   /* 가운데 정렬 */
-                margin-right: auto;  /* 가운데 정렬 */
+                max-width: 720px;    /* Maximum width for readability */
+                margin-left: auto;   /* Center alignment */
+                margin-right: auto;  /* Center alignment */
             }
             .content-divider { display: none; }
             .company-cards-wrapper {
                 width: 100%;
-                max-width: 980px;    /* 카드 그리드도 가운데 정렬 느낌 유지 */
+                max-width: 980px;    /* Maintain center alignment feeling for card grid */
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 반응형 카드 그리드 */
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive card grid */
                 gap: 16px;
                 justify-content: center;
                 align-items: stretch;
             }
             .company-cards-wrapper .company-card {
                 width: 100%;
-                max-width: 420px; /* 카드 형태 유지 */
+                max-width: 420px; /* Maintain card shape */
                 margin: 0 auto;
                 display: block;
             }
-            /* TOP3 카드 이미지의 고정 비율 및 동일 높이 보장 */
+            /* Ensure fixed ratio and same height for TOP3 card images */
             .company-cards-wrapper .company-card .card-image {
                 position: relative;
                 width: 100%;
-                aspect-ratio: 3 / 2; /* 3:2 비율로 통일 */
+                aspect-ratio: 3 / 2; /* Unify to 3:2 ratio */
                 overflow: hidden;
             }
             .company-cards-wrapper .company-card .card-image img {
@@ -181,14 +181,14 @@
             }
         }
 
-            /* 우측 TOP3 컨테이너와 타이틀 */
+            /* Right TOP3 container and title */
             .popular-right {
                 display: flex;
                 flex-direction: column;
                 flex: 1 1 auto;
             }
             .popular-title {
-                margin-bottom: 12px; /* 타이틀 아래 간격 */
+                margin-bottom: 12px; /* Space below title */
             }
             .popular-title h2 {
                 font-size: 22px;
@@ -202,10 +202,10 @@
                 margin: 4px 0 0;
             }
 
-        /* 인기 TOP3 타이틀 블록 */
+        /* Popular TOP3 Title Block */
         .popular-title {
-            margin-bottom: 12px; /* 타이틀 아래 공간 */
-            text-align: center;  /* 카드 컨테이너 중앙 정렬 */
+            margin-bottom: 12px; /* Space below title */
+            text-align: center;  /* Center align card container */
         }
         .popular-title h2 {
             font-size: 22px;
@@ -218,7 +218,7 @@
             color: #6b7278;
             margin: 4px 0 0;
         }
-        /* 카드들을 살짝 아래로 내려 공간 확보 */
+        /* Move cards slightly down to secure space */
         .company-cards-wrapper {
             margin-top: 8px;
         }
@@ -319,6 +319,10 @@
                 <!-- 인기 도시 및 TOP3 의료기관 섹션 -->
                 <section class="popular-section">
                     <div class="container">
+            <div class="section-title-area">
+                <div class="main-title"><spring:message code="main.popular.title"/></div>
+                <p class="sub-title"><spring:message code="main.popular.subtitle"/></p>
+            </div>
 
             <div class="popular-content-wrapper">
                 <!-- 왼쪽: 커뮤니티 코멘트 (디자인 전용) -->
@@ -333,7 +337,7 @@
                            <div class="comment-card">
                                <div class="user">
                                    <img class="avatar" src="${empty post.profileImage ? 'https://i.pravatar.cc/72?img=1' : post.profileImage}"
-                                        alt="avatar"
+                                        alt="<spring:message code='main.community.comment.avatar'/>"
                                         onerror="this.onerror=null;this.src='https://i.pravatar.cc/72?img=1';">
                                    <div class="meta">
                                        <div class="nickname">${post.userId}</div>
@@ -376,7 +380,7 @@
                                         <a href="/list?category=${company1.category}&region=${company1.region}&Id=${company1.companyId}&name=${company1.companyName}" class="company-card">
                                             <div class="card-image">
                                                 <img src="" alt="${company1.companyName}" data-gquery="${company1.companyName} ${empty company1.subregion ? company1.region : company1.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
-                                                <div class="card-badge">1위</div>
+                                                <div class="card-badge"><spring:message code="main.top.badge.1"/></div>
                                             </div>
                                             <div class="card-content">
                                                 <h4 class="company-name">${company1.companyName}</h4>
@@ -391,7 +395,7 @@
                                         <a href="/list?category=${company2.category}&region=${company2.region}&Id=${company2.companyId}&name=${company2.companyName}" class="company-card">
                                             <div class="card-image">
                                                 <img src="" alt="${company2.companyName}" data-gquery="${company2.companyName} ${empty company2.subregion ? company2.region : company2.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
-                                                <div class="card-badge">2위</div>
+                                                <div class="card-badge"><spring:message code="main.top.badge.2"/></div>
                                             </div>
                                             <div class="card-content">
                                                 <h4 class="company-name">${company2.companyName}</h4>
@@ -406,7 +410,7 @@
                                         <a href="/list?category=${company3.category}&region=${company3.region}&Id=${company3.companyId}&name=${company3.companyName}" class="company-card">
                                             <div class="card-image">
                                                 <img src="" alt="${company3.companyName}" data-gquery="${company3.companyName} ${empty company3.subregion ? company3.region : company3.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
-                                                <div class="card-badge">3위</div>
+                                                <div class="card-badge"><spring:message code="main.top.badge.3"/></div>
                                             </div>
                                             <div class="card-content">
                                                 <h4 class="company-name">${company3.companyName}</h4>
@@ -442,14 +446,14 @@
                                         <div class="play-button">
                                             <i class="fas fa-play"></i>
                                         </div>
-                                        <div class="youtube-badge">추천</div>
+                                        <div class="youtube-badge"><spring:message code="main.youtube.badge.recommend"/></div>
                                     </div>
                                     <div class="youtube-content">
-                                        <h3 class="youtube-title">HealnGo 서비스 소개</h3>
-                                        <p class="youtube-description">의료 관광을 위한 최고의 플랫폼 HealnGo를 소개합니다</p>
+                                        <h3 class="youtube-title"><spring:message code="main.youtube.video1.title"/></h3>
+                                        <p class="youtube-description"><spring:message code="main.youtube.video1.description"/></p>
                                         <div class="youtube-features">
-                                            <span class="feature-tag">의료관광</span>
-                                            <span class="feature-tag">서비스소개</span>
+                                            <span class="feature-tag"><spring:message code="main.youtube.video1.feature1"/></span>
+                                            <span class="feature-tag"><spring:message code="main.youtube.video1.feature2"/></span>
                                         </div>
                                         <button class="youtube-button"
                                                 data-video="hC9h4AzbwLw"
@@ -475,7 +479,7 @@
                                             };
                                           }
                                         })(this.dataset.video)">
-                                          영상 보기
+                                          <spring:message code="main.youtube.button.watch"/>
                                         </button>
                                     </div>
                                 </div>
@@ -487,14 +491,14 @@
                                         <div class="play-button">
                                             <i class="fas fa-play"></i>
                                         </div>
-                                        <div class="youtube-badge">인기</div>
+                                        <div class="youtube-badge"><spring:message code="main.youtube.badge.popular"/></div>
                                     </div>
                                     <div class="youtube-content">
-                                        <h3 class="youtube-title">성형 시술 가이드</h3>
-                                        <p class="youtube-description">안전하고 효과적인 성형 시술에 대한 전문가 조언</p>
+                                        <h3 class="youtube-title"><spring:message code="main.youtube.video2.title"/></h3>
+                                        <p class="youtube-description"><spring:message code="main.youtube.video2.description"/></p>
                                         <div class="youtube-features">
-                                            <span class="feature-tag">성형외과</span>
-                                            <span class="feature-tag">시술가이드</span>
+                                            <span class="feature-tag"><spring:message code="main.youtube.video2.feature1"/></span>
+                                            <span class="feature-tag"><spring:message code="main.youtube.video2.feature2"/></span>
                                         </div>
                                             <button class="youtube-button"
                                               onclick="(function(id){
@@ -519,7 +523,7 @@
                                                   };
                                                 }
                                               })('cmn3J6E2PaA')">
-                                              영상 보기
+                                              <spring:message code="main.youtube.button.watch"/>
                                             </button>
                                             </div>
                                 </div>
@@ -531,14 +535,14 @@
                                         <div class="play-button">
                                             <i class="fas fa-play"></i>
                                         </div>
-                                        <div class="youtube-badge">신규</div>
+                                        <div class="youtube-badge"><spring:message code="main.youtube.badge.new"/></div>
                                     </div>
                                     <div class="youtube-content">
-                                        <h3 class="youtube-title">피부 관리 팁</h3>
-                                        <p class="youtube-description">건강한 피부를 위한 전문적인 관리 방법</p>
+                                        <h3 class="youtube-title"><spring:message code="main.youtube.video3.title"/></h3>
+                                        <p class="youtube-description"><spring:message code="main.youtube.video3.description"/></p>
                                         <div class="youtube-features">
-                                            <span class="feature-tag">피부과</span>
-                                            <span class="feature-tag">피부관리</span>
+                                            <span class="feature-tag"><spring:message code="main.youtube.video3.feature1"/></span>
+                                            <span class="feature-tag"><spring:message code="main.youtube.video3.feature2"/></span>
                                         </div>
                                         <button class="youtube-button"
                                           onclick="(function(id){
@@ -563,7 +567,7 @@
                                               };
                                             }
                                           })('f5Hit9JQCkY')">
-                                          영상 보기
+                                          <spring:message code="main.youtube.button.watch"/>
                                         </button>
                                     </div>
                                 </div>
@@ -575,14 +579,14 @@
                                         <div class="play-button">
                                             <i class="fas fa-play"></i>
                                         </div>
-                                        <div class="youtube-badge">추천</div>
+                                        <div class="youtube-badge"><spring:message code="main.youtube.badge.recommend"/></div>
                                     </div>
                                     <div class="youtube-content">
-                                        <h3 class="youtube-title">치과 시술 안내</h3>
-                                        <p class="youtube-description">치과 시술 전후 주의사항과 관리법</p>
+                                        <h3 class="youtube-title"><spring:message code="main.youtube.video4.title"/></h3>
+                                        <p class="youtube-description"><spring:message code="main.youtube.video4.description"/></p>
                                         <div class="youtube-features">
-                                            <span class="feature-tag">치과</span>
-                                            <span class="feature-tag">시술안내</span>
+                                            <span class="feature-tag"><spring:message code="main.youtube.video4.feature1"/></span>
+                                            <span class="feature-tag"><spring:message code="main.youtube.video4.feature2"/></span>
                                         </div>
                                         <button class="youtube-button"
                                           onclick="(function(id){
@@ -607,7 +611,7 @@
                                               };
                                             }
                                           })('8I-08wGeZIE')">
-                                          영상 보기
+                                          <spring:message code="main.youtube.button.watch"/>
                                         </button>
                                     </div>
                                 </div>
@@ -619,14 +623,14 @@
                                         <div class="play-button">
                                             <i class="fas fa-play"></i>
                                         </div>
-                                        <div class="youtube-badge">인기</div>
+                                        <div class="youtube-badge"><spring:message code="main.youtube.badge.popular"/></div>
                                     </div>
                                     <div class="youtube-content">
-                                        <h3 class="youtube-title">한의학 치료법</h3>
-                                        <p class="youtube-description">전통 한의학을 통한 건강 관리 방법</p>
+                                        <h3 class="youtube-title"><spring:message code="main.youtube.video5.title"/></h3>
+                                        <p class="youtube-description"><spring:message code="main.youtube.video5.description"/></p>
                                         <div class="youtube-features">
-                                            <span class="feature-tag">한의원</span>
-                                            <span class="feature-tag">전통의학</span>
+                                            <span class="feature-tag"><spring:message code="main.youtube.video5.feature1"/></span>
+                                            <span class="feature-tag"><spring:message code="main.youtube.video5.feature2"/></span>
                                         </div>
                                         <button class="youtube-button"
                                           onclick="(function(id){
@@ -651,17 +655,17 @@
                                               };
                                             }
                                           })('Dy7X4dEed1I')">
-                                          영상 보기
+                                          <spring:message code="main.youtube.button.watch"/>
                                         </button>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- 스크롤 버튼 -->
-                            <button class="scroll-button prev" onclick="scrollYouTube('left')">
+                            <button class="scroll-button prev" onclick="scrollYouTube('left')" title="<spring:message code='main.youtube.scroll.prev'/>">
                                 <i class="fas fa-chevron-left"></i>
                             </button>
-                            <button class="scroll-button next" onclick="scrollYouTube('right')">
+                            <button class="scroll-button next" onclick="scrollYouTube('right')" title="<spring:message code='main.youtube.scroll.next'/>">
                                 <i class="fas fa-chevron-right"></i>
                             </button>
                         </div>

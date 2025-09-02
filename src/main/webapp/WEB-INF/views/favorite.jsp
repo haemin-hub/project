@@ -1,9 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HealnGo 즐겨찾기</title>
+    <title><spring:message code="favorite.title"/></title>
     <link rel="stylesheet" href="/resources/css/favorite.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
         <div class="favorite-icon">
             <i class="fas fa-heart"></i>
         </div>
-        <h1 class="favorite-title">즐겨찾기 병원</h1>
+        <h1 class="favorite-title"><spring:message code="favorite.header.title"/></h1>
     </div>
 
     <!-- 즐겨찾기 목록 -->
@@ -30,11 +31,11 @@
                         <i class="fas fa-plus empty-plus"></i>
                     </div>
                     <div class="empty-content">
-                        <h3>즐겨찾기한 병원이 없어요</h3>
-                        <p class="empty-description">관심 있는 병원을 찾아서<br><span class="highlight">❤️ 하트를 눌러보세요!</span></p>
+                        <h3><spring:message code="favorite.empty.title"/></h3>
+                        <p class="empty-description"><spring:message code="favorite.empty.description"/></p>
                     </div>
                     <div class="empty-actions">
-                        <a href="/main" class="btn-primary">병원 찾아보기</a>
+                        <a href="/main" class="btn-primary"><spring:message code="favorite.empty.button"/></a>
                     </div>
                 </div>
             </c:when>
@@ -50,15 +51,15 @@
                                 <div class="hospital-details">
                                     <p class="hospital-address">
                                         <i class="fas fa-map-marker-alt"></i>
-                                            ${not empty favorite.address ? favorite.address : '주소 정보 없음'}
+                                            ${not empty favorite.address ? favorite.address : '<spring:message code="favorite.item.address.info"/>'}
                                     </p>
                                     <p class="hospital-phone">
                                         <i class="fas fa-phone"></i>
-                                            ${not empty favorite.phone ? favorite.phone : '연락처 정보 없음'}
+                                            ${not empty favorite.phone ? favorite.phone : '<spring:message code="favorite.item.phone.info"/>'}
                                     </p>
                                     <p class="hospital-hours">
                                         <i class="fas fa-clock"></i>
-                                        운영시간 정보 없음
+                                        <spring:message code="favorite.item.hours.info"/>
                                     </p>
                                 </div>
                                 <div class="hospital-tags">
@@ -71,8 +72,8 @@
                             </div>
                         </div>
                         <div class="item-actions">
-                            <button class="btn-detail" onclick="showDetail(${favorite.id})">상세보기</button>
-                            <button class="btn-remove">
+                            <button class="btn-detail" onclick="showDetail(${favorite.id})"><spring:message code="favorite.item.detail.button"/></button>
+                            <button class="btn-remove" title="<spring:message code='favorite.item.remove.button'/>">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
@@ -86,7 +87,7 @@
 <!-- 상세보기 모달 -->
 <div id="detailModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close" title="<spring:message code='favorite.modal.close'/>">&times;</span>
         <div id="modalBody">
             <!-- 상세 내용이 여기에 동적으로 로드됩니다 -->
         </div>

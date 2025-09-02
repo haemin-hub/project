@@ -5,26 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="25.09.01_커뮤니티 수정중!">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4c7718ea-b4ec-4332-968c-ca3509ff9cb9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4c7718ea-b4ec-4332-968c-ca3509ff9cb9.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4c7718ea-b4ec-4332-968c-ca3509ff9cb9/storage_v2/_src_/schema/HEALNGO.zr42Wg.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4c7718ea-b4ec-4332-968c-ca3509ff9cb9/storage_v2/_src_/schema/HEALNGO.zr42Wg.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/CommunityPostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/CommunityPostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Service/CommunityPostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Service/CommunityPostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Service/CommunityPostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Service/CommunityPostServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/dto/CommunityPostDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/dto/CommunityPostDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/mapper/CommunityPostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/mapper/CommunityPostMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CommunityPostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CommunityPostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ListMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ListMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_ja.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_ja.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_zh.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_zh.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/community.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/community.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/favorite.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/favorite.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/community.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/community.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/CommunityPostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/CommunityPostController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/CommunityPostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/CommunityPostService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/CommunityPostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/CommunityPostServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/CommunityPostDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/CommunityPostDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/mapper/CommunityPostMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/mapper/CommunityPostMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/CommunityPostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/CommunityPostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ListMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/ListMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/messages_ja.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages_ja.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/messages_zh.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages_zh.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,12 +75,12 @@
     &quot;assignee&quot;: &quot;mingg01zz&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/APIROUND/project.git",
-    "accountId": "578bab63-3494-499e-8e26-90b72c1114da"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/APIROUND/project.git&quot;,
+    &quot;accountId&quot;: &quot;80a2f24e-7e79-450c-b184-4c9d87c5850b&quot;
   }
-}]]></component>
+}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -121,19 +117,14 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "haemin",
+    "git-widget-placeholder": "mingzz",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/dev/first_project/ApiRound/src/main/webapp/resources/js",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true",
     "애플리케이션.ApiRoundApplication.executor": "Run",
     "애플리케이션.SpringI18nAApplication.executor": "Run"
   }
@@ -186,14 +177,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
-        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
       <changelist id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="" />
@@ -201,7 +184,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755847739815</updated>
-      <workItem from="1756797000302" duration="4085000" />
     </task>
     <task id="LOCAL-00001" summary="번역추가">
       <option name="closed" value="true" />
@@ -365,9 +347,6 @@
     </task>
     <option name="localTasksCounter" value="21" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
