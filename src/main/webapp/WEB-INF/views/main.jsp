@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,10 +21,208 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- 트립비토즈 스타일 추가 -->
     <style>
-        /* 추가 스타일 적용 */
-        .tripbtoz-popular-cities {
-            box-shadow: 0 8px 30px rgba(67, 120, 67, 0.15);
+
+        .popular-content-wrapper {
+            margin-top: 30px;
         }
+        /* 커뮤니티 코멘트 (좌측 박스) */
+        .community-comments {
+            flex: 0 0 420px;
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 8px 30px rgba(67, 120, 67, 0.08);
+            display: flex;               /* 헤더 + 리스트 수직 배치 */
+            flex-direction: column;
+            max-height: 480px;           /* 높이 제한으로 TOP3와 하단 라인 맞춤 */
+            overflow: hidden;            /* 컨테이너 넘침 숨김 */
+        }
+        .community-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .community-header .title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2f3a3a;
+        }
+        .community-header .more-link {
+            font-size: 12px;
+            color: #2a7a5b;
+            text-decoration: none;
+        }
+        .community-header .more-link:hover {
+            text-decoration: underline;
+        }
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1 1 auto;      /* 남은 공간을 차지하여 스크롤 영역이 되도록 */
+            overflow-y: auto;    /* 내부 스크롤 */
+        }
+        .comment-card {
+            border: 1px solid #f0f2f4;
+            border-radius: 10px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: box-shadow .2s ease, transform .2s ease;
+            background: #fff;
+        }
+        .comment-card:hover {
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+        .comment-card .user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .comment-card .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #f2f4f6;
+        }
+        .comment-card .meta {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .comment-card .nickname {
+            font-size: 13px;
+            font-weight: 600;
+            color: #2b2f33;
+        }
+        .comment-card .date {
+            font-size: 11px;
+            color: #8a8f94;
+        }
+        .comment-card .content .tag {
+            display: inline-block;
+            margin-bottom: 6px;
+            padding: 2px 8px;
+            font-size: 11px;
+            background: #eef7f1;
+            color: #2a7a5b;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+        .comment-card .content .text {
+            font-size: 14px;
+            color: #3b4045;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .comment-card .actions {
+            display: flex;
+            gap: 14px;
+            font-size: 12px;
+            color: #6b7278;
+        }
+
+        /* 반응형 처리 */
+        @media (max-width: 1200px) {
+            .popular-content-wrapper { gap: 24px; }
+        }
+        @media (max-width: 1024px) {
+            .popular-content-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* 내부 요소들을 수평 중앙 정렬 */
+            }
+            .community-comments {
+                flex: 0 1 auto;      /* 데스크톱의 420px 고정 폭 오버라이드 */
+                margin-top: 0;
+                max-height: none;
+                overflow: visible;
+                width: 100%;
+                max-width: 720px;    /* 가독성 있는 최대 폭 */
+                margin-left: auto;   /* 가운데 정렬 */
+                margin-right: auto;  /* 가운데 정렬 */
+            }
+            .content-divider { display: none; }
+            .company-cards-wrapper {
+                width: 100%;
+                max-width: 980px;    /* 카드 그리드도 가운데 정렬 느낌 유지 */
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 반응형 카드 그리드 */
+                gap: 16px;
+                justify-content: center;
+                align-items: stretch;
+            }
+            .company-cards-wrapper .company-card {
+                width: 100%;
+                max-width: 420px; /* 카드 형태 유지 */
+                margin: 0 auto;
+                display: block;
+            }
+            /* TOP3 카드 이미지의 고정 비율 및 동일 높이 보장 */
+            .company-cards-wrapper .company-card .card-image {
+                position: relative;
+                width: 100%;
+                aspect-ratio: 3 / 2; /* 3:2 비율로 통일 */
+                overflow: hidden;
+            }
+            .company-cards-wrapper .company-card .card-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
+
+            /* 우측 TOP3 컨테이너와 타이틀 */
+            .popular-right {
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 auto;
+            }
+            .popular-title {
+                margin-bottom: 12px; /* 타이틀 아래 간격 */
+            }
+            .popular-title h2 {
+                font-size: 22px;
+                font-weight: 700;
+                color: #2f3a3a;
+                margin: 0;
+            }
+            .popular-title p {
+                font-size: 13px;
+                color: #6b7278;
+                margin: 4px 0 0;
+            }
+
+        /* 인기 TOP3 타이틀 블록 */
+        .popular-title {
+            margin-bottom: 12px; /* 타이틀 아래 공간 */
+            text-align: center;  /* 카드 컨테이너 중앙 정렬 */
+        }
+        .popular-title h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2f3a3a;
+            margin: 0;
+        }
+        .popular-title p {
+            font-size: 13px;
+            color: #6b7278;
+            margin: 4px 0 0;
+        }
+        /* 카드들을 살짝 아래로 내려 공간 확보 */
+        .company-cards-wrapper {
+            margin-top: 8px;
+        }
+
     </style>
 </head>
 <body>
@@ -124,86 +325,38 @@
             </div>
 
             <div class="popular-content-wrapper">
-                <!-- 왼쪽: 국내 급상승 인기 도시 -->
-                <div class="tripbtoz-popular-cities">
-                    <div class="tripbtoz-cities-header">
-                        <div class="tripbtoz-cities-title">
-                            <span><spring:message code="main.popular.cities.title"/></span>
-                        </div>
+                <!-- 왼쪽: 커뮤니티 코멘트 (디자인 전용) -->
+                <div class="community-comments">
+                    <div class="community-header">
+                        <div class="title"><spring:message code="main.popular.community"/></div>
+                        <a href="/community" class="more-link"><spring:message code="main.popular.more"/><i class="fas fa-chevron-right"></i></a>
                     </div>
-                    <div class="tripbtoz-cities-divider"></div>
-                    <div class="tripbtoz-cities-list">
-                        <a href="/city/gyeongju" class="tripbtoz-city-item">
-                            <div class="city-rank">1</div>
-                            <div class="city-trend no-change">
-                                <i class="fas fa-minus"></i>
-                            </div>
-                            <div class="city-name"><spring:message code="city.gyeongju"/></div>
-                        </a>
-                        <a href="/city/jeju" class="tripbtoz-city-item">
-                            <div class="city-rank">2</div>
-                            <div class="city-trend up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="city-name"><spring:message code="city.jeju"/></div>
-                        </a>
-                        <a href="/city/seogwipo" class="tripbtoz-city-item">
-                            <div class="city-rank">3</div>
-                            <div class="city-trend down">
-                                <i class="fas fa-arrow-down"></i>
-                            </div>
-                            <div class="city-name"><spring:message code="city.seogwipo"/></div>
-                        </a>
-                        <a href="/city/yeosu" class="tripbtoz-city-item">
-                            <div class="city-rank">4</div>
-                            <div class="city-trend no-change">
-                                <i class="fas fa-minus"></i>
-                            </div>
-                            <div class="city-name"><spring:message code="city.yeosu"/></div>
-                        </a>
-                        <a href="/city/sokcho" class="tripbtoz-city-item" >
-                            <div class="city-rank">5</div>
-                            <div class="city-trend up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="city-name"><spring:message code="city.sokcho"/></div>
-                        </a>
-                        <a href="/city/jeonju" class="tripbtoz-city-item">
-                            <div class="city-rank">6</div>
-                            <div class="city-trend no-change">
-                                <i class="fas fa-minus"></i>
-                            </div>
-                            <div class="city-name"><spring:message code="city.jeonju"/></div>
-                        </a>
-                        <a href="/city/haeundae" class="tripbtoz-city-item">
-                            <div class="city-rank">7</div>
-                            <div class="city-trend up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="city-name"><spring:message code="city.haeundae"/></div>
-                        </a>
-                        <a href="/city/gangneung" class="tripbtoz-city-item">
-                            <div class="city-rank">8</div>
-                            <div class="city-trend up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="city-name"><spring:message code="city.gangneung"/></div>
-                        </a>
-                        <a href="/city/yangyang" class="tripbtoz-city-item">
-                            <div class="city-rank">9</div>
-                            <div class="city-trend down">
-                                <i class="fas fa-arrow-down"></i>
-                            </div>
-                            <div class="city-name"><spring:message code="city.yangyang"/></div>
-                        </a>
-                        <a href="/city/gunsan" class="tripbtoz-city-item">
-                            <div class="city-rank">10</div>
-                            <div class="city-trend up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="city-name"><spring:message code="city.gunsan"/></div>
-                        </a>
-                    </div>
+
+                   <div class="comments-list">
+                       <c:forEach var="post" items="${posts}" begin="0" end="4">
+                           <div class="comment-card">
+                               <div class="user">
+                                   <img class="avatar" src="${empty post.profileImage ? 'https://i.pravatar.cc/72?img=1' : post.profileImage}"
+                                        alt="avatar"
+                                        onerror="this.onerror=null;this.src='https://i.pravatar.cc/72?img=1';">
+                                   <div class="meta">
+                                       <div class="nickname">${post.userId}</div>
+                                       <div class="date">
+                                           <fmt:formatDate value="${post.createAt}" pattern="yyyy-MM-dd" />
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="content">
+                                   <span class="tag">${post.category}</span>
+                                   <div class="text">${post.content}</div>
+                               </div>
+                               <div class="actions">
+                                   <span><i class="far fa-thumbs-up"></i> ${post.likeCount}</span>
+                               </div>
+                           </div>
+                       </c:forEach>
+                   </div>
+
                 </div>
 
                 <!-- 가운데 구분선 -->
@@ -216,55 +369,63 @@
                 <c:set var="company2" value="${topCompanies[1]}" />
                 <c:set var="company3" value="${topCompanies[2]}" />
 
-                <div class="company-cards-wrapper">
-                                    <!-- 인기 업체 1 -->
-                                    <a href="http://xn--939au0giujp2l.xn--3e0b707e/" class="company-card">
-                                        <div class="card-image">
-                                            <img src="" alt="${company1.companyName}" data-gquery="${company1.companyName} ${empty company1.subregion ? company1.region : company1.subregion}" loading="lazy">
-                                            <div class="card-badge">1위</div>
-                                        </div>
-                                        <div class="card-content">
-                                            <h4 class="company-name">${company1.companyName}</h4>
-                                            <div class="company-details">
-                                                <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company1.subregion ? company1.region : company1.subregion}</span>
+                <div class="popular-right">
+                    <div class="popular-title">
+                        <h2><spring:message code="main.popular.title"/></h2>
+                        <p><spring:message code="main.popular.subtitle"/></p>
+                    </div>
+
+                    <div class="company-cards-wrapper">
+                                        <!-- 인기 업체 1 -->
+                                        <a href="/list?category=${company1.category}&region=${company1.region}&Id=${company1.companyId}&name=${company1.companyName}" class="company-card">
+                                            <div class="card-image">
+                                                <img src="" alt="${company1.companyName}" data-gquery="${company1.companyName} ${empty company1.subregion ? company1.region : company1.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
+                                                <div class="card-badge">1위</div>
                                             </div>
-                                            <span class="specialty-tag">${company1.category}</span>
-                                        </div>
-                                    </a>
-
-                                    <!-- 인기 업체 2 -->
-                                    <a href="http://www.miwoo.kr/" class="company-card">
-                                        <div class="card-image">
-                                            <img src="" alt="${company2.companyName}" data-gquery="${company2.companyName} ${empty company2.subregion ? company2.region : company2.subregion}" loading="lazy">
-                                            <div class="card-badge">2위</div>
-                                        </div>
-                                        <div class="card-content">
-                                            <h4 class="company-name">${company2.companyName}</h4>
-                                            <div class="company-details">
-                                                <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company2.subregion ? company2.region : company2.subregion}</span>
+                                            <div class="card-content">
+                                                <h4 class="company-name">${company1.companyName}</h4>
+                                                <div class="company-details">
+                                                    <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company1.subregion ? company1.region : company1.subregion}</span>
+                                                </div>
+                                                <span class="specialty-tag">${company1.category}</span>
                                             </div>
-                                            <span class="specialty-tag">${company2.category}</span>
-                                        </div>
-                                    </a>
+                                        </a>
 
-                                    <!-- 인기 업체 3 -->
-                                    <a href="/company/${company3.companyId}" class="company-card">
-                                        <div class="card-image">
-                                            <img src="" alt="${company3.companyName}" data-gquery="${company3.companyName} ${empty company3.subregion ? company3.region : company3.subregion}" loading="lazy">
-                                            <div class="card-badge">3위</div>
-                                        </div>
-                                        <div class="card-content">
-                                            <h4 class="company-name">${company3.companyName}</h4>
-                                            <div class="company-details">
-                                                <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company3.subregion ? company3.region : company3.subregion}</span>
+                                        <!-- 인기 업체 2 -->
+                                        <a href="/list?category=${company2.category}&region=${company2.region}&Id=${company2.companyId}&name=${company2.companyName}" class="company-card">
+                                            <div class="card-image">
+                                                <img src="" alt="${company2.companyName}" data-gquery="${company2.companyName} ${empty company2.subregion ? company2.region : company2.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
+                                                <div class="card-badge">2위</div>
                                             </div>
-                                             <span class="specialty-tag">${company3.category}</span>
-                                        </div>
-                                    </a>
-                                </div>
+                                            <div class="card-content">
+                                                <h4 class="company-name">${company2.companyName}</h4>
+                                                <div class="company-details">
+                                                    <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company2.subregion ? company2.region : company2.subregion}</span>
+                                                </div>
+                                                <span class="specialty-tag">${company2.category}</span>
+                                            </div>
+                                        </a>
+
+                                        <!-- 인기 업체 3 -->
+                                        <a href="/list?category=${company3.category}&region=${company3.region}&Id=${company3.companyId}&name=${company3.companyName}" class="company-card">
+                                            <div class="card-image">
+                                                <img src="" alt="${company3.companyName}" data-gquery="${company3.companyName} ${empty company3.subregion ? company3.region : company3.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
+                                                <div class="card-badge">3위</div>
+                                            </div>
+                                            <div class="card-content">
+                                                <h4 class="company-name">${company3.companyName}</h4>
+                                                <div class="company-details">
+                                                    <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company3.subregion ? company3.region : company3.subregion}</span>
+                                                </div>
+                                                 <span class="specialty-tag">${company3.category}</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                </div>
 
 
 
+                    </div>
                     </div>
                 </section>
 
@@ -272,8 +433,8 @@
                 <section class="youtube-section mt-5">
                     <div class="container">
                         <div class="section-title">
-                            <h2>추천 영상</h2>
-                            <p>HealnGo에서 추천하는 유용한 영상들을 확인해보세요</p>
+                            <h2><spring:message code="main.youtube.recommendation"/></h2>
+                            <p><spring:message code="main.youtube.comment"/></p>
                         </div>
 
                         <div class="scroll-container">
@@ -593,7 +754,16 @@ document.addEventListener('keydown', function(event) {
   function initTopCompaniesPhotos() {
     try {
       const imgs = document.querySelectorAll('.company-cards-wrapper .company-card .card-image img[data-gquery]');
-      if (!imgs.length || typeof google === 'undefined' || !google.maps || !google.maps.places) {
+      if (!imgs.length) {
+        return;
+      }
+      // 구글 API 미로딩 시: 구글 이미지를 가져올 수 없으므로 기본 이미지로 대체
+      if (typeof google === 'undefined' || !google.maps || !google.maps.places) {
+        imgs.forEach(function(img) {
+          if (!img.getAttribute('src')) {
+            img.src = '/resources/images/dump.jpg';
+          }
+        });
         return;
       }
       // 보이지 않는 맵 컨테이너 (PlacesService를 위한 의존성)
@@ -617,10 +787,11 @@ document.addEventListener('keydown', function(event) {
                 if (url) img.src = url;
               } catch (e) {
                 console.warn('사진 URL 생성 실패:', e);
+                img.src = '/resources/images/dump.jpg';
               }
             } else {
-              // 사진이 없을 때는 그대로 두거나 필요 시 기본 이미지를 지정하세요.
-              // img.src = '/resources/images/no-image.png';
+              // 구글 사진이 없을 때만 기본 이미지로 표시
+              img.src = '/resources/images/dump.jpg';
             }
           }
         );

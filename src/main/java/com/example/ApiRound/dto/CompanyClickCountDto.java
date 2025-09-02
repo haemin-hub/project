@@ -16,4 +16,5 @@ public class CompanyClickCountDto {
     private String region;     // 대지역 (예: 서울특별시)
     private String subregion;  // 세부지역 (예: 강남구)
     private String category;   // 카테고리 (예: 마사지, 성형외과 등)
+    private String address;
 }

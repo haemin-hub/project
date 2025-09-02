@@ -4,55 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="25.08.28_유튜브 수정완료">
+    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="클릭 로그 수정">
+      <change afterPath="$PROJECT_DIR$/.idea/project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/add_translation_data.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/check_table_structure.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fix_i18n_table.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/force_update_translation.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/restore_i18n_system.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_i18n_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sample_i18n_data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/ListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/ListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/TourismController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/Controller/TourismController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/dto/ListDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ApiRound/dto/ListDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_ja.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_ja.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_zh.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_zh.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/detail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tourism_list.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/tourism_list.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/tourism_list.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/tourism_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/tourism_list.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/FavoriteItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/FavoriteItemController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/GoogleOAuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/GoogleOAuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/KakaoOAuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/KakaoOAuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/ListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/ListController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/TourPackageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/TourPackageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/TourismController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Controller/TourismController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/FavoriteItemService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/FavoriteItemService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/FavoriteItemServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/FavoriteItemServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/KakaoSocialUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/KakaoSocialUserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/ListService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/ListService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/ListServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/ListServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/TourPackageServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/Service/TourPackageServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/FavoriteItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/FavoriteItemDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/ListDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/ListDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/SocialUserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/SocialUserDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/TourPackageDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/TourPackageDto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/TourPackageItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/dto/TourPackageItemDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/mapper/FavoriteItemMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/mapper/FavoriteItemMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ApiRound/mapper/ListMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ApiRound/mapper/ListMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ListMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/ListMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/messages_ja.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages_ja.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/messages_zh.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages_zh.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,12 +70,12 @@
     &quot;assignee&quot;: &quot;mingg01zz&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/APIROUND/project.git",
-    "accountId": "5ab9e3e2-6d35-4445-a42a-fcbbe25473e9"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/APIROUND/project.git&quot;,
+    &quot;accountId&quot;: &quot;578bab63-3494-499e-8e26-90b72c1114da&quot;
   }
-}]]></component>
+}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -134,9 +97,6 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="31dItp1Brv8IE0N3QyhC0wKxOXh" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -149,7 +109,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;mingzz&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;haemin&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/enjoy/Desktop/정민서/ApiRound/ApiRound&quot;,
@@ -212,6 +172,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Spring Boot.ApiRoundApplication" />
       <item itemvalue="애플리케이션.ApiRoundApplication" />
       <item itemvalue="애플리케이션.SpringI18nAApplication" />
     </list>
@@ -220,6 +181,14 @@
         <item itemvalue="애플리케이션.ApiRoundApplication" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="StructureViewState">
     <option name="selectedTab" value="JSP" />

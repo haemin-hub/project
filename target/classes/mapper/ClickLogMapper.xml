@@ -57,6 +57,4 @@
         WHERE ROWNUM &lt;= 3
     </select>
 
-
-
 </mapper>

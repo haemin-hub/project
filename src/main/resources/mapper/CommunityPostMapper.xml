@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.ApiRound.mapper.CommunityPostMapper">
+
+    <resultMap id="PostMap" type="com.example.ApiRound.dto.CommunityPostDto">
+        <result property="postId" column="POST_ID"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="title" column="TITLE"/>
+        <result property="content" column="CONTENT"/>
+        <result property="createAt" column="CREATE_AT"/>
+        <result property="likeCount" column="LIKE_COUNT"/>
+        <result property="category" column="CATEGORY"/>
+        <result property="isDeleted" column="IS_DELETED"/>
+        <result property="isUpdate" column="IS_UPDATE"/>
+        <result property="profileImage" column="PROFILE_IMAGE"/>
+    </resultMap>
+
+    <select id="findAllPosts" resultMap="PostMap">
+        SELECT cp.*, su.profile_image AS PROFILE_IMAGE
+        FROM community_post cp
+        LEFT JOIN social_user su ON su.user_id = cp.post_id
+        WHERE cp.is_deleted = 'N'
+        ORDER BY cp.like_count DESC, cp.create_at DESC
+    </select>
+
+    <insert id="insertPost" parameterType="com.example.ApiRound.dto.CommunityPostDto">
+        INSERT INTO community_post (
+        post_id, user_id, title, content, create_at, like_count, category, is_deleted, is_update
+        ) VALUES (
+        #{postId}, #{userId}, #{title}, #{content}, SYSDATE, 0, #{category}, 'N', 'N'
+        )
+    </insert>
+
+    <update id="updatePost" parameterType="com.example.ApiRound.dto.CommunityPostDto">
+        UPDATE community_post
+        SET title = #{title},
+        content = #{content},
+        category = #{category},
+        is_update = 'Y'
+        WHERE post_id = #{postId}
+        AND is_deleted = 'N'
+    </update>
+
+    <update id="softDeletePost" parameterType="int">
+        UPDATE community_post
+        SET is_deleted = 'Y'
+        WHERE post_id = #{postId}
+        AND is_deleted = 'N'
+    </update>
+
+</mapper>
