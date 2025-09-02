@@ -40,8 +40,8 @@
         i.COORD_X    AS coord_x,
         i.COORD_Y    AS coord_y,
         i.CATEGORY   AS category
-                 FROM C##HEALNGO.ITEM_LIST i
-                 LEFT JOIN C##HEALNGO.ITEM_LIST_I18N i18n ON i.ID = i18n.ITEM_ID
+                 FROM HEALNGO.ITEM_LIST i
+                 LEFT JOIN HEALNGO.ITEM_LIST_I18N i18n ON i.ID = i18n.ITEM_ID
                  AND i18n.LOCALE = #{locale}
     </sql>
 
@@ -84,7 +84,7 @@
     <!-- 전체 개수 (i18n 불필요) -->
     <select id="countByRegionAndCategory" resultType="int">
         SELECT COUNT(*)
-        FROM C##HEALNGO.ITEM_LIST i
+        FROM HEALNGO.ITEM_LIST i
         <where>
             <if test="region != null and region != ''">
                 AND (i.REGION LIKE '%' || #{region} || '%' OR i.ADDRESS LIKE '%' || #{region} || '%')
@@ -119,7 +119,7 @@
     <!-- 카테고리별 총 개수 -->
     <select id="countByCategory" resultType="int">
         SELECT COUNT(*)
-        FROM C##HEALNGO.ITEM_LIST
+        FROM HEALNGO.ITEM_LIST
         WHERE CATEGORY LIKE '%' || #{category} || '%'
     </select>
 
@@ -133,12 +133,12 @@
 
     <!-- 디버깅: 모든 카테고리 -->
     <select id="getAllCategories" resultType="java.lang.String">
-        SELECT DISTINCT CATEGORY FROM C##HEALNGO.ITEM_LIST ORDER BY CATEGORY
+        SELECT DISTINCT CATEGORY FROM HEALNGO.ITEM_LIST ORDER BY CATEGORY
     </select>
 
     <!-- 병원 등록 -->
     <insert id="insert" parameterType="com.example.ApiRound.dto.ListDto">
-        INSERT INTO C##HEALNGO.ITEM_LIST (NAME, REGION, SUBREGION, ADDRESS, PHONE, HOMEPAGE, COORD_X, COORD_Y, CATEGORY)
+        INSERT INTO HEALNGO.ITEM_LIST (NAME, REGION, SUBREGION, ADDRESS, PHONE, HOMEPAGE, COORD_X, COORD_Y, CATEGORY)
         VALUES (#{name}, #{region}, #{subregion}, #{address}, #{phone}, #{homepage}, #{coordX}, #{coordY}, #{category})
     </insert>
 
