@@ -94,13 +94,34 @@ function updateScrollButtons(containerId) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing tourism page...');
+    
+    // 모달 요소들 확인
+    const plannerModal = document.getElementById('plannerModal');
+    const packageModal = document.getElementById('packageModal');
+    
+    if (!plannerModal) {
+        console.error('Planner modal not found!');
+    } else {
+        console.log('Planner modal found');
+    }
+    
+    if (!packageModal) {
+        console.error('Package modal not found!');
+    } else {
+        console.log('Package modal found');
+    }
+    
     // 배너 슬라이더 초기화
     initBannerSlider();
 
     // 패키지 상세보기 버튼 클릭 시 모달 오픈 (새 디자인)
     const detailButtons = document.querySelectorAll('.package-button');
-    detailButtons.forEach(btn => {
+    console.log('Found package buttons:', detailButtons.length);
+    
+    detailButtons.forEach((btn, index) => {
         btn.addEventListener('click', function(e) {
+            console.log('Package button clicked:', index);
             e.stopPropagation();
             const card = this.closest('.package-card');
             const titleEl = card.querySelector('.package-title');
@@ -108,11 +129,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const packageName = titleEl ? titleEl.textContent.trim() : '패키지';
             const description = descEl ? descEl.textContent.trim() : '';
             const categories = Array.from(card.querySelectorAll('.feature-tag')).map(el => el.textContent.trim());
+            console.log('Package data:', { packageName, categories, description });
             showPackageModal(packageName, categories, description);
         });
     });
 
     // 플래너 카드 클릭 이벤트는 onclick 속성으로 처리됨
+    const plannerCards = document.querySelectorAll('.planner-card');
+    console.log('Found planner cards:', plannerCards.length);
 
     // 초기 스크롤 버튼 상태 설정
     updateScrollButtons('popular-packages');
@@ -133,11 +157,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 플래너 모달 관련 함수들
 function showPlannerModal(plannerId) {
+    console.log('showPlannerModal called with:', plannerId);
     const modal = document.getElementById('plannerModal');
     const companyImage = document.getElementById('companyImage');
     const plannerProfileImage = document.getElementById('plannerProfileImage');
     const plannerCompanyInfo = document.getElementById('plannerCompanyInfo');
     const plannerNameInfo = document.getElementById('plannerNameInfo');
+    
+    console.log('Modal elements:', { modal, companyImage, plannerProfileImage, plannerCompanyInfo, plannerNameInfo });
+    
+    if (!modal) {
+        console.error('Planner modal not found!');
+        return;
+    }
 
     // 플래너별 데이터 설정
     const plannerData = {
@@ -197,9 +229,18 @@ function showPlannerModal(plannerId) {
     document.getElementById('plannerWebsite').textContent = data.website;
 
     // 모달 표시 (페이드인)
-    modal.classList.remove('show');
+    console.log('Showing planner modal...');
     modal.style.display = 'block';
-    requestAnimationFrame(() => modal.classList.add('show'));
+    modal.style.opacity = '0';
+    
+    // 강제로 리플로우 발생
+    modal.offsetHeight;
+    
+    requestAnimationFrame(() => {
+        modal.style.opacity = '1';
+        modal.classList.add('show');
+        console.log('Modal should be visible now');
+    });
 
     // 첫 번째 화면만 표시
     document.getElementById('companyImageScreen').style.display = 'block';
@@ -213,43 +254,50 @@ function showPlannerInfo() {
 }
 
 function closePlannerModal() {
+    console.log('Closing planner modal...');
     const modal = document.getElementById('plannerModal');
-    modal.classList.remove('show');
-    modal.style.display = 'none';
+    if (modal) {
+        modal.style.opacity = '0';
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            console.log('Planner modal hidden');
+        }, 300);
+    }
 }
 // ====== 패키지 서비스 데이터(전역) ======
 const serviceData = {
   waxing: [
-    { title: '[여성]종아리 5회(무릎 포함)', description: '아포지플러스, 클라리티, 산드로 듀얼, 라이트 쉬어듀엣 등' },
-    { title: '[여성]허벅지 5회', description: '아포지플러스, 클라리티, 산드로 듀얼, 라이트 쉬어듀엣 등' }
+    { title: getMessage('service.waxing.leg5.title'), description: getMessage('service.waxing.leg5.description') },
+    { title: getMessage('service.waxing.thigh5.title'), description: getMessage('service.waxing.thigh5.description') }
   ],
   plasticsurgery: [
-    { title: '시그니처 색소 패키지', description: '엑셀V레이저 3회 + 레블라이트 SI토닝 3회 + 비타민관리 3회' },
-    { title: '시그니처 모공 패키지', description: '시크릿/프락셀 3회 + 카프리레이저 3회 + 재생관리 3회' }
+    { title: getMessage('service.plasticsurgery.signature.color.title'), description: getMessage('service.plasticsurgery.signature.color.description') },
+    { title: getMessage('service.plasticsurgery.signature.pore.title'), description: getMessage('service.plasticsurgery.signature.pore.description') }
   ],
   dermatology: [
-    { title: '크라이오셀 + 촉촉팩', description: '자가세안 - X로션 - 크라이오셀 - 촉촉팩 - 마무리' },
-    { title: '듀얼토닝 + 촉촉팩', description: '자가세안 - X로션 - 듀얼토닝 - 촉촉팩 - 마무리' }
+    { title: getMessage('service.dermatology.cryocell.title'), description: getMessage('service.dermatology.cryocell.description') },
+    { title: getMessage('service.dermatology.dualtone.title'), description: getMessage('service.dermatology.dualtone.description') }
   ],
   dental: [
-    { title: '스케일링 패키지', description: '기본 스케일링 + 불소 도포' },
-    { title: '치아 미백 패키지', description: '오피스 미백 2회 + 홈미백 키트' }
+    { title: getMessage('service.dental.scaling.title'), description: getMessage('service.dental.scaling.description') },
+    { title: getMessage('service.dental.whitening.title'), description: getMessage('service.dental.whitening.description') }
   ],
   pharmacy: [
-    { title: '여행 상비약 패키지', description: '소화제 + 진통제 + 종합비타민' },
-    { title: '피부 진정 키트', description: '알로에겔 + 진정크림 + 마스크팩' }
+    { title: getMessage('service.pharmacy.travel.title'), description: getMessage('service.pharmacy.travel.description') },
+    { title: getMessage('service.pharmacy.skin.title'), description: getMessage('service.pharmacy.skin.description') }
   ],
   massage: [
-    { title: '전신 아로마 테라피', description: '전신 릴랙싱 60분 코스' },
-    { title: '발 반사 요법', description: '풋 케어 + 리플렉솔로지 40분' }
+    { title: getMessage('service.massage.aroma.title'), description: getMessage('service.massage.aroma.description') },
+    { title: getMessage('service.massage.foot.title'), description: getMessage('service.massage.foot.description') }
   ],
   oriental: [
-    { title: '한방 다이어트', description: '한약 처방 + 침/약침 2회' },
-    { title: '체형 교정', description: '추나요법 + 한방 테이핑' }
+    { title: getMessage('service.oriental.diet.title'), description: getMessage('service.oriental.diet.description') },
+    { title: getMessage('service.oriental.shape.title'), description: getMessage('service.oriental.shape.description') }
   ],
   orientalHospital: [
-    { title: '통증 클리닉', description: '도수치료 + 약침요법' },
-    { title: '재활 패키지', description: '물리치료 + 체형 교정 프로그램' }
+    { title: getMessage('service.orientalHospital.pain.title'), description: getMessage('service.orientalHospital.pain.description') },
+    { title: getMessage('service.orientalHospital.rehab.title'), description: getMessage('service.orientalHospital.rehab.description') }
   ]
 };
 
@@ -266,14 +314,14 @@ const CATEGORY_ALIAS = {
 };
 
 const CATEGORY_DISPLAY = {
-  waxing: '왁싱',
-  dermatology: '피부과',
-  plasticsurgery: '성형외과',
-  dental: '치과',
-  pharmacy: '약국',
-  massage: '마사지',
-  oriental: '한의원',
-  orientalHospital: '한방병원'
+  waxing: getMessage('package.modal.category.waxing'),
+  dermatology: getMessage('package.modal.category.dermatology'),
+  plasticsurgery: getMessage('package.modal.category.plasticsurgery'),
+  dental: getMessage('package.modal.category.dental'),
+  pharmacy: getMessage('package.modal.category.pharmacy'),
+  massage: getMessage('package.modal.category.massage'),
+  oriental: getMessage('package.modal.category.oriental'),
+  orientalHospital: getMessage('package.modal.category.orientalHospital')
 };
 
 const CATEGORY_IMAGE = {
@@ -354,7 +402,14 @@ function renderAllServices(categoryKeys){
 
 // 3) showPackageModal (단일)
 function showPackageModal(packageName, categories, description){
+  console.log('showPackageModal called with:', packageName, categories, description);
   const modal = document.getElementById('packageModal');
+  
+  if (!modal) {
+      console.error('Package modal not found!');
+      return;
+  }
+  
   document.getElementById('packageModalTitle').textContent = packageName || '패키지';
 
   // feature-tag 텍스트를 내부 키로 매핑하고 중복 제거
@@ -449,15 +504,31 @@ function showPackageModal(packageName, categories, description){
   }
 
   // 모달 표시
-  modal.classList.remove('show');
+  console.log('Showing package modal...');
   modal.style.display = 'block';
-  requestAnimationFrame(()=> modal.classList.add('show'));
+  modal.style.opacity = '0';
+  
+  // 강제로 리플로우 발생
+  modal.offsetHeight;
+  
+  requestAnimationFrame(() => {
+      modal.style.opacity = '1';
+      modal.classList.add('show');
+      console.log('Package modal should be visible now');
+  });
 }
 // ====== 모달 닫기 ======
 function closePackageModal(){
+  console.log('Closing package modal...');
   const modal = document.getElementById('packageModal');
-  modal.classList.remove('show');
-  modal.style.display = 'none';
+  if (modal) {
+      modal.style.opacity = '0';
+      modal.classList.remove('show');
+      setTimeout(() => {
+          modal.style.display = 'none';
+          console.log('Package modal hidden');
+      }, 300);
+  }
 }
 
 
@@ -472,3 +543,11 @@ window.onclick = function(event) {
         closePackageModal();
     }
 }
+
+// ESC 키로 모달 닫기
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closePlannerModal();
+        closePackageModal();
+    }
+});

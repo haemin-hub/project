@@ -413,23 +413,26 @@
 .planner-modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0; /* 페이드인 기본값 */
+    transition: opacity 0.3s ease;
+    pointer-events: auto;
 }
 
 /* 열릴 때 페이드인 처리 */
 .planner-modal.show {
-    animation: modalFadeIn 500ms ease forwards;
+    opacity: 1;
+    pointer-events: auto;
 }
 
-@keyframes modalFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.planner-modal[style*="display: block"] {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .planner-modal-content {

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="main.jsp 반응형 웹 추가" />
+    <list default="true" id="19652e27-ce32-4e34-b73b-a2c915e10a51" name="변경" comment="25.08.28_유튜브 수정완료" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -61,7 +61,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/APIROUND/project.git&quot;,
-    &quot;accountId&quot;: &quot;a8ce86f7-4831-4c90-9700-74a09ffd6fdf&quot;
+    &quot;accountId&quot;: &quot;578bab63-3494-499e-8e26-90b72c1114da&quot;
   }
 }</component>
   <component name="LogFilters">
@@ -97,27 +97,33 @@
     "Application.ApiRoundApplication.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "haemin",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "mingzz",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/enjoy/Desktop/ApiRound/src/main/webapp/resources/images/packages",
+    "last_opened_file_path": "C:/Users/enjoy/Desktop/정민서/ApiRound/ApiRound",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "com.github.copilot.settings.chat.ChatConfigurable",
+    "vue.rearranger.settings.migration": "true",
     "애플리케이션.ApiRoundApplication.executor": "Run",
     "애플리케이션.SpringI18nAApplication.executor": "Run"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "oracle"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\enjoy\Desktop\ApiRound\src\main\webapp\resources\images\packages" />
-      <recent name="C:\Users\enjoy\Desktop\ApiRound\src\main\webapp\resources\images\detail" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\enjoy\Desktop\정민서\ApiRound\ApiRound\src\main\java" />
     </key>
@@ -149,6 +155,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ApiRoundApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ApiRound" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.ApiRound.ApiRoundApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="애플리케이션.ApiRoundApplication" />
       <item itemvalue="애플리케이션.SpringI18nAApplication" />
@@ -156,9 +169,19 @@
     <recent_temporary>
       <list>
         <item itemvalue="애플리케이션.ApiRoundApplication" />
-        <item itemvalue="애플리케이션.SpringI18nAApplication" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="StructureViewState">
+    <option name="selectedTab" value="JSP" />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
@@ -167,6 +190,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755847739815</updated>
+      <workItem from="1756345522218" duration="552000" />
+      <workItem from="1756346099762" duration="5878000" />
+      <workItem from="1756352053544" duration="18426000" />
+      <workItem from="1756374471153" duration="12381000" />
+      <workItem from="1756426101559" duration="22062000" />
+      <workItem from="1756524197218" duration="1755000" />
+      <workItem from="1756530219982" duration="8485000" />
     </task>
     <task id="LOCAL-00001" summary="번역추가">
       <option name="closed" value="true" />
@@ -200,208 +230,171 @@
       <option name="project" value="LOCAL" />
       <updated>1756195480920</updated>
     </task>
-    <task id="LOCAL-00005" summary="&#10;햄 풀 이후 푸시">
+    <task id="LOCAL-00005" summary="헤더에 하트 누르면 찜 페이지로 이동&#10;메인페이지 하단 top3 dump이미지로 바꿈">
       <option name="closed" value="true" />
-      <created>1756256658459</created>
+      <created>1756256202566</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1756256658459</updated>
+      <updated>1756256202566</updated>
     </task>
-    <task id="LOCAL-00006" summary="&#10;햄 풀 이후 푸시">
+    <task id="LOCAL-00006" summary="업체 클릭 수 집계해서 main.jsp에 top3 뿌리기(실제 업체 클릭은 아직 구현 안함, DB에서 insert문 실행해서 확인해야함) application.properties에 본인 db 이름으로 되어있는지 꼭!!!!!!!체크">
       <option name="closed" value="true" />
-      <created>1756256856844</created>
+      <created>1756277661207</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1756256856844</updated>
+      <updated>1756277661207</updated>
     </task>
-    <task id="LOCAL-00007" summary="변경 ?">
+    <task id="LOCAL-00007" summary="변경">
       <option name="closed" value="true" />
-      <created>1756279274409</created>
+      <created>1756279274853</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1756279274409</updated>
+      <updated>1756279274853</updated>
     </task>
-    <task id="LOCAL-00008" summary="변경">
+    <task id="LOCAL-00008" summary="민서꺼 풀해온 뒤 푸시">
       <option name="closed" value="true" />
-      <created>1756280166802</created>
+      <created>1756280608182</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1756280166802</updated>
+      <updated>1756280608182</updated>
     </task>
-    <task id="LOCAL-00009" summary="package 백단">
+    <task id="LOCAL-00009" summary="민서꺼 풀해온 뒤 푸시">
       <option name="closed" value="true" />
-      <created>1756289741457</created>
+      <created>1756284512546</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1756289741457</updated>
+      <updated>1756284512546</updated>
     </task>
-    <task id="LOCAL-00010" summary="package 백단">
+    <task id="LOCAL-00010" summary="민서꺼 풀해온 뒤 푸시">
       <option name="closed" value="true" />
-      <created>1756290680859</created>
+      <created>1756290633759</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1756290680859</updated>
+      <updated>1756290633759</updated>
     </task>
-    <task id="LOCAL-00011" summary="package 백단 및 리스트 병합">
+    <task id="LOCAL-00011" summary="TOP3, 클릭하면 INSERT">
       <option name="closed" value="true" />
-      <created>1756292286864</created>
+      <created>1756293897957</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1756292286864</updated>
+      <updated>1756293897957</updated>
     </task>
-    <task id="LOCAL-00012" summary="아현쓰">
+    <task id="LOCAL-00012" summary="TOP3, 클릭하면 INSERT">
       <option name="closed" value="true" />
-      <created>1756293276461</created>
+      <created>1756293906340</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1756293276461</updated>
+      <updated>1756293906340</updated>
     </task>
-    <task id="LOCAL-00013" summary="아현쓰">
+    <task id="LOCAL-00013" summary="TOP3, 클릭하면 INSERT">
       <option name="closed" value="true" />
-      <created>1756340359337</created>
+      <created>1756342086704</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1756340359337</updated>
+      <updated>1756342086704</updated>
     </task>
-    <task id="LOCAL-00014" summary="COMMIT">
+    <task id="LOCAL-00014" summary="TOP3, 클릭하면 INSERT">
       <option name="closed" value="true" />
-      <created>1756347557057</created>
+      <created>1756352620075</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1756347557057</updated>
+      <updated>1756352620075</updated>
     </task>
-    <task id="LOCAL-00015" summary="COMMIT">
+    <task id="LOCAL-00015" summary="package.jsp">
       <option name="closed" value="true" />
-      <created>1756351012013</created>
+      <created>1756356928572</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1756351012013</updated>
+      <updated>1756356928572</updated>
     </task>
-    <task id="LOCAL-00016" summary="찜 기능 추가">
+    <task id="LOCAL-00016" summary="package.jsp">
       <option name="closed" value="true" />
-      <created>1756364008414</created>
+      <created>1756366017416</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1756364008414</updated>
+      <updated>1756366017416</updated>
     </task>
-    <task id="LOCAL-00017" summary="찜 기능 추가">
+    <task id="LOCAL-00017" summary="package.jsp">
       <option name="closed" value="true" />
-      <created>1756365768243</created>
+      <created>1756367282902</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1756365768243</updated>
+      <updated>1756367282902</updated>
     </task>
-    <task id="LOCAL-00018" summary="인기 추천 top3 더미데이터">
+    <task id="LOCAL-00018" summary="모달창">
       <option name="closed" value="true" />
-      <created>1756369846967</created>
+      <created>1756426187817</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1756369846967</updated>
+      <updated>1756426187817</updated>
     </task>
-    <task id="LOCAL-00019" summary="인기 추천 top3 더미데이터">
+    <task id="LOCAL-00019" summary="업체 클릭 시 click_logs에 insert 들어가도록 보완">
       <option name="closed" value="true" />
-      <created>1756370481085</created>
+      <created>1756433872591</created>
       <option name="number" value="00019" />
       <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1756370481085</updated>
+      <updated>1756433872591</updated>
     </task>
-    <task id="LOCAL-00020" summary="commit">
+    <task id="LOCAL-00020" summary="업체 클릭 시 click_logs에 insert 들어가도록 보완">
       <option name="closed" value="true" />
-      <created>1756371758779</created>
+      <created>1756433882363</created>
       <option name="number" value="00020" />
       <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
-      <updated>1756371758779</updated>
+      <updated>1756433882363</updated>
     </task>
-    <task id="LOCAL-00021" summary="commit">
+    <task id="LOCAL-00021" summary="tourism_list css, js, jsp">
       <option name="closed" value="true" />
-      <created>1756375313759</created>
+      <created>1756448619260</created>
       <option name="number" value="00021" />
       <option name="presentableId" value="LOCAL-00021" />
       <option name="project" value="LOCAL" />
-      <updated>1756375313759</updated>
+      <updated>1756448619260</updated>
     </task>
-    <task id="LOCAL-00022" summary="commit">
+    <task id="LOCAL-00022" summary="클릭 로그 수정">
       <option name="closed" value="true" />
-      <created>1756438970425</created>
+      <created>1756451384627</created>
       <option name="number" value="00022" />
       <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
-      <updated>1756438970425</updated>
+      <updated>1756451384627</updated>
     </task>
-    <task id="LOCAL-00023" summary="commit">
+    <task id="LOCAL-00023" summary="25.08.28_유튜브 수정완료">
       <option name="closed" value="true" />
-      <created>1756438993123</created>
+      <created>1756772084175</created>
       <option name="number" value="00023" />
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
-      <updated>1756438993123</updated>
+      <updated>1756772084175</updated>
     </task>
-    <task id="LOCAL-00024" summary="commit">
+    <task id="LOCAL-00024" summary="25.08.28_유튜브 수정완료">
       <option name="closed" value="true" />
-      <created>1756438997109</created>
+      <created>1756774822130</created>
       <option name="number" value="00024" />
       <option name="presentableId" value="LOCAL-00024" />
       <option name="project" value="LOCAL" />
-      <updated>1756438997109</updated>
+      <updated>1756774822130</updated>
     </task>
-    <task id="LOCAL-00025" summary="commit">
-      <option name="closed" value="true" />
-      <created>1756446197702</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1756446197702</updated>
-    </task>
-    <task id="LOCAL-00026" summary="commit">
-      <option name="closed" value="true" />
-      <created>1756687505236</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1756687505236</updated>
-    </task>
-    <task id="LOCAL-00027" summary="commit">
-      <option name="closed" value="true" />
-      <created>1756705068610</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1756705068610</updated>
-    </task>
-    <task id="LOCAL-00028" summary="commit">
-      <option name="closed" value="true" />
-      <created>1756705115884</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1756705115884</updated>
-    </task>
-    <task id="LOCAL-00029" summary="main.jsp 반응형 웹 추가">
-      <option name="closed" value="true" />
-      <created>1756727149402</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1756727149402</updated>
-    </task>
-    <option name="localTasksCounter" value="30" />
+    <option name="localTasksCounter" value="25" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -414,7 +407,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="mingzz" />
+                        <option value="haemin" />
                       </list>
                     </value>
                   </entry>
@@ -429,18 +422,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="로고 클릭 시 main으로" />
     <MESSAGE value="번역추가" />
-    <MESSAGE value="&#10;햄 풀 이후 푸시" />
-    <MESSAGE value="변경 ?" />
+    <MESSAGE value="헤더에 하트 누르면 찜 페이지로 이동&#10;메인페이지 하단 top3 dump이미지로 바꿈" />
+    <MESSAGE value="업체 클릭 수 집계해서 main.jsp에 top3 뿌리기(실제 업체 클릭은 아직 구현 안함, DB에서 insert문 실행해서 확인해야함) application.properties에 본인 db 이름으로 되어있는지 꼭!!!!!!!체크" />
     <MESSAGE value="변경" />
-    <MESSAGE value="package 백단" />
-    <MESSAGE value="package 백단 및 리스트 병합" />
-    <MESSAGE value="아현쓰" />
-    <MESSAGE value="COMMIT" />
-    <MESSAGE value="찜 기능 추가" />
-    <MESSAGE value="인기 추천 top3 더미데이터" />
-    <MESSAGE value="commit" />
-    <MESSAGE value="main.jsp 반응형 웹 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="main.jsp 반응형 웹 추가" />
+    <MESSAGE value="민서꺼 풀해온 뒤 푸시" />
+    <MESSAGE value="TOP3, 클릭하면 INSERT" />
+    <MESSAGE value="package.jsp" />
+    <MESSAGE value="모달창" />
+    <MESSAGE value="업체 클릭 시 click_logs에 insert 들어가도록 보완" />
+    <MESSAGE value="tourism_list css, js, jsp" />
+    <MESSAGE value="클릭 로그 수정" />
+    <MESSAGE value="25.08.28_유튜브 수정완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="25.08.28_유튜브 수정완료" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -448,6 +441,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="org.springframework.util.PlaceholderResolutionException" package="org.springframework.util" />
           <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassNotFoundException" package="java.lang" />
+          <option name="timeStamp" value="2" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
