@@ -16,3 +16,4 @@ INSERT INTO ITEM_LIST_I18N (ITEM_ID, LOCALE, NAME_LABEL, ADDRESS_LABEL) VALUES
 (1, 'ja', '2010形成外科クリニック', '仁川広域市延寿区仁川タワー大路180番路11、B-211（ソンド洞、The SharpソンドセントラルパークIII）'),
 (2, 'ja', 'ABC皮膚科クリニック', 'ソウル江南区テヘラン路123'),
 (3, 'ja', 'XYZ歯科医院', '釜山海雲台区マリンシティ1路45');
+

@@ -47,7 +47,8 @@
 
     <!-- 전체 리스트 -->
     <select id="findAll" resultMap="ListDtoResultMap">
-        SELECT * FROM ITEM_LIST ORDER BY id ASC
+        <include refid="BaseSelectWithI18N"/>
+        ORDER BY i.ID ASC
     </select>
 
     <!-- 단건 조회 -->
