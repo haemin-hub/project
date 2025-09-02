@@ -359,10 +359,10 @@
 
                 </div>
 
-                <!-- 가운데 구분선 -->
+                <!-- Center divider -->
                 <div class="content-divider"></div>
 
-                <!-- 오른쪽: TOP3 의료기관 -->
+                <!-- Right: TOP3 Medical Institutions -->
                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
                 <c:set var="company1" value="${topCompanies[0]}" />
