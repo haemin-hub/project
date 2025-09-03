@@ -42,13 +42,13 @@
                     <spring:message code="community.insert.category"/>
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" data-value="성형외과" href="#"><spring:message code="community.category.plasticsurgery"/></a></li>
-                    <li><a class="dropdown-item" data-value="피부"     href="#"><spring:message code="community.category.skincare"/></a></li>
-                    <li><a class="dropdown-item" data-value="치과"     href="#"><spring:message code="community.category.dental"/></a></li>
-                    <li><a class="dropdown-item" data-value="약국"     href="#"><spring:message code="community.category.pharmacy"/></a></li>
-                    <li><a class="dropdown-item" data-value="한의원"   href="#"><spring:message code="community.category.oriental"/></a></li>
-                    <li><a class="dropdown-item" data-value="마사지"   href="#"><spring:message code="community.category.massage"/></a></li>
-                    <li><a class="dropdown-item" data-value="왁싱"     href="#"><spring:message code="community.category.waxing"/></a></li>
+                    <li><a class="dropdown-item" data-value="<spring:message code='community.category.value.plasticsurgery'/>" href="#"><spring:message code="community.category.plasticsurgery"/></a></li>
+                    <li><a class="dropdown-item" data-value="<spring:message code='community.category.value.skincare'/>" href="#"><spring:message code="community.category.skincare"/></a></li>
+                    <li><a class="dropdown-item" data-value="<spring:message code='community.category.value.dental'/>" href="#"><spring:message code="community.category.dental"/></a></li>
+                    <li><a class="dropdown-item" data-value="<spring:message code='community.category.value.pharmacy'/>" href="#"><spring:message code="community.category.pharmacy"/></a></li>
+                    <li><a class="dropdown-item" data-value="<spring:message code='community.category.value.oriental'/>" href="#"><spring:message code="community.category.oriental"/></a></li>
+                    <li><a class="dropdown-item" data-value="<spring:message code='community.category.value.massage'/>" href="#"><spring:message code="community.category.massage"/></a></li>
+                    <li><a class="dropdown-item" data-value="<spring:message code='community.category.value.waxing'/>" href="#"><spring:message code="community.category.waxing"/></a></li>
                   </ul>
                   <!-- 선택된 값 서버로 보낼 때 사용 -->
                   <input type="hidden" name="category" class="insert-category">
@@ -67,7 +67,7 @@
       <div class="community-show is-open" data-post-id="${p.postId}" data-category="${p.category}">
         <div class="show-title">
           <strong class="title-text">${p.title}</strong>
-            <span class="like-toggle ms-2" role="button" aria-label="좋아요" data-liked="${p.likedByCurrentUser}">
+            <span class="like-toggle ms-2" role="button" aria-label="<spring:message code='community.like.button'/>" data-liked="${p.likedByCurrentUser}">
               <c:choose>
                 <c:when test="${p.likedByCurrentUser}">
                   <i class="fas fa-thumbs-up"></i>

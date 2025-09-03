@@ -251,7 +251,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 2: 성형 -->
-                <a href="/location?category=성형" class="category-button new">
+                <a href="/location?category=<spring:message code='main.category.link.plastic'/>" class="category-button new">
                     <div class="category-button-icon">
                         <i class="fas fa-hospital"></i>
                     </div>
@@ -260,7 +260,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 3: 피부 -->
-                <a href="/location?category=피부" class="category-button hot">
+                <a href="/location?category=<spring:message code='main.category.link.skincare'/>" class="category-button hot">
                     <div class="category-button-icon">
                         <img src="/resources/images/mask.png" alt="<spring:message code='main.category.skincare'/>">
                     </div>
@@ -269,7 +269,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 4: 치과 -->
-                <a href="/location?category=치과" class="category-button">
+                <a href="/location?category=<spring:message code='main.category.link.dental'/>" class="category-button">
                     <div class="category-button-icon">
                         <i class="fas fa-tooth"></i>
                     </div>
@@ -278,7 +278,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 5: 약국 -->
-                <a href="/location?category=약국" class="category-button">
+                <a href="/location?category=<spring:message code='main.category.link.pharmacy'/>" class="category-button">
                     <div class="category-button-icon">
                         <i class="fas fa-pills"></i>
                     </div>
@@ -287,7 +287,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 6: 한의학 -->
-                <a href="/location?category=한의원" class="category-button new">
+                <a href="/location?category=<spring:message code='main.category.link.oriental'/>" class="category-button new">
                     <div class="category-button-icon">
                         <i class="fas fa-leaf"></i>
                     </div>
@@ -296,7 +296,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 7: 마사지 -->
-                <a href="/location?category=마사지" class="category-button hot">
+                <a href="/location?category=<spring:message code='main.category.link.massage'/>" class="category-button hot">
                     <div class="category-button-icon">
                         <img src="/resources/images/massage.png" alt="<spring:message code='main.category.massage'/>">
                     </div>
@@ -305,7 +305,7 @@
                 </a>
 
                 <!-- 카테고리 버튼 8: 왁싱 -->
-                <a href="/location?category=왁싱" class="category-button">
+                <a href="/location?category=<spring:message code='main.category.link.waxing'/>" class="category-button">
                     <div class="category-button-icon">
                         <img src="/resources/images/waxing.png" alt="<spring:message code='main.category.waxing'/>">
                     </div>
@@ -319,10 +319,7 @@
                 <!-- 인기 도시 및 TOP3 의료기관 섹션 -->
                 <section class="popular-section">
                     <div class="container">
-            <div class="section-title-area">
-                <div class="main-title"><spring:message code="main.popular.title"/></div>
-                <p class="sub-title"><spring:message code="main.popular.subtitle"/></p>
-            </div>
+            
 
             <div class="popular-content-wrapper">
                 <!-- 왼쪽: 커뮤니티 코멘트 (디자인 전용) -->
@@ -379,45 +376,45 @@
                                         <!-- 인기 업체 1 -->
                                         <a href="/list?category=${company1.category}&region=${company1.region}&Id=${company1.companyId}&name=${company1.companyName}" class="company-card">
                                             <div class="card-image">
-                                                <img src="" alt="${company1.companyName}" data-gquery="${company1.companyName} ${empty company1.subregion ? company1.region : company1.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
+                                                <img src="" alt="<spring:message code='main.popular.company.image.alt'/>: ${company1.companyName}" data-gquery="${company1.companyName} ${empty company1.subregion ? company1.region : company1.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
                                                 <div class="card-badge"><spring:message code="main.top.badge.1"/></div>
                                             </div>
                                             <div class="card-content">
                                                 <h4 class="company-name">${company1.companyName}</h4>
                                                 <div class="company-details">
-                                                    <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company1.subregion ? company1.region : company1.subregion}</span>
+                                                    <span class="location"><i class="fas fa-map-marker-alt"></i> <spring:message code="main.popular.company.location"/>: ${empty company1.subregion ? company1.region : company1.subregion}</span>
                                                 </div>
-                                                <span class="specialty-tag">${company1.category}</span>
+                                                <span class="specialty-tag"><spring:message code="main.popular.company.specialty"/>: ${company1.category}</span>
                                             </div>
                                         </a>
 
                                         <!-- 인기 업체 2 -->
                                         <a href="/list?category=${company2.category}&region=${company2.region}&Id=${company2.companyId}&name=${company2.companyName}" class="company-card">
                                             <div class="card-image">
-                                                <img src="" alt="${company2.companyName}" data-gquery="${company2.companyName} ${empty company2.subregion ? company2.region : company2.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
+                                                <img src="" alt="<spring:message code='main.popular.company.image.alt'/>: ${company2.companyName}" data-gquery="${company2.companyName} ${empty company2.subregion ? company2.region : company2.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
                                                 <div class="card-badge"><spring:message code="main.top.badge.2"/></div>
                                             </div>
                                             <div class="card-content">
                                                 <h4 class="company-name">${company2.companyName}</h4>
                                                 <div class="company-details">
-                                                    <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company2.subregion ? company2.region : company2.subregion}</span>
+                                                    <span class="location"><i class="fas fa-map-marker-alt"></i> <spring:message code="main.popular.company.location"/>: ${empty company2.subregion ? company2.region : company2.subregion}</span>
                                                 </div>
-                                                <span class="specialty-tag">${company2.category}</span>
+                                                <span class="specialty-tag"><spring:message code="main.popular.company.specialty"/>: ${company2.category}</span>
                                             </div>
                                         </a>
 
                                         <!-- 인기 업체 3 -->
                                         <a href="/list?category=${company3.category}&region=${company3.region}&Id=${company3.companyId}&name=${company3.companyName}" class="company-card">
                                             <div class="card-image">
-                                                <img src="" alt="${company3.companyName}" data-gquery="${company3.companyName} ${empty company3.subregion ? company3.region : company3.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
+                                                <img src="" alt="<spring:message code='main.popular.company.image.alt'/>: ${company3.companyName}" data-gquery="${company3.companyName} ${empty company3.subregion ? company3.region : company3.subregion}" loading="lazy" onerror="this.onerror=null;this.src='/resources/images/dump.jpg';">
                                                 <div class="card-badge"><spring:message code="main.top.badge.3"/></div>
                                             </div>
                                             <div class="card-content">
                                                 <h4 class="company-name">${company3.companyName}</h4>
                                                 <div class="company-details">
-                                                    <span class="location"><i class="fas fa-map-marker-alt"></i> ${empty company3.subregion ? company3.region : company3.subregion}</span>
+                                                    <span class="location"><i class="fas fa-map-marker-alt"></i> <spring:message code="main.popular.company.location"/>: ${empty company3.subregion ? company3.region : company3.subregion}</span>
                                                 </div>
-                                                 <span class="specialty-tag">${company3.category}</span>
+                                                 <span class="specialty-tag"><spring:message code="main.popular.company.specialty"/>: ${company3.category}</span>
                                             </div>
                                         </a>
                                     </div>
