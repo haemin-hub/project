@@ -30,6 +30,16 @@ public class ListController {
     private final ListService listService;
     private final ClickLogService clickLogService;
 
+    // ✅ application.properties 값 주입
+    @Value("${google.maps.api.key}")
+    private String googleMapsApiKey;
+
+    // ✅ 컨트롤러의 모든 핸들러에 공통으로 모델 값 추가
+    @ModelAttribute("googleMapsApiKey")
+    public String exposeGoogleMapsApiKey() {
+        return googleMapsApiKey;
+    }
+
     @Autowired
     public ListController(ListService listService, ClickLogService clickLogService) {
         this.listService = listService;

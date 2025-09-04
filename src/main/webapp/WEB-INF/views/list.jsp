@@ -199,7 +199,7 @@
 
 <!-- 구글맵 API 스크립트 -->
 <script async
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQVKpyFKKbsxbwSkllx6uLr41-OM6ga44&libraries=places&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=places&callback=initMap">
 </script>
 <script>
 // Google Maps API 로드 확인
