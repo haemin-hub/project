@@ -259,14 +259,15 @@
                     <p><spring:message code="main.category.plastic.desc"/></p>
                 </a>
 
-                <!-- 카테고리 버튼 3: 피부 -->
-                <a href="/location?category=<spring:message code='main.category.link.skincare'/>" class="category-button hot">
-                    <div class="category-button-icon">
-                        <img src="/resources/images/mask.png" alt="<spring:message code='main.category.skincare'/>">
-                    </div>
-                    <h3><spring:message code="main.category.skincare"/></h3>
-                    <p><spring:message code="main.category.skincare.desc"/></p>
-                </a>
+                   <!-- 카테고리 버튼 3: 피부 -->
+                            <a href="/location?category=피부" class="category-button hot">
+                                <div class="category-button-icon">
+                                    <img src="/resources/images/mask.png" alt="<spring:message code='main.category.skincare'/>">
+                                </div>
+                                <h3><spring:message code="main.category.skincare"/></h3>
+                                <p><spring:message code="main.category.skincare.desc"/></p>
+                            </a>
+
 
                 <!-- 카테고리 버튼 4: 치과 -->
                 <a href="/location?category=<spring:message code='main.category.link.dental'/>" class="category-button">

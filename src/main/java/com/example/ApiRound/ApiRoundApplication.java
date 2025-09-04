@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.example.ApiRound.Mapper")
+@MapperScan("com.example.ApiRound.mapper")
 public class ApiRoundApplication {
 
 	public static void main(String[] args) {
